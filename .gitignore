@@ -1,13 +1,15 @@
-# WordPress core (managed separately)
-/wp-admin/
-/wp-includes/
-/wp-content/uploads/
-/wp-content/upgrade/
-/wp-content/plugins/
-/wp-content/themes/twenty*/
+# Ignore everything by default
+/*
 
-# Config
-wp-config.php
+# Allow gitignore itself
+!.gitignore
+
+# Allow only the theme
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/xevos-cyber-theme/
 
 # OS
 .DS_Store
@@ -18,17 +20,10 @@ Thumbs.db
 .idea/
 *.sublime-*
 
-# Dependencies
-vendor/
-
 # Claude / MCP
 .claude/
 .mcp.json
 
-# EWWW image optimizer cache
-/wp-content/ewww/
-
 # Misc
 *.log
-.htaccess
 .vscode-upload.json
