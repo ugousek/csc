@@ -1,0 +1,178 @@
+{
+  "key": "group_xevos_site_settings",
+  "title": "Nastavení webu",
+  "fields": [
+    {
+      "key": "field_xevos_logo",
+      "label": "Logo",
+      "name": "logo",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "instructions": "Logo webu (doporučeno SVG nebo PNG s průhledností)"
+    },
+    {
+      "key": "field_xevos_telefon",
+      "label": "Telefon",
+      "name": "telefon",
+      "type": "text",
+      "placeholder": "+420 xxx xxx xxx"
+    },
+    {
+      "key": "field_xevos_email",
+      "label": "E-mail",
+      "name": "email",
+      "type": "email",
+      "placeholder": "info@xevos.cz"
+    },
+    {
+      "key": "field_xevos_adresa",
+      "label": "Adresa",
+      "name": "adresa",
+      "type": "textarea",
+      "rows": 3,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_xevos_socialni_site",
+      "label": "Sociální sítě",
+      "name": "socialni_site",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat síť",
+      "sub_fields": [
+        {
+          "key": "field_xevos_social_nazev",
+          "label": "Název",
+          "name": "nazev",
+          "type": "text",
+          "wrapper": { "width": "25" }
+        },
+        {
+          "key": "field_xevos_social_url",
+          "label": "URL",
+          "name": "url",
+          "type": "url",
+          "wrapper": { "width": "50" }
+        },
+        {
+          "key": "field_xevos_social_ikona",
+          "label": "Ikona",
+          "name": "ikona",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "wrapper": { "width": "25" }
+        }
+      ]
+    },
+    {
+      "key": "field_xevos_nazev_firmy",
+      "label": "Název firmy",
+      "name": "nazev_firmy",
+      "type": "text",
+      "default_value": "XEVOS Cyber Security Center"
+    },
+    {
+      "key": "field_xevos_ico",
+      "label": "IČO",
+      "name": "ico",
+      "type": "text"
+    },
+    {
+      "key": "field_xevos_dic",
+      "label": "DIČ",
+      "name": "dic",
+      "type": "text"
+    },
+    {
+      "key": "field_xevos_og_image",
+      "label": "Defaultní OG image",
+      "name": "og_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "instructions": "Výchozí obrázek pro sdílení na sociálních sítích (1200×630px)"
+    },
+    {
+      "key": "field_xevos_header_cta_text",
+      "label": "Header CTA text",
+      "name": "header_cta_text",
+      "type": "text",
+      "default_value": "Kontaktujte nás"
+    },
+    {
+      "key": "field_xevos_header_cta_url",
+      "label": "Header CTA URL",
+      "name": "header_cta_url",
+      "type": "url"
+    },
+    {
+      "key": "field_xevos_footer_popis",
+      "label": "Footer – popis",
+      "name": "footer_popis",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "tabs": "visual"
+    },
+    {
+      "key": "field_xevos_partneri",
+      "label": "Partneři (footer bar)",
+      "name": "partneri",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat partnera",
+      "sub_fields": [
+        {
+          "key": "field_xevos_partner_nazev",
+          "label": "Název",
+          "name": "nazev",
+          "type": "text",
+          "wrapper": { "width": "30" }
+        },
+        {
+          "key": "field_xevos_partner_logo",
+          "label": "Logo",
+          "name": "logo",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "wrapper": { "width": "40" }
+        },
+        {
+          "key": "field_xevos_partner_url",
+          "label": "URL",
+          "name": "url",
+          "type": "url",
+          "wrapper": { "width": "30" }
+        }
+      ]
+    },
+    {
+      "key": "field_xevos_favicon",
+      "label": "Favicon",
+      "name": "favicon",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "thumbnail",
+      "instructions": "Zdrojový soubor pro favicon (SVG nebo PNG min. 512x512)"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "xevos-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true
+}

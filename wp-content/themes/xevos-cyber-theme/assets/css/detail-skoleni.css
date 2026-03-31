@@ -1,0 +1,645 @@
+/* ==========================================================================
+   Školení – Detail page styles (single-skoleni.php)
+   Figma node: 319-56 (CSC web lokálně 2)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Hero overrides – extends shared hero-page component (.xevos-blog-hero)
+   Figma: pink accent title, taller min-height, larger price CTA
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-hero {
+    overflow: hidden;
+}
+
+.xevos-skoleni-hero .xevos-blog-hero__desc {
+    max-width: 690px;
+}
+
+.xevos-blog-hero .xevos-btn {
+    position: absolute;
+    right: 24px;
+    bottom: 0;
+    z-index: 2;
+}
+
+.xevos-page-hero .xevos-btn__arrow {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .xevos-skoleni-hero .xevos-blog-hero__grid {
+        min-height: 770px;
+    }
+
+    .xevos-skoleni-hero .xevos-blog-hero__image img {
+        max-height: 770px;
+        object-fit: cover;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Pro koho je školení určeno
+   Figma: H3 Montserrat/900/32px, Body Sora/400/24px opacity 0.7
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-pro-koho {
+    padding-bottom: 0;
+}
+
+.xevos-skoleni-pro-koho h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.22;
+    letter-spacing: 0.32px;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.xevos-skoleni-pro-koho .xevos-article-content__body,
+.xevos-skoleni-pro-koho .xevos-article-content__body p {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    line-height: 1.58;
+    letter-spacing: 0.48px;
+    color: rgba(236, 236, 236, 0.7);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Termíny školení – 3-column grid
+   Figma: Cards 480x191, gap 80px, cyan bg/border
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-terminy {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.xevos-skoleni-terminy h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.22;
+    letter-spacing: 0.32px;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.xevos-termin-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px 80px;
+    margin: 0;
+    padding-bottom: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+}
+
+.xevos-termin-card {
+    flex: none;
+    width: auto;
+    background: rgba(0, 187, 255, 0.2);
+    border: 1px solid rgba(0, 187, 255, 0.6);
+    border-radius: 0;
+    padding: 16px;
+    text-align: left;
+    scroll-snap-align: none;
+}
+
+.xevos-termin-card__date {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.25vw, 3.25rem);
+    line-height: normal;
+    color: var(--color-text);
+    margin-bottom: 0.625rem;
+}
+
+.xevos-termin-card__location {
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.48px;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.xevos-termin-card__location a {
+    color: #ECECEC;
+    font-family: Sora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.48px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.xevos-termin-card__time {
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+    line-height: 1.61;
+    letter-spacing: 0.36px;
+    color: var(--color-text);
+}
+
+.xevos-termin-card--full {
+    opacity: 0.5;
+}
+
+.xevos-termin-card--full .xevos-termin-card__date {
+    text-decoration: line-through;
+}
+
+.xevos-glow.first {
+    width: 100%;
+    height: 100%;
+    overflow: inherit;
+}
+
+.xevos-glow.first::before {
+    height: 1000px;
+    width: 1000px;
+    right: -500px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Lektoři – carousel with nav arrows
+   Figma: 240x240 circular photos, cyan border, name H3/32px, role 24px
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-lektori-section h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    line-height: 1.21;
+    letter-spacing: 0.52px;
+    color: var(--color-white);
+    margin-bottom: 4rem;
+}
+
+.xevos-skoleni-lektori__carousel {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.xevos-skoleni-lektori__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 5rem;
+    flex: 1;
+}
+
+.xevos-lektor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+.xevos-lektor-card__foto-wrap {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.xevos-lektor-card__foto {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+}
+
+.xevos-lektor-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.xevos-lektor-card__name-wrap {
+    text-align: center;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.xevos-lektor-card__name {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    line-height: 1.22;
+    letter-spacing: 0.32px;
+    color: var(--color-white);
+    margin-bottom: 0.625rem;
+}
+
+.xevos-lektor-card__role {
+    width: fit-content;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    line-height: 1.58;
+    letter-spacing: 0.48px;
+    color: var(--color-text);
+    margin-inline: auto;
+    border-bottom: 1px solid rgba(0, 187, 255, 0.6);
+}
+
+.xevos-lektor-card__bio {
+    color: rgba(236, 236, 236, 0.70);
+    text-align: center;
+    font-family: Sora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    letter-spacing: 0.48px;
+}
+
+/* Nav arrows – Figma: 48x48 circle, rgba(0,187,255,0.2) bg, cyan arrow */
+.xevos-lektor-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 187, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background var(--transition-base);
+    padding: 0;
+}
+
+.xevos-lektor-nav:hover {
+    background: rgba(0, 187, 255, 0.35);
+}
+
+.xevos-lektor-nav svg {
+    color: #00bbff;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Harmonogram + Osnova – two-column (left/right equal)
+   Figma: H3 Montserrat/900/52px, items Sora/400/24px, gap 80px between cols
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-content-cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .xevos-skoleni-content-cols {
+        grid-template-columns: 1fr 1fr;
+        gap: 9rem;
+    }
+}
+
+.xevos-skoleni-content-cols__col:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.xevos-skoleni-content-cols h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    line-height: 1.21;
+    letter-spacing: 0.52px;
+    color: var(--color-white);
+    margin-bottom: 0.625rem;
+}
+
+/* Harmonogram items – Figma: Sora/400/24px, line-height 38px */
+.xevos-harmonogram-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.xevos-harmonogram-item {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    border-bottom: none;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    line-height: 1.58;
+    letter-spacing: 0.48px;
+    color: rgba(236, 236, 236, 0.7);
+}
+
+.xevos-harmonogram-item__cas {
+    flex-shrink: 0;
+    width: auto;
+    color: rgba(236, 236, 236, 0.7);
+    font-weight: 400;
+}
+
+.xevos-harmonogram-item__text {
+    color: rgba(236, 236, 236, 0.7);
+}
+
+/* Osnova items – Figma: Sora/400/24px, body text with spacing */
+.xevos-osnova-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.xevos-osnova-list li {
+    color: #ECECEC;
+    font-family: Sora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    letter-spacing: 0.48px;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Co si odnesete – checklist with cyan circle + checkmark icon
+   Figma: 32x32 circle (linear-gradient bg + cyan border), checkmark in cyan
+   -------------------------------------------------------------------------- */
+
+.xevos-skoleni-benefits {
+    margin-top: 7.5rem;
+}
+
+.xevos-skoleni-benefits h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    line-height: 1.21;
+    letter-spacing: 0.52px;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+/* Checklist styles now in main.css (shared component) */
+
+
+/* --------------------------------------------------------------------------
+   7. Kde parkovat – image left, text right
+   Figma: Rectangle 9 (799x542) with image, text frame on right
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-parking {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .xevos-skoleni-parking {
+        grid-template-columns: 55% 1fr;
+        gap: 0;
+    }
+}
+
+.xevos-skoleni-parking__image {
+    position: relative;
+    overflow: hidden;
+}
+
+.xevos-skoleni-parking__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.xevos-skoleni-parking__text {
+    padding: 24px;
+}
+
+.xevos-skoleni-parking__text h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    line-height: 1.21;
+    letter-spacing: 0.52px;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+.xevos-skoleni-parking__text p {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    line-height: 1.58;
+    letter-spacing: 0.48px;
+    color: var(--color-text);
+}
+
+
+/* Order section, form inputs, order summary, honeypot — base in main.css */
+
+/* Školení-specific: cyan-bordered inputs with 52px height */
+.xevos-order-section .xevos-form__input {
+    height: 52px;
+    padding: 16px;
+    border-color: rgba(0, 187, 255, 0.6);
+    border-radius: 0;
+}
+
+.xevos-order-section .xevos-form__input:focus {
+    border-color: #00bbff;
+    box-shadow: 0 0 0 2px rgba(0, 187, 255, 0.2);
+}
+
+.xevos-order-section select.xevos-form__input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0' fill='%23ECECEC'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+/* DPH checkbox – Figma: 52x52, aligned to bottom of row like inputs */
+.xevos-form__checkbox-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/* The parent .xevos-form__group needs flex + justify-end so checkbox sits at bottom */
+.xevos-form__group:has(.xevos-form__checkbox-wrap) {
+    justify-content: flex-end;
+}
+
+.xevos-form__checkbox {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    appearance: none;
+    background: rgba(0, 187, 255, 0.2);
+    border: 1px solid rgba(0, 187, 255, 0.6);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    border-radius: 0;
+}
+
+.xevos-form__checkbox:hover {
+    border-color: #00bbff;
+}
+
+.xevos-form__checkbox:checked {
+    background: rgba(0, 187, 255, 0.4);
+    border-color: #00bbff;
+    background-image: url("data:image/svg+xml,%3Csvg width='23' height='17' viewBox='0 0 23 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.6 2.8L8.5 16.9L0 8.4L2.8 5.6L8.5 11.3L19.8 0L22.6 2.8Z' fill='%2300BBFF'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 15px;
+}
+
+.xevos-form__checkbox-label {
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+    letter-spacing: 0.36px;
+    color: var(--color-text);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Submit button – Figma: pink bg, 397x88 */
+.xevos-order-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 24px;
+    background: var(--color-accent);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.21;
+    cursor: pointer;
+    transition: background var(--transition-base), transform var(--transition-fast);
+    width: 100%;
+    justify-content: center;
+    min-height: 88px;
+    border-radius: 0;
+}
+
+.xevos-order-submit:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+.xevos-order-submit .xevos-btn__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. Section heading shared styles for skoleni detail
+   -------------------------------------------------------------------------- */
+.xevos-skoleni-section-header {
+    margin-bottom: 2.5rem;
+}
+
+.xevos-skoleni-section-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    line-height: 1.21;
+    letter-spacing: 0.52px;
+    color: var(--color-white);
+    margin-bottom: 0.625rem;
+}
+
+.xevos-skoleni-section-header p {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    line-height: 1.58;
+    letter-spacing: 0.48px;
+    color: rgba(236, 236, 236, 0.7);
+    max-width: 972px;
+}
+
+#objednavka .xevos-btn--primary {
+    width: fit-content;
+
+}
+
+/* --------------------------------------------------------------------------
+   11. Responsive overrides
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .xevos-skoleni-hero .xevos-blog-hero__content {
+        text-align: center;
+    }
+
+    .xevos-skoleni-hero .xevos-blog-hero__content h1 {
+        font-size: 2.5rem;
+    }
+
+    .xevos-skoleni-hero .xevos-btn--primary {
+        font-size: 1.125rem;
+        padding: 10px 24px;
+    }
+
+    .xevos-termin-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .xevos-skoleni-lektori__carousel {
+        flex-direction: column;
+    }
+
+    .xevos-skoleni-lektori__cards {
+        grid-template-columns: 1fr;
+    }
+
+    .xevos-lektor-card__foto,
+    .xevos-lektor-card__foto-wrap {
+        width: 160px;
+        height: 160px;
+    }
+
+    .xevos-skoleni-parking {
+        grid-template-columns: 1fr;
+    }
+
+    .xevos-order-section {
+        grid-template-columns: 1fr;
+    }
+
+    .xevos-order-submit .xevos-btn__arrow {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .xevos-termin-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .xevos-termin-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

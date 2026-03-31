@@ -1,0 +1,449 @@
+/* ==========================================================================
+   Blog / Aktuality – standalone stylesheet
+   Figma node 588:4168: Archive hero, filter pills, 3-col card grid, pagination.
+   Single article: hero, content, share, prev/next nav.
+   ========================================================================== */
+
+
+/* Base .xevos-blog-hero styles are in main.css (shared component) */
+
+
+/* --------------------------------------------------------------------------
+   2. Archive filters (category pills)
+   -------------------------------------------------------------------------- */
+.xevos-aktuality-archive__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.xevos-aktuality-archive__filter-btn {
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.xevos-aktuality-archive__filter-btn:hover,
+.xevos-aktuality-archive__filter-btn.is-active {
+  background: var(--color-white);
+  color: var(--bg-primary);
+  border-color: var(--color-white);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Archive card grid – Figma: 3 columns, gap 40, 4 rows = 12 cards
+   -------------------------------------------------------------------------- */
+.xevos-aktuality-archive__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter);
+}
+
+@media (min-width: 768px) {
+  .xevos-aktuality-archive__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .xevos-aktuality-archive__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* Overlay card styles now in main.css (.xevos-card--overlay / .xevos-blog-archive) */
+
+
+.xevos-blog-archive .xevos-aktuality-archive__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .xevos-blog-archive .xevos-aktuality-archive__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .xevos-blog-archive .xevos-aktuality-archive__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Figma: Sora 18px filter pills */
+.xevos-blog-archive .xevos-filter-pill {
+  font-size: clamp(0.875rem, 1.125vw, 1.125rem);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Filter pills (shared between archive pages)
+   -------------------------------------------------------------------------- */
+.xevos-filter-pill {
+  padding: 0.5rem 1.125rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border: 1px solid var(--color-border-light);
+  background: rgba(0, 187, 255, 0.20);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.xevos-filter-pill:hover {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.xevos-filter-pill.is-active {
+  background: var(--color-white);
+  color: var(--bg-primary);
+  border-color: var(--color-white);
+}
+
+.xevos-filter-pill--small {
+  font-size: var(--font-size-xs);
+  padding: 0.25rem 0.75rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Archive toolbar (filters + sort row)
+   -------------------------------------------------------------------------- */
+.xevos-archive-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.xevos-archive-toolbar__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dim);
+}
+
+.xevos-archive-toolbar__sort select {
+  appearance: none;
+  padding: 0.5rem 2.5rem 0.5rem 1.125rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: var(--font-body);
+  border: 1px solid var(--color-border-light);
+  background: rgba(0, 187, 255, 0.20) url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.xevos-archive-toolbar__sort select:hover {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.xevos-archive-toolbar__sort select:focus {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  outline: none;
+}
+
+
+/* Archive bottom + Pagination — moved to main.css (shared) */
+
+
+/* --------------------------------------------------------------------------
+   8. Single article – hero
+   -------------------------------------------------------------------------- */
+.xevos-page-hero--article {
+  min-height: 400px;
+  align-items: flex-end;
+  padding-bottom: 3rem;
+}
+
+.xevos-article-hero__cats {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.xevos-aktualita-single__hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.xevos-aktualita-single__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.xevos-aktualita-single__hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-primary) 0%, transparent 60%);
+}
+
+.xevos-aktualita-single__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dim);
+}
+
+.xevos-aktualita-single__body {
+  max-width: 740px;
+}
+
+.xevos-aktualita-single__body img {
+  border-radius: var(--radius);
+}
+
+
+/* --------------------------------------------------------------------------
+   9. Single article – share buttons
+   -------------------------------------------------------------------------- */
+.xevos-aktualita-single__share {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.xevos-aktualita-single__share a,
+.xevos-aktualita-single__share button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.xevos-aktualita-single__share a:hover,
+.xevos-aktualita-single__share button:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.xevos-aktualita-single__sidebar h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-transform: none;
+  font-style: normal;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. Single article – prev/next navigation
+   -------------------------------------------------------------------------- */
+.xevos-aktualita-single__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.xevos-aktualita-single__nav a {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.xevos-aktualita-single__nav a:hover {
+  color: var(--color-accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   11. Article content
+   -------------------------------------------------------------------------- */
+/* Figma: 1200px content width */
+.xevos-article-content__inner {
+  max-width: 1200px;
+}
+
+/* Figma: Sora 18px body */
+.xevos-article-content__body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.125vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* Figma: Montserrat Black 52px UPPER */
+.xevos-article-content__body h2,
+.xevos-article-content__body h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.25vw, 3.25rem);
+  text-transform: uppercase;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Figma: 1200x660 images */
+.xevos-article-content__body img {
+  border-radius: 0;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.xevos-article-content__body ul,
+.xevos-article-content__body ol {
+  margin-bottom: 1.5rem;
+}
+
+.xevos-article-content__body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.xevos-article-content__body a:hover {
+  color: var(--color-white);
+}
+
+.xevos-article-content__body blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+
+/* Responsive - Mobile (blog-hero mobile in main.css) */
+@media (max-width: 767px) {
+  .xevos-archive-toolbar {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .xevos-aktuality-archive__filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .xevos-filter-pill {
+    flex-shrink: 0;
+  }
+
+  .xevos-archive-bottom {
+    margin-top: 2rem;
+  }
+
+  .xevos-page-hero--article {
+    min-height: 280px;
+    padding-bottom: 2rem;
+  }
+
+  .xevos-article-content__body h2,
+  .xevos-article-content__body h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .xevos-aktualita-single__share {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .xevos-aktualita-single__nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .xevos-blog-archive .xevos-card__title a {
+    font-size: 1rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Grid wrap + Loader overlay
+   -------------------------------------------------------------------------- */
+.xevos-grid-wrap {
+  position: relative;
+}
+
+.xevos-loader {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  background: rgba(1, 1, 41, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.xevos-grid-wrap.is-loading .xevos-loader {
+  display: flex;
+}
+
+.xevos-loader__spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(0, 187, 255, 0.15);
+  border-top-color: var(--color-cyan);
+  border-radius: 50%;
+  animation: xevos-spin 0.8s linear infinite;
+}
+
+@keyframes xevos-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Sort select styling
+   -------------------------------------------------------------------------- */
+.xevos-archive-toolbar__sort label {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dim);
+  cursor: pointer;
+}
+
+.xevos-archive-toolbar__sort select {
+  appearance: none;
+  background: rgba(0, 187, 255, 0.1) url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300BBFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  padding-right: 2rem;
+}

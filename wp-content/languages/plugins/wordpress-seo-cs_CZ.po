@@ -1,0 +1,4052 @@
+# Translation of Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) in Czech
+# This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-03-31 08:39:41+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n >= 2 && n <= 4) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: cs_CZ\n"
+"Project-Id-Version: Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release)\n"
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cli-command.php:95
+msgid "The value for 'per_page' must be a positive integer higher than equal to 1."
+msgstr "Hodnota „per_page“ musí být kladné celé číslo větší nebo rovné 1."
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cli-command.php:92
+msgid "The value for 'page' must be a positive integer higher than equal to 1."
+msgstr "Hodnota „page“ musí být kladné celé číslo větší nebo rovné 1."
+
+#: src/task-list/application/tasks/set-search-appearance-templates.php:116
+msgid "Set search templates"
+msgstr "Nastavení šablon pro vyhledávání"
+
+#: src/task-list/domain/exceptions/complete-llms-task-exception.php:17
+msgid "Failed to enable llms.txt option."
+msgstr "Nepodařilo se povolit možnost llms.txt."
+
+#: src/task-list/domain/exceptions/complete-hello-world-task-exception.php:17
+msgid "Failed to delete the Hello World post."
+msgstr "Nepodařilo se smazat příspěvek Hello World."
+
+#: src/presenters/admin/sidebar-presenter.php:77 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Optimize your site faster, smarter, and with more confidence."
+msgstr "Optimalizujte svůj web rychleji, chytřeji a s větší jistotou."
+
+#: src/presenters/admin/sidebar-presenter.php:77 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Help ready-to-buy shoppers and search engines find your product."
+msgstr "Pomozte zákazníkům připraveným ke koupi a vyhledávačům najít váš produkt."
+
+#: src/presenters/admin/sidebar-presenter.php:72 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Spend less time on SEO tasks!"
+msgstr "Věnujte méně času úkolům SEO!"
+
+#: src/presenters/admin/sidebar-presenter.php:72 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Grow your store's visibility!"
+msgstr "Zviditelněte svůj obchod!"
+
+#: src/presenters/admin/sidebar-presenter.php:90 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Apply AI suggestions to improve content in 1 click"
+msgstr "Použití návrhů umělé inteligence ke zlepšení obsahu na 1 kliknutí"
+
+#: src/presenters/admin/sidebar-presenter.php:89 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Create optimized SEO titles & meta descriptions in seconds"
+msgstr "Vytvoření optimalizovaných názvů SEO a meta popisů během několika sekund"
+
+#: src/presenters/admin/sidebar-presenter.php:86 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Receive clear SEO and readability guidance to optimize your products"
+msgstr "Získejte jasné pokyny pro SEO a čitelnost, abyste mohli optimalizovat své produkty."
+
+#: src/presenters/admin/sidebar-presenter.php:85 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Create optimized SEO titles & meta descriptions with AI"
+msgstr "Vytváření optimalizovaných názvů a meta popisů SEO pomocí AI"
+
+#: src/presenters/admin/sidebar-presenter.php:84 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Make sure search engines show the right version of your product page"
+msgstr "Ujistěte se, že vyhledávače zobrazují správnou verzi stránky vašeho produktu."
+
+#: src/presenters/admin/sidebar-presenter.php:83 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Add product details to help your listings stand out"
+msgstr "Vytvořte podrobnosti o produktu, aby vaše nabídky vynikly"
+
+#: src/task-list/application/tasks/create-new-content.php:108
+msgid "Create new content"
+msgstr "Vytváření nového obsahu"
+
+#: src/task-list/application/tasks/create-new-content.php:95
+msgid "Create new post"
+msgstr "Vytvořit nový příspěvek"
+
+#: src/presenters/admin/sidebar-presenter.php:115 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Less friction. Faster publishing."
+msgstr "Menší tření. Rychlejší publikování."
+
+#: src/presenters/admin/sidebar-presenter.php:115 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Less friction. Smarter optimization."
+msgstr "Menší tření. Chytřejší optimalizace."
+
+#: src/presenters/admin/sidebar-presenter.php:92 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Optimize pages for multiple keywords with guidance"
+msgstr "Optimalizace stránek pro více klíčových slov s návodem"
+
+#: src/presenters/admin/sidebar-presenter.php:91 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Manage redirects with ease and without extra plugins"
+msgstr "Snadná správa přesměrování bez dalších pluginů"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:108
+msgid "Create an llms.txt file"
+msgstr "Vytvoření souboru llms.txt"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:95
+msgid "Enable llms.txt"
+msgstr "Povolit llms.txt"
+
+#: src/task-list/application/tasks/delete-hello-world.php:117
+msgid "Leaving placeholder content makes your site look unfinished and untrustworthy. Removing it keeps your site clean and professional for visitors and search engines."
+msgstr "Ponechání zástupného obsahu způsobí, že váš web bude vypadat nedokončeně a nedůvěryhodně. Odstraněním webu udržíte web čistý a profesionální pro návštěvníky i vyhledávače."
+
+#: src/task-list/application/tasks/delete-hello-world.php:116
+msgid "Remove the “Hello World” post"
+msgstr "Odstranění příspěvku \"Hello World\""
+
+#: src/task-list/application/tasks/delete-hello-world.php:103
+msgid "Delete for me"
+msgstr "Smazat pro mě"
+
+#. translators: %s expands to Yoast SEO
+#: src/task-list/application/tasks/complete-ftc.php:94
+msgid "Skipping setup limits how much %s can help you. Completing it makes sure the core settings are working in your favor."
+msgstr "Přeskočení nastavení omezuje rozsah pomoci %s. Jeho dokončením zajistíte, že základní nastavení bude fungovat ve váš prospěch."
+
+#. translators: %1$s expands to "Yoast SEO".
+#: src/alerts/application/ping-other-admins/ping-other-admins-alert.php:175
+msgid "Looks like you’re new here. %1$s makes it easy to optimize your website for search engines. Want to keep your site healthy and easier to find? Sign up below to receive practical emails to get you started!"
+msgstr "Vypadá to, že jste tu nový. %1$s usnadňuje optimalizaci vašich webových stránek pro vyhledávače. Chcete, aby váš web byl zdravý a snadněji nalezitelný? Zaregistrujte se níže a získejte praktické e-maily, které vám pomohou začít!"
+
+#: src/task-list/application/tasks/complete-ftc.php:78
+#: js/dist/installation-success.js:3
+msgid "Start configuration"
+msgstr "Spustit konfiguraci"
+
+#: src/plans/user-interface/upgrade-sidebar-menu-integration.php:130
+msgid "Get 30% off"
+msgstr "Získejte 30% slevu"
+
+#: src/user-meta/framework/custom-meta/author-pronouns.php:97
+msgid "Pronouns to use"
+msgstr "Zájmena, která se používají"
+
+#: src/user-meta/framework/custom-meta/author-pronouns.php:108
+msgid "Enter the pronouns for the author, for example \"she/her\", \"he/him\", or \"they/them\"."
+msgstr "Zadejte zájmena pro autora, například \"ona/on\", \"on/on\" nebo \"oni/oni\"."
+
+#. translators: %s: expands to Yoast
+#: src/integrations/admin/redirections-tools-page.php:60
+msgid "%s Redirects"
+msgstr "%s přesměrování"
+
+#. translators: %1$s expands to "SEO title" or "meta description", %2$s expands
+#. to an opening link tag, %3$s expands to an opening strong tag, %4$s expands
+#. to a closing strong tag, %5$s expands to a closing link tag.
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:192
+msgid "Your recent posts are using default %1$s, which can make them easy to overlook in search results. Update them for better visibility or %2$stry %3$sYoast AI Generate%4$s for free to do it faster.%5$s"
+msgstr "Vaše poslední příspěvky používají výchozí %1$s, což může způsobit, že je ve výsledcích vyhledávání snadno přehlédnete. Aktualizujte je, aby byly lépe viditelné, nebo %2$spoužijte %3$sYoast AI Generate%4$s zdarma, abyste to udělali rychleji.%5$s"
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:182
+msgid "SEO titles"
+msgstr "SEO názvy"
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:179
+msgid "SEO titles and meta descriptions"
+msgstr "SEO názvy a meta popisy"
+
+#. translators: %1$s expands to "SEO title" or "meta description", %2$s expands
+#. to an opening link tag, %3$s expands to an opening strong tag, %4$s expands
+#. to a closing strong tag, %5$s expands to a closing link tag.
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:192
+msgid "Your recent posts are using default %1$s, which can make them easy to overlook in search results. Update them manually or %2$sfind out how %3$sYoast AI Generate%4$s can improve them for you.%5$s"
+msgstr "Vaše poslední příspěvky používají výchozí %1$s, což může způsobit, že je ve výsledcích vyhledávání snadno přehlédnete. Aktualizujte je ručně nebo %2$szjistěte, jak je %3$sYoast AI Generate%4$s může vylepšit za vás.%5$s"
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:185
+msgid "meta descriptions"
+msgstr "meta popisy"
+
+#: admin/class-premium-upsell-admin-block.php:62 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7
+msgid "Google Docs add-on (1 seat)"
+msgstr "Rozšíření Google dokumenty (1 místo)"
+
+#: src/presenters/admin/sidebar-presenter.php:104 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7 js/dist/support.js:6
+msgid "Buy now for 30% off"
+msgstr "Koupit nyní za 30% slevu"
+
+#. translators: 1: Link start tag to the WordPress Reading Settings page, 2:
+#. Link closing tag.
+#. translators: %1$s and %2$s are replaced by opening and closing <a> tags
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:39
+#: js/dist/new-settings.js:43
+msgid "An existing llms.txt file wasn't created by Yoast or has been edited manually. Yoast won't overwrite it. %1$sDelete it manually%2$s or turn off this feature."
+msgstr "Existující soubor llms.txt nebyl vytvořen nástrojem Yoast nebo byl upraven ručně. Yoast jej nepřepisuje. %1$sOdstraňte jej ručně%2$s nebo tuto funkci vypněte."
+
+#: inc/class-wpseo-admin-bar-menu.php:610
+#: src/plans/user-interface/upgrade-sidebar-menu-integration.php:130
+msgid "30% off - BF Sale"
+msgstr "30% sleva - BF sleva"
+
+#. translators: %1$s is the plugin name, %2$s and %3$s are a link.
+#: inc/class-addon-manager.php:420
+msgid "Your %1$s plugin cannot be updated as your subscription has expired. %2$sRenew your product subscription%3$s to restore updates and full feature access."
+msgstr "Váš plugin %1$s nelze aktualizovat, protože vaše předplatné vypršelo. %2$sObnovte si předplatné produktu%3$s a obnovte aktualizace a plný přístup k funkcím."
+
+#. translators: %1$s and %2$s are a <span> opening and closing tag.
+#: inc/class-addon-manager.php:411
+msgid "%1$s30%% OFF - Black Friday %2$s"
+msgstr "%1$s30%% OFF - Černý pátek %2$s"
+
+#: admin/class-premium-upsell-admin-block.php:213 js/dist/general-page.js:9
+#: js/dist/new-settings.js:9
+msgid "Get 30% off now!"
+msgstr "Získejte 30% slevu nyní!"
+
+#: inc/class-wpseo-admin-bar-menu.php:607
+#: src/plans/user-interface/upgrade-sidebar-menu-integration.php:127
+msgid "Upgrade"
+msgstr "Upgradovat"
+
+#: inc/class-my-yoast-api-request.php:161
+msgid "Not all needed fields are present."
+msgstr "Nejsou přítomna všechna potřebná pole."
+
+#: admin/class-premium-upsell-admin-block.php:155 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Make your articles visible, be seen in Google News"
+msgstr "Zviditelněte své články, buďte vidět v Google zprávách"
+
+#: admin/class-premium-upsell-admin-block.php:154 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Generate SEO optimized metadata in seconds with AI"
+msgstr "Generování metadat optimalizovaných pro SEO během několika sekund pomocí umělé inteligence"
+
+#: admin/class-premium-upsell-admin-block.php:158 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Internal links and redirect management, easy"
+msgstr "Snadná správa interních odkazů a přesměrování"
+
+#: admin/class-premium-upsell-admin-block.php:157 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Easy Local SEO. Show up in Google Maps results"
+msgstr "Snadné místní SEO. Zobrazení ve výsledcích Map Google"
+
+#: admin/class-premium-upsell-admin-block.php:163 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Boost visibility for your products, from 10 or 10,000+"
+msgstr "Zvýšení viditelnosti vašich produktů, od 10 nebo 10 000+"
+
+#: admin/class-premium-upsell-admin-block.php:156 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Built to get found by search, AI, and real users"
+msgstr "Vytvořeno pro vyhledávání, umělou inteligenci a skutečné uživatele"
+
+#: admin/class-premium-upsell-admin-block.php:159 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Access to friendly help when you need it, day or night"
+msgstr "Přístup k přátelské pomoci, kdykoli ji potřebujete, ve dne i v noci."
+
+#: src/presenters/admin/sidebar-presenter.php:122 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7 js/dist/support.js:6
+msgid "30-day money back guarantee"
+msgstr "30denní záruka vrácení peněz"
+
+#. translators: %1$s and %2$s expand to a span wrap to avoid linebreaks. %3$s
+#. expands to "Yoast SEO Premium".
+#: src/presenters/admin/sidebar-presenter.php:66 js/dist/general-page.js:6
+#: js/dist/general-page.js:7 js/dist/new-settings.js:6
+#: js/dist/new-settings.js:7 js/dist/support.js:5 js/dist/support.js:6
+msgid "%1$s%2$s %3$s"
+msgstr "%1$s%2$s %3$s"
+
+#: src/ai-consent/user-interface/ai-consent-integration.php:109
+#: src/ai/consent/user-interface/ai-consent-integration.php:111
+msgid "AI features"
+msgstr "Funkce AI"
+
+#: admin/class-premium-upsell-admin-block.php:100 js/dist/general-page.js:11
+#: js/dist/new-settings.js:11 js/dist/plans.js:2 js/dist/plans.js:7
+msgid "Now includes:"
+msgstr "Nyní zahrnuje:"
+
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:46
+#: js/dist/new-settings.js:43
+msgid "You have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file. It looks like there aren't sufficient permissions on the web server's filesystem."
+msgstr "Aktivovali jste doporučenou funkci Yoast llms.txt, ale soubor llms.txt se nám nepodařilo vygenerovat. Vypadá to, že v souborovém systému webového serveru nejsou dostatečná oprávnění."
+
+#: src/plans/user-interface/plans-page-integration.php:141 js/dist/plans.js:8
+msgid "Plans"
+msgstr "Plány"
+
+#. translators: 1,3,5: expand to opening paragraph tag, 2,4,6: expand to
+#. opening paragraph tag.
+#: src/llms-txt/user-interface/health-check/file-reports.php:65
+msgid "%1$sYou have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file.%2$s%3$sIt looks like there is an llms.txt file already that wasn't created by Yoast, or the llms.txt file created by Yoast has been edited manually.%4$s%5$sWe don't want to overwrite this file's content, so if you want to let Yoast keep auto-generating the llms.txt file, you can manually delete the existing one. Otherwise, consider disabling the Yoast feature.%6$s"
+msgstr "%1$sAktivovali jste funkci Yoast llms.txt, ale nepodařilo se nám vygenerovat soubor llms.txt.%2$s%3$sVypadá to, že již existuje soubor llms.txt, který nebyl vytvořen nástrojem Yoast nebo llms.txt vytvořený nástrojem Yoast byl ručně upraven.%4$s%5$sNechceme přepsat obsah tohoto souboru, takže pokud chcete nechat nástroj Yoast nadále automaticky generovat soubor llms.txt, můžete stávající soubor ručně odstranit. V opačném případě zvažte vypnutí funkce Yoast.%6$s"
+
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:49
+#: src/llms-txt/user-interface/health-check/file-reports.php:87
+msgid "You have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file, for unknown reasons."
+msgstr "Aktivovali jste funkci Yoast llms.txt, ale soubor llms.txt se nám z neznámých důvodů nepodařilo vygenerovat."
+
+#. translators: 1,3: expand to opening paragraph tag, 2,4: expand to opening
+#. paragraph tag.
+#: src/llms-txt/user-interface/health-check/file-reports.php:78
+msgid "%1$sYou have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file.%2$s%3$sIt looks like there aren't sufficient permissions on the web server's filesystem.%4$s"
+msgstr "%1$sAktivovali jste funkci Yoast llms.txt, ale nepodařilo se nám vygenerovat soubor llms.txt.%2$s%3$sVypadá to, že na souborovém systému webového serveru nejsou dostatečná oprávnění.%4$s"
+
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:55
+#: src/llms-txt/user-interface/health-check/file-reports.php:62
+#: src/llms-txt/user-interface/health-check/file-reports.php:75
+#: src/llms-txt/user-interface/health-check/file-reports.php:86
+msgid "Your llms.txt file couldn't be auto-generated"
+msgstr "Váš soubor llms.txt nemohl být automaticky vygenerován."
+
+#. translators: %s: Yoast SEO.
+#: src/llms-txt/user-interface/health-check/file-reports.php:41
+msgid "%s keeps your llms.txt file up-to-date. This helps LLMs access and provide your site's information more easily."
+msgstr "%s udržuje váš soubor llms.txt aktuální. To pomáhá uživatelům LLM snadněji přistupovat k informacím o vašem webu a poskytovat je."
+
+#. translators: %s: Yoast SEO.
+#: src/llms-txt/user-interface/health-check/file-reports.php:35
+msgid "Your llms.txt file is auto-generated by %s"
+msgstr "Váš soubor llms.txt je automaticky generován %s"
+
+#: src/dashboard/user-interface/tracking/setup-steps-tracking-route.php:143
+msgid "No valid parameters were passed."
+msgstr "Nebyly předány žádné platné parametry."
+
+#: src/integrations/admin/link-count-columns-integration.php:147
+msgid "Number of internal links linking to this post."
+msgstr "Počet interních odkazů odkazujících na tento příspěvek."
+
+#: src/integrations/admin/link-count-columns-integration.php:139
+msgid "Number of outgoing internal links in this post."
+msgstr "Počet odchozích interních odkazů v tomto příspěvku."
+
+#: inc/class-wpseo-rank.php:223 js/dist/externals/dashboardFrontend.js:4
+msgid "Not analyzed"
+msgstr "Nebylo analyzováno"
+
+#. translators: %s: Yoast SEO.
+#: wp-seo-main.php:566
+msgid "%s activation failed"
+msgstr "%s aktivace se nezdařila"
+
+#. translators: %s: Yoast SEO.
+#: src/presenters/admin/migration-error-presenter.php:42
+msgid "%s is unable to create database tables"
+msgstr "%s nelze vytvořit databázové tabulky"
+
+#: src/presenters/admin/sidebar-presenter.php:107 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Buy now"
+msgstr "Koupit nyní"
+
+#: src/integrations/admin/check-required-version.php:115
+msgid "Required Yoast SEO version"
+msgstr "Požadovaná verze Yoast SEO"
+
+#: src/integrations/admin/check-required-version.php:91
+msgid "The package could not be installed because it's not supported by the currently installed Yoast SEO version."
+msgstr "Balíček nelze nainstalovat, protože není podporován aktuálně nainstalovanou verzí Yoast SEO."
+
+#. translators: 1: Current Yoast SEO version, 2: Version required by the
+#. uploaded plugin.
+#: src/integrations/admin/check-required-version.php:84
+msgid "The Yoast SEO version on your site is %1$s, however the uploaded plugin requires %2$s."
+msgstr "Verze Yoast SEO na vašem webu je %1$s, avšak nahraný plugin vyžaduje %2$s."
+
+#: src/user-meta/framework/custom-meta/noindex-author.php:108
+msgid "Do not allow search engines to show this author's archives in search results."
+msgstr "Nedovolte vyhledávačům zobrazovat archivy tohoto autora ve výsledcích vyhledávání."
+
+#: admin/menu/class-base-menu.php:257 admin/menu/class-base-menu.php:260
+msgid "Upgrades"
+msgstr "Aktualizace"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Yoast Breadcrumbs"
+msgstr "Yoast drobenkové menu"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "site structure"
+msgstr "struktura webu"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "internal linking"
+msgstr "interní propojení"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "breadcrumbs"
+msgstr "drobenka"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block description"
+msgid "Adds the Yoast SEO breadcrumbs to your template or content."
+msgstr "Přidání drobečkové navigace Yoast SEO do šablony nebo obsahu."
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block title"
+msgid "Yoast FAQ"
+msgstr "Nejčastější dotazy Yoast"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block title"
+msgid "Yoast How-to"
+msgstr "Yoast jak na to"
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block description"
+msgid "List your Frequently Asked Questions in an SEO-friendly way."
+msgstr "Uveďte seznam nejčastěji kladených otázek způsobem vhodným pro SEO."
+
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "Schema"
+msgstr "Schéma"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "SEO"
+msgstr "SEO"
+
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "Structured Data"
+msgstr "Strukturovaná data"
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block keyword"
+msgid "Frequently Asked Questions"
+msgstr "Často kladené otázky"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "How to"
+msgstr "Jak provést"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "How-to"
+msgstr "Jak na to"
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block keyword"
+msgid "FAQ"
+msgstr "Nejčastější dotazy"
+
+#: admin/class-admin.php:315
+#: src/user-meta/framework/additional-contactmethods/x.php:28
+msgid "X username (without @)"
+msgstr "X uživatelské jméno (bez @)"
+
+#. translators: 1: PHP class name, 2: PHP variable name
+#: inc/class-yoast-dynamic-rewrites.php:67
+msgid "The %1$s class must not be instantiated before the %2$s global is set."
+msgstr "Třída %1$s nesmí být instancována před nastavením globální hodnoty %2$s."
+
+#. translators: %s expands to Yoast WooCommerce SEO
+#. translators: %s expands to Yoast SEO Premium
+#. translators: %s expands to "Yoast WooCommerce SEO"
+#. translators: %s expands to "Yoast SEO" Premium
+#: admin/class-premium-upsell-admin-block.php:219
+#: admin/class-premium-upsell-admin-block.php:221 js/dist/general-page.js:8
+#: js/dist/general-page.js:9 js/dist/new-settings.js:8
+#: js/dist/new-settings.js:9
+msgid "Explore %s now!"
+msgstr "Prozkoumejte %s nyní!"
+
+#: admin/watchers/class-slug-change-watcher.php:68
+msgid "Search engines and other websites can still send traffic to your trashed content."
+msgstr "Vyhledávače a jiné webové stránky mohou stále posílat návštěvnost na váš vyřazený obsah."
+
+#. translators: 1: Yoast SEO, 2: Link start tag to the Learn more link, 3: Link
+#. closing tag.
+#: src/presenters/admin/woocommerce-beta-editor-presenter.php:53
+msgid "The %1$s interface is currently unavailable in the beta WooCommerce product editor. To resolve any issues, please disable the beta editor. %2$sLearn how to disable the beta WooCommerce product editor.%3$s"
+msgstr "Rozhraní %1$s není v současné době v beta verzi WooCommerce editoru produktů k dispozici. Chcete-li vyřešit případné problémy, deaktivujte editor beta verze. %2$sPřečtěte si, jak vypnout beta WooCommerce editor produktů.%3$s"
+
+#: src/presenters/admin/woocommerce-beta-editor-presenter.php:50
+msgid "Compatibility issue: Yoast SEO is incompatible with the beta WooCommerce product editor."
+msgstr "Problém kompatibility: Yoast SEO není kompatibilní s beta verzí WooCommerce editoru produktů."
+
+#: admin/class-premium-upsell-admin-block.php:89 js/dist/block-editor.js:498
+#: js/dist/classic-editor.js:481 js/dist/general-page.js:9
+#: js/dist/new-settings.js:9
+msgid "BLACK FRIDAY"
+msgstr "ČERNÝ PÁTEK"
+
+#: admin/class-premium-upsell-admin-block.php:90
+#: admin/menu/class-base-menu.php:260 js/dist/block-editor.js:498
+#: js/dist/classic-editor.js:481 js/dist/general-page.js:9
+#: js/dist/new-settings.js:9
+msgid "30% OFF"
+msgstr "30% SLEVA"
+
+#: admin/views/class-yoast-feature-toggles.php:202 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "AI title & description generator"
+msgstr "Generátor názvů a popisů AI"
+
+#: admin/views/class-yoast-feature-toggles.php:205
+msgid "Use the power of Yoast AI to automatically generate compelling titles and descriptions for your posts and pages."
+msgstr "Využijte sílu Yoast AI k automatickému generování přesvědčivých názvů a popisů příspěvků a stránek."
+
+#. translators: %s expands to a unit of time (e.g. 1 day).
+#. translators: %1$s, %2$s and %3$s expand to units of time (e.g. 1 day).
+#: src/integrations/blocks/structured-data-blocks.php:178
+#: js/dist/how-to-block.js:6 js/dist/how-to-block.js:12
+msgid "%1$s, %2$s and %3$s"
+msgstr "%1$s, %2$s a %3$s"
+
+#. translators: %s expands to a unit of time (e.g. 1 day).
+#. translators: %1$s and %2$s expand to units of time (e.g. 1 day).
+#: src/integrations/blocks/structured-data-blocks.php:172
+#: js/dist/how-to-block.js:5 js/dist/how-to-block.js:11
+msgid "%1$s and %2$s"
+msgstr "%1$s a %2$s"
+
+#. translators: 1: Opening tag of the link to the Search appearance settings
+#. page, 2: Link closing tag.
+#: src/content-type-visibility/application/content-type-visibility-watcher-actions.php:157
+msgid "You've added a new type of content. We recommend that you review the corresponding %1$sSearch appearance settings%2$s."
+msgstr "Přidali jste nový typ obsahu. Doporučujeme vám zkontrolovat příslušné %1$snastavení vzhledu%2$s."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:66
+msgid "Taxonomy is not new."
+msgstr "Taxonomie není nová."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:73
+msgid "Taxonomy is no longer new."
+msgstr "Taxonomie již není nová."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:37
+msgid "Post type is not new."
+msgstr "Typ příspěvku není nový."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:43
+msgid "Post type is no longer new."
+msgstr "Typ příspěvku již není nový."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:73
+msgid "Error: Taxonomy was not removed from new_taxonomies list."
+msgstr "Chyba: Taxonomie nebyla odstraněna ze seznamu new_taxonomies."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:43
+msgid "Error: Post type was not removed from new_post_types list."
+msgstr "Chyba: Typ příspěvku nebyl odstraněn ze seznamu new_post_types."
+
+#: src/integrations/support-integration.php:130 js/dist/support.js:7
+msgid "Support"
+msgstr "Podpora"
+
+#: src/integrations/admin/crawl-settings-integration.php:163
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:271
+msgid "Prevent Google AdsBot from crawling"
+msgstr "Zabránění procházení služby Google AdsBot"
+
+#. translators: %1$s expands to Yoast SEO, %2$s to Wincher
+#: admin/class-wincher-dashboard-widget.php:58
+msgid "%1$s / %2$s: Top Keyphrases"
+msgstr "%1$s / %2$s: Nejčastější klíčové fráze"
+
+#. translators: %s expands to the inclusive language score
+#: inc/class-wpseo-rank.php:239 inc/class-wpseo-rank.php:244
+#: inc/class-wpseo-rank.php:249
+msgid "Inclusive language: %s"
+msgstr "Inkluzivní jazyk: %s"
+
+#: src/integrations/admin/background-indexing-integration.php:186
+msgid "Every fifteen minutes"
+msgstr "Každých patnáct minut"
+
+#: src/commands/index-command.php:174
+msgid "Your WordPress environment is running on a non-production site. Indexables can only be created on production environments. Please check your `WP_ENVIRONMENT_TYPE` settings."
+msgstr "Vaše WordPress prostředí je spuštěno na neprodukčním webu. Indexovatelné soubory lze vytvářet pouze v produkčních prostředích. Zkontrolujte prosím nastavení `WP_ENVIRONMENT_TYPE`."
+
+#. translators: %s: expands to the post type
+#: src/exceptions/indexable/post-type-not-built-exception.php:20
+msgid "The post type %s could not be indexed because it does not meet indexing requirements."
+msgstr "Typ příspěvku %s nemohl být indexován, protože nesplňuje požadavky na indexaci."
+
+#: src/integrations/academy-integration.php:111 js/dist/academy.js:2
+msgid "Academy"
+msgstr "Akademie"
+
+#. translators: %1$s expands to a strong tag, %2$s expands to the product name,
+#. %3$s expands to a closing strong tag, %4$s expands to an a tag. %5$s expands
+#. to MyYoast, %6$s expands to a closing a tag,  %7$s expands to the product
+#. name
+#: inc/class-addon-manager.php:532
+msgid "%1$s %2$s isn't working as expected %3$s and you are not receiving updates or support! Make sure to %4$s activate your product subscription in %5$s%6$s to unlock all the features of %7$s."
+msgstr "%1$s %2$s nefunguje podle očekávání %3$s a nedostáváte aktualizace ani podporu! Nezapomeňte %4$s aktivovat předplatné produktu v %5$s%6$s, abyste odemkli všechny funkce %7$s."
+
+#. translators: %1$s: Yoast SEO
+#: src/initializers/crawl-cleanup-permalinks.php:144
+msgid "%1$s: redirect utm variables to #"
+msgstr "%1$s: přesměrovat proměnné utm na #"
+
+#. translators: %1$s: Yoast SEO
+#: src/helpers/crawl-cleanup-helper.php:271
+msgid "%1$s: unregistered URL parameter removed. See %2$s"
+msgstr "%1$s: odstraněn neregistrovaný parametr URL. Viz %2$s"
+
+#. translators: 1: Link start tag to the Permalinks settings page, 2: Link
+#. closing tag.
+#: src/integrations/admin/crawl-settings-integration.php:286
+msgid "This feature is disabled when your site is not using %1$spretty permalinks%2$s."
+msgstr "Tato funkce je zakázána, pokud váš web nepoužívá %1$spěkné trvalé odkazy%2$s."
+
+#: src/integrations/admin/crawl-settings-integration.php:292
+msgid "This feature is disabled when your site is not using pretty permalinks."
+msgstr "Tato funkce je zakázána, pokud váš web nepoužívá pěkné trvalé odkazy."
+
+#: src/presenters/admin/indexing-notification-presenter.php:93
+msgid "It looks like you've enabled media pages. We recommend that you help us to re-analyze your site by running the SEO data optimization."
+msgstr "Vypadá to, že jste povolili stránky médií. Doporučujeme, abyste nám pomohli s opětovnou analýzou vašeho webu spuštěním optimalizace dat SEO."
+
+#. translators: CTA to finish the first time configuration. %s: Either
+#. first-time SEO configuration or SEO configuration.
+#: admin/class-admin.php:235
+msgid "Finish your %s"
+msgstr "Dokončete %s"
+
+#: inc/class-wpseo-rank.php:156 inc/class-wpseo-rank.php:245
+#: js/dist/block-editor.js:498 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:384 js/dist/externals-components.js:122
+#: js/dist/externals-components.js:438
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Potentially non-inclusive"
+msgstr "Potenciálně neinkluzivní"
+
+#: inc/class-wpseo-admin-bar-menu.php:226
+msgid "not set"
+msgstr "není nastaven"
+
+#: inc/class-wpseo-admin-bar-menu.php:232
+msgid "Focus keyphrase: "
+msgstr "Zaměřte se na klíčovou frázi: "
+
+#: inc/class-wpseo-admin-bar-menu.php:468
+msgid "SEO Tools"
+msgstr "SEO nástroje"
+
+#: inc/class-wpseo-admin-bar-menu.php:513
+#: inc/class-wpseo-admin-bar-menu.php:572
+msgid "Learn more SEO"
+msgstr "Zjistěte více o SEO"
+
+#: inc/class-wpseo-admin-bar-menu.php:518
+msgid "Improve your blog post"
+msgstr "Vylepšete svůj příspěvek na blogu"
+
+#: inc/class-wpseo-admin-bar-menu.php:523
+msgid "Write better content"
+msgstr "Psaní lepšího obsahu"
+
+#: inc/class-wpseo-admin-bar-menu.php:542
+msgid "Help"
+msgstr "Nápověda"
+
+#: inc/class-wpseo-admin-bar-menu.php:557
+msgid "Yoast.com help section"
+msgstr "Sekce nápovědy Yoast.com"
+
+#: inc/class-wpseo-admin-bar-menu.php:562
+msgid "Yoast Premium support"
+msgstr "Podpora Yoast Premium"
+
+#: inc/class-wpseo-admin-bar-menu.php:567
+msgid "WordPress.org support forums"
+msgstr "Fóra podpory WordPress.org"
+
+#: src/commands/cleanup-command.php:81
+msgid "The value for 'interval' must be a positive integer."
+msgstr "Hodnota pro \"interval\" musí být celé kladné číslo."
+
+#: src/commands/cleanup-command.php:84
+msgid "The value for 'batch-size' must be a positive integer higher than equal to 1."
+msgstr "Hodnota \"batch-size\" musí být kladné celé číslo větší než 1."
+
+#. translators: %1$d is the number of records that are removed.
+#: src/commands/cleanup-command.php:97
+msgid "Cleaned up %1$d record."
+msgid_plural "Cleaned up %1$d records."
+msgstr[0] "Vyčištěn %1$d záznam."
+msgstr[1] "Vyčištěny %1$d záznamy."
+msgstr[2] "Vyčištěno %1$d záznamů."
+
+#. translators: %1$s is the site url of the site that is skipped. %2$s is Yoast
+#. SEO.
+#: src/commands/cleanup-command.php:146
+msgid "Skipping %1$s. %2$s is not active on this site."
+msgstr "Přeskočení %1$s. %2$s není na této stránce aktivní."
+
+#. translators: %1$s is the site url of the site that is cleaned up. %2$s is
+#. the name of the cleanup task that is currently running.
+#: src/commands/cleanup-command.php:159
+msgid "Cleaning up %1$s [%2$s]"
+msgstr "Úklid %1$s [%2$s]"
+
+#. translators: %1$d is the number of records that were removed. %2$s is the
+#. site url.
+#: src/commands/cleanup-command.php:183
+msgid "Cleaned up %1$d record from %2$s."
+msgid_plural "Cleaned up %1$d records from %2$s."
+msgstr[0] "Vyčištěn záznam %1$d z %2$s."
+msgstr[1] "Vyčištěny %1$d záznamy z %2$s."
+msgstr[2] "Vyčištěno %1$d záznamů z %2$s."
+
+#. translators: %s: expands to the post id
+#: src/exceptions/indexable/post-not-built-exception.php:20
+msgid "The post %s could not be indexed because it does not meet indexing requirements."
+msgstr "Příspěvek %s nemohl být indexován, protože nesplňuje požadavky na indexaci."
+
+#. translators: %s: expands to the post id
+#: src/exceptions/indexable/post-not-built-exception.php:32
+msgid "The post %s could not be indexed because it's post type is excluded from indexing."
+msgstr "Příspěvek %s nelze indexovat, protože jeho typ příspěvku je vyloučen z indexování."
+
+#. translators: %s: expands to the term id
+#: src/exceptions/indexable/term-not-built-exception.php:20
+msgid "The term %s could not be built because it's not indexable."
+msgstr "Položka %s nemohla být vytvořena, protože není indexovatelná."
+
+#: src/presenters/admin/indexing-notification-presenter.php:90
+msgid "We need to re-analyze some of your SEO data because of a change in the visibility of your taxonomies. Please help us do that by running the SEO data optimization."
+msgstr "Potřebujeme znovu analyzovat některá vaše data SEO kvůli změně viditelnosti vašich taxonomií. Pomozte nám s tím spuštěním optimalizace dat SEO."
+
+#: src/presenters/admin/indexing-notification-presenter.php:87
+msgid "We need to re-analyze some of your SEO data because of a change in the visibility of your post types. Please help us do that by running the SEO data optimization."
+msgstr "Musíme znovu analyzovat některá vaše data SEO kvůli změně viditelnosti typů příspěvků. Pomozte nám s tím spuštěním optimalizace dat SEO."
+
+#: src/presenters/admin/sidebar-presenter.php:21 js/dist/block-editor.js:247
+#: js/dist/classic-editor.js:230 js/dist/editor-modules.js:111
+#: js/dist/externals-components.js:118 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7 js/dist/support.js:6
+msgid "BLACK FRIDAY | 30% OFF"
+msgstr "Černý pátek - 30% sleva"
+
+#: admin/views/class-yoast-feature-toggles.php:206 js/dist/general-page.js:12
+#: js/dist/general-page.js:24 js/dist/integrations-page.js:3
+#: js/dist/integrations-page.js:6 js/dist/integrations-page.js:18
+#: js/dist/integrations-page.js:28 js/dist/introductions.js:12
+#: js/dist/new-settings.js:56 js/dist/plans.js:3 js/dist/plans.js:7
+msgid "Learn more"
+msgstr "Více informací"
+
+#: src/integrations/admin/crawl-settings-integration.php:157
+msgid "Redirect pretty URLs for search pages to raw format"
+msgstr "Přesměrujte pěkné URL adresy pro vyhledávací stránky do formátu raw"
+
+#. Translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Yoast SEO page of the Permalink Cleanup features, %2$s expands to a closing
+#. anchor tag.
+#: src/integrations/admin/crawl-settings-integration.php:204
+msgid "These are expert features, so make sure you know what you're doing before removing the parameters. %1$sRead more about how your site can be affected%2$s."
+msgstr "Jedná se o expertní funkce, takže před odebráním parametrů se ujistěte, že víte, co děláte. %1$sPřečtěte si další informace o tom, jak mohou být ovlivněny vaše stránky%2$s."
+
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:32
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:32
+msgid "Open editor"
+msgstr "Otevřete editor"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to the name of the
+#. class that could not be found.
+#: src/loader.php:258
+msgid "%1$s attempted to load the class %2$s but it could not be found."
+msgstr "%1$s se pokusil načíst třídu %2$s, ale nelze ji najít."
+
+#: src/integrations/admin/crawl-settings-integration.php:156
+msgid "Prevent search engines from crawling site search URLs"
+msgstr "Zabraňte vyhledávačům v procházení adres URL pro vyhledávání na webu"
+
+#: src/integrations/admin/crawl-settings-integration.php:162
+msgid "Prevent search engines from crawling /wp-json/"
+msgstr "Zabránit vyhledávačům v procházení /wp-json/"
+
+#: src/integrations/admin/crawl-settings-integration.php:189
+#: js/dist/new-settings.js:271
+msgid "Remove unused resources"
+msgstr "Odstraňte nepoužívané zdroje"
+
+#: admin/views/class-yoast-feature-toggles.php:90
+msgid "The inclusive language analysis offers suggestions to write more inclusive copy."
+msgstr "Inkluzivní jazyková analýza nabízí návrhy, jak napsat obsáhlejší kopii."
+
+#: admin/views/class-yoast-feature-toggles.php:87 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "Inclusive language analysis"
+msgstr "Inkluzivní jazyková analýza"
+
+#: admin/metabox/class-metabox-section-inclusive-language.php:30
+#: js/dist/externals-components.js:440
+msgid "Inclusive language"
+msgstr "Inkluzivní jazyk"
+
+#: admin/views/class-yoast-feature-toggles.php:91
+msgid "Discover why inclusive language is important for SEO."
+msgstr "Zjistěte, proč je inkluzivní jazyk pro SEO důležitý."
+
+#: src/user-meta/framework/custom-meta/inclusive-language-analysis-disable.php:109
+msgid "Disable inclusive language analysis"
+msgstr "Zakázat inkluzivní jazykovou analýzu"
+
+#: src/user-meta/framework/custom-meta/inclusive-language-analysis-disable.php:115
+msgid "Removes the inclusive language analysis section from the metabox and disables all inclusive language-related suggestions."
+msgstr "Odstraní z metaboxu sekci inkluzivní jazykové analýzy a zakáže všechny návrhy související s inkluzivním jazykem."
+
+#: inc/class-wpseo-admin-bar-menu.php:265
+msgid "Front-end SEO inspector"
+msgstr "Front-end SEO inspektor"
+
+#: admin/class-yoast-form.php:931
+msgid "Unlock with Premium!"
+msgstr "Odemkněte pomocí Premium"
+
+#. translators: 1: Yoast SEO Premium 2: Link start tag to activate premium, 3:
+#. Link closing tag.
+#: src/integrations/admin/deactivated-premium-integration.php:86
+msgid "You've installed %1$s but it's not activated yet. %2$sActivate %1$s now!%3$s"
+msgstr "Nainstalovali jste %1$s, ale ještě není aktivován. %2$sAktivujte %1$s nyní!%3$s"
+
+#: src/integrations/admin/crawl-settings-integration.php:149
+msgid "Unregistered URL parameters"
+msgstr "Neregistrované parametry adresy URL"
+
+#: src/integrations/admin/crawl-settings-integration.php:198
+msgid "Search cleanup settings"
+msgstr "Vyhledat nastavení čištění"
+
+#: src/integrations/admin/crawl-settings-integration.php:212
+msgid "Permalink cleanup settings"
+msgstr "Nastavení trvalého čištění"
+
+#: admin/views/class-yoast-feature-toggles.php:191 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:529
+msgid "IndexNow"
+msgstr "IndexNow"
+
+#: admin/views/class-yoast-feature-toggles.php:195
+msgid "Find out how IndexNow can help your site."
+msgstr "Zjistěte, jak může IndexNow pomoci vašemu webu."
+
+#: src/integrations/admin/crawl-settings-integration.php:154
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:272
+msgid "Filter searches with emojis and other special characters"
+msgstr "Filtrujte vyhledávání pomocí emodži a dalších speciálních znaků"
+
+#: src/integrations/admin/crawl-settings-integration.php:155
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:272
+msgid "Filter searches with common spam patterns"
+msgstr "Filtrujte vyhledávání pomocí běžných vzorů spamu"
+
+#: src/integrations/admin/crawl-settings-integration.php:153
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:272
+msgid "Filter search terms"
+msgstr "Filtrujte hledané výrazy"
+
+#: src/integrations/admin/crawl-settings-integration.php:148
+msgid "Campaign tracking URL parameters"
+msgstr "Parametry měřicí adresy URL kampaně"
+
+#: admin/views/class-yoast-feature-toggles.php:194 js/dist/new-settings.js:529
+msgid "Automatically ping search engines like Bing and Yandex whenever you publish, update or delete a post."
+msgstr "Automaticky pingnout vyhledávače, jako jsou Bing a Yandex, kdykoli publikujete, aktualizujete nebo smažete příspěvek."
+
+#. translators: 1: Yoast SEO Premium
+#: src/integrations/admin/deactivated-premium-integration.php:99
+msgid "Activate %1$s!"
+msgstr "Aktivovat %1$s!"
+
+#: src/helpers/first-time-configuration-notice-helper.php:64
+msgid "SEO configuration"
+msgstr "SEO konfigurace"
+
+#: src/integrations/admin/crawl-settings-integration.php:125
+msgid "Global feed"
+msgstr "Globální zdroj"
+
+#: src/integrations/admin/crawl-settings-integration.php:126
+msgid "Global comment feeds"
+msgstr "Globální zdroje komentářů"
+
+#: src/integrations/admin/crawl-settings-integration.php:128
+msgid "Post authors feeds"
+msgstr "Zdroje autorů příspěvků"
+
+#: src/integrations/admin/crawl-settings-integration.php:129
+msgid "Post type feeds"
+msgstr "Zdroje typu příspěvku"
+
+#: src/integrations/admin/crawl-settings-integration.php:130
+msgid "Category feeds"
+msgstr "Kategorie zdrojů"
+
+#: src/integrations/admin/crawl-settings-integration.php:131
+msgid "Tag feeds"
+msgstr "Označte zdroje"
+
+#: src/integrations/admin/crawl-settings-integration.php:132
+msgid "Custom taxonomy feeds"
+msgstr "Vlastní zdroje taxonomie"
+
+#: src/integrations/admin/crawl-settings-integration.php:133
+msgid "Search results feeds"
+msgstr "Zdroje výsledků vyhledávání"
+
+#: src/integrations/admin/crawl-settings-integration.php:134
+msgid "Atom/RDF feeds"
+msgstr "Zdroje Atom/RDF"
+
+#: src/integrations/admin/crawl-settings-integration.php:138
+msgid "Shortlinks"
+msgstr "Krátké odkazy"
+
+#: src/integrations/admin/crawl-settings-integration.php:139
+msgid "REST API links"
+msgstr "Odkazy REST API"
+
+#: src/integrations/admin/crawl-settings-integration.php:140
+msgid "RSD / WLW links"
+msgstr "Spojení RSD / WLW"
+
+#: src/integrations/admin/crawl-settings-integration.php:141
+msgid "oEmbed links"
+msgstr "Vložit odkazy"
+
+#: src/integrations/admin/crawl-settings-integration.php:142
+msgid "Generator tag"
+msgstr "Značka generátoru"
+
+#: src/integrations/admin/crawl-settings-integration.php:161
+msgid "Emoji scripts"
+msgstr "Emoji skripty"
+
+#: src/integrations/admin/crawl-settings-integration.php:143
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:271
+msgid "Pingback HTTP header"
+msgstr "Pingback HTTP hlavička"
+
+#: src/integrations/admin/crawl-settings-integration.php:144
+msgid "Powered by HTTP header"
+msgstr "Běží na HTTP hlavičce"
+
+#: src/integrations/admin/crawl-settings-integration.php:186
+msgid "Basic crawl settings"
+msgstr "Základní nastavení procházení"
+
+#: src/integrations/admin/crawl-settings-integration.php:188
+msgid "Feed crawl settings"
+msgstr "Nastavení procházení zdroje"
+
+#. translators: 1: Link start tag to the first-time configuration, 2: Link
+#. closing tag.
+#: src/integrations/admin/first-time-configuration-notice-integration.php:119
+msgid "We noticed that you haven't fully configured Yoast SEO yet. Optimize your SEO settings even further by using our improved %1$s First-time configuration%2$s."
+msgstr "Všimli jsme si, že jste ještě plně nenakonfigurovali Yoast SEO. Optimalizujte svá nastavení SEO ještě dále pomocí naší vylepšené %1$s Prvotní konfigurace%2$s."
+
+#. translators: %1$s opens the link to the Yoast.com article about Crawl
+#. settings, %2$s closes the link,
+#: admin/views/tabs/network/crawl-settings.php:31
+msgid "%1$sLearn more about crawl settings.%2$s"
+msgstr "%1$sDalší informace o nastavení procházení.%2$s"
+
+#: src/integrations/admin/crawl-settings-integration.php:127
+msgid "Post comments feeds"
+msgstr "Zveřejňujte zdroje komentářů"
+
+#: admin/pages/network.php:25 admin/views/tabs/network/crawl-settings.php:19
+msgid "Crawl settings"
+msgstr "Nastavení procházení"
+
+#. translators: 1: Link start tag to the First time configuration tab in the
+#. General page, 2: Link closing tag.
+#: admin/views/tabs/tool/import-seo.php:106
+msgid "You should finish the %1$sfirst time configuration%2$s to make sure your SEO data has been optimized and you’ve set the essential Yoast SEO settings for your site."
+msgstr "Měli byste dokončit %1$sprvní konfiguraci%2$s, abyste se ujistili, že vaše data SEO byla optimalizována a že jste pro svůj web nastavili základní nastavení Yoast SEO."
+
+#: src/integrations/admin/first-time-configuration-integration.php:139
+#: js/dist/general-page.js:76 js/dist/general-page.js:78
+msgid "First-time configuration"
+msgstr "První konfigurace"
+
+#: admin/views/tabs/tool/import-seo.php:100
+msgid "Step 4: Go through the first time configuration"
+msgstr "Krok 4: Projděte si první konfiguraci"
+
+#: src/exceptions/importing/aioseo-validation-exception.php:17
+msgid "The validation of the AIOSEO data structure has failed."
+msgstr "Ověření datové struktury AIOSEO se nezdařilo."
+
+#: src/integrations/admin/import-integration.php:214
+msgid "The AIOSEO import was cancelled because some AIOSEO data is missing. Please try and take the following steps to fix this:"
+msgstr "Import AIOSEO byl zrušen, protože chybí některá data AIOSEO. Zkuste to prosím vyřešit pomocí následujících kroků:"
+
+#: src/integrations/admin/import-integration.php:217
+msgid "If you have never saved any AIOSEO 'Search Appearance' settings, please do that first and run the import again."
+msgstr "Pokud jste nikdy neuložili žádná nastavení „Vzhled vyhledávání“ AIOSEO, udělejte to nejprve a spusťte import znovu."
+
+#: src/integrations/admin/import-integration.php:220
+msgid "If you already have saved AIOSEO 'Search Appearance' settings and the issue persists, please contact our support team so we can take a closer look."
+msgstr "Pokud jste již uložili nastavení 'Vzhled vyhledávání' AIOSEO a problém přetrvává, kontaktujte náš tým podpory, abychom se mohli blíže podívat."
+
+#: src/integrations/admin/import-integration.php:97
+msgid "The cleanup can take a long time depending on your site's size."
+msgstr "Vyčištění může trvat dlouho v závislosti na velikosti vašeho webu."
+
+#: src/integrations/admin/import-integration.php:98
+msgid "Note: "
+msgstr "Poznámka:"
+
+#: src/integrations/admin/import-integration.php:99
+msgid "After you've imported data from another SEO plugin, please make sure to clean up all the original data from that plugin. (step 5)"
+msgstr "Po importu dat z jiného pluginu SEO se ujistěte, že jste z tohoto pluginu vyčistili všechna původní data. (krok 5)"
+
+#: admin/views/tool-import-export.php:35
+#: src/integrations/admin/import-integration.php:107
+msgid "Clean up"
+msgstr "Uklidit"
+
+#: src/integrations/admin/import-integration.php:108
+msgid "Please select an SEO plugin below to see what data can be imported."
+msgstr "Níže vyberte SEO plugin, abyste viděli, jaká data lze importovat."
+
+#: src/integrations/admin/import-integration.php:109
+msgid "Once you're certain that your site is working properly with the imported data from another SEO plugin, you can clean up all the original data from that plugin."
+msgstr "Jakmile jste si jisti, že váš web funguje správně s importovanými daty z jiného SEO pluginu, můžete z tohoto pluginu vyčistit všechna původní data."
+
+#. translators: %s: expands to the name of the plugin that is selected to be
+#. imported
+#: src/integrations/admin/import-integration.php:111
+msgid "The import from %s includes:"
+msgstr "Import z %s zahrnuje:"
+
+#: src/integrations/admin/import-integration.php:115
+#: src/integrations/admin/import-integration.php:125
+msgid "Post metadata (SEO titles, descriptions, etc.)"
+msgstr "Metadata příspěvku (SEO názvy, popisy atd.)"
+
+#: src/integrations/admin/import-integration.php:116
+#: src/integrations/admin/import-integration.php:126
+msgid "Note: This metadata will only be imported if there is no existing Yoast SEO metadata yet."
+msgstr "Poznámka: Tato metadata budou importována pouze v případě, že dosud neexistují žádná metadata Yoast SEO."
+
+#: src/integrations/admin/import-integration.php:120
+msgid "Note: These settings will overwrite the default settings of Yoast SEO."
+msgstr "Poznámka: Tato nastavení přepíší výchozí nastavení Yoast SEO."
+
+#: src/integrations/admin/import-integration.php:236
+msgid "Cleanup failed with the following error:"
+msgstr "Vyčištění se nezdařilo s následující chybou:"
+
+#: src/integrations/admin/import-integration.php:100
+msgid "Select SEO plugin"
+msgstr "Vyberte SEO plugin"
+
+#: src/integrations/admin/import-integration.php:101
+msgid "No data found from other SEO plugins."
+msgstr "Nebyla nalezena žádná data z jiných SEO pluginů."
+
+#: src/integrations/admin/import-integration.php:238
+msgid "Import failed with the following error:"
+msgstr "Import se nezdařil s následující chybou:"
+
+#: src/integrations/admin/import-integration.php:96
+msgid "The import can take a long time depending on your site's size."
+msgstr "Import může trvat dlouho v závislosti na velikosti vašeho webu."
+
+#: src/integrations/admin/installation-success-integration.php:127
+msgid "Installation Successful"
+msgstr "Instalace byla úspěšná"
+
+#: src/config/schema-types.php:131
+msgid "Blog Post"
+msgstr "Příspěvěk blogu"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#. translators: 1: Yoast WooCommerce SEO
+#. translators: %s: Yoast WooCommerce SEO
+#: src/integrations/admin/workouts-integration.php:315
+#: js/dist/integrations-page.js:11 js/dist/new-settings.js:53
+msgid "Activate %s"
+msgstr "Aktivovat %s"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:309
+msgid "Update %s"
+msgstr "Aktualizovat %s"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:302
+msgid "Renew %s"
+msgstr "Obnovit %s"
+
+#: src/integrations/admin/workouts-integration.php:243
+msgid "Get help activating your subscription"
+msgstr "Získejte pomoc s aktivací odběru"
+
+#. translators: 1: expands to 'Yoast SEO Premium', 2: Link start tag to the
+#. page to update Premium, 3: Link closing tag.
+#: src/integrations/admin/workouts-integration.php:237
+msgid "It looks like you’re running an outdated and unactivated version of %1$s, please activate your subscription in %2$sMyYoast%3$s and update to the latest version (at least 17.7) to gain access to our updated workouts section."
+msgstr "Vypadá to, že používáte zastaralou a neaktivovanou verzi %1$s, aktivujte prosím své předplatné v %2$sMyYoast%3$s a aktualizujte na nejnovější verzi (alespoň 17.7), abyste získali přístup k naší aktualizované sekci tréninků."
+
+#: src/integrations/admin/workouts-integration.php:213
+msgid "Renew your subscription"
+msgstr "Obnovit odběr"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:233
+msgid "Activate your subscription of %s"
+msgstr "Aktivujte své předplatné %s"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:221
+msgid "Update to the latest version of %s"
+msgstr "Aktualizace na nejnovější verzi %s"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:206
+msgid "Accessing the latest workouts requires an updated version of %s (at least 17.7), but it looks like your subscription has expired. Please renew your subscription to update and gain access to all the latest features."
+msgstr "Přístup k nejnovějším tréninkům vyžaduje aktualizovanou verzi %s (alespoň 17.7), ale vypadá to, že vaše předplatné vypršelo. Obnovte prosím své předplatné, abyste získali aktualizaci a přístup ke všem nejnovějším funkcím."
+
+#. translators: 1: expands to 'Yoast SEO Premium', 2: Link start tag to the
+#. page to update Premium, 3: Link closing tag.
+#: src/integrations/admin/workouts-integration.php:224
+msgid "It looks like you're running an outdated version of %1$s, please %2$supdate to the latest version (at least 17.7)%3$s to gain access to our updated workouts section."
+msgstr "Zdá se, že používáte zastaralou verzi %1$s, aktualizujte prosím %2$sna nejnovější verzi (alespoň 17,7)%3$s, abyste získali přístup k naší aktualizované sekci cvičení."
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:203
+msgid "Renew your subscription of %s"
+msgstr "Obnovte svůj odběr %s"
+
+#. translators: 1: Link start tag to the first-time configuration, 2: Yoast
+#. SEO, 3: Link closing tag.
+#: src/integrations/admin/first-time-configuration-notice-integration.php:110
+msgid "Get started quickly with the %1$s%2$s First-time configuration%3$s and configure Yoast SEO with the optimal SEO settings for your site!"
+msgstr "Začněte rychle s %1$s%2$s Prvotní konfigurací%3$s a nakonfigurujte Yoast SEO s optimálním nastavením SEO pro váš web!"
+
+#: inc/class-wpseo-replace-vars.php:1499
+msgid "Category Title"
+msgstr "Název kategorie"
+
+#: inc/class-wpseo-replace-vars.php:1498
+msgid "Replaced with the post content"
+msgstr "Nahrazeno obsahem příspěvku"
+
+#: inc/class-wpseo-replace-vars.php:1497
+msgid "Replaced with the permalink"
+msgstr "Nahrazeno trvalým odkazem"
+
+#: inc/class-wpseo-replace-vars.php:1498
+msgid "Post Content"
+msgstr "Obsah příspěvku"
+
+#: inc/class-wpseo-replace-vars.php:1499
+msgid "Current or first category title"
+msgstr "Aktuální nebo titul první kategorie"
+
+#: inc/class-wpseo-replace-vars.php:1491
+msgid "Current day"
+msgstr "Aktuální den"
+
+#: inc/class-wpseo-replace-vars.php:1490
+msgid "Current month"
+msgstr "Aktuální měsíc"
+
+#: inc/class-wpseo-replace-vars.php:1488
+msgid "Current date"
+msgstr "Aktuální datum"
+
+#: inc/class-wpseo-replace-vars.php:1492
+msgid "Post year"
+msgstr "Rok příspěvku"
+
+#: inc/class-wpseo-replace-vars.php:1494
+msgid "Post day"
+msgstr "Den příspěvku"
+
+#: inc/class-wpseo-replace-vars.php:1493
+msgid "Post month"
+msgstr "Měsíc příspěvku"
+
+#: inc/class-wpseo-replace-vars.php:1493
+msgid "Replaced with the month the post was published"
+msgstr "Nahrazeno měsícem, kdy byl příspěvek zveřejněn"
+
+#: inc/class-wpseo-replace-vars.php:1494
+msgid "Replaced with the day the post was published"
+msgstr "Nahrazeno dnem, kdy byl příspěvek zveřejněn"
+
+#: inc/class-wpseo-replace-vars.php:1492
+msgid "Replaced with the year the post was published"
+msgstr "Nahrazeno rokem, kdy byl příspěvek zveřejněn"
+
+#: inc/class-wpseo-replace-vars.php:1496
+msgid "Replaced with the last name of the author"
+msgstr "Nahrazeno příjmením autora"
+
+#: inc/class-wpseo-replace-vars.php:1495
+msgid "Replaced with the first name of the author"
+msgstr "Nahrazeno křestním jménem autora"
+
+#: inc/class-wpseo-replace-vars.php:1496
+msgid "Author last name"
+msgstr "Příjmení autora"
+
+#: inc/class-wpseo-replace-vars.php:1495
+msgid "Author first name"
+msgstr "méno autora"
+
+#. translators: %1$s expands to an opening strong tag, %2$s expands to the
+#. dependency name, %3$s expands to a closing strong tag, %4$s expands to an
+#. opening anchor tag, %5$s expands to a closing anchor tag.
+#: admin/class-suggested-plugins.php:111
+msgid "It looks like you aren't using our %1$s%2$s addon%3$s. %4$sUpgrade today%5$s to unlock more tools and SEO features to make your products stand out in search results."
+msgstr "Vypadá to, že nepoužíváte náš %1$s%2$sdoplněk%3$s. %4$sAktualizujte ještě dnes%5$s a odemkněte další nástroje a funkce SEO, aby vaše produkty vynikly ve výsledcích vyhledávání."
+
+#. translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Premium installation page, %2$s expands to a closing anchor tag.
+#: src/presenters/admin/indexing-error-presenter.php:102
+msgid "Below are the technical details for the error. See %1$sthis page%2$s for a more detailed explanation."
+msgstr "Následují technické podrobnosti chyby. Pro podrobnější vysvětlení se podívejte na  %1$sthis page%2$s."
+
+#: src/integrations/admin/workouts-integration.php:93
+msgid "Workouts"
+msgstr "Tréninky"
+
+#: admin/views/class-yoast-integration-toggles.php:77
+msgid "Improve the quality of your site search! Automatically helps your users find your cornerstone and most important content in your internal search results. It also removes noindexed posts & pages from your site’s search results."
+msgstr "Zlepšete kvalitu vyhledávání na svých stránkách! Automaticky pomáhá uživatelům najít váš základní kámen a nejdůležitější obsah ve vašich interních výsledcích vyhledávání. Rovněž odstraní noindexované příspěvky a stránky z výsledků vyhledávání na vašem webu."
+
+#. translators: %s: Algolia.
+#: admin/views/class-yoast-integration-toggles.php:79
+msgid "Find out more about our %s integration."
+msgstr "Zjistěte více o naší integraci %s."
+
+#: admin/views/class-yoast-feature-toggles.php:125
+msgid "Read more about how internal linking can improve your site structure."
+msgstr "Přečtěte si další informace o tom, jak interní propojení může zlepšit strukturu vašeho webu."
+
+#: admin/views/class-yoast-feature-toggles.php:124
+msgid "Get relevant internal linking suggestions — while you’re writing! The link suggestions metabox shows a list of posts on your blog with similar content that might be interesting to link to. "
+msgstr "Získejte relevantní návrhy interních odkazů — během psaní! Metabox návrhů odkazů zobrazuje seznam příspěvků na vašem blogu s podobným obsahem, na který by mohlo být zajímavé odkazovat."
+
+#: admin/views/class-yoast-feature-toggles.php:121 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "Link suggestions"
+msgstr "Návrhy odkazů"
+
+#: admin/views/class-yoast-feature-toggles.php:114
+msgid "Find relevant data about your content right in the Insights section in the Yoast SEO metabox. You’ll see what words you use most often and if they’re a match with your keywords! "
+msgstr "Najděte relevantní data o svém obsahu přímo v sekci Statistiky v metaboxu Yoast SEO. Uvidíte, jaká slova používáte nejčastěji a zda se shodují s vašimi klíčovými slovy!"
+
+#: admin/views/class-yoast-feature-toggles.php:115
+msgid "Find out how Insights can help you improve your content."
+msgstr "Zjistěte, jak vám statistiky mohou pomoci vylepšit váš obsah."
+
+#: admin/views/class-yoast-feature-toggles.php:112 js/dist/block-editor.js:247
+#: js/dist/block-editor.js:513 js/dist/classic-editor.js:230
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:526
+msgid "Insights"
+msgstr "Přehledy"
+
+#. translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Premium installation page, %2$s expands to a closing anchor tag.
+#. Translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Premium installation page, %2$s expands to a closing anchor tag.
+#: src/presenters/admin/indexing-error-presenter.php:76
+#: src/presenters/admin/indexing-failed-notification-presenter.php:77
+msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please make sure to activate your subscription in MyYoast by completing %1$sthese steps%2$s."
+msgstr "Jejda, něco se pokazilo a nemohli jsme dokončit optimalizaci vašich údajů SEO. Nezapomeňte aktivovat své předplatné v MyYoast provedením %1$stěchto kroků%2$s."
+
+#: src/integrations/admin/addon-installation/installation-integration.php:106
+msgid "Installing and activating addons"
+msgstr "Instalace a aktivace doplňků"
+
+#. translators: %1$s expands to an anchor tag to the admin premium page, %2$s
+#. expands to Yoast SEO Premium, %3$s expands to a closing anchor tag
+#: src/integrations/admin/addon-installation/installation-integration.php:129
+msgid "%1$s Continue to %2$s%3$s"
+msgstr "%1$sPokračujte na%2$s %3$s"
+
+#. Translators: %s expands to the name of the addon.
+#: src/integrations/admin/addon-installation/installation-integration.php:154
+msgid "Addon activated."
+msgstr "Doplněk aktivován."
+
+#: src/integrations/admin/addon-installation/installation-integration.php:156
+msgid "You are not allowed to activate plugins."
+msgstr "Nemáte oprávnění aktivovat pluginy."
+
+#. Translators:%s expands to the error message.
+#: src/integrations/admin/addon-installation/installation-integration.php:160
+msgid "Addon activation failed because of an error: %s."
+msgstr "Aktivace doplňku se nezdařila z důvodu chyby: %s."
+
+#. Translators: %s expands to the name of the addon.
+#: src/integrations/admin/addon-installation/installation-integration.php:184
+msgid "Addon installed."
+msgstr "Doplněk nainstalován."
+
+#: src/integrations/admin/addon-installation/installation-integration.php:188
+msgid "You are not allowed to install plugins."
+msgstr "Nemáte oprávnění instalovat pluginy ."
+
+#. Translators: %s expands to the error message.
+#: src/integrations/admin/addon-installation/installation-integration.php:192
+msgid "Addon installation failed because of an error: %s."
+msgstr "Instalace doplňku se nezdařila z důvodu chyby: %s."
+
+#. translators: %1$s expands to Yoast SEO
+#: src/integrations/admin/addon-installation/dialog-integration.php:94
+msgid "No %1$s plugins have been installed. You don't seem to own any active subscriptions."
+msgstr "Nebyly nainstalovány žádné %1$s doplňky . Zdá se, že nevlastníte žádné aktivní předplatné."
+
+#. translators: %s expands to Yoast SEO Premium.
+#: admin/class-admin.php:248
+msgid "Required by %s"
+msgstr "Vyžadováno pro %s"
+
+#. Translators: %1$s resolves to Yoast SEO.
+#: src/integrations/watchers/addon-update-watcher.php:95
+msgid "Auto-updates are disabled based on this setting for %1$s."
+msgstr "Automatické aktualizace jsou na základě tohoto nastavení pro %1$s deaktivovány."
+
+#. Translators: %1$s resolves to Yoast SEO.
+#: src/integrations/watchers/addon-update-watcher.php:85
+msgid "Auto-updates are enabled based on this setting for %1$s."
+msgstr "Automatické aktualizace jsou povoleny na základě tohoto nastavení pro %1$s."
+
+#: src/presenters/admin/badge-presenter.php:80
+#: src/presenters/admin/badge-presenter.php:87
+#: js/dist/externals-components.js:440 js/dist/externals/componentsNew.js:563
+#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:6
+#: js/dist/integrations-page.js:18 js/dist/new-settings.js:592
+msgid "New"
+msgstr "Nové"
+
+#: src/exceptions/indexable/post-not-found-exception.php:16
+msgid "The post could not be found."
+msgstr "Příspěvek nebyl nalezen"
+
+#: src/exceptions/indexable/term-not-found-exception.php:16
+msgid "The term could not be found."
+msgstr "Termín nenalezen"
+
+#. translators: %s is the reason given by WordPress.
+#: src/exceptions/indexable/invalid-term-exception.php:21
+msgid "The term is considered invalid. The following reason was given by WordPress: %s"
+msgstr "Termín je považován za neplatný. WordPress uvedl následující důvod: %s"
+
+#: admin/class-yoast-form.php:1066 js/dist/general-page.js:66
+msgid "This feature has been disabled since subsites never send tracking data."
+msgstr "Tato funkce byla deaktivována, protože podřízené weby nikdy neposílají sledovací data."
+
+#. translators: %1$s expands to an opening anchor tag, %2$s expands to an
+#. closing anchor tag.
+#: src/integrations/third-party/wpml-wpseo-notification.php:110
+msgid "We notice that you have installed WPML. To make sure your canonical URLs are set correctly, %1$sinstall and activate the WPML SEO add-on%2$s as well!"
+msgstr "Všimli jsme si, že jste nainstalovali WPML. Abyste se ujistili, že jsou vaše kanonické adresy URL správně nastaveny, %1$sinstalujte a aktivujte také doplněk WPML SEO%2$s!"
+
+#: src/presenters/admin/indexing-notification-presenter.php:81
+msgid "Because of a change in your category base setting, some of your SEO data needs to be reprocessed."
+msgstr "Z důvodu změny v základním nastavení kategorií je třeba znovu zpracovat některá SEO data."
+
+#: admin/views/class-yoast-feature-toggles.php:185 js/dist/new-settings.js:529
+msgid "This adds an author byline and reading time estimate to the article’s snippet when shared on Slack."
+msgstr "Tím se do fragmentu článku při sdílení na Slacku přidá vedlejší text autora a odhad doby čtení."
+
+#: admin/views/class-yoast-feature-toggles.php:186
+msgid "Find out how a rich snippet can improve visibility and click-through-rate."
+msgstr "Zjistěte, jak může strukturovaný úryvek zlepšit viditelnost a míru prokliku."
+
+#. translators: %s expands to the reading time number, in minutes
+#: src/presenters/slack/enhanced-data-presenter.php:55
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minuta"
+msgstr[1] "%s minuty"
+msgstr[2] "%s minut"
+
+#. translators: %s expands to the reading time number, in minutes
+#: src/presenters/slack/enhanced-data-presenter.php:55
+msgid "Est. reading time"
+msgstr "Odhadovaná doba čtení"
+
+#: src/presenters/slack/enhanced-data-presenter.php:50
+msgid "Written by"
+msgstr "Napsal(a)"
+
+#: inc/class-wpseo-admin-bar-menu.php:439
+msgid "Google Rich Results Test"
+msgstr "Výsledky testu Google Rich"
+
+#. translators: 1: Expands to Yoast SEO
+#: src/presenters/admin/indexing-notification-presenter.php:129
+msgid "Wait for a week or so, until %1$s automatically processes most of your content in the background."
+msgstr "Počkejte asi týden, než %1$s automaticky zpracuje většinu vašeho obsahu na pozadí. "
+
+#: admin/views/class-yoast-feature-toggles.php:183
+msgid "Enhanced Slack sharing"
+msgstr "Vylepšené sdílení Slack"
+
+#: src/presenters/admin/indexing-notification-presenter.php:84
+msgid "Because of a change in your tag base setting, some of your SEO data needs to be reprocessed."
+msgstr "Z důvodu změny v základním nastavení kategorií je třeba znovu zpracovat některá SEO data."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/network/integrations.php:27
+msgid "This tab allows you to selectively disable %1$s integrations with third-party products for all sites in the network. By default all integrations are enabled, which allows site admins to choose for themselves if they want to toggle an integration on or off for their site. When you disable an integration here, site admins will not be able to use that integration at all."
+msgstr "Tato karta umožňuje selektivně deaktivovat integrace%1$s produkty třetích stran pro všechny weby v síti. Ve výchozím nastavení jsou povoleny všechny integrace, což umožňuje správcům webů zvolit si sami, zda chtějí zapnout nebo vypnout integraci svého webu. Když zde deaktivujete integraci, administrátoři webu tuto integraci nebudou moci vůbec použít."
+
+#. translators: %s: 'Semrush'
+#: admin/views/class-yoast-integration-toggles.php:67
+msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
+msgstr "Integrace %s nabízí návrhy a postřehy pro klíčová slova související se zadanou frází."
+
+#: admin/class-admin.php:259
+msgid "Activate your subscription"
+msgstr "Aktivujte si odběr"
+
+#: src/presenters/admin/indexing-error-presenter.php:64
+msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please click the button again to re-start the process. "
+msgstr "Jejda, něco se pokazilo a nemohli jsme dokončit optimalizaci vašich SEO dat. Chcete-li proces znovu spustit, klikněte znovu na tlačítko."
+
+#: src/presenters/admin/indexing-notification-presenter.php:59
+#: js/dist/general-page.js:48 js/dist/indexation.js:8
+msgid "Start SEO data optimization"
+msgstr "Spustit optimalizaci dat SEO"
+
+#: src/presenters/admin/indexing-list-item-presenter.php:42
+msgid "Learn more about the benefits of optimized SEO data."
+msgstr "Zjistěte více o výhodách optimalizovaných dat SEO."
+
+#: src/integrations/watchers/indexable-homeurl-watcher.php:97
+msgid "All permalinks were successfully reset"
+msgstr "Všechny trvalé odkazy byly úspěšně resetovány"
+
+#: src/presenters/admin/indexing-list-item-presenter.php:40
+msgid "You can speed up your site and get insight into your internal linking structure by letting us perform a few optimizations to the way SEO data is stored. If you have a lot of content it might take a while, but trust us, it's worth it."
+msgstr "Svůj web můžete zrychlit a získat přehled o své interní struktuře propojení tím, že nám umožníte provést několik optimalizací způsobu ukládání SEO dat. Pokud máte hodně obsahu, může to chvíli trvat, ale věřte nám, stojí to za to."
+
+#: src/presenters/admin/indexing-notification-presenter.php:96
+msgid "You can speed up your site and get insight into your internal linking structure by letting us perform a few optimizations to the way SEO data is stored."
+msgstr "Můžete zrychlit svůj web a získat přehled o struktuře interních odkazů tím, že nás necháte provést několik optimalizací způsobu ukládání dat SEO."
+
+#: src/presenters/admin/indexing-error-presenter.php:71
+#: src/presenters/admin/indexing-failed-notification-presenter.php:71
+msgid "If the problem persists, please contact support."
+msgstr "Pokud problém přetrvává, kontaktujte podporu."
+
+#: src/presenters/admin/indexing-list-item-presenter.php:37
+msgid "Optimize SEO Data"
+msgstr "Optimalizovat SEO data"
+
+#. Translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Yoast SEO tools page, %2$s expands to a closing anchor tag.
+#: src/presenters/admin/indexing-failed-notification-presenter.php:59
+msgid "Something has gone wrong and we couldn't complete the optimization of your SEO data. Please %1$sre-start the process%2$s."
+msgstr "Něco se pokazilo a nemohli jsme dokončit optimalizaci vašich údajů SEO. %1$srestartujte prosím proces%2$s."
+
+#: inc/class-addon-manager.php:881
+msgid "Need support?"
+msgstr "Potřebujete podporu?"
+
+#. translators: 1: expands to <a> that refers to the help page, 2: </a> closing
+#. tag.
+#: inc/class-addon-manager.php:884
+msgid "You can probably find an answer to your question in our %1$shelp center%2$s."
+msgstr "Pravděpodobně najdete odpověď na svou otázku v našem %1$scentru pomoci%2$s."
+
+#. translators: %1$s: expands to an opening anchor tag, %2$s: expands to a
+#. closing anchor tag
+#: admin/views/class-yoast-feature-toggles.php:237
+msgid "Disabling Yoast SEO's XML sitemaps will not disable WordPress' core sitemaps. In some cases, this %1$s may result in SEO errors on your site%2$s. These may be reported in Google Search Console and other tools."
+msgstr "Zakázání souborů XML Yoast SEO nezakáže základní soubory Sitemap WordPress. V některých případech může toto %1$s vést k chybám SEO na vašem webu%2$s. Ty mohou být hlášeny v Google Search Console a dalších nástrojích."
+
+#. translators: %s expands to a mailto support link.
+#: inc/class-addon-manager.php:887
+msgid "If you still need support and have an active subscription for this product, please email %s."
+msgstr "Pokud stále potřebujete podporu a máte aktivní předplatné tohoto produktu, pošlete e-mail na %s."
+
+#. translators: 1: Yoast SEO, 2: translated version of "Off"
+#: admin/views/class-yoast-feature-toggles.php:154
+msgid "The advanced section of the %1$s meta box allows a user to remove posts from the search results or change the canonical. The settings in the schema tab allows a user to change schema meta data for a post. These are things you might not want any author to do. That's why, by default, only editors and administrators can do this. Setting to \"%2$s\" allows all users to change these settings."
+msgstr "Pokročilá část meta boxu %1$s umožňuje uživateli odstranit příspěvky z výsledků vyhledávání nebo změnit kanoniku. Nastavení na kartě schématu umožňuje uživateli změnit metadata schématu pro příspěvek. To jsou věci, které možná nebudete chtít od žádného autora. Proto to ve výchozím nastavení mohou provádět pouze editoři a správci. Nastavení na \"%2$s\" umožňuje všem uživatelům tato nastavení změnit. "
+
+#: admin/views/class-yoast-feature-toggles.php:150
+msgid "Security: no advanced or schema settings for authors"
+msgstr "Zabezpečení: žádná pokročilá nastavení ani nastavení schématu pro autory"
+
+#: src/config/schema-types.php:104
+msgid "Search Results Page"
+msgstr "Stránka s výsledky vyhledávání"
+
+#: src/config/schema-types.php:159
+msgid "Report"
+msgstr "Hlášení"
+
+#: src/config/schema-types.php:127
+msgid "Article"
+msgstr "Článek"
+
+#: src/config/schema-types.php:60
+msgid "Web Page"
+msgstr "Webová stránka"
+
+#: src/config/schema-types.php:64 js/dist/block-editor.js:493
+#: js/dist/classic-editor.js:476
+msgid "Item Page"
+msgstr "Stránka produktu"
+
+#: src/config/schema-types.php:155
+msgid "Tech Article"
+msgstr "Technický článek"
+
+#: src/config/schema-types.php:151
+msgid "Scholarly Article"
+msgstr "Odborný článek"
+
+#: src/config/schema-types.php:147
+msgid "Satirical Article"
+msgstr "Satirický článek"
+
+#: src/config/schema-types.php:143
+msgid "Advertiser Content Article"
+msgstr "Článek o obsahu inzerenta"
+
+#: src/config/schema-types.php:139
+msgid "News Article"
+msgstr "Novinový článek"
+
+#: src/config/schema-types.php:135
+msgid "Social Media Posting"
+msgstr "Zveřejňování na sociálních médiích"
+
+#: src/config/schema-types.php:100
+msgid "Real Estate Listing"
+msgstr "Výpis nemovitostí"
+
+#: src/config/schema-types.php:96
+msgid "Checkout Page"
+msgstr "Stránka pokladny"
+
+#: src/config/schema-types.php:92
+msgid "Collection Page"
+msgstr "Stránka kolekce"
+
+#: src/config/schema-types.php:88
+msgid "Medical Web Page"
+msgstr "Lékařská webová stránka"
+
+#: src/config/schema-types.php:84
+msgid "Contact Page"
+msgstr "Kontaktní stránka"
+
+#: src/config/schema-types.php:80
+msgid "Profile Page"
+msgstr "Profilová stránka"
+
+#: src/config/schema-types.php:76
+msgid "QA Page"
+msgstr "Stránka s otázkami a s odpovědmi"
+
+#: src/config/schema-types.php:72
+msgid "FAQ Page"
+msgstr "Stránka FAQ"
+
+#: src/config/schema-types.php:68
+msgid "About Page"
+msgstr "Stránka o nás"
+
+#. translators: 1: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:166
+msgid "Allow us to track some data about your site to improve our plugin."
+msgstr "Dovolte nám sledovat některá data o Vašem webu a vylepšit náš plugin."
+
+#: admin/views/class-yoast-feature-toggles.php:161
+#: admin/views/class-yoast-feature-toggles.php:162 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:525
+msgid "Usage tracking"
+msgstr "Sledování použití"
+
+#: src/presenters/admin/indexing-notification-presenter.php:75
+msgid "Because of a change in your permalink structure, some of your SEO data needs to be reprocessed."
+msgstr "Vzhledem ke změně struktury permalinku je třeba některé vaše SEO údaje přepracovat."
+
+#: src/presenters/admin/indexing-notification-presenter.php:78
+msgid "Because of a change in your home URL setting, some of your SEO data needs to be reprocessed."
+msgstr "Z důvodu změny v nastavení adresy URL vaší kategorie je třeba některé vaše SEO údaje přepracovat."
+
+#. translators: %1$s expands to Yoast.
+#: src/integrations/blocks/block-categories.php:45
+msgid "%1$s Internal Linking Blocks"
+msgstr "%1$s vnitřních propojovacích bloků"
+
+#. translators: %1$s: Link to article about text links, %2$s: Anchor closing
+#. tag, %3$s: Emphasis open tag, %4$s: Emphasis close tag
+#: admin/class-yoast-columns.php:52
+msgid "The links columns show the number of articles on this site linking %3$sto%4$s this article and the number of URLs linked %3$sfrom%4$s this article. Learn more about %1$show to use these features to improve your internal linking%2$s, which greatly enhances your SEO."
+msgstr "Sloupec s odkazy ukazuje počet příspěvků na vašich stránkách odkazujících %3$sna%4$s tento příspěvek a počet URL odkazujících %3$sz%4$s tohoto příspěvku. Zjistěte více o tom %1$s jak používat tyto funkce a vylepšit tak interní prolinkování %2$s, což povede ke zlepšení SEO."
+
+#: src/services/health-check/links-table-reports.php:58
+msgid "The text link counter feature is not working as expected"
+msgstr "Funkce počítání textových odkazů nepracuje jak by měla"
+
+#. translators: 1: Link to the Yoast SEO blog, 2: Link closing tag.
+#: src/services/health-check/links-table-reports.php:73
+msgid "The text link counter helps you improve your site structure. %1$sFind out how the text link counter can enhance your SEO%2$s."
+msgstr "Funkce počítání textových odkazů vám pomůže zlepšit strukturu vašich stránek. %1$sZjistit jak může počítání textových odkazů zlepšit SEO%2$s."
+
+#: src/services/health-check/links-table-reports.php:45
+msgid "The text link counter is working as expected"
+msgstr "Funkce počítání textových odkazů pracuje jak má\t"
+
+#. translators: 1: Link to the Yoast help center, 2: Link closing tag.
+#: src/services/health-check/links-table-reports.php:100
+msgid "%1$sFind out how to solve this problem on our help center%2$s."
+msgstr "%1$s Zjistěte jak tento problém vyřešit v naší nápovědě%2$s."
+
+#. translators: %1$s: Yoast SEO
+#: admin/class-yoast-columns.php:36
+msgid "%1$s adds several columns to this page."
+msgstr "%1$s přidá několik sloupců na tuto stránku."
+
+#. translators: %1$s: Link to article about content analysis, %2$s: Anchor
+#. closing
+#: admin/class-yoast-columns.php:43
+msgid "We've written an article about %1$show to use the SEO score and Readability score%2$s."
+msgstr "Napsali jsme článek o tom %1$s jak používat SEO skóre a skóre čitelnosti %2$s."
+
+#: src/presenters/admin/migration-error-presenter.php:64
+msgid "Show debug information"
+msgstr "Ukázat ladící informace"
+
+#. translators: %s: Yoast SEO.
+#: src/presenters/admin/migration-error-presenter.php:58
+msgid "Your site will continue to work normally, but won't take full advantage of %s."
+msgstr "Vaše stránky budou fungovat jako doposud, ale nebudu naplno využívat výhod %s."
+
+#: src/presenters/admin/search-engines-discouraged-presenter.php:41
+msgid "I don't want this site to show in the search results."
+msgstr "Nepřeji si aby tyto stránky byly vidět ve výsledcích vyhledávačů."
+
+#. translators: 1: Link start tag to the WordPress Reading Settings page, 2:
+#. Link closing tag.
+#: src/presenters/admin/search-engines-discouraged-presenter.php:36
+msgid "If you want search engines to show this site in their results, you must %1$sgo to your Reading Settings%2$s and uncheck the box for Search Engine Visibility."
+msgstr "Pokud si přejete viditelnost těchto stránek ve výsledcích vyhledávačů, musíte %1$sjít do nastavení čitelnosti%2$s a odškrtnout fajfku Viditelnost pro vyhledávače."
+
+#. translators: %s: Yoast SEO.
+#: src/presenters/admin/migration-error-presenter.php:47
+msgid "%s had problems creating the database tables needed to speed up your site."
+msgstr "%s měl problém při vytváření záznamu potřebného ke zrychlení vašich stránek."
+
+#: src/presenters/admin/indexing-notification-presenter.php:117
+msgid " We estimate this will take less than a minute."
+msgstr " Odhadujeme, že to zabere méně než minutu."
+
+#: src/presenters/admin/indexing-notification-presenter.php:121
+msgid " We estimate this will take a couple of minutes."
+msgstr " Odhadujeme, že to zabere několik minut."
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:188
+msgid "SEO data"
+msgstr "SEO data"
+
+#. translators: 1: Link to article about indexation command, 2: Anchor closing
+#. tag, 3: Link to WP CLI.
+#: src/presenters/admin/indexing-notification-presenter.php:136
+msgid "%1$sRun the indexation process on your server%2$s using %3$sWP CLI%2$s."
+msgstr "%1$sSpustí indexování příspěvku na serveru%2$s použitím %3$sWP CLI%2$s."
+
+#: src/presenters/admin/indexing-notification-presenter.php:124
+msgid " We estimate this could take a long time, due to the size of your site. As an alternative to waiting, you could:"
+msgstr " Odhadujeme, že to může trvat dlouho, vzhledem k velikosti vašeho webu. Jako alternativu k čekání můžete:"
+
+#. translators: %1$s: link to help article about solving table issue. %2$s: is
+#. anchor closing.
+#: src/presenters/admin/migration-error-presenter.php:52
+msgid "Please read %1$sthis help article%2$s to find out how to resolve this problem."
+msgstr "Prosím přečtěte si %1$stento podpůrný článek%2$s pro nalezení řešení tohoto problému."
+
+#: inc/class-wpseo-replace-vars.php:1486
+msgid "Replaced with the term ancestors hierarchy"
+msgstr "Nahrazeno termínem hierarchie předků"
+
+#. translators: 1: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:177
+msgid "This %1$s REST API endpoint gives you all the metadata you need for a specific URL. This will make it very easy for headless WordPress sites to use %1$s for all their SEO meta output."
+msgstr "Tento %1$s REST API koncový bod vám dává všechna metadata která potřebujete pro určenou URL. Toto velice usnadní uživatelům headless WordPress stránek použití %1$s pro všechen SEO meta výstup."
+
+#: admin/views/class-yoast-feature-toggles.php:173
+msgid "REST API: Head endpoint"
+msgstr "REST API: koncový bod pro instalace s Hlavičkou (není headless)"
+
+#: inc/class-wpseo-replace-vars.php:1486
+msgid "Term hierarchy"
+msgstr "Hierarchie elementů"
+
+#: src/services/health-check/default-tagline-reports.php:32
+msgid "You are using a custom tagline or an empty one."
+msgstr "Používáte vlastní slogan a nebo je prázdný."
+
+#: src/services/health-check/default-tagline-reports.php:43
+msgid "You should change the default WordPress tagline"
+msgstr "Měli byste změnit výchozí WordPress slogan"
+
+#: src/services/health-check/default-tagline-reports.php:30
+msgid "You changed the default WordPress tagline"
+msgstr "Změnili jste výchozí WordPress slogan"
+
+#: src/services/health-check/default-tagline-reports.php:45
+msgid "You still have the default WordPress tagline. Even an empty one is probably better."
+msgstr "Stále máte výchozí WordPress slogan. I prázdný je pravděpodobně lepší."
+
+#. translators: 1: link open tag; 2: link close tag.
+#: src/services/health-check/default-tagline-reports.php:63
+msgid "%1$sYou can change the tagline in the customizer%2$s."
+msgstr "%1$sTitulek můžete změnit na stránce přizpůsobení%2$s."
+
+#: src/services/health-check/page-comments-reports.php:32
+msgid "Comments on your posts are displayed on a single page. This is just like we'd suggest it. You're doing well!"
+msgstr "Komentáře u vašich příspěvků se zobrazují na jedné stránce, přesně tak, jak doporučujeme. Vedete si dobře!"
+
+#. translators: %s expands to '/%postname%/'
+#: src/services/health-check/postname-permalink-reports.php:58
+msgid "It's highly recommended to have your postname in the URL of your posts and pages. Consider setting your permalink structure to %s."
+msgstr "Velmi důrazně doporučujeme mít název příspěvku (postname) jako součást adresy URL vašich příspěvků a stránek. Zvažte nastavení struktury vašich permalinků na %s."
+
+#: src/services/health-check/postname-permalink-reports.php:43
+msgid "You do not have your postname in the URL of your posts and pages"
+msgstr "Název příspěvku aktuálně není v URL příspěvků a stránek"
+
+#: src/services/health-check/postname-permalink-reports.php:32
+msgid "You do have your postname in the URL of your posts and pages."
+msgstr "Název příspěvku je v URL příspěvků a stránek"
+
+#: src/services/health-check/postname-permalink-reports.php:30
+msgid "Your permalink structure includes the post name"
+msgstr "Struktura URL vašich permalinků aktuálně obsahuje název příspěvku (postname)"
+
+#: src/services/health-check/page-comments-reports.php:45
+msgid "Comments on your posts break into multiple pages. As this is not needed in 999 out of 1000 cases, we recommend you disable it. To fix this, uncheck \"Break comments into pages...\" on the Discussion Settings page."
+msgstr "Komentáře u vašich příspěvků se rozdělují do více stránek. Jelikož je to v 999 případech z 1000 zbytečné, doporučujeme vám tuto funkcionalitu deaktivovat. Pro opravení této chyby odstraňte zatržení volby \"Rozdělit komentáře na jednotlivé stránky...\" v záložce Nastavení komentářů."
+
+#: src/helpers/post-helper.php:112
+msgid "No title"
+msgstr "Bez názvu"
+
+#: src/services/health-check/page-comments-reports.php:30
+msgid "Comments are displayed on a single page"
+msgstr "Komentáře se zobrazují na jednotlivé stránce"
+
+#: src/services/health-check/page-comments-reports.php:43
+msgid "Comments break into multiple pages"
+msgstr "Komentáře se rozdělují na více stránek"
+
+#. translators: 1: Opening tag of the link to the discussion settings page, 2:
+#. Link closing tag.
+#: src/services/health-check/page-comments-reports.php:58
+msgid "%1$sGo to the Discussion Settings page%2$s"
+msgstr "%1$sPřejít na stránku Nastavení komentářů%2$s"
+
+#. translators: 1: Start of a paragraph beginning with the Yoast icon, 2:
+#. Expands to 'Yoast SEO', 3: Paragraph closing tag.
+#: src/services/health-check/report-builder.php:201
+msgid "%1$sThis was reported by the %2$s plugin%3$s"
+msgstr "%1$sToto oznámení přišlo z pluginu %2$s%3$s"
+
+#: admin/metabox/class-metabox.php:191
+msgid "If you want to apply advanced <code>meta</code> robots settings for this page, please define them in the following field."
+msgstr "Pokud chcete pro tuto stránku použít pokročilá nastavení robotů <code> meta </code>, definujte je v následujícím poli."
+
+#. translators: 1: Link start tag to the Firefox website, 2: Link start tag to
+#. the Chrome website, 3: Link start tag to the Edge website, 4: Link closing
+#. tag.
+#: admin/metabox/class-metabox.php:147 admin/taxonomy/class-taxonomy.php:113
+msgid "The browser you are currently using is unfortunately rather dated. Since we strive to give you the best experience possible, we no longer support this browser. Instead, please use %1$sFirefox%4$s, %2$sChrome%4$s or %3$sMicrosoft Edge%4$s."
+msgstr "Prohlížeč, který používáte, je již bohužel zastaralý. Jelikož Vám chceme nabídnout co nejlepší pohodlí, již tento prohlížeč nepodporujeme. Použijte prosím místo toho %1$sFirefox%4$s, %2$sChrome%4$s nebo %3$sMicrosoft Edge%4$s."
+
+#: src/presenters/admin/sidebar-presenter.php:137 js/dist/general-page.js:2
+#: js/dist/new-settings.js:2 js/dist/support.js:2
+msgid "Learn SEO"
+msgstr "Naučte se SEO"
+
+#. translators: %1$s expands to Yoast SEO academy
+#. translators: %1$s expands to "Yoast SEO academy".
+#: src/presenters/admin/sidebar-presenter.php:154 js/dist/general-page.js:3
+#: js/dist/new-settings.js:3 js/dist/support.js:3
+msgid "Check out %1$s"
+msgstr "Navštívit %1$s"
+
+#. translators: %1$s expands to Yoast SEO academy, which is a clickable link.
+#. translators: %1$s expands to "Yoast SEO" academy, which is a clickable link.
+#: src/presenters/admin/sidebar-presenter.php:145 js/dist/general-page.js:2
+#: js/dist/new-settings.js:2 js/dist/support.js:2
+msgid "Want to learn SEO from Team Yoast? Check out our %1$s!"
+msgstr "Chcete se naučit SEO přímo od týmu Yoast? Navštivte %1$s!"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-import.php:39
+msgid "%s settings to import:"
+msgstr "%s nastavení k importu:"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-export.php:72
+msgid "Your %1$s settings:"
+msgstr "Vaše %1$s nastavení:"
+
+#. translators: 1: expands to Yoast SEO, 2: expands to Import settings.
+#: admin/views/tabs/tool/wpseo-import.php:23
+msgid "Import settings from another %1$s installation by pasting them here and clicking \"%2$s\"."
+msgstr "Importujte nastavení z jiné %1$s instalace vložením sem a kliknutím na \"%2$s\"."
+
+#: src/presenters/admin/sidebar-presenter.php:147 js/dist/general-page.js:2
+#: js/dist/new-settings.js:2 js/dist/support.js:2
+msgid "We have both free and premium online courses to learn everything you need to know about SEO."
+msgstr "Oba naše kurzy - zdarma i prémiový - vás naučí vše, co potřebujete vědět o SEO."
+
+#: admin/metabox/class-metabox.php:424 js/dist/block-editor.js:538
+#: js/dist/new-settings.js:24 js/dist/new-settings.js:34
+#: js/dist/new-settings.js:38 js/dist/new-settings.js:43
+#: js/dist/new-settings.js:95 js/dist/new-settings.js:412
+msgid "Schema"
+msgstr "Schéma"
+
+#: admin/admin-settings-changed-listener.php:85
+msgid "Settings saved."
+msgstr "Nastavení bylo uloženo."
+
+#. translators: Hidden accessibility text.
+#: admin/views/partial-notifications-template.php:47
+msgid "Show this item."
+msgstr "Zobrazit tuto položku."
+
+#. translators: Hidden accessibility text.
+#: admin/views/partial-notifications-template.php:39
+msgid "Hide this item."
+msgstr "Skrýt tuto položku."
+
+#. translators: %d expands the amount of hidden notifications.
+#: admin/views/partial-notifications-errors.php:25
+#: admin/views/partial-notifications-warnings.php:25
+msgid "You have %d hidden notification:"
+msgid_plural "You have %d hidden notifications:"
+msgstr[0] "Máte %d skrytou notifikaci:"
+msgstr[1] "Máte %d skryté notifikace:"
+msgstr[2] "Máte %d skrytých notifikací:"
+
+#: src/helpers/score-icon-helper.php:84
+msgid "Focus keyphrase not set"
+msgstr "Klíčová fráze ostření není nastavena"
+
+#. translators: %1$s: amount of errors, %2$s: the admin page title
+#: admin/class-yoast-input-validation.php:65
+msgid "The form contains %1$s error. %2$s"
+msgid_plural "The form contains %1$s errors. %2$s"
+msgstr[0] "Formulář obsahuje %1$s chybu. %2$s"
+msgstr[1] "Formulář obsahuje %1$s chyby. %2$s"
+msgstr[2] "Formulář obsahuje %1$s chyby. %2$s"
+
+#. translators: %s expands to the score
+#: admin/statistics/class-statistics-service.php:216
+#: admin/statistics/class-statistics-service.php:221
+#: admin/statistics/class-statistics-service.php:226
+msgid "Posts with the SEO score: %s"
+msgstr "Příspěvky mající SEO skóre: %s"
+
+#: inc/class-wpseo-rank.php:171
+msgid "No Focus Keyphrase"
+msgstr "Klíčová fráze nezadána"
+
+#: inc/class-wpseo-rank.php:191
+msgid "Post Noindexed"
+msgstr "Neindexovaný příspěvek"
+
+#. translators: %s expands to the SEO score
+#: inc/class-wpseo-rank.php:170 inc/class-wpseo-rank.php:175
+#: inc/class-wpseo-rank.php:180 inc/class-wpseo-rank.php:185
+#: inc/class-wpseo-rank.php:190
+msgid "SEO: %s"
+msgstr "SEO: %s"
+
+#. translators: %s: expends to Yoast SEO
+#: admin/class-admin.php:354
+msgid "%s video tutorial"
+msgstr "%s video návod"
+
+#. Translators: %1$s: expands to opening anchor tag, %2$s expands to closing
+#. anchor tag.
+#: admin/google_search_console/views/gsc-display.php:39
+msgid "To view your current crawl errors, %1$splease visit Google Search Console%2$s."
+msgstr "Pro zobrazení chyb v procházení, %1$spřejděte prosím na Google Search Console%2$s."
+
+#. Translators: %1$s: expands to opening anchor tag, %2$s expands to closing
+#. anchor tag.
+#: admin/google_search_console/views/gsc-display.php:32
+msgid "Google has discontinued its Crawl Errors API. Therefore, any possible crawl errors you might have cannot be displayed here anymore. %1$sRead our statement on this for further information%2$s."
+msgstr "Google ukončil provoz Crawl Errors API. Proto vám zde již nemůžeme zobrazovat možné chyby v procházení. %1$sPřečtěte si naše stanovisko k této záležitosti%2$s."
+
+#: src/integrations/admin/first-time-configuration-integration.php:497
+#: src/integrations/admin/first-time-configuration-integration.php:510
+#: js/dist/new-settings.js:542
+msgid "Organization"
+msgstr "Společnost"
+
+#. translators: %1$s is a link start tag to the Search Appearance settings,
+#. %2$s is the link closing tag.
+#: admin/class-schema-person-upgrade-notification.php:66
+msgid "You have previously set your site to represent a person. We’ve improved our functionality around Schema and the Knowledge Graph, so you should go in and %1$scomplete those settings%2$s."
+msgstr "Původně jste vaše stránky nastavili tak že reprezentují osobu. Zlepšili jsme funkcionalitu týkající se schematu a grafu znalostí, takže by bylo vhodné %1$sdoplnit tato nastavení%2$s."
+
+#: admin/class-admin.php:317
+#: src/user-meta/framework/additional-contactmethods/wikipedia.php:28
+msgid "Wikipedia page about you"
+msgstr "Stránka o Vás ve Wikipedii"
+
+#: admin/class-admin.php:316
+#: src/user-meta/framework/additional-contactmethods/youtube.php:28
+msgid "YouTube profile URL"
+msgstr "URL YouTube profilu"
+
+#: admin/class-admin.php:314
+#: src/user-meta/framework/additional-contactmethods/tumblr.php:28
+msgid "Tumblr profile URL"
+msgstr "URL Tumblr profilu"
+
+#: admin/class-admin.php:313
+#: src/user-meta/framework/additional-contactmethods/soundcloud.php:28
+msgid "SoundCloud profile URL"
+msgstr "URL SoundCloud profilu"
+
+#: admin/class-admin.php:311
+#: src/user-meta/framework/additional-contactmethods/myspace.php:28
+msgid "MySpace profile URL"
+msgstr "URL MySpace profilu"
+
+#: src/generators/schema/article.php:136
+msgid "Uncategorized"
+msgstr "Nezařazeno"
+
+#: admin/class-admin.php:317
+#: src/user-meta/framework/additional-contactmethods/wikipedia.php:28
+msgid "(if one exists)"
+msgstr "(pokud existuje)"
+
+#: admin/class-admin.php:312
+#: src/user-meta/framework/additional-contactmethods/pinterest.php:28
+msgid "Pinterest profile URL"
+msgstr "URL Pinterest profilu"
+
+#: admin/class-admin.php:310
+#: src/user-meta/framework/additional-contactmethods/linkedin.php:28
+msgid "LinkedIn profile URL"
+msgstr "URL LinkedIn profilu"
+
+#: admin/class-admin.php:309
+#: src/user-meta/framework/additional-contactmethods/instagram.php:28
+msgid "Instagram profile URL"
+msgstr "URL Instagram profilu"
+
+#: inc/class-my-yoast-api-request.php:140
+msgid "No JSON object was returned."
+msgstr "Žádný JSON objekt nebyl navrácen."
+
+#. translators: Hidden accessibility text.
+#: src/integrations/admin/link-count-columns-integration.php:149
+msgid "Received internal links"
+msgstr "Přijaté vnitřní odkazy"
+
+#. translators: Hidden accessibility text.
+#: src/integrations/admin/link-count-columns-integration.php:141
+msgid "Outgoing internal links"
+msgstr "Odchozí vnitřní odkazy"
+
+#: admin/class-meta-columns.php:132 js/dist/block-editor.js:104
+#: js/dist/classic-editor.js:87 js/dist/wincher-dashboard-widget.js:130
+msgid "Keyphrase"
+msgstr "Klíčové slovo"
+
+#. translators: 1: Yoast SEO.
+#: src/services/health-check/links-table-reports.php:87
+msgid "For this feature to work, %1$s needs to create a table in your database. We were unable to create this table automatically."
+msgstr "Aby tento prvek fungoval, %1$s je třeba vytvořit tabulku ve vaší databázi. Tuto tabulku se nám nepodařilo vytvořit automaticky."
+
+#. translators: %1$s expands to the requested url
+#: admin/exceptions/class-file-size-exception.php:40
+msgid "Cannot get the size of %1$s because of unknown reasons."
+msgstr "Nelze získat velikost %1$s z neznámých důvodů."
+
+#. translators: %1$s expands to the requested url
+#: admin/exceptions/class-file-size-exception.php:23
+msgid "Cannot get the size of %1$s because it is hosted externally."
+msgstr "Nelze získat velikost %1$s kvůli hostování na externím zdroji."
+
+#. translators: %s expands to the current page number
+#: src/generators/breadcrumbs-generator.php:424
+msgid "Page %s"
+msgstr "Strana %s"
+
+#. translators: %1$s expands to the method name. %2$s expands to the class name
+#: src/exceptions/missing-method.php:24
+msgid "Method %1$s() does not exist in class %2$s"
+msgstr "Třída %2$s nemá definovánu metodu %1$s()"
+
+#: admin/views/tabs/tool/wpseo-import.php:15
+msgid "Import of settings is only supported on servers that run PHP 5.3 or higher."
+msgstr "Import nastavení je podporován na serverech, které používají verzi PHP 5.3 nebo vyšší."
+
+#: admin/import/class-import-settings.php:85
+msgid "No settings found."
+msgstr "Žádné nastavení nenalezeno."
+
+#: admin/class-export.php:54
+msgid "You do not have the required rights to export settings."
+msgstr "Nemáte potřebná oprávnění pro export nastavení."
+
+#. translators: %s expands to Yoast SEO Premium
+#: admin/watchers/class-slug-change-watcher.php:224
+msgid "With %s, you can easily create such redirects."
+msgstr "S %s můžete takové přesměrování snadno vytvořit."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-export.php:26
+msgid "Export your %1$s settings here, to copy them on another site."
+msgstr "Zde exportujte vaše nastavení %1$s a zkopírujte je na jiný web."
+
+#. translators: %1$s expands to Import settings
+#: admin/class-export.php:61
+msgid "Copy all these settings to another site's %1$s tab and click \"%1$s\" there."
+msgstr "Zkopírujte všechna nastavení této karty na jiný web %1$s  a klikněte tam na \"%1$s\"."
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to Yoast.com
+#: admin/class-export.php:97
+msgid "These are settings for the %1$s plugin by %2$s"
+msgstr "Tohle jsou nastavení pro %1$s plugin od %2$s"
+
+#: admin/class-admin-init.php:354
+msgid "Learn about why permalinks are important for SEO."
+msgstr "Zjistěte, proč jsou trvalé odkazy důležité pro SEO."
+
+#: admin/class-admin-init.php:345
+msgid "WARNING:"
+msgstr "VAROVÁNÍ:"
+
+#. translators: %1$s and %2$s expand to <em> items to emphasize the word in the
+#. middle.
+#: admin/class-admin-init.php:348
+msgid "Changing your permalinks settings can seriously impact your search engine visibility. It should almost %1$s never %2$s be done on a live website."
+msgstr "Změna nastavení trvalých odkazů může vážně ovlivnit viditelnost pro vyhledávače. Proto by nemělo být téměř %1$s nikdy %2$s prováděno na živé webové stránce."
+
+#. translators: %s expands to Yoast WooCommerce SEO
+#. translators: %s expands to Yoast SEO Premium
+#. translators: %s expands to "Yoast WooCommerce SEO
+#. translators: %s expands to "Yoast SEO" Premium
+#: admin/class-premium-upsell-admin-block.php:181
+#: admin/class-premium-upsell-admin-block.php:192 js/dist/general-page.js:10
+#: js/dist/general-page.js:11 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:11
+msgid "Upgrade to %s"
+msgstr "Aktualizovat na %s"
+
+#: admin/views/tabs/network/features.php:95
+#: admin/views/tabs/network/integrations.php:82
+#: src/integrations/admin/crawl-settings-integration.php:251
+msgid "Disable"
+msgstr "Zakázat"
+
+#: admin/views/tabs/network/features.php:94
+#: admin/views/tabs/network/integrations.php:81
+#: src/integrations/admin/crawl-settings-integration.php:249
+msgid "Allow Control"
+msgstr "Povolit kontrolu"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/network/crawl-settings.php:24
+#: admin/views/tabs/network/features.php:27
+msgid "This tab allows you to selectively disable %s features for all sites in the network. By default all features are enabled, which allows site admins to choose for themselves if they want to toggle a feature on or off for their site. When you disable a feature here, site admins will not be able to use that feature at all."
+msgstr "Tato záložka vám umožňuje selektivně zakázat %s funkce pro všechny webové stránky v síti. Ve výchozím nastavení všechny funkce jsou povoleny, což administrátorům stránek umožňuje, aby si sami zvolili, zda je chtějí na svém webu zapnout nebo vypnout. Pokud zde funkci zakážete, administrátoři stránek vůbec nebudou moct tuto funkci použít."
+
+#. translators: %s: argument name
+#: admin/views/class-yoast-feature-toggle.php:161
+msgid "%s is a required feature toggle argument."
+msgstr "%s argument je požadovaná funkce zapněte argument."
+
+#: admin/class-yoast-form.php:1062 js/dist/general-page.js:66
+msgid "This feature has been disabled by the network admin."
+msgstr "Tato funkce byla zakázána síťovým administrátorem."
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:197
+msgid "Focus keyphrase not set."
+msgstr "Nebyla nastavena žádná klíčová fráze."
+
+#. translators: %s expands to Yoast SEO Premium
+#. translators: WooCommerce SEO
+#: admin/class-premium-popup.php:81
+#: admin/watchers/class-slug-change-watcher.php:228
+#: js/dist/externals-components.js:413
+msgid "Get %s"
+msgstr "Získej %s"
+
+#: inc/options/class-wpseo-option-titles.php:948
+msgid "Colon"
+msgstr "Dvojtečka"
+
+#: inc/class-wpseo-admin-bar-menu.php:935
+msgid "There is a new notification."
+msgid_plural "There are new notifications."
+msgstr[0] "Máte nové upozornění."
+msgstr[1] "Máte nová upozornění."
+msgstr[2] "Máte nová upozornění."
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'SEO' plugin name of possibly
+#. conflicting plugin with regard to the creation of duplicate SEO meta.
+#: admin/class-plugin-conflict.php:90
+msgid "Both %1$s and %2$s manage the SEO of your site. Running two SEO plugins at the same time is detrimental."
+msgstr "Jsou zapnuté dva SEO pluginy %1$s a taky %2$s jeden vypněte. Nechat běžet oba je kontraproduktivní!"
+
+#. translators: %d expands to the number of minute/minutes.
+#. translators: %d expands to the number of minutes.
+#: src/integrations/blocks/structured-data-blocks.php:146
+#: js/dist/how-to-block.js:4 js/dist/how-to-block.js:10
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuta"
+msgstr[1] "%d minuty"
+msgstr[2] "%d minut"
+
+#. translators: %d expands to the number of hour/hours.
+#. translators: %d expands to the number of hours.
+#: src/integrations/blocks/structured-data-blocks.php:139
+#: js/dist/how-to-block.js:3 js/dist/how-to-block.js:9
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hodina"
+msgstr[1] "%d hodiny"
+msgstr[2] "%d hodin"
+
+#. translators: %d expands to the number of day/days.
+#. translators: %d expands to the number of days.
+#: src/integrations/blocks/structured-data-blocks.php:132
+#: js/dist/block-editor.js:83 js/dist/classic-editor.js:66
+#: js/dist/how-to-block.js:2 js/dist/how-to-block.js:8
+#: js/dist/wincher-dashboard-widget.js:72
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d den"
+msgstr[1] "%d dny"
+msgstr[2] "%d dnů"
+
+#. translators: %1$s expands to Yoast.
+#: src/integrations/blocks/block-categories.php:37
+msgid "%1$s Structured Data Blocks"
+msgstr "%1$s Bloky Strukturovaných Dat"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block description"
+msgid "Create a How-to guide in an SEO-friendly way. You can only use one How-to block per post."
+msgstr "Vytvořte průvodce Jak na to způsobem vhodným pro SEO. V každém příspěvku můžete použít pouze jeden blok Jak na to."
+
+#: inc/class-wpseo-admin-bar-menu.php:434
+msgid "Check links to this URL"
+msgstr "Zkontrolujte odkazy vedoucí k této URL"
+
+#: src/integrations/blocks/structured-data-blocks.php:197
+#: js/dist/how-to-block.js:1 js/dist/how-to-block.js:12
+msgid "Time needed:"
+msgstr "Potřebný čas:"
+
+#. translators: %s: error message
+#: admin/class-yoast-network-admin.php:208
+msgid "Error: %s"
+msgstr "Chyba: %s"
+
+#. translators: %s: success message
+#: admin/class-yoast-network-admin.php:206
+msgid "Success: %s"
+msgstr "V pořádku: %s"
+
+#: admin/class-yoast-network-admin.php:81
+msgid "deleted"
+msgstr "smazáno"
+
+#: admin/menu/class-network-admin-menu.php:34
+msgid "Network Settings"
+msgstr "Nastavení sítě"
+
+#: admin/pages/network.php:31
+msgid "Restore Site"
+msgstr "Obnovit stránku"
+
+#: admin/class-yoast-network-admin.php:276
+msgid "You are not allowed to perform this action."
+msgstr "Nemáte povolení provést tuto akci."
+
+#: admin/class-yoast-network-admin.php:120
+msgid "You are not allowed to modify unregistered network settings."
+msgstr "Nemáte povolení upravit neregistrované nastavení sítě."
+
+#. translators: %s expands to the ID of a site within a multisite network.
+#: admin/class-yoast-network-admin.php:168
+msgid "Site with ID %d not found."
+msgstr "Síť s ID %d nenalezena."
+
+#: inc/class-wpseo-admin-bar-menu.php:505
+msgid "How to"
+msgstr "Jak provést"
+
+#: admin/class-yoast-network-admin.php:159
+msgid "No site has been selected to restore."
+msgstr "Nebyla vybrána žádná stránka k obnovení."
+
+#: inc/class-wpseo-replace-vars.php:1475
+msgid "The site's tagline"
+msgstr "Tagline webu"
+
+#. translators: %1$s expands to the missing field name.
+#: admin/menu/class-replacevar-editor.php:152
+msgid "Not all required fields are given. Missing field %1$s"
+msgstr "Ne všechny potřebné pole jsou vyplněny. Chybí pole %1$s"
+
+#: inc/class-wpseo-replace-vars.php:1489 js/dist/externals-redux.js:1
+msgid "Current year"
+msgstr "Aktuální rok"
+
+#: inc/class-wpseo-replace-vars.php:1520 js/dist/externals-redux.js:1
+msgid "Page"
+msgstr "Stránka"
+
+#: inc/class-wpseo-replace-vars.php:1487 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:34
+msgid "Separator"
+msgstr "Oddělovač"
+
+#: inc/class-wpseo-replace-vars.php:1470 js/dist/externals-redux.js:1
+msgid "Date"
+msgstr "Datum"
+
+#: inc/class-wpseo-replace-vars.php:1522
+msgid "Pagenumber"
+msgstr "Číslo stránky"
+
+#: admin/watchers/class-slug-change-watcher.php:222
+msgid "You should create a redirect to ensure your visitors do not get a 404 error when they click on the no longer working URL."
+msgstr "Můžete vytvořit přesměrování, které zabrání tomu, aby se vašim návštěvníkům zobrazovala chyba 404, když kliknou na již nefunkční URL."
+
+#. translators: %1$s expands to the translated name of the post type.
+#. translators: %1$s expands to the translated name of the term.
+#: admin/watchers/class-slug-change-watcher.php:89
+#: admin/watchers/class-slug-change-watcher.php:112
+msgid "You just deleted a %1$s."
+msgstr "Právě jste smazali %1$s."
+
+#: inc/class-wpseo-replace-vars.php:1482 js/dist/externals-redux.js:1
+msgid "Tag description"
+msgstr "Popis štítku"
+
+#: inc/class-wpseo-replace-vars.php:1480 js/dist/externals-redux.js:1
+msgid "Primary category"
+msgstr "Hlavní rubriky"
+
+#: inc/class-wpseo-replace-vars.php:1481 js/dist/externals-redux.js:1
+msgid "Category description"
+msgstr "Popis rubriky"
+
+#: inc/class-wpseo-replace-vars.php:1519
+msgid "User description"
+msgstr "Popis uživatele"
+
+#: inc/class-wpseo-replace-vars.php:1523
+msgid "Caption"
+msgstr "Titulek"
+
+#: inc/class-wpseo-replace-vars.php:1478
+msgid "Tag"
+msgstr "Štítek"
+
+#: inc/class-wpseo-replace-vars.php:1479 js/dist/externals-redux.js:1
+msgid "Category"
+msgstr "Rubrika"
+
+#: inc/class-wpseo-replace-vars.php:1474 js/dist/externals-redux.js:1
+msgid "Site title"
+msgstr "Název webu"
+
+#: inc/class-wpseo-replace-vars.php:1473
+msgid "Archive title"
+msgstr "Název archivu"
+
+#: inc/class-wpseo-replace-vars.php:1526
+msgid "(custom field)"
+msgstr "(vlastní pole)"
+
+#: inc/class-wpseo-replace-vars.php:1516
+msgid "Modified"
+msgstr "Změněno"
+
+#: inc/class-wpseo-replace-vars.php:1515
+msgid "Post type (plural)"
+msgstr "Typ příspěvku (množné číslo)"
+
+#: inc/class-wpseo-replace-vars.php:1514
+msgid "Post type (singular)"
+msgstr "Typ příspěvku (jednotné číslo)"
+
+#: inc/class-wpseo-replace-vars.php:1472 js/dist/externals-redux.js:1
+msgid "Parent title"
+msgstr "Nadřazený název"
+
+#: inc/class-wpseo-replace-vars.php:1517 js/dist/externals-redux.js:1
+msgid "ID"
+msgstr "ID"
+
+#: inc/class-wpseo-replace-vars.php:1485 js/dist/externals-redux.js:1
+msgid "Search phrase"
+msgstr "Hledat frázi"
+
+#: admin/watchers/class-slug-change-watcher.php:218
+msgid "Make sure you don't miss out on traffic!"
+msgstr "Ujistěte se, že nepřicházíte o návštěvnost!"
+
+#: inc/class-wpseo-replace-vars.php:1528
+msgid "description (custom taxonomy)"
+msgstr "popis (vlastní taxonomie)"
+
+#: inc/class-wpseo-replace-vars.php:1527
+msgid "(custom taxonomy)"
+msgstr "(vlastní taxonomie)"
+
+#: inc/class-wpseo-replace-vars.php:1525
+msgid "Term404"
+msgstr "Term404"
+
+#: inc/class-wpseo-replace-vars.php:1484
+msgid "Term title"
+msgstr "Název termínu"
+
+#: inc/class-wpseo-replace-vars.php:1475 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:31 js/dist/new-settings.js:522
+msgid "Tagline"
+msgstr "Řádek tagů"
+
+#: inc/class-wpseo-replace-vars.php:1476 js/dist/externals-redux.js:1
+msgid "Excerpt"
+msgstr "Výpisek"
+
+#: inc/class-wpseo-replace-vars.php:1477 js/dist/externals-redux.js:1
+msgid "Excerpt only"
+msgstr "Pouze výpisek"
+
+#: inc/class-wpseo-replace-vars.php:1521
+msgid "Pagetotal"
+msgstr "Stránek celkem"
+
+#. translators: %1$s expands to the translated name of the post type.
+#: admin/watchers/class-slug-change-watcher.php:67
+msgid "You just trashed a %1$s."
+msgstr "Právě jste vymazali %1$s."
+
+#: inc/class-wpseo-replace-vars.php:1483 js/dist/externals-redux.js:1
+msgid "Term description"
+msgstr "Popis položky"
+
+#: admin/watchers/class-slug-change-watcher.php:90
+#: admin/watchers/class-slug-change-watcher.php:113
+msgid "Search engines and other websites can still send traffic to your deleted content."
+msgstr "Vyhledávače a jiné webové stránky mohou stále posílat návštěvnost na váš smazaný obsah."
+
+#: admin/class-bulk-editor-list-table.php:1037
+msgid "Content Type"
+msgstr "Typ obsahu"
+
+#. translators: %s is replaced with the plugin's name.
+#: admin/import/plugins/class-abstract-plugin-importer.php:132
+msgid "Cleanup of %s data failed."
+msgstr "Vyčištění %s dat se nezdařilo."
+
+#. translators: Hidden accessibility text.
+#: admin/class-bulk-editor-list-table.php:429
+msgid "Filter by content type"
+msgstr "Filtrovat podle typu obsahu"
+
+#: admin/class-bulk-editor-list-table.php:411
+msgid "Show All Content Types"
+msgstr "Zobrazit všechny typy obsahu"
+
+#. translators: %s is replaced with Yoast SEO.
+#: admin/import/plugins/class-abstract-plugin-importer.php:259
+msgid "The %s importer functionality uses temporary database tables. It seems your WordPress install does not have the capability to do this, please consult your hosting provider."
+msgstr "Funkce importu %s využívá dočasné databáze. Zdá se že váš WordPress nemá dostatečná práva pro vytvoření této databáze. Prosíme konsultujte s vaším hostingem."
+
+#: inc/class-wpseo-replace-vars.php:1473
+msgid "Replaced with the normal title for an archive generated by WordPress"
+msgstr "Nahrazeno běžným názvem archivu generovaného WordPressem"
+
+#: admin/views/tabs/tool/import-seo.php:93
+msgid "Step 3: Check your data"
+msgstr "Krok 3: Zkontrolujte svá data"
+
+#: admin/views/tabs/tool/import-seo.php:55
+msgid "Step 1: Create a backup"
+msgstr "Krok 1: Vytvoření zálohy"
+
+#: admin/views/tabs/tool/import-seo.php:57
+msgid "Please make a backup of your database before starting this process."
+msgstr "Vytvořte si zálohu své databáze, před dalším krokem"
+
+#: admin/views/tabs/tool/import-seo.php:115
+msgid "Step 5: Clean up"
+msgstr "Krok 5: Vyčištění"
+
+#: admin/views/tabs/tool/import-seo.php:126
+msgid "Clean"
+msgstr "Vyčistit"
+
+#: admin/views/tabs/tool/import-seo.php:95
+msgid "Please check your posts and pages and see if the metadata was successfully imported."
+msgstr "Prosím, zkontrolujte si své stránky a příspěvky a ujistěte se že se metadata úspěšně vložila."
+
+#: admin/views/tabs/tool/import-seo.php:62
+msgid "Step 2: Import"
+msgstr "Krok 2: Vložení"
+
+#: admin/views/tabs/tool/import-seo.php:51
+msgid "We've detected data from one or more SEO plugins on your site. Please follow the following steps to import that data:"
+msgstr "Našli jsme data z jednoho nebo více SEO pluginů na vaší stránce. Prosíme postupujte podle pokynů pro vložení dat:"
+
+#: admin/views/tabs/tool/import-seo.php:39
+msgid "Plugin: "
+msgstr "Plugin:"
+
+#: admin/statistics/class-statistics-service.php:229
+msgid "Posts that should not show up in search results"
+msgstr "Příspěvky, které by se neměly zobrazovat ve výsledcích hledání"
+
+#. translators: %s is replaced with the name of the plugin we've found data
+#. from.
+#: admin/import/class-import-status.php:128
+msgid "%s data found."
+msgstr "%s dat nalezeno."
+
+#. translators: %s is replaced with the name of the plugin we're removing data
+#. from.
+#: admin/import/class-import-status.php:124
+msgid "%s data successfully removed."
+msgstr "%s dat úspěšně smazáno."
+
+#. translators: %s is replaced with the name of the plugin we're importing data
+#. from.
+#: admin/import/class-import-status.php:121
+msgid "%s data successfully imported."
+msgstr "%s dat úspěšně vloženo."
+
+#. translators: %s is replaced with the name of the plugin we're trying to find
+#. data from.
+#: admin/import/class-import-status.php:61
+msgid "%s data not found."
+msgstr "%s dat nebylo nalezeno"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/tool/import-seo.php:22
+msgid "%s did not detect any plugin data from plugins it can import from."
+msgstr "%s nenalezl žádná data z pluginů, které by mohl vložit."
+
+#. translators: 1: expands to Yoast SEO
+#: admin/views/tabs/tool/import-seo.php:67
+msgid "This will import the post metadata like SEO titles and descriptions into your %1$s metadata. It will only do this when there is no existing %1$s metadata yet. The original data will remain in place."
+msgstr "Tímto importujete metadata z příspěvků například SEOnadpisy a popisky do vaší %1$s metadat. Import proběhne pouze pokud v metadatech %1$s existuje prázdné místo. Originální data zůstanou zachována."
+
+#: admin/views/tabs/tool/import-seo.php:117
+msgid "Once you're certain your site is OK, you can clean up. This will remove all the original data."
+msgstr "Jakmile si budete jisti, že je web v pořádku, můžete zahájit čištění. Tím odstraníte všechna původní data."
+
+#: admin/class-yoast-form.php:958 admin/class-yoast-form.php:998
+#: js/dist/externals/componentsNew.js:532
+msgid "On"
+msgstr "Zapnuto"
+
+#: admin/class-yoast-form.php:959 admin/class-yoast-form.php:999
+#: admin/views/class-yoast-feature-toggles.php:156
+#: js/dist/externals/componentsNew.js:532
+msgid "Off"
+msgstr "Vypnuto"
+
+#. translators: Hidden accessibility text; %s expands to a feature's name.
+#. translators: Hidden accessibility text; %s expands to an integration's name.
+#: admin/views/tabs/network/features.php:62
+#: admin/views/tabs/network/integrations.php:50
+msgid "Help on: %s"
+msgstr "Nápověda k: %s"
+
+#: admin/views/class-yoast-feature-toggles.php:66
+msgid "See the XML sitemap."
+msgstr "Ukázat XML sitemapu."
+
+#: admin/views/class-yoast-feature-toggles.php:136
+msgid "Read why XML Sitemaps are important for your site."
+msgstr "Přečtěte si, proč jsou XML sitemapy důležité pro vaši stránku."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/dashboard/dashboard.php:19
+msgid "See who contributed to %1$s."
+msgstr "Zobrazit přispěvatele k %1$s."
+
+#. translators: %s: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:135
+msgid "Enable the XML sitemaps that %s generates."
+msgstr "Povolit mapy webu XML vygenerované pomocí %s."
+
+#. translators: %s expands to the post type name.
+#: admin/metabox/class-metabox.php:176
+msgid "Allow search engines to show this %s in search results?"
+msgstr "Povolit vyhledávačům ukázat %s ve výsledcích vyhledávání?"
+
+#. translators: %s expands to an indexable object's name, like a post type or
+#. taxonomy
+#: admin/class-yoast-form.php:969
+msgid "Show %s in search results?"
+msgstr "Zobrazovat %s ve výsledcích vyhledávání?"
+
+#. translators: %1$s expands to Yes or No,  %2$s expands to the post type name.
+#: admin/metabox/class-metabox.php:181
+msgid "Default for %2$s, currently: %1$s"
+msgstr "Výchozí pro %2$s, aktuálně: %1$s"
+
+#. translators: %1$s expands to Yoast SEO.
+#: admin/class-plugin-conflict.php:82
+msgid "Toggle %1$s's XML Sitemap"
+msgstr "Přepnout mapu webu XML %1$s"
+
+#. translators: %1$s expands to the post type name.
+#: admin/metabox/class-metabox.php:186
+msgid "Should search engines follow links on this %1$s?"
+msgstr "Měly by vyhledávače následovat odkazy na tomto %1$s?"
+
+#: admin/views/class-yoast-feature-toggles.php:71
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:59
+#: js/dist/externals-components.js:420 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "SEO analysis"
+msgstr "SEO analýza"
+
+#. translators: %s: 'Semrush'
+#. translators: %s: Algolia.
+#: admin/views/class-yoast-integration-toggles.php:63
+#: admin/views/class-yoast-integration-toggles.php:74
+msgid "%s integration"
+msgstr "%s integrace"
+
+#: admin/views/class-yoast-feature-toggles.php:74
+msgid "Learn how the SEO analysis can help you rank."
+msgstr "Zjistěte, jak vám SEO analýza pomůže zlepšit rank vaší stránky"
+
+#: admin/views/class-yoast-feature-toggles.php:73
+msgid "The SEO analysis offers suggestions to improve the SEO of your text."
+msgstr "SEO analýza nabízí doporučení pro vylepšení SEO vašeho textu."
+
+#: admin/views/class-yoast-feature-toggles.php:81 js/dist/new-settings.js:526
+msgid "The readability analysis offers suggestions to improve the structure and style of your text."
+msgstr "Analýza čitelnosti nabízí doporučení ke zlepšení struktury a stylu vašeho textu."
+
+#: admin/views/class-yoast-feature-toggles.php:82
+msgid "Discover why readability is important for SEO."
+msgstr "Zjistěte, proč je čitelnost důležitá pro SEO."
+
+#: admin/views/class-yoast-feature-toggles.php:106
+msgid "The text link counter helps you improve your site structure."
+msgstr "Počítadlo řádek textu pomáhá zlepšit strukturu vašich stránek."
+
+#: admin/views/class-yoast-feature-toggles.php:107
+msgid "Find out how the text link counter can enhance your SEO."
+msgstr "Zjistěte, jak může počítadlo řádek textu vylepšit vaše SEO."
+
+#: admin/views/class-yoast-feature-toggles.php:99
+msgid "Find out how cornerstone content can help you improve your site structure."
+msgstr "Zjistěte, jak vám může klíčový obsah pomoci vylepšit strukturu stránek."
+
+#: admin/views/class-yoast-feature-toggles.php:98
+msgid "The cornerstone content feature lets you to mark and filter cornerstone content on your website."
+msgstr "Tato funkce vám umožňuje označit a filtrovat klíčový obsah na vašem webu."
+
+#. Author URI of the plugin
+#: wp-seo.php
+msgid "https://yoa.st/1uk"
+msgstr "https://yoa.st/1uk"
+
+#. Plugin URI of the plugin
+#: wp-seo.php
+msgid "https://yoa.st/1uj"
+msgstr "https://yoa.st/1uj"
+
+#. translators: %1$s resolves to Yoast.com
+#: admin/class-yoast-dashboard-widget.php:128
+msgid "Latest blog posts on %1$s"
+msgstr "Poslední příspěvky blogu na %1$s"
+
+#: src/helpers/first-time-configuration-notice-helper.php:64
+msgid "First-time SEO configuration"
+msgstr "Úvodní SEO nastavení"
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:28
+msgid "You cannot create a %s file."
+msgstr "Nemůžete vytvořit soubor %s."
+
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:186
+msgid "%s file"
+msgstr "%s soubor"
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:125
+msgid "Create %s file"
+msgstr "Vytvořit soubor %s"
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:65
+msgid "Updated %s"
+msgstr "Aktualizován %s"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:49 admin/views/tool-file-editor.php:76
+msgid "You cannot edit the %s file."
+msgstr "Nemůžete editovat soubor %s."
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:165 admin/views/tool-file-editor.php:215
+msgid "Edit the content of your %s:"
+msgstr "Editujte obsah vašeho  %s:"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:174 admin/views/tool-file-editor.php:224
+msgid "Save changes to %s"
+msgstr "Uložte změny do %s"
+
+#. translators: Hidden accessibility text; %1$s expands to the dependency name
+#: admin/class-suggested-plugins.php:137
+msgid "More information about %1$s"
+msgstr "Více informací o %1$s"
+
+#: src/integrations/admin/old-configuration-integration.php:38
+msgid "Old Configuration Wizard"
+msgstr "Starý průvodce nastavením"
+
+#. translators: %1$s expands to the posttype label, %2$s expands anchor to blog
+#. post about cornerstone content, %3$s expands to </a>
+#: admin/filters/class-cornerstone-filter.php:104
+msgid "Mark the most important %1$s as 'cornerstone content' to improve your site structure. %2$sLearn more about cornerstone content%3$s."
+msgstr "Označte to nejdůležitější %1$s jako 'klíčový obsah' a vylepšete tak srukturu vašeho webu. %2$s Více o klíčovém obsahu najdete tady%3$s."
+
+#. translators: Hidden accessibility text.
+#: admin/class-admin-utils.php:79 admin/class-premium-popup.php:83
+#: admin/class-premium-upsell-admin-block.php:76 admin/class-yoast-form.php:933
+#: admin/watchers/class-slug-change-watcher.php:230
+#: src/integrations/admin/workouts-integration.php:215
+#: src/integrations/admin/workouts-integration.php:245
+#: src/presenters/admin/help-link-presenter.php:76
+#: src/presenters/admin/sidebar-presenter.php:159 js/dist/academy.js:12
+#: js/dist/ai-consent.js:2 js/dist/ai-generator.js:2 js/dist/ai-generator.js:61
+#: js/dist/ai-generator.js:276 js/dist/block-editor.js:499
+#: js/dist/block-editor.js:500 js/dist/editor-modules.js:116
+#: js/dist/editor-modules.js:383 js/dist/externals-components.js:21
+#: js/dist/externals-components.js:126 js/dist/externals-components.js:127
+#: js/dist/externals-components.js:394 js/dist/externals/componentsNew.js:675
+#: js/dist/externals/helpers.js:11
+#: js/dist/externals/relatedKeyphraseSuggestions.js:3
+#: js/dist/externals/relatedKeyphraseSuggestions.js:7 js/dist/general-page.js:4
+#: js/dist/general-page.js:5 js/dist/general-page.js:12
+#: js/dist/general-page.js:25 js/dist/general-page.js:51
+#: js/dist/general-page.js:59 js/dist/general-page.js:62
+#: js/dist/general-page.js:70 js/dist/general-page.js:76
+#: js/dist/installation-success.js:5 js/dist/integrations-page.js:3
+#: js/dist/integrations-page.js:4 js/dist/integrations-page.js:5
+#: js/dist/integrations-page.js:6 js/dist/integrations-page.js:7
+#: js/dist/integrations-page.js:8 js/dist/integrations-page.js:13
+#: js/dist/integrations-page.js:18 js/dist/integrations-page.js:19
+#: js/dist/integrations-page.js:20 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:3 js/dist/introductions.js:7
+#: js/dist/introductions.js:12 js/dist/introductions.js:13
+#: js/dist/new-settings.js:4 js/dist/new-settings.js:5
+#: js/dist/new-settings.js:12 js/dist/plans.js:2 js/dist/redirects.js:5
+#: js/dist/support.js:4 js/dist/support.js:7
+msgid "(Opens in a new browser tab)"
+msgstr "(Otevření v nové záložce)"
+
+#. translators: %1$s expands to an opening strong tag, %2$s expands to a
+#. closing strong tag
+#: admin/statistics/class-statistics-service.php:210
+msgid "Posts %1$swithout%2$s a focus keyphrase"
+msgstr "Příspěvky %1$sbez%2$s hlavního klíčového slova"
+
+#: admin/statistics/class-statistics-service.php:73
+msgid "You don't have any published posts, your SEO scores will appear here once you make your first post!"
+msgstr "Zatím jste nepublikovali žádný příspěvek. Než tak učiníte, bude se vaše SEO hodnocení zobrazovat zde. "
+
+#: admin/statistics/class-statistics-service.php:77
+msgid "Hey, your SEO is doing pretty well! Check out the stats:"
+msgstr "Vypadá to, že práce na SEO vašeho webu jde skvěle! Podívejte se na statistiky: "
+
+#: admin/class-yoast-dashboard-widget.php:131
+msgid "Read more like this on our SEO blog"
+msgstr "Přečtětě si další informace na našem SEO blogu"
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:298
+msgid "Filter by Readability Score"
+msgstr "Filtrovat podle skóre čitelnosti"
+
+#: admin/class-meta-columns.php:302
+msgid "All Readability Scores"
+msgstr "Všechna skóre čitelnosti"
+
+#. translators: %1$s expands to Yoast
+#: src/presenters/admin/sidebar-presenter.php:34
+msgid "%1$s recommendations for you"
+msgstr "Máme pro vás %1s doporučení."
+
+#. translators: %s expands to the readability score
+#: inc/class-wpseo-rank.php:207 inc/class-wpseo-rank.php:212
+#: inc/class-wpseo-rank.php:217 inc/class-wpseo-rank.php:222
+msgid "Readability: %s"
+msgstr "Čitelnost: %s"
+
+#. translators: %1$s expands to the request method
+#: admin/class-remote-request.php:97
+msgid "Request method %1$s is not valid."
+msgstr "Požadovaná metoda %1$s není platná."
+
+#: admin/views/class-yoast-feature-toggles.php:104 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "Text link counter"
+msgstr "Počítadlo textových odkazů"
+
+#: admin/class-meta-columns.php:122 admin/class-meta-columns.php:124
+#: admin/taxonomy/class-taxonomy-columns.php:92
+#: admin/taxonomy/class-taxonomy-columns.php:93
+msgid "Readability score"
+msgstr "Skóre čitelnosti"
+
+#. translators: %s expands to Yoast
+#: admin/class-yoast-columns.php:64
+msgid "%s Columns"
+msgstr "%s Sloupce"
+
+#: admin/filters/class-cornerstone-filter.php:87
+#: admin/views/class-yoast-feature-toggles.php:96
+#: js/dist/externals-components.js:20 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "Cornerstone content"
+msgstr "Klíčový obsah"
+
+#: admin/class-yoast-form.php:149 admin/class-yoast-form.php:154
+#: js/dist/general-page.js:48 js/dist/new-settings.js:12
+msgid "Save changes"
+msgstr "Uložit změny"
+
+#: src/presenters/admin/sidebar-presenter.php:127 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7 js/dist/support.js:6
+msgid "24/7 support"
+msgstr "Podpora 24/7"
+
+#: admin/class-premium-popup.php:89
+msgid "1 year free support and updates included!"
+msgstr "1 rok zdarma pro aktualizace i podporu v ceně!"
+
+#. translators: %2$s expands to 'RS Head Cleaner' plugin name of possibly
+#. conflicting plugin with regard to differentiating output between search
+#. engines and normal users.
+#: admin/class-plugin-conflict.php:87
+msgid "The plugin %2$s changes your site's output and in doing that differentiates between search engines and normal users, a process that's called cloaking. We highly recommend that you disable it."
+msgstr "Plugin %2$s mění podobu vašich stránek podle toho zda se připojuje uživatel nebo internetový vyhledávač, tomu se říká maskování. Doporučujeme maskování (cloaking) deaktivovat."
+
+#: admin/class-admin.php:355
+msgid "Scroll to see the table content."
+msgstr "Posuňte stránku, abyste viděli obsah tabulky."
+
+#: admin/class-bulk-editor-list-table.php:921
+msgid "Save"
+msgstr "Uložit"
+
+#: admin/class-bulk-editor-list-table.php:922
+msgid "Save all"
+msgstr "Uložit vše"
+
+#: admin/views/partial-notifications-warnings.php:22 js/dist/general-page.js:32
+msgid "No new notifications."
+msgstr "Žádné upozornění"
+
+#. translators: 1: Author name; 2: Site name.
+#: inc/options/class-wpseo-option-titles.php:272
+msgid "%1$s, Author at %2$s"
+msgstr "%1$s, Autor na %2$s"
+
+#: inc/class-wpseo-replace-vars.php:1518 js/dist/general-page.js:51
+msgid "Name"
+msgstr "Jméno"
+
+#: admin/views/tool-import-export.php:89
+msgid "Export settings"
+msgstr "Nastavení exportu"
+
+#. translators: %1$s is a link start tag to the bugreport guidelines on the
+#. Yoast help center, %2$s is the link closing tag.
+#: admin/class-product-upsell-notice.php:174
+msgid "If you are experiencing issues, %1$splease file a bug report%2$s and we'll do our best to help you out."
+msgstr "Pokud s tímto máte nějaké potíže, %1$sprosíme, vyplňte tuto zprávu%2$s a my se vynasnažíme, abychom Vám pomohli."
+
+#. translators: %1$s expands to Yoast SEO, %2$s is a link start tag to the
+#. plugin page on WordPress.org, %3$s is the link closing tag.
+#: admin/class-product-upsell-notice.php:166
+msgid "We've noticed you've been using %1$s for some time now; we hope you love it! We'd be thrilled if you could %2$sgive us a 5 stars rating on WordPress.org%3$s!"
+msgstr "Všimli jsme si, že už užíváte %1$s nějaký čas. Doufáme, že jste si ho zamilovali! Byli bychom Vám vděční, kdybyste nás %2$sohodnotili 5 hvězdičkami na WordPress.org%3$s!"
+
+#: admin/class-product-upsell-notice.php:181
+msgid "Please don't show me this notification anymore"
+msgstr "Už mi tohle upozornění neukazujte"
+
+#. translators: %1$s: '%%term_title%%' variable used in titles and meta's
+#. template that's not compatible with the given template, %2$s: expands to
+#. 'HelpScout beacon'
+#: admin/class-admin.php:349
+msgid "Warning: the variable %1$s cannot be used in this template. See the %2$s for more info."
+msgstr "Varování: proměnná %1$s nemůže být použita v této šabloně. Pro více informací navštivte %2$s."
+
+#. translators: %1$s expands anchor to premium plugin page, %2$s expands to
+#. </a>
+#: admin/class-product-upsell-notice.php:149
+msgid "By the way, did you know we also have a %1$sPremium plugin%2$s? It offers advanced features, like a redirect manager and support for multiple keyphrases. It also comes with 24/7 personal support."
+msgstr "Mimochodem, věděli jste, že máme také %1$sPrémiový plugin%2$s? Nabízí pokročilé funkce jako správce přesměrování a podporu pro analýzu vícero klíčových slov. Součástí je také podpora 24/7."
+
+#: admin/class-bulk-editor-list-table.php:829
+msgid "(no title)"
+msgstr "(bez titulku)"
+
+#: admin/views/class-yoast-feature-toggles.php:143 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:529 js/dist/new-settings.js:532
+msgid "Admin bar menu"
+msgstr "Administrátorská lišta"
+
+#. translators: 1: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:146
+msgid "The %1$s admin bar menu contains useful links to third-party tools for analyzing pages and makes it easy to see if you have new notifications."
+msgstr "Lišta v administrátorském rozhraní %1$s obsahuje užitečné odkazy na nástroje třetích stran pro analýzu stránek a zvýrazňuje nové notifikace."
+
+#: admin/pages/network.php:19 admin/views/tabs/network/features.php:22
+msgid "Features"
+msgstr "Funkce"
+
+#: admin/metabox/class-metabox.php:172
+#: js/dist/externals/replacementVariableEditor.js:71
+#: js/dist/externals/searchMetadataPreviews.js:102 js/dist/new-settings.js:21
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:38
+#: js/dist/new-settings.js:91 js/dist/new-settings.js:111
+#: js/dist/new-settings.js:160 js/dist/new-settings.js:207
+#: js/dist/new-settings.js:312 js/dist/new-settings.js:339
+#: js/dist/new-settings.js:354 js/dist/new-settings.js:412
+msgid "SEO title"
+msgstr "SEO název"
+
+#: inc/options/class-wpseo-option-titles.php:988
+msgid "Greater than sign"
+msgstr "Větší než"
+
+#: inc/options/class-wpseo-option-titles.php:984
+msgid "Less than sign"
+msgstr "Menší než"
+
+#: inc/options/class-wpseo-option-titles.php:968
+msgid "Vertical bar"
+msgstr "Svislá čára"
+
+#: inc/options/class-wpseo-option-titles.php:964
+msgid "Low asterisk"
+msgstr "Nízká hvězdička"
+
+#: inc/options/class-wpseo-option-titles.php:960
+msgid "Asterisk"
+msgstr "Hvězdička"
+
+#: inc/options/class-wpseo-option-titles.php:956
+msgid "Bullet"
+msgstr "Odrážka"
+
+#: inc/options/class-wpseo-option-titles.php:952
+msgid "Middle dot"
+msgstr "Čtvercová odrážka"
+
+#: inc/options/class-wpseo-option-titles.php:944
+msgid "Em dash"
+msgstr "Pomlčka"
+
+#: inc/options/class-wpseo-option-titles.php:940
+msgid "En dash"
+msgstr "Krátká pomlčka"
+
+#: admin/metabox/class-metabox.php:183 admin/metabox/class-metabox.php:188
+#: js/dist/block-editor.js:249 js/dist/classic-editor.js:232
+msgid "No"
+msgstr "Ne"
+
+#: admin/metabox/class-metabox.php:182 admin/metabox/class-metabox.php:187
+#: js/dist/block-editor.js:249 js/dist/classic-editor.js:232
+msgid "Yes"
+msgstr "Ano"
+
+#: inc/options/class-wpseo-option-titles.php:972
+msgid "Small tilde"
+msgstr "Malý titulek"
+
+#: inc/options/class-wpseo-option-titles.php:980
+msgid "Right angle quotation mark"
+msgstr "šipky směřující doprava"
+
+#: inc/options/class-wpseo-option-titles.php:976
+msgid "Left angle quotation mark"
+msgstr "šipky směřující doleva"
+
+#: inc/options/class-wpseo-option-titles.php:936
+msgid "Dash"
+msgstr "pomlčka"
+
+#: admin/views/tool-bulk-editor.php:63
+msgid "Posts list"
+msgstr "Seznam příspěvků"
+
+#: admin/views/tool-bulk-editor.php:62
+msgid "Posts list navigation"
+msgstr "Navigace v seznamu příspěvků"
+
+#: admin/views/tool-bulk-editor.php:61
+msgid "Filter posts list"
+msgstr "Filtrovat seznam příspěvků"
+
+#. translators: Hidden accessibility text; %s: post title.
+#: admin/class-bulk-editor-list-table.php:843
+msgid "Edit &#8220;%s&#8221;"
+msgstr "Upravit &#8220;%s&#8221;"
+
+#: src/integrations/admin/menu-badge-integration.php:35 js/dist/academy.js:11
+msgid "Premium"
+msgstr "Premium"
+
+#: admin/class-admin.php:266
+msgid "Get Premium"
+msgstr "Získat Premium"
+
+#: admin/views/partial-notifications-warnings.php:20
+#: inc/class-wpseo-admin-bar-menu.php:395 js/dist/general-page.js:32
+msgid "Notifications"
+msgstr "Oznámení"
+
+#: src/user-meta/framework/custom-meta/keyword-analysis-disable.php:109
+msgid "Disable SEO analysis"
+msgstr "Zakázat SEO analýzu"
+
+#: src/user-meta/framework/custom-meta/keyword-analysis-disable.php:115
+msgid "Removes the focus keyphrase section from the metabox and disables all SEO-related suggestions."
+msgstr "Odstraní kartu klíčových slov z metaboxu a zakáže všechny související SEO návrhy."
+
+#. translators: Hidden accessibility text; %s: number of notifications.
+#: admin/menu/class-admin-menu.php:118 inc/class-wpseo-admin-bar-menu.php:910
+#: js/dist/general-page.js:79
+msgid "%s notification"
+msgid_plural "%s notifications"
+msgstr[0] "%s oznámení"
+msgstr[1] "%s oznámení"
+msgstr[2] "%s oznámení"
+
+#: admin/views/js-templates-primary-term.php:28
+msgid "Make primary"
+msgstr "Udělat primární"
+
+#: admin/statistics/class-statistics-service.php:217
+#: inc/class-wpseo-rank.php:140 inc/class-wpseo-rank.php:176
+#: inc/class-wpseo-rank.php:208 inc/class-wpseo-rank.php:240
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:47
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:47
+#: js/dist/block-editor.js:498 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:384 js/dist/externals-components.js:122
+#: js/dist/externals/analysis.js:409 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Needs improvement"
+msgstr "Potřebuje zlepšení"
+
+#: src/user-meta/framework/custom-meta/content-analysis-disable.php:115
+msgid "Removes the readability analysis section from the metabox and disables all readability-related suggestions."
+msgstr "Odstraní kartu čitelnosti z METABOX a zakáže všechny návrhy související s čitelností."
+
+#: src/user-meta/framework/custom-meta/content-analysis-disable.php:109
+msgid "Disable readability analysis"
+msgstr "Zakázat analýzu srozumitelnosti"
+
+#: admin/metabox/class-metabox-section-readability.php:30
+#: inc/class-wpseo-admin-bar-menu.php:252
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:59
+msgid "Readability"
+msgstr "Čitelnost"
+
+#: admin/views/class-yoast-feature-toggles.php:79
+#: js/dist/externals-components.js:412 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526
+msgid "Readability analysis"
+msgstr "Analýza čitelnosti"
+
+#: admin/menu/class-admin-menu.php:56 js/dist/general-page.js:78
+msgid "Dashboard"
+msgstr "Nástěnka"
+
+#: inc/class-wpseo-rank.php:138 js/dist/block-editor.js:498
+#: js/dist/editor-modules.js:115 js/dist/editor-modules.js:384
+#: js/dist/externals-components.js:122
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Not available"
+msgstr "Není dostupný"
+
+#: admin/views/partial-notifications-errors.php:20
+#: js/dist/editor-modules.js:115 js/dist/externals-components.js:122
+#: js/dist/externals/analysisReport.js:38 js/dist/general-page.js:32
+msgid "Problems"
+msgstr "Problémy"
+
+#: admin/views/partial-notifications-errors.php:22 js/dist/general-page.js:32
+msgid "Good job! We could detect no serious SEO problems."
+msgstr "Dobrá práce! Neodhalili jsme žádné vážné SEO problémy."
+
+#: admin/views/partial-notifications-errors.php:21 js/dist/general-page.js:32
+msgid "We have detected the following issues that affect the SEO of your site."
+msgstr "Zjistili jsme, že následující problémy, které mají vliv na SEO vašich stránek."
+
+#. translators: %1$s is a link start tag to the permalink settings page, %2$s
+#. is the link closing tag.
+#: src/services/health-check/postname-permalink-reports.php:71
+msgid "You can fix this on the %1$sPermalink settings page%2$s."
+msgstr "Tento problém lze odstranit na %1$s stránce Nastavení Permalink%2$s."
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:181
+msgid "Meta description not set."
+msgstr "Meta popis není vložen."
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:269
+msgid "Filter by SEO Score"
+msgstr "Filtr SEO skóre"
+
+#: inc/class-wpseo-replace-vars.php:1480
+msgid "Replaced with the primary category of the post/page"
+msgstr "Zaměnit s hlavní kategorií příspěvku/stránky"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-bulk-title-editor-list-table.php:48
+msgid "Existing %1$s Title"
+msgstr "Existující %1$s Název"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-bulk-title-editor-list-table.php:50
+msgid "New %1$s Title"
+msgstr "Nový %1$s Název"
+
+#: inc/sitemaps/class-sitemaps-cache-validator.php:111
+msgid "Trying to build the sitemap cache key, but the postfix and prefix combination leaves too little room to do this. You are probably requesting a page that is way out of the expected range."
+msgstr "Snaha o vybudování klíče mezipaměti mapy stránek, ale kombinace postfix a prefix ponechává příliš málo prostoru, jak toho dosáhnout. Pravděpodobně požadujete stránku, která je mimo očekávané rozmezí. "
+
+#: inc/sitemaps/class-sitemaps-cache-validator.php:301
+msgid "Expected an integer as input."
+msgstr "Očekávaným vstupem je celé číslo."
+
+#: src/integrations/admin/redirects-page-integration.php:100
+#: js/dist/redirects.js:2 js/dist/redirects.js:23
+msgid "Redirects"
+msgstr "Přesměrování"
+
+#: src/integrations/admin/crawl-settings-integration.php:241
+msgid "Keep"
+msgstr "Držet"
+
+#: src/integrations/admin/crawl-settings-integration.php:242
+#: js/dist/externals/relatedKeyphraseSuggestions.js:1
+msgid "Remove"
+msgstr "Odstranit"
+
+#. translators: %s is the taxonomy title. This will be shown to screenreaders
+#: admin/views/js-templates-primary-term.php:38
+msgid "Primary %s"
+msgstr "Hlavní %s"
+
+#: admin/taxonomy/class-taxonomy-columns.php:170
+msgid "Term is set to noindex."
+msgstr "Termín je nastaven bez indexace."
+
+#: admin/views/js-templates-primary-term.php:32
+msgid "Primary"
+msgstr "Hlavní"
+
+#. translators: Hidden accessibility text; %1$s expands to the term title, %2$s
+#. to the taxonomy title.
+#: admin/views/js-templates-primary-term.php:18
+msgid "Make %1$s primary %2$s"
+msgstr "Vytvoř %1$s hlavní %2$s"
+
+#: admin/pages/network.php:20 admin/views/tabs/network/integrations.php:22
+#: src/integrations/admin/integrations-page.php:126
+#: js/dist/integrations-page.js:45
+msgid "Integrations"
+msgstr "Integrace"
+
+#: src/integrations/admin/crawl-settings-integration.php:195
+#: src/presenters/admin/light-switch-presenter.php:120
+msgid "Enabled"
+msgstr "Povolit"
+
+#: src/integrations/admin/crawl-settings-integration.php:194
+#: src/presenters/admin/light-switch-presenter.php:120
+#: js/dist/externals/dashboardFrontend.js:4
+msgid "Disabled"
+msgstr "Zakázat"
+
+#: inc/class-wpseo-rank.php:139
+msgid "No index"
+msgstr "Index chybý"
+
+#. translators: %s: wp_title() function.
+#: inc/class-wpseo-replace-vars.php:1462
+msgid "The separator defined in your theme's %s tag."
+msgstr "Oddělovač definoval ve tvé šabloně %s štítek."
+
+#: admin/class-meta-columns.php:114 admin/class-meta-columns.php:116
+#: admin/taxonomy/class-taxonomy-columns.php:87
+#: admin/taxonomy/class-taxonomy-columns.php:88
+#: inc/class-wpseo-admin-bar-menu.php:240
+#: js/dist/externals/dashboardFrontend.js:4
+msgid "SEO score"
+msgstr "SEO skóre"
+
+#: inc/class-wpseo-admin-bar-menu.php:444
+msgid "Facebook Debugger"
+msgstr "Facebook Debugger"
+
+#. Plugin Name of the plugin
+#: wp-seo.php admin/capabilities/class-capability-manager-integration.php:74
+#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:576
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: wp-seo-main.php:502
+msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "Rozšíření Standard PHP Library (SPL) zřejmě není k dispozici. Požádejte správce vašeho serveru o její aktivaci."
+
+#. translators: %s expands to a post type.
+#: inc/options/class-wpseo-option-titles.php:545
+msgid "Please select a valid taxonomy for post type \"%s\""
+msgstr "Zvolte prosím platnou taxonomii pro typ příspěvku \"%s\""
+
+#. translators: %s expands to a taxonomy slug.
+#: inc/options/class-wpseo-option-titles.php:583
+msgid "Please select a valid post type for taxonomy \"%s\""
+msgstr "Vyberte prosím platný typ příspěvku pro taxonomii \"%s\""
+
+#: inc/options/class-wpseo-option-ms.php:227
+#: inc/options/class-wpseo-option-ms.php:243
+msgid "The default blog setting must be the numeric blog id of the blog you want to use as default."
+msgstr "Základní nastavení blogu musí být numerické id blogu, který chcete použít jako výchozí."
+
+#. translators: %s is the ID number of a blog.
+#: inc/options/class-wpseo-option-ms.php:231
+msgid "This must be an existing blog. Blog %s does not exist or has been marked as deleted."
+msgstr "Musí jít o existující blog. Blog %s buď neexistuje, nebo byl označen ke smazání."
+
+#: inc/options/class-wpseo-option-ms.php:243
+msgid "No numeric value was received."
+msgstr "Nebyla obdržena žádná numerická hodnota."
+
+#: admin/statistics/class-statistics-service.php:227
+#: inc/class-wpseo-rank.php:142 inc/class-wpseo-rank.php:186
+#: inc/class-wpseo-rank.php:218 inc/class-wpseo-rank.php:250
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:45
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:45
+#: js/dist/block-editor.js:498 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:384 js/dist/externals-components.js:122
+#: js/dist/externals/analysis.js:409 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Good"
+msgstr "Dobré"
+
+#. translators: %s expands to the search phrase.
+#: inc/options/class-wpseo-option-titles.php:274
+msgid "You searched for %s"
+msgstr "Výsledky vyhledávání %s"
+
+#: inc/options/class-wpseo-option-titles.php:281
+msgid "Home"
+msgstr "Domů"
+
+#: inc/options/class-wpseo-option-titles.php:280
+msgid "Archives for"
+msgstr "Archivy pro"
+
+#: inc/class-wpseo-admin-bar-menu.php:425
+msgid "Analyze this page"
+msgstr "Analyzuj tuto stránku"
+
+#: inc/class-wpseo-admin-bar-menu.php:679
+#: inc/class-wpseo-admin-bar-menu.php:732
+msgid "SEO Settings"
+msgstr "SEO nastavení"
+
+#: inc/options/class-wpseo-option-titles.php:279
+msgid "Error 404: Page not found"
+msgstr "Chyba 404: Stránka nebyla nalezena"
+
+#: inc/options/class-wpseo-option-titles.php:282
+msgid "You searched for"
+msgstr "Hledali jste"
+
+#. Author of the plugin
+#: wp-seo.php
+msgid "Team Yoast"
+msgstr "Tým Yoast"
+
+#: inc/class-wpseo-admin-bar-menu.php:449
+msgid "Google Page Speed Test"
+msgstr "Google test rychlosti stránky (GPST)"
+
+#. translators: %1$s expands to the option name and %2$sexpands to Yoast SEO
+#: inc/options/class-wpseo-option-ms.php:208
+msgid "%1$s is not a valid choice for who should be allowed access to the %2$s settings. Value reset to the default."
+msgstr "%1$s není platná volba pro přístup k nastavení %2$s. Hodnota byla obnovena do základního nastavení."
+
+#. translators: %1$s expands to Yoast SEO, %2$s / %3$s: links to the
+#. installation manual in the Readme for the Yoast SEO code repository on
+#. GitHub
+#: wp-seo-main.php:526
+msgid "The %1$s plugin installation is incomplete. Please refer to %2$sinstallation instructions%3$s."
+msgstr "Instalace pluginu %1$s je kompletní. Přejděte prosím do %2$sinstrukcí instalace%3$s."
+
+#. translators: %s expands to the name of a post type (plural).
+#: inc/class-upgrade.php:1555 inc/options/class-wpseo-option-titles.php:309
+msgid "%s Archive"
+msgstr "%s Archiv"
+
+#. translators: 1: link to post; 2: link to blog.
+#: inc/options/class-wpseo-option-titles.php:277
+msgid "The post %1$s appeared first on %2$s."
+msgstr "Článek %1$s se nejdříve objevil na %2$s."
+
+#. Description of the plugin
+#: wp-seo.php
+msgid "The first true all-in-one SEO solution for WordPress, including on-page content analysis, XML sitemaps and much more."
+msgstr "První opravdu plnohodnotné SEO řešení pro WordPress, včetně analýzy obsahu stránky, XML map webu a dalších vychytávek."
+
+#. translators: 1: current page number, 2: total number of pages.
+#: inc/class-wpseo-replace-vars.php:1029
+msgid "Page %1$d of %2$d"
+msgstr "Strana %1$d z %2$d"
+
+#: admin/pages/tools.php:36
+msgid "File editor"
+msgstr "Editor souborů"
+
+#: admin/views/tabs/tool/import-seo.php:18
+#: admin/views/tabs/tool/import-seo.php:49
+#: admin/views/tool-import-export.php:92
+msgid "Import from other SEO plugins"
+msgstr "Importovat z jiných SEO pluginů"
+
+#. translators: %1$s expands to Yoast SEO
+#: src/user-meta/user-interface/custom-meta-integration.php:100
+msgid "%1$s settings"
+msgstr "Nastavení %1$s"
+
+#: inc/class-wpseo-replace-vars.php:1528
+msgid "Replaced with a custom taxonomies description"
+msgstr "Nahrazeno popisem s vlastní taxonomií"
+
+#: inc/class-wpseo-replace-vars.php:1525
+msgid "Replaced with the slug which caused the 404"
+msgstr "Nahrazuje odkazem, který způsobuje chybu 404"
+
+#. translators: %s expands to the variable used for term title.
+#: inc/class-upgrade.php:1558 inc/options/class-wpseo-option-titles.php:345
+#: src/editors/framework/seo/terms/title-data-provider.php:27
+msgid "%s Archives"
+msgstr "%s Archivy"
+
+#: inc/class-wpseo-replace-vars.php:1527
+msgid "Replaced with a posts custom taxonomies, comma separated."
+msgstr "Nahradit příspěvky s vlastní taxonomií, oddělené čárkami."
+
+#: inc/class-wpseo-replace-vars.php:1526
+msgid "Replaced with a posts custom field value"
+msgstr "Nahradit příspěvky z pole s vlastní hodnotou"
+
+#: admin/views/tabs/tool/import-seo.php:88
+#: admin/views/tool-import-export.php:24
+msgid "Import"
+msgstr "Importovat"
+
+#: admin/class-export.php:65 admin/views/tabs/tool/wpseo-import.php:25
+#: admin/views/tabs/tool/wpseo-import.php:45
+#: admin/views/tool-import-export.php:86
+msgid "Import settings"
+msgstr "Importovat nastavení"
+
+#: inc/class-wpseo-replace-vars.php:1479
+msgid "Replaced with the post categories (comma separated)"
+msgstr "Nahrazeno kategoriemi příspěvků (oddělené čárkami)"
+
+#: inc/class-wpseo-replace-vars.php:1478
+msgid "Replaced with the current tag/tags"
+msgstr "Nahrazeno současným štítkem/ma"
+
+#: inc/class-wpseo-replace-vars.php:1477
+msgid "Replaced with the post/page excerpt (without auto-generation)"
+msgstr "Nahrazeno výňatkem z příspěvku/stránky (bez automatického generovaní)"
+
+#: inc/class-wpseo-replace-vars.php:1476
+msgid "Replaced with the post/page excerpt (or auto-generated if it does not exist)"
+msgstr "Nahrazeno výňatkem z příspěvku/stránky (nebo automatické generovaní pokud neexistuje)"
+
+#: inc/class-wpseo-replace-vars.php:1471
+msgid "Replaced with the title of the post/page"
+msgstr "Nahrazeno názvem příspěveku/stránky"
+
+#: inc/class-wpseo-replace-vars.php:1470
+msgid "Replaced with the date of the post/page"
+msgstr "Nahrazeno datem příspěveku/stránky"
+
+#: inc/class-wpseo-replace-vars.php:1481
+msgid "Replaced with the category description"
+msgstr "Nahrazeno popisem kategorie"
+
+#: inc/class-wpseo-replace-vars.php:1482
+msgid "Replaced with the tag description"
+msgstr "Nahrazeno popisem štítku"
+
+#: inc/class-wpseo-replace-vars.php:1483
+msgid "Replaced with the term description"
+msgstr "Nahrazeno popisem termínu"
+
+#: inc/class-wpseo-replace-vars.php:1484
+msgid "Replaced with the term name"
+msgstr "Nahrazeno názvem termínu"
+
+#: inc/class-wpseo-replace-vars.php:1516
+msgid "Replaced with the post/page modified time"
+msgstr "Nahrazeno časem změny příspěvku/sránky"
+
+#: inc/class-wpseo-replace-vars.php:1517
+msgid "Replaced with the post/page ID"
+msgstr "Nahrazeno ID-čkem příspěvku/stránky"
+
+#: inc/class-wpseo-replace-vars.php:1518
+msgid "Replaced with the post/page author's 'nicename'"
+msgstr "Nahrazeno uživatelským jménem autora příspěvku/stránky"
+
+#: inc/class-wpseo-replace-vars.php:1485
+msgid "Replaced with the current search phrase"
+msgstr "Nahrazeno aktuálně hledanou frází"
+
+#: inc/class-wpseo-replace-vars.php:1488
+msgid "Replaced with the current date"
+msgstr "Nahrazeno aktuálním datem"
+
+#: inc/class-wpseo-replace-vars.php:1490
+msgid "Replaced with the current month"
+msgstr "Nahrazeno aktuálním měsícem"
+
+#: inc/class-wpseo-replace-vars.php:1489
+msgid "Replaced with the current year"
+msgstr "Nahrazeno aktuálním rokem"
+
+#: inc/class-wpseo-replace-vars.php:1521
+msgid "Replaced with the current page total"
+msgstr "Nahrazeno celkovým počtem stran aktuálního záznamu"
+
+#: inc/class-wpseo-replace-vars.php:1524
+msgid "Replaced with the posts focus keyphrase"
+msgstr "Nahrazeno hlavním klíčovým slovem příspěvku"
+
+#: src/user-meta/framework/custom-meta/author-metadesc.php:97
+msgid "Meta description to use for Author page"
+msgstr "Meta popis pro stránku autora"
+
+#: inc/class-wpseo-replace-vars.php:110
+msgid "A replacement variable can not start with \"%%cf_\" or \"%%ct_\" as these are reserved for the WPSEO standard variable variables for custom fields and custom taxonomies. Try making your variable name unique."
+msgstr "Náhradní proměnná nemůže začínat na \"%%cf_\" nebo \"%%ct_\", protože tyto prefixy jsou využívány jako základní proměnné WPSEO pro uživatelská pole a vlastní taxonomie. Pokuste se zvolit unikátní název své proměnné."
+
+#: inc/class-wpseo-replace-vars.php:124
+msgid "You cannot overrule a WPSEO standard variable replacement by registering a variable with the same name. Use the \"wpseo_replacements\" filter instead to adjust the replacement value."
+msgstr "Pokoušíte se upravit základní proměnnou WPSEO registrováním nové proměnné stejného názvu. Použijte filtr \"wpseo_replacements\" namísto změny hodnoty proměnné."
+
+#: inc/class-wpseo-replace-vars.php:1472
+msgid "Replaced with the title of the parent page of the current page"
+msgstr "Nahrazeno titulkem nadřazené stránky."
+
+#: inc/class-wpseo-replace-vars.php:1520
+msgid "Replaced with the current page number with context (i.e. page 2 of 4)"
+msgstr "Nahrazeno číslem aktuální stránky dle kontextu (např. stránka 2 ze 4)"
+
+#: admin/views/tool-bulk-editor.php:113 js/dist/new-settings.js:415
+msgid "Description"
+msgstr "Popis"
+
+#: src/integrations/admin/import-integration.php:119
+msgid "Default settings"
+msgstr "Výchozí nastavení"
+
+#: inc/options/class-wpseo-option-titles.php:275
+msgid "Page not found"
+msgstr "Stránka nenalezena"
+
+#: src/user-meta/framework/custom-meta/author-title.php:97
+msgid "Title to use for Author page"
+msgstr "Titulek pro stránku Autora"
+
+#: inc/class-wpseo-replace-vars.php:1522
+msgid "Replaced with the current page number"
+msgstr "Nahrazeno aktuálním číslem stránky"
+
+#: inc/class-wpseo-replace-vars.php:1474
+msgid "The site's name"
+msgstr "Název stránek"
+
+#: inc/class-wpseo-replace-vars.php:1523
+msgid "Attachment caption"
+msgstr "Příloha titulku"
+
+#: inc/class-wpseo-replace-vars.php:1491
+msgid "Replaced with the current day"
+msgstr "Nahraďte současným datem"
+
+#: admin/pages/tools.php:30
+msgid "Import and Export"
+msgstr "Import a Export"
+
+#: admin/views/tabs/dashboard/dashboard.php:40
+msgid "Credits"
+msgstr "Poděkování"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-export.php:15
+msgid "Export your %1$s settings"
+msgstr "Exportujte vaše nastavení pro %1$s"
+
+#: admin/statistics/class-statistics-service.php:80
+msgid "Below are your published posts' SEO scores. Now is as good a time as any to start improving some of your posts!"
+msgstr "Níže je SEO skóre pro vámi publikované příspěvky. Proč nezačít zlepšovat některé z vašich příspěvků?"
+
+#: admin/pages/tools.php:77
+msgid "&laquo; Back to Tools page"
+msgstr "&laquo; Zpět na Nástroje"
+
+#: inc/class-wpseo-replace-vars.php:107
+msgid "A replacement variable can only contain alphanumeric characters, an underscore or a dash. Try renaming your variable."
+msgstr "Náhradní proměnná může obsahovat pouze alfanumerické znaky, podtržítko nebo pomlčku. Zkuste svou proměnnou přejmenovat."
+
+#: admin/pages/tools.php:42
+msgid "Bulk editor"
+msgstr "Hromadná editace"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/tools.php:49
+msgid "%1$s comes with some very powerful built-in tools:"
+msgstr "%1$s přichází s některými velmi užitečnými vestavěnými nástroji:"
+
+#: admin/pages/tools.php:31
+msgid "Import settings from other SEO plugins and export your settings for re-use on (another) site."
+msgstr "Importujte nastavení z jiných SEO pluginů a exportujte nastavení pro znovupoužití na (jiném) blogu."
+
+#: admin/pages/tools.php:37
+msgid "This tool allows you to quickly change important files for your SEO, like your robots.txt and, if you have one, your .htaccess file."
+msgstr "Tento nástroj vám umožňuje rychle měnit důležité soubory pro vaše SEO, jako váš robots.txt a, pokud nějaký máte, váš .htaccess soubor."
+
+#: inc/class-wpseo-replace-vars.php:1519
+msgid "Replaced with the post/page author's 'Biographical Info'"
+msgstr "Nahrazeno 'Biografickými údaji' o autorovi stránky/příspěvku"
+
+#: admin/pages/tools.php:43
+msgid "This tool allows you to quickly change titles and descriptions of your posts and pages without having to go into the editor for each page."
+msgstr "tento nástroj vám umožňuje rychlou změnu názvů a popisů příspěvků a stránek bez toho, abyste museli otevírat v editoru každou stránku."
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:116
+msgid "You don't have a %s file, create one here:"
+msgstr "Soubor %s neexistuje, vytvořte ho zde:"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:153 admin/views/tool-file-editor.php:203
+msgid "If your %s were writable, you could edit it from here."
+msgstr "Pokud by byl Váš soubor %s zapisovatelný, mohli byste jej upravit zde."
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:135 admin/views/tool-file-editor.php:235
+msgid "If you had a %s file and it was editable, you could edit it from here."
+msgstr "Pokud máte soubor %s a lze otevřít pro úpravy, odtud můžete provádět změny. "
+
+#: inc/class-wpseo-replace-vars.php:1515
+msgid "Replaced with the content type plural label"
+msgstr "Nahrazeno množným štítkem typu obsahu"
+
+#: inc/class-wpseo-replace-vars.php:120
+msgid "A replacement variable with the same name has already been registered. Try making your variable name unique."
+msgstr "Náhradní proměnná se stejným názvem již byla zaregistrována. Zkuste jedinečný název proměnné."
+
+#: inc/class-wpseo-replace-vars.php:1514
+msgid "Replaced with the content type single label"
+msgstr "Nahrazeno jednoduchým štítkem typu obsahu"
+
+#. translators: %1$s resolves to Yoast SEO, %2$s resolves to the Settings
+#. submenu item.
+#: src/presenters/meta-description-presenter.php:35
+msgid "Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [%1$s - %2$s] menu and set up a template."
+msgstr "Upozornění pro správce webu: tato stránka nezobrazí popis metadat, protože jej nemá, buď jej pro tuto stránku napište, nebo přejděte do nabídky [%1$s - %2$s] a vytvořte šablonu."
+
+#: admin/class-yoast-network-admin.php:80
+msgid "spam"
+msgstr "spam"
+
+#: src/integrations/admin/first-time-configuration-integration.php:502
+#: js/dist/new-settings.js:542
+msgid "Person"
+msgstr "Osoba"
+
+#: admin/class-yoast-network-admin.php:77
+msgid "public"
+msgstr "veřejný"
+
+#: admin/views/tabs/network/general.php:27
+msgid "Site Admins (default)"
+msgstr "Správci webu (výchozí)"
+
+#: admin/views/tabs/network/general.php:28
+msgid "Super Admins only"
+msgstr "Pouze Super Administrátoři"
+
+#: admin/views/tabs/network/restore-site.php:16
+msgid "Using this form you can reset a site to the default SEO settings."
+msgstr "Pomocí tohoto formuláře můžete obnovit stránky na výchozí SEO nastavení."
+
+#: admin/views/tabs/network/restore-site.php:32
+msgid "Restore site to defaults"
+msgstr "Obnovení výchozí stránky"
+
+#: admin/views/tool-bulk-editor.php:111 inc/class-wpseo-replace-vars.php:1471
+#: js/dist/externals-redux.js:1
+msgid "Title"
+msgstr "Název"
+
+#: admin/class-plugin-availability.php:57
+msgid "Optimize your videos to show them off in search results and get more clicks!"
+msgstr "Optimalizujte svá videa pro jejich lepší propagaci ve výsledcích vyhledávání a získejte více kliknutí!"
+
+#: admin/class-plugin-availability.php:67
+msgid "Are you in Google News? Increase your traffic from Google News by optimizing for it!"
+msgstr "Jste v Google News? Zvyšte přístupy svého webu z Google News další optimalizací!"
+
+#: admin/class-plugin-availability.php:77
+msgid "Rank better locally and in Google Maps, without breaking a sweat!"
+msgstr "Umístěte se výše v Google Maps, bez potu a úsilí!"
+
+#. translators: %s expands to the name of a site within a multisite network.
+#: admin/class-yoast-network-admin.php:174
+msgid "%s restored to default SEO settings."
+msgstr "%s obnoveno na základní SEO nastavení."
+
+#: admin/class-yoast-network-admin.php:140
+msgid "Settings Updated."
+msgstr "Nastavení aktualizováno"
+
+#: admin/views/tabs/network/general.php:37
+#: admin/views/tabs/network/general.php:43
+msgid "New sites in the network inherit their SEO settings from this site"
+msgstr "Nové weby v síti dědí jejich nastavení SEO z tohoto webu"
+
+#: admin/class-yoast-network-admin.php:79
+msgid "mature"
+msgstr "vyspělé"
+
+#: admin/class-yoast-network-admin.php:78
+msgid "archived"
+msgstr "archivovaný"
+
+#: admin/views/tabs/network/general.php:54
+msgid "Take note:"
+msgstr "Vezměte na vědomí:"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-availability.php:89
+msgid "Seamlessly integrate WooCommerce with %1$s and get extra features!"
+msgstr "Hladce integrujte WooCommerce s %1$s a získejte další funkce!"
+
+#: admin/views/tabs/network/restore-site.php:23
+#: admin/views/tabs/network/restore-site.php:28
+msgid "Site ID"
+msgstr "ID stránky"
+
+#. Translators: %s: expands to Yoast SEO Premium
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:15
+msgid "Creating redirects is a %s feature"
+msgstr "Vytváření přesměrování je funkce %s"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/network/general.php:25
+msgid "Who should have access to the %1$s settings"
+msgstr "Kdo by měl mít přístup do nastavení %1$s"
+
+#. Translators: %1$s: expands to 'Yoast SEO Premium', %2$s: links to Yoast SEO
+#. Premium plugin page.
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:22
+msgid "To be able to create a redirect and fix this issue, you need %1$s. You can buy the plugin, including one year of support and updates, on %2$s."
+msgstr "Abyste mohli vytvořit přesměrování a opravit tak tento problém, potřebujete %1$s. Plugin si včetně roční podpory a aktualizací můžete koupit na %2$s."
+
+#: admin/views/tabs/network/general.php:40
+msgid "Choose the site whose settings you want to use as default for all sites that are added to your network. If you choose 'None', the normal plugin defaults will be used."
+msgstr "Vyberte stránky, jejichž nastavení chcete použít jako výchozí nastavení pro všechny stránky v síti. Pokud vyberete 'Žádná', budou použity výchozí hodnoty pluginu."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-availability.php:45
+msgid "The premium version of %1$s with more features & support."
+msgstr "Prémiová verze %1$s obsahuje více funkcí a uživatelskou podporu."
+
+#: inc/class-wpseo-replace-vars.php:1497
+msgid "Permalink"
+msgstr "Trvalý odkaz"
+
+#: admin/views/tabs/network/general.php:54
+msgid "Privacy sensitive (FB admins and such), theme specific (title rewrite) and a few very site specific settings will not be imported to new sites."
+msgstr "Na nové weby nebudou importovány údaje citlivé na soukromí (administrátoři FB apod.), Specifické téma (přepisování názvu) a několik nastavení specifických pro konkrétní web."
+
+#. translators: 1: link open tag; 2: link close tag.
+#: admin/views/tabs/network/general.php:47
+msgid "Enter the %1$sSite ID%2$s for the site whose settings you want to use as default for all sites that are added to your network. Leave empty for none (i.e. the normal plugin defaults will be used)."
+msgstr "Vložte %1$sID stránek%2$s těch stránek, jejichž nastavení má být použito jako výchozí nastavení pro všechny stránky, kterou jsou přidány do vaší sítě, nebo ponechte prázdné (bude použito výchozí nastavení pluginu)."
+
+#. translators: %s: 'Facebook' plugin name of possibly conflicting plugin
+#: admin/class-yoast-plugin-conflict.php:184
+msgid "Deactivate %s"
+msgstr "Deaktivovat %s"
+
+#: admin/class-meta-columns.php:273
+msgid "All SEO Scores"
+msgstr "Všechny SEO skóre"
+
+#: admin/statistics/class-statistics-service.php:222
+#: inc/class-wpseo-rank.php:141 inc/class-wpseo-rank.php:181
+#: inc/class-wpseo-rank.php:213
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:46
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:46
+#: js/dist/block-editor.js:498 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:384 js/dist/externals-components.js:122
+#: js/dist/externals/analysis.js:409 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
+msgid "OK"
+msgstr "OK"
+
+#: admin/class-meta-columns.php:129
+msgid "Meta Desc."
+msgstr "Meta Desc."
+
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:27
+#: js/dist/ai-consent.js:5 js/dist/ai-generator.js:6 js/dist/ai-generator.js:21
+#: js/dist/ai-generator.js:37 js/dist/ai-generator.js:55
+#: js/dist/ai-generator.js:61 js/dist/ai-generator.js:272
+#: js/dist/ai-generator.js:274 js/dist/ai-generator.js:276
+#: js/dist/editor-modules.js:116 js/dist/editor-modules.js:120
+#: js/dist/editor-modules.js:135 js/dist/editor-modules.js:151
+#: js/dist/editor-modules.js:169 js/dist/editor-modules.js:379
+#: js/dist/editor-modules.js:381 js/dist/editor-modules.js:383
+#: js/dist/externals-components.js:126 js/dist/externals-components.js:131
+#: js/dist/externals-components.js:146 js/dist/externals-components.js:162
+#: js/dist/externals-components.js:180 js/dist/externals-components.js:390
+#: js/dist/externals-components.js:392 js/dist/externals-components.js:394
+#: js/dist/externals/aiFrontend.js:170 js/dist/externals/aiFrontend.js:175
+#: js/dist/externals/componentsNew.js:626
+#: js/dist/externals/dashboardFrontend.js:6 js/dist/general-page.js:12
+#: js/dist/general-page.js:32 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:3 js/dist/introductions.js:7
+#: js/dist/introductions.js:11 js/dist/introductions.js:12
+#: js/dist/new-settings.js:12 js/dist/new-settings.js:41
+msgid "Close"
+msgstr "Zavřít"
+
+#. translators: %s is the plugin name
+#: admin/class-yoast-dashboard-widget.php:77
+msgid "%s Posts Overview"
+msgstr "%s přehled příspěvků"
+
+#. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
+#. conflicting plugin(s), %2$s to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:180
+msgid "The %1$s plugin might cause issues when used in conjunction with %2$s."
+msgstr "Při současném používání pluginu %1$s a %2$s může docházet k problémům."
+
+#. translators: %1$s expands to Yoast SEO.
+#: admin/class-plugin-conflict.php:71
+msgid "Configure %1$s's Open Graph settings"
+msgstr "Nastavit %1$s OpenGraph nastavení"
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'Google XML Sitemaps' plugin
+#. name of possibly conflicting plugin with regard to the creation of sitemaps.
+#: admin/class-plugin-conflict.php:78
+msgid "Both %1$s and %2$s can create XML sitemaps. Having two XML sitemaps is not beneficial for search engines and might slow down your site."
+msgstr "Jak %1$s, tak %2$s mohou vytvářet XML sitemapy. Mít dvě XML sitemapy není dobré pro vyhledávače a může vést ke zpomalení Vaší stránky."
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'Facebook' plugin name of
+#. possibly conflicting plugin with regard to creating OpenGraph output.
+#: admin/class-plugin-conflict.php:67
+msgid "Both %1$s and %2$s create Open Graph output, which might make Facebook, X, LinkedIn and other social networks use the wrong texts and images when your pages are being shared."
+msgstr "Jak %1$s, tak %2$s mohou vytvářejí OpenGraph výstup, který může způsobit to, že Facebook, X, LinkedIn a další sociální sítě použijí nesprávný text a obrázky  ve chvíli, kdy budou vaše stránky sdíleny."
+
+#. translators: %s expands to the number of trashed posts in localized format.
+#: admin/class-bulk-editor-list-table.php:357
+msgctxt "posts"
+msgid "Trash <span class=\"count\">(%s)</span>"
+msgid_plural "Trash <span class=\"count\">(%s)</span>"
+msgstr[0] "Odstranit <span class=\"count\">(%s)</span>"
+msgstr[1] "Odstranit <span class=\"count\">(%s)</span>"
+msgstr[2] "Odstranit <span class=\"count\">(%s)</span>"
+
+#: admin/menu/class-admin-menu.php:96 js/dist/new-settings.js:532
+msgid "Tools"
+msgstr "Nástroje"
+
+#: inc/class-wpseo-replace-vars.php:1524
+msgid "Focus keyword"
+msgstr "Klíčové slovo zaměření "
+
+#: admin/menu/class-network-admin-menu.php:63
+msgid "Edit Files"
+msgstr "Upravit soubory"
+
+#: admin/class-admin.php:182
+msgid "Posts"
+msgstr "Příspěvky"
+
+#: admin/class-admin.php:308
+#: src/user-meta/framework/additional-contactmethods/facebook.php:28
+msgid "Facebook profile URL"
+msgstr "URL adresa profilu na Facebooku"
+
+#: admin/class-meta-columns.php:828
+msgid "Post is set to noindex."
+msgstr "Příspěvek je nastaven na \"neindexovat\"."
+
+#: src/presenters/admin/search-engines-discouraged-presenter.php:33
+msgid "Huge SEO Issue: You're blocking access to robots."
+msgstr "Obrovský SEO problém: Blokuje přístup pro roboty."
+
+#: admin/import/class-import-settings.php:121
+msgid "Settings successfully imported."
+msgstr "Nastavení úspěšně importováno."
+
+#: admin/import/class-import-settings.php:85
+msgid "Settings could not be imported:"
+msgstr "Nastavení nelze importovat:"
+
+#: admin/metabox/class-metabox.php:173
+#: js/dist/externals/replacementVariableEditor.js:71
+#: js/dist/externals/searchMetadataPreviews.js:102 js/dist/new-settings.js:21
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:34
+#: js/dist/new-settings.js:38 js/dist/new-settings.js:91
+#: js/dist/new-settings.js:111 js/dist/new-settings.js:160
+#: js/dist/new-settings.js:207 js/dist/new-settings.js:312
+#: js/dist/new-settings.js:339 js/dist/new-settings.js:354
+#: js/dist/new-settings.js:412
+msgid "Meta description"
+msgstr "Meta popis"
+
+#: admin/metabox/class-metabox.php:196 js/dist/block-editor.js:254
+#: js/dist/classic-editor.js:237
+msgid "Breadcrumbs Title"
+msgstr "Název drobečkové navigace"
+
+#: admin/metabox/class-metabox.php:193 js/dist/block-editor.js:253
+#: js/dist/classic-editor.js:236
+msgid "No Archive"
+msgstr "Nearchivovat"
+
+#: admin/metabox/class-metabox.php:194 js/dist/block-editor.js:253
+#: js/dist/classic-editor.js:236
+msgid "No Snippet"
+msgstr "Žádný úryvek (snippet)"
+
+#: admin/metabox/class-metabox.php:197
+msgid "Title to use for this page in breadcrumb paths"
+msgstr "Název který bude použit na této stránce v adrese Drobečkové navigáce"
+
+#: admin/metabox/class-metabox.php:209
+msgid "The URL that this page should redirect to."
+msgstr "URL na kterou se má tato stránka přesměrovat"
+
+#: admin/metabox/class-metabox.php:178
+msgid "Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won't have an effect."
+msgstr "Varování: přestože zde můžete změnit nastavit tagu meta robots, celý váš web je nastaven na noindex v 'nastavení zobrazování webu', takže toto nastavení nebude mít fakticky žádný efekt."
+
+#: admin/ajax.php:162
+msgid "Post doesn't exist."
+msgstr "Příspěvek neexistuje."
+
+#. translators: %s expands to post type name.
+#: admin/ajax.php:185
+msgid "You can't edit %s."
+msgstr "Nemůžete upravovat %s."
+
+#. translators: %s expands to the name of a post type (plural).
+#: admin/ajax.php:197
+msgid "You can't edit %s that aren't yours."
+msgstr "Nemůžete upravovat %s který není váš."
+
+#: admin/class-bulk-editor-list-table.php:1038
+msgid "Post Status"
+msgstr "Stav příspěvku"
+
+#: admin/class-bulk-description-editor-list-table.php:47
+msgid "New Yoast Meta Description"
+msgstr "Nový Yoast meta popis"
+
+#: admin/class-bulk-editor-list-table.php:1045
+msgid "Action"
+msgstr "Akce"
+
+#: admin/class-bulk-editor-list-table.php:844
+#: js/dist/externals/dashboardFrontend.js:4 js/dist/general-page.js:47
+#: js/dist/general-page.js:76
+msgid "Edit"
+msgstr "Upravit"
+
+#. translators: Hidden accessibility text; %s: post title.
+#: admin/class-bulk-editor-list-table.php:855
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Náhled &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:856
+msgid "Preview"
+msgstr "Náhled"
+
+#. translators: Hidden accessibility text; %s: post title.
+#: admin/class-bulk-editor-list-table.php:865
+msgid "View &#8220;%s&#8221;"
+msgstr "Zobrazit &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:866 js/dist/block-editor.js:83
+#: js/dist/classic-editor.js:66 js/dist/externals/dashboardFrontend.js:5
+#: js/dist/wincher-dashboard-widget.js:125
+msgid "View"
+msgstr "Zobrazit"
+
+#: admin/metabox/class-metabox.php:432
+#: admin/taxonomy/class-taxonomy-metabox.php:159 js/dist/new-settings.js:38
+msgid "Social"
+msgstr "Sociální sítě"
+
+#: admin/menu/class-network-admin-menu.php:56 admin/pages/network.php:18
+#: src/general/user-interface/general-page-integration.php:213
+#: js/dist/new-settings.js:592
+msgid "General"
+msgstr "Obecné"
+
+#: admin/metabox/class-metabox.php:208
+msgid "301 Redirect"
+msgstr "301 Přesměrování"
+
+#: admin/metabox/class-metabox.php:199 js/dist/block-editor.js:255
+#: js/dist/classic-editor.js:238
+msgid "Canonical URL"
+msgstr "Kanonická URL"
+
+#: admin/class-meta-columns.php:128
+msgid "SEO Title"
+msgstr "SEO Titulek"
+
+#: admin/metabox/class-metabox.php:407
+#: admin/taxonomy/class-taxonomy-metabox.php:141
+#: inc/class-wpseo-admin-bar-menu.php:763
+#: src/services/health-check/report-builder.php:168
+msgid "SEO"
+msgstr "SEO"
+
+#: admin/class-admin.php:224 src/integrations/settings-integration.php:380
+#: src/presenters/meta-description-presenter.php:37 js/dist/how-to-block.js:7
+msgid "Settings"
+msgstr "Nastavení"
+
+#: admin/class-yoast-network-admin.php:43 src/config/schema-types.php:163
+#: src/integrations/settings-integration.php:645 js/dist/new-settings.js:12
+#: js/dist/new-settings.js:594
+msgid "None"
+msgstr "Žádný"
+
+#: admin/ajax.php:206
+msgid "You have used HTML in your value which is not allowed."
+msgstr "Použili jste HTML, což není povoleno."
+
+#: admin/class-bulk-editor-list-table.php:1039
+msgid "Publication date"
+msgstr "Datum publikace"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to the installed
+#. version, %3$s expands to Gutenberg
+#: admin/class-admin-gutenberg-compatibility-notification.php:88
+msgid "%1$s detected you are using version %2$s of %3$s, please update to the latest version to prevent compatibility issues."
+msgstr "%1$s zjistil, že používáte %3$s ve verzi %2$s. Abyste předešli problémům s kompatibilitou, aktualizujte prosím na poslední verzi."
+
+#: admin/metabox/class-metabox.php:192 js/dist/block-editor.js:253
+#: js/dist/classic-editor.js:236
+msgid "No Image Index"
+msgstr "Žádný Index obrázek"
+
+#: admin/class-bulk-editor-list-table.php:438
+msgid "Filter"
+msgstr "Filtr"
+
+#: admin/class-bulk-editor-list-table.php:1036
+msgid "WP Page Title"
+msgstr "Titulek WP stránky"
+
+#: admin/class-bulk-editor-list-table.php:1040
+msgid "Page URL/Slug"
+msgstr "URL stránky/slugu"
+
+#: admin/class-bulk-description-editor-list-table.php:46
+msgid "Existing Yoast Meta Description"
+msgstr "Aktuální Yoast meta popis"
+
+#: src/services/health-check/default-tagline-runner.php:32
+msgid "Just another WordPress site"
+msgstr "Další WordPress stránka"
+
+#: admin/views/class-yoast-feature-toggles.php:132 js/dist/new-settings.js:31
+#: js/dist/new-settings.js:526 js/dist/new-settings.js:529
+msgid "XML sitemaps"
+msgstr "XML sitemapa"
+
+#: admin/menu/class-admin-menu.php:92
+msgid "Search Console"
+msgstr "Vyhledávací konzole"
+
+#. translators: %s expands to post type.
+#: admin/ajax.php:173
+msgid "Post has an invalid Content Type: %s."
+msgstr "Příspěvek má neplatný typ obsahu: %s."
+
+#. translators: %s expands to the number of posts in localized format.
+#: admin/class-bulk-editor-list-table.php:308
+msgctxt "posts"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Celkem <span class=\"count\">(%s)</span>"
+msgstr[1] "Celkem <span class=\"count\">(%s)</span>"
+msgstr[2] "Celkem <span class=\"count\">(%s)</span>"
+
+#: admin/metabox/class-metabox.php:190 js/dist/block-editor.js:253
+#: js/dist/classic-editor.js:236
+msgid "Meta robots advanced"
+msgstr "Pokročilé nastavení meta robots"
+
+#. translators: 1: link open tag; 2: link close tag.
+#: admin/metabox/class-metabox.php:203
+msgid "The canonical URL that this page should point to. Leave empty to default to permalink. %1$sCross domain canonical%2$s supported too."
+msgstr "Kanonická URL, na kterou by tato stránka měla odkazovat. Ponechte prázdné pro výchozí permalink. %1$sMezidoménové kanonické URL jsou též podporovány%2$s."
+
+#: admin/class-admin.php:229 js/dist/externals-components.js:440
+msgid "FAQ"
+msgstr "Nejčastější dotazy"

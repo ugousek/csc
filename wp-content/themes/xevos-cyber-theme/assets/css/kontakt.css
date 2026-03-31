@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Kontakt page – standalone stylesheet
+   Figma node 586:20: Form + info sidebar, reviews.
+   Hero uses shared component (hero-page.php → xevos-blog-hero classes).
+   Contact info uses shared component (contact-info.php).
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Contact layout – form left  |  info sidebar right
+   Figma: 902px form  |  574px info, gap 124px
+   -------------------------------------------------------------------------- */
+.xevos-blog-hero__image img {
+  position: relative;
+  top: -35px;
+}
+
+.xevos-kontakt {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .xevos-kontakt {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .xevos-kontakt {
+    grid-template-columns: 1.6fr 1fr;
+    gap: clamp(3rem, 7.75vw, 7.75rem);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Form row (two-col fields)
+   -------------------------------------------------------------------------- */
+.xevos-kontakt-form .xevos-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 480px) {
+  .xevos-kontakt-form .xevos-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Form labels – Figma: Sora 18px
+   -------------------------------------------------------------------------- */
+.xevos-kontakt-form .xevos-form__label {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.125vw, 1.125rem);
+  margin-bottom: 0.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Responsive – Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .xevos-kontakt {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* */
+
+#formular .xevos-btn--primary {
+  margin-top: 2.5rem;
+}

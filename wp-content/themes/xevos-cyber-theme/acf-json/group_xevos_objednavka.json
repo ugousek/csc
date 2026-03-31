@@ -1,0 +1,145 @@
+{
+  "key": "group_xevos_objednavka",
+  "title": "Objednávka – detail",
+  "fields": [
+    {
+      "key": "field_obj_jmeno",
+      "label": "Jméno",
+      "name": "jmeno",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_prijmeni",
+      "label": "Příjmení",
+      "name": "prijmeni",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_email",
+      "label": "E-mail",
+      "name": "email",
+      "type": "email"
+    },
+    {
+      "key": "field_obj_telefon",
+      "label": "Telefon",
+      "name": "telefon",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_firma",
+      "label": "Firma",
+      "name": "firma",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_ico",
+      "label": "IČO",
+      "name": "ico",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_dic",
+      "label": "DIČ",
+      "name": "dic",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_fakturacni",
+      "label": "Fakturační adresa",
+      "name": "fakturacni_adresa",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_obj_fa_ulice",
+          "label": "Ulice",
+          "name": "ulice",
+          "type": "text"
+        },
+        {
+          "key": "field_obj_fa_mesto",
+          "label": "Město",
+          "name": "mesto",
+          "type": "text"
+        },
+        {
+          "key": "field_obj_fa_psc",
+          "label": "PSČ",
+          "name": "psc",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "key": "field_obj_skoleni",
+      "label": "Školení",
+      "name": "skoleni",
+      "type": "post_object",
+      "post_type": ["skoleni"],
+      "return_format": "object"
+    },
+    {
+      "key": "field_obj_termin",
+      "label": "Termín",
+      "name": "termin",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_castka",
+      "label": "Částka",
+      "name": "castka",
+      "type": "number",
+      "prepend": "Kč"
+    },
+    {
+      "key": "field_obj_stav",
+      "label": "Stav platby",
+      "name": "stav_platby",
+      "type": "select",
+      "choices": {
+        "pending": "Čeká na platbu",
+        "paid": "Zaplaceno",
+        "cancelled": "Zrušeno",
+        "refunded": "Refundováno"
+      },
+      "default_value": "pending"
+    },
+    {
+      "key": "field_obj_comgate_id",
+      "label": "Comgate Transaction ID",
+      "name": "comgate_transaction_id",
+      "type": "text"
+    },
+    {
+      "key": "field_obj_datum",
+      "label": "Datum objednávky",
+      "name": "datum_objednavky",
+      "type": "date_picker",
+      "display_format": "d.m.Y",
+      "return_format": "d.m.Y"
+    },
+    {
+      "key": "field_obj_faktura",
+      "label": "PDF faktura",
+      "name": "pdf_faktura",
+      "type": "file",
+      "return_format": "array",
+      "mime_types": "pdf"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "objednavka"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "active": true
+}

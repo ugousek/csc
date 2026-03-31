@@ -1,0 +1,49 @@
+{
+  "key": "group_xevos_legal",
+  "title": "Právní stránka",
+  "fields": [
+    {
+      "key": "field_legal_datum",
+      "label": "Datum poslední aktualizace",
+      "name": "datum_posledni_aktualizace",
+      "type": "date_picker",
+      "display_format": "d.m.Y",
+      "return_format": "d.m.Y"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-obchodni-podminky.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-zasady-ochrany-osobnich-udaju.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-zasady-cookies.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-legal.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "active": true
+}

@@ -1,0 +1,717 @@
+/* ==========================================================================
+   Kybernetické testování & Kybernetická politika – shared styles
+   Used on both homepage and /kyberneticke-testovani/ page.
+   ========================================================================== */
+
+
+/* Pattern overlay — starts from 50% of kyber-test section to end of page (incl. footer/partners).
+   JS sets --pattern-top on body based on section position. */
+body {
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: var(--pattern-top, 50%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../img/pattern.png);
+  background-size: 50%;
+  background-repeat: repeat;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   1. Kybernetické testování – slider section
+   Figma: centered heading, image left + text panel right, numbered pagination
+   -------------------------------------------------------------------------- */
+.xevos-blog-hero {
+  z-index: 1;
+}
+
+.xevos-page-hero__bg--gradient {
+  z-index: -1;
+}
+
+
+.xevos-kyber-test-section {
+  background: transparent;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+/* Centered heading area — Figma: centered, 972px max */
+.xevos-kyber-test__header {
+  text-align: center;
+  max-width: 1030px;
+  margin: 0 auto 2.5rem;
+}
+
+.xevos-kyber-test__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.25vw, 3.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.625rem;
+}
+
+.xevos-kyber-test__desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* Body: image + panel vedle sebe */
+.xevos-kyber-test__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .xevos-kyber-test__body {
+    position: relative;
+    top: -50px;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+/* Image area with cyan glow behind */
+.xevos-kyber-test__visual {
+  position: relative;
+  flex: 1.3;
+  min-width: 0;
+  margin-left: -5%;
+}
+
+.xevos-kyber-test__visual img {
+  width: 100%;
+  max-width: none;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+#kyber-test-main-img {
+  width: 115%;
+  max-width: none;
+  display: block;
+  position: relative;
+  left: -12%;
+  z-index: 1;
+}
+
+.xevos-kyber-test__blesk {
+  position: absolute !important;
+  top: -4%;
+  right: 70px;
+  width: auto !important;
+  max-width: none !important;
+  z-index: 2 !important;
+  pointer-events: none;
+  display: none !important;
+}
+
+/* Figma: Ellipse 28 — cyan radial gradient glow */
+.xevos-kyber-test__glow {
+  position: absolute;
+  top: -10%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(ellipse at center,
+      rgba(0, 187, 255, 0.15) 0%,
+      rgba(0, 187, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+/* Panel — flex child vedle obrázku */
+.xevos-kyber-test__panel {
+  flex: 1;
+  min-width: 0;
+  max-width: 650px;
+}
+
+/* Figma: H3 — Montserrat Black 32px uppercase */
+.xevos-kyber-test__panel h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+}
+
+/* Figma: Body-1 — Sora 24px */
+.xevos-kyber-test__panel-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 4rem;
+}
+
+/* Checklist — Figma: 2×2 grid, check icon + Sora 18px */
+.xevos-kyber-test__checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.xevos-kyber-test__checklist li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 1.125vw, 1.125rem);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* Figma: 32px circle, 10% white bg, cyan stroke, cyan check icon */
+.xevos-kyber-test__check-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(124, 218, 248, 0.80) 0%, rgba(27, 51, 229, 0.80) 100%), rgba(255, 255, 255, 0.10);
+  box-shadow: 0 0 13.2px 0 rgba(0, 183, 255, 0.80);
+}
+
+/* CTA button — Figma: magenta bg, arrow icon 72x72, Montserrat 400/24 UPPER */
+.xevos-kyber-test__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-heading);
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-white);
+  background: var(--color-accent);
+  border: 1px solid var(--color-white);
+  padding: 0.5rem 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.xevos-kyber-test__cta-btn:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.xevos-kyber-test__cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2.5rem, 4.5vw, 4.5rem);
+  height: clamp(2.5rem, 4.5vw, 4.5rem);
+}
+
+/* Swiper panel — fade between slides */
+.xevos-kyber-test__panel .swiper-slide {
+  padding-left: 10px;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
+}
+
+.xevos-kyber-test__panel .swiper-slide-active {
+  opacity: 1 !important;
+}
+
+/* Custom numbered pagination — Figma: pill shape, numbers */
+.xevos-kyber-test__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.25rem;
+  width: fit-content !important;
+  margin-inline: auto;
+  position: relative;
+  top: -60px !important;
+}
+
+.xevos-kyber-test__pagination .swiper-pagination-bullet {
+  width: auto;
+  height: auto;
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.xevos-kyber-test__pagination .swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  padding-inline: 64px;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Kybernetická politika
+   Figma: centered heading + image with overlay panel
+   -------------------------------------------------------------------------- */
+.xevos-kyber-politika {
+  background: transparent;
+  overflow: hidden;
+}
+
+.xevos-kyber-politika__header {
+  text-align: center;
+  max-width: 890px;
+  margin: 0 auto 4rem;
+}
+
+.xevos-kyber-politika__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.25vw, 3.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.625rem;
+}
+
+/* Figma: Sora 24px, rgba(236,236,236,0.70) */
+.xevos-kyber-politika__desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+}
+
+/* Body: flex — panel vlevo, obrázek vpravo */
+.xevos-kyber-politika__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .xevos-kyber-politika__body {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+/* Panel vlevo — 40% */
+.xevos-kyber-politika__panel {
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
+/* Obrázek vpravo — absolute na desktopu */
+.xevos-kyber-politika__visual {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .xevos-kyber-politika__visual {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+  }
+}
+
+.xevos-kyber-politika__visual img {
+  width: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.xevos-kyber-politika__glow {
+  position: absolute;
+  top: -10%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(ellipse at center, rgba(0, 187, 255, 0.15) 0%, rgba(0, 187, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+.xevos-kyber-politika__panel h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+}
+
+/* Figma: Sora 24px, rgba(236,236,236,0.70) */
+.xevos-kyber-politika__panel-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+/* Checklist base styles now in main.css (shared component) */
+/* Page-specific override: bottom margin for kyber-politika context */
+.xevos-kyber-politika__checklist {
+  margin-bottom: 4rem;
+}
+
+.xevos-kyber-politika__checklist li {
+  white-space: nowrap;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Postup testování (5 numbered steps grid)
+   -------------------------------------------------------------------------- */
+.xevos-postup-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .xevos-postup-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .xevos-postup-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.xevos-hp-recenze {
+  z-index: 1;
+  position: relative;
+}
+
+.xevos-hp-recenze__header {
+  margin: 0 auto 5rem;
+}
+
+.xevos-postup-step {
+  text-align: center;
+  position: relative;
+}
+
+/* Connecting line between steps — centered on the number circle */
+.xevos-postup-step+.xevos-postup-step::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  right: calc(50% + 100px);
+  left: calc(-50% + 65px);
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+  .xevos-postup-step+.xevos-postup-step::before {
+    display: none;
+  }
+}
+
+.xevos-postup-step__num {
+  width: fit-content;
+  color: #FFF;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 0.52px;
+  text-transform: uppercase;
+  padding: 28px 35px;
+  display: flex;
+  padding: 24px 33px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 187, 255, 0.20);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 0 92.8px 0 #00B7FF;
+  margin: 0 auto 3rem auto;
+}
+
+
+.xevos-postup-step__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+  text-transform: none;
+  font-style: normal;
+}
+
+.xevos-postup-step__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Responsive overrides
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+
+  .xevos-kyber-test__body,
+  .xevos-kyber-politika__body {
+    min-height: auto;
+  }
+
+  .xevos-kyber-test__panel,
+  .xevos-kyber-politika__panel {
+    position: static;
+    width: 100%;
+    max-width: none;
+    backdrop-filter: none;
+    background: rgba(15, 20, 60, 0.95);
+    padding: 1.5rem;
+  }
+
+  .xevos-kyber-test__checklist,
+  .xevos-kyber-politika__checklist {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .xevos-postup-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .xevos-postup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Co získáte / Pro koho
+   -------------------------------------------------------------------------- */
+.xevos-benefity-section {
+  padding-bottom: 0;
+}
+
+.xevos-two-col h2 {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.xevos-benefity-section__desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem);
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+.xevos-benefity-section .xevos-kyber-politika__checklist {
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.xevos-benefity-section .xevos-kyber-politika__checklist li {
+  white-space: normal;
+}
+
+.xevos-benefity-section__cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.xevos-two-col {
+  gap: 10rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Banner (full-width image with text overlay)
+   -------------------------------------------------------------------------- */
+.xevos-kt-banner {
+  padding-top: 10rem;
+  position: relative;
+  z-index: 1;
+}
+
+.xevos-kt-banner__inner {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.xevos-kt-banner__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.xevos-kt-banner__inner::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.10);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.xevos-kt-banner__content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 2.5rem;
+  max-width: 550px;
+}
+
+.xevos-kt-banner__content h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.xevos-kt-banner__content p {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.125vw, 1.125rem);
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+#formular {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #140354
+}
+
+#formular .xevos-btn--primary {
+  margin-top: auto;
+  width: fit-content;
+}
+
+.xevos-order-summary {
+  display: flex;
+  height: 100%;
+  padding: 2rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.xevos-partners {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #140354;
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile enhancements
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+
+  .xevos-kyber-test__visual img,
+  .xevos-kyber-politika__visual img {
+    max-height: 300px;
+    object-fit: contain;
+  }
+
+  .xevos-kyber-test__heading,
+  .xevos-kyber-politika__heading {
+    font-size: 1.75rem;
+  }
+
+  .xevos-kyber-test__desc,
+  .xevos-kyber-politika__desc {
+    font-size: 0.875rem;
+  }
+
+  .xevos-kyber-test__pagination {
+    justify-content: center;
+  }
+
+  .xevos-postup-step__number {
+    font-size: 2.5rem;
+  }
+
+  .xevos-postup-step__title {
+    font-size: 0.875rem;
+  }
+
+  .xevos-postup-step__line {
+    display: none;
+  }
+
+  .xevos-two-col h2 {
+    font-size: 1.75rem;
+  }
+
+  .xevos-kt-banner__content {
+    padding: 2rem 1.5rem;
+  }
+
+  .xevos-kt-banner__content h2 {
+    font-size: 1.5rem;
+  }
+
+  #formular .xevos-order-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 479px) {
+
+  .xevos-kyber-test__heading,
+  .xevos-kyber-politika__heading {
+    font-size: 1.5rem;
+  }
+
+  .xevos-postup-grid {
+    gap: 1.5rem;
+  }
+
+  .xevos-kt-banner {
+    min-height: 300px;
+  }
+}

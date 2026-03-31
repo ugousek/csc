@@ -1,0 +1,270 @@
+{
+  "key": "group_xevos_skoleni",
+  "title": "Školení – detail",
+  "fields": [
+    {
+      "key": "field_sk_hero_tab",
+      "label": "1. Hero",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_popis",
+      "label": "Popis školení",
+      "name": "popis",
+      "type": "wysiwyg",
+      "toolbar": "full",
+      "media_upload": 1,
+      "tabs": "all",
+      "instructions": "Zobrazuje se v hero sekci (zkráceně) a v sekci Pro koho je školení určeno (celý)"
+    },
+    {
+      "key": "field_sk_cena",
+      "label": "Cena bez DPH",
+      "name": "cena",
+      "type": "number",
+      "prepend": "Kč",
+      "min": 0
+    },
+    {
+      "key": "field_sk_cena_s_dph",
+      "label": "Cena s DPH",
+      "name": "cena_s_dph",
+      "type": "number",
+      "prepend": "Kč",
+      "min": 0
+    },
+    {
+      "key": "field_sk_typ",
+      "label": "Typ školení",
+      "name": "typ",
+      "type": "select",
+      "choices": {
+        "online": "Online",
+        "prezencni": "Prezenční",
+        "hybrid": "Hybridní"
+      },
+      "default_value": "prezencni",
+      "allow_null": 0
+    },
+
+    {
+      "key": "field_sk_terminy_tab",
+      "label": "2. Termíny",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_terminy",
+      "label": "Termíny",
+      "name": "terminy",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Přidat termín",
+      "sub_fields": [
+        {
+          "key": "field_sk_termin_datum",
+          "label": "Datum",
+          "name": "datum",
+          "type": "date_picker",
+          "display_format": "d.m.Y",
+          "return_format": "d.m.Y",
+          "wrapper": { "width": "20" }
+        },
+        {
+          "key": "field_sk_termin_cas_od",
+          "label": "Čas od",
+          "name": "cas_od",
+          "type": "time_picker",
+          "display_format": "H:i",
+          "return_format": "H:i",
+          "wrapper": { "width": "15" }
+        },
+        {
+          "key": "field_sk_termin_cas_do",
+          "label": "Čas do",
+          "name": "cas_do",
+          "type": "time_picker",
+          "display_format": "H:i",
+          "return_format": "H:i",
+          "wrapper": { "width": "15" }
+        },
+        {
+          "key": "field_sk_termin_misto",
+          "label": "Místo",
+          "name": "misto",
+          "type": "text",
+          "wrapper": { "width": "25" }
+        },
+        {
+          "key": "field_sk_termin_kapacita",
+          "label": "Kapacita",
+          "name": "kapacita",
+          "type": "number",
+          "min": 1,
+          "wrapper": { "width": "12" }
+        },
+        {
+          "key": "field_sk_termin_registrace",
+          "label": "Registrace",
+          "name": "pocet_registraci",
+          "type": "number",
+          "default_value": 0,
+          "min": 0,
+          "wrapper": { "width": "13" },
+          "instructions": "Automaticky navyšováno po objednávce"
+        }
+      ]
+    },
+
+    {
+      "key": "field_sk_lektori_tab",
+      "label": "3. Lektoři",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_lektori",
+      "label": "Lektoři",
+      "name": "lektori",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Přidat lektora",
+      "sub_fields": [
+        {
+          "key": "field_sk_lektor_jmeno",
+          "label": "Jméno",
+          "name": "jmeno",
+          "type": "text",
+          "required": 1
+        },
+        {
+          "key": "field_sk_lektor_foto",
+          "label": "Foto",
+          "name": "foto",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail"
+        },
+        {
+          "key": "field_sk_lektor_bio",
+          "label": "Bio",
+          "name": "bio",
+          "type": "textarea",
+          "rows": 3
+        }
+      ]
+    },
+
+    {
+      "key": "field_sk_harmonogram_tab",
+      "label": "4. Harmonogram & Osnova",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_harmonogram",
+      "label": "Harmonogram",
+      "name": "harmonogram",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat blok",
+      "sub_fields": [
+        {
+          "key": "field_sk_harm_cas",
+          "label": "Čas",
+          "name": "cas",
+          "type": "text",
+          "placeholder": "09:00–10:30",
+          "wrapper": { "width": "30" }
+        },
+        {
+          "key": "field_sk_harm_aktivita",
+          "label": "Aktivita",
+          "name": "aktivita",
+          "type": "text",
+          "wrapper": { "width": "70" }
+        }
+      ]
+    },
+    {
+      "key": "field_sk_osnova",
+      "label": "Osnova",
+      "name": "osnova",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat bod",
+      "sub_fields": [
+        {
+          "key": "field_sk_osnova_bod",
+          "label": "Bod osnovy",
+          "name": "bod",
+          "type": "text"
+        }
+      ]
+    },
+
+    {
+      "key": "field_sk_benefity_tab",
+      "label": "5. Co si odnesete & Kde parkovat",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_co_odnesete",
+      "label": "Co si odnesete",
+      "name": "co_odnesete",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat bod",
+      "sub_fields": [
+        { "key": "field_sk_co_odnesete_bod", "label": "Bod", "name": "bod", "type": "text" }
+      ]
+    },
+    {
+      "key": "field_sk_kde_parkovat",
+      "label": "Kde parkovat",
+      "name": "kde_parkovat",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_sk_kde_parkovat_img",
+      "label": "Kde parkovat – obrázek",
+      "name": "kde_parkovat_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+
+    {
+      "key": "field_sk_formular_tab",
+      "label": "6. Objednávka",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_formular",
+      "label": "Zobrazit objednávkový formulář",
+      "name": "objednavkovy_formular",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "skoleni"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true
+}

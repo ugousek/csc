@@ -1,0 +1,646 @@
+{
+  "key": "group_xevos_homepage",
+  "title": "Homepage",
+  "fields": [
+    {
+      "key": "field_hp_hero_tab",
+      "label": "Hero sekce",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_hero_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "hero_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_hero_heading",
+      "label": "Nadpis",
+      "name": "hero_heading",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_hero_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_hero_subheading",
+      "label": "Podnadpis",
+      "name": "hero_subheading",
+      "type": "textarea",
+      "rows": 2,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_hero_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_hero_popis",
+      "label": "Popis",
+      "name": "hero_popis",
+      "type": "textarea",
+      "rows": 3,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_hero_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_hero_cta_text",
+      "label": "CTA text",
+      "name": "hero_cta_text",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_hero_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_hero_cta_url",
+      "label": "CTA URL",
+      "name": "hero_cta_url",
+      "type": "url",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_hero_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_hero_bg",
+      "label": "Background",
+      "name": "hero_background",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_hero_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_sluzby_tab",
+      "label": "Služby",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_sluzby_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "sluzby_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_sluzby_heading",
+      "label": "Nadpis",
+      "name": "sluzby_heading",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_sluzby_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_sluzby",
+      "label": "Služby",
+      "name": "sluzby",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Přidat službu",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_sluzby_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "sub_fields": [
+        {
+          "key": "field_hp_sluzba_ikona",
+          "label": "Ikona",
+          "name": "ikona",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail"
+        },
+        {
+          "key": "field_hp_sluzba_nazev",
+          "label": "Název",
+          "name": "nazev",
+          "type": "text",
+          "required": 1
+        },
+        {
+          "key": "field_hp_sluzba_popis",
+          "label": "Popis",
+          "name": "popis",
+          "type": "textarea",
+          "rows": 3
+        },
+        {
+          "key": "field_hp_sluzba_url",
+          "label": "URL",
+          "name": "url",
+          "type": "url"
+        }
+      ]
+    },
+    {
+      "key": "field_hp_kyber_test_tab",
+      "label": "Kyber testování",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_kyber_test_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "kyber_test_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_kyber_test_heading",
+      "label": "Nadpis",
+      "name": "kyber_test_heading",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_test_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_kyber_test_text",
+      "label": "Text",
+      "name": "kyber_test_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_test_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_kyber_test_slidy",
+      "label": "Slidy testování",
+      "name": "kyber_test_slidy",
+      "type": "repeater",
+      "instructions": "Snímky slideru. Každý obsahuje nadpis, popis, checklist, volitelný obrázek a CTA.",
+      "required": 0,
+      "layout": "block",
+      "button_label": "Přidat snímek",
+      "sub_fields": [
+        {
+          "key": "field_hp_kt_slide_nazev",
+          "label": "Nadpis",
+          "name": "nazev",
+          "type": "text",
+          "required": 1
+        },
+        {
+          "key": "field_hp_kt_slide_popis",
+          "label": "Popis",
+          "name": "popis",
+          "type": "textarea",
+          "rows": 3
+        },
+        {
+          "key": "field_hp_kt_slide_obrazek",
+          "label": "Obrázek (volitelný)",
+          "name": "obrazek",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium",
+          "instructions": "Pokud není vyplněn, použije se společný obrázek z pole výše."
+        },
+        {
+          "key": "field_hp_kt_slide_polozky",
+          "label": "Položky checklistu",
+          "name": "polozky",
+          "type": "repeater",
+          "layout": "table",
+          "button_label": "Přidat položku",
+          "sub_fields": [
+            {
+              "key": "field_hp_kt_slide_bod",
+              "label": "Bod",
+              "name": "bod",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "field_hp_kt_slide_cta_text",
+          "label": "CTA text",
+          "name": "cta_text",
+          "type": "text"
+        },
+        {
+          "key": "field_hp_kt_slide_cta_url",
+          "label": "CTA URL",
+          "name": "cta_url",
+          "type": "url"
+        }
+      ]
+    },
+    {
+      "key": "field_hp_stat_tab",
+      "label": "Statistiky",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_stat_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "statistiky_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_statistiky_heading",
+      "label": "Nadpis",
+      "name": "statistiky_heading",
+      "type": "text",
+      "default_value": "Počet vysokých nebo kritických zranitelností"
+    },
+    {
+      "key": "field_hp_statistiky_popis",
+      "label": "Popis",
+      "name": "statistiky_popis",
+      "type": "textarea",
+      "rows": 3,
+      "default_value": "Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci."
+    },
+    {
+      "key": "field_hp_statistiky_obrazek",
+      "label": "Obrázek (hlavní shield grafika)",
+      "name": "statistiky_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_hp_stat_items",
+      "label": "Statistiky",
+      "name": "statistiky",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat statistiku",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_stat_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "sub_fields": [
+        {
+          "key": "field_hp_stat_cislo",
+          "label": "Číslo",
+          "name": "cislo",
+          "type": "text",
+          "placeholder": "40%",
+          "wrapper": {
+            "width": "30"
+          }
+        },
+        {
+          "key": "field_hp_stat_popis",
+          "label": "Popis",
+          "name": "popis",
+          "type": "text",
+          "wrapper": {
+            "width": "70"
+          }
+        },
+        {
+          "key": "field_hp_stat_card_obrazek",
+          "label": "Obrázek karty",
+          "name": "obrazek",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "instructions": "Volitelné — pokud není vyplněno, použije se výchozí shield grafika."
+        }
+      ]
+    },
+    {
+      "key": "field_hp_kyber_pol_tab",
+      "label": "Kyber politika",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_kyber_pol_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "kyber_politika_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_kyber_pol_heading",
+      "label": "Nadpis",
+      "name": "kyber_politika_heading",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_pol_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_kyber_pol_text",
+      "label": "Text",
+      "name": "kyber_politika_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_pol_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_kyber_pol_obrazek",
+      "label": "Obrázek",
+      "name": "kyber_politika_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_pol_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_kyber_pol_seznam",
+      "label": "Seznam bodů",
+      "name": "kyber_politika_seznam",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat bod",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_pol_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "sub_fields": [
+        {
+          "key": "field_hp_kyber_pol_bod",
+          "label": "Bod",
+          "name": "bod",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "key": "field_hp_eventy_tab",
+      "label": "Eventy / Školení",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_eventy_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "eventy_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_eventy_heading",
+      "label": "Nadpis",
+      "name": "eventy_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_hp_eventy_popis",
+      "label": "Popis",
+      "name": "eventy_popis",
+      "type": "textarea",
+      "rows": 3
+    },
+    {
+      "key": "field_hp_eventy_pocet",
+      "label": "Počet zobrazených",
+      "name": "eventy_pocet",
+      "type": "number",
+      "default_value": 3,
+      "min": 1,
+      "max": 12
+    },
+    {
+      "key": "field_hp_aktuality_tab",
+      "label": "Aktuality",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_aktuality_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "aktuality_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_aktuality_heading",
+      "label": "Nadpis",
+      "name": "aktuality_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_hp_aktuality_pocet",
+      "label": "Počet zobrazených",
+      "name": "aktuality_pocet",
+      "type": "number",
+      "default_value": 3,
+      "min": 1,
+      "max": 12
+    },
+    {
+      "key": "field_hp_recenze_tab",
+      "label": "Recenze",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_recenze_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "recenze_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_recenze_heading",
+      "label": "Nadpis",
+      "name": "recenze_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_hp_cta_tab",
+      "label": "CTA sekce",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_cta_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "cta_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_cta_heading",
+      "label": "Nadpis",
+      "name": "cta_heading",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_cta_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_cta_text",
+      "label": "Text",
+      "name": "cta_text",
+      "type": "textarea",
+      "rows": 2,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_cta_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_cta_btn_text",
+      "label": "Tlačítko text",
+      "name": "cta_button_text",
+      "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_cta_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_cta_btn_url",
+      "label": "Tlačítko URL",
+      "name": "cta_button_url",
+      "type": "url",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_cta_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "modified": 1774877669
+}

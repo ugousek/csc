@@ -1,0 +1,191 @@
+/* ==========================================================================
+   Legal pages – standalone stylesheet
+   Figma node 685:85: Obchodní podmínky, Zásady ochrany os. údajů, Cookies.
+   Layout: TOC card + content area with heading anchors.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Container
+   -------------------------------------------------------------------------- */
+.xevos-legal__container {
+  max-width: 1200px;
+}
+
+.xevos-legal__title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 4rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.xevos-legal__date {
+  color: var(--color-text-dim);
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Table of Contents
+   -------------------------------------------------------------------------- */
+.xevos-toc {
+  background: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.xevos-toc h4 {
+  color: var(--color-white);
+  margin-bottom: 0.75rem;
+  font-style: normal;
+  text-transform: none;
+}
+
+.xevos-toc ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.xevos-toc li {
+  margin-bottom: 0.375rem;
+}
+
+.xevos-toc a {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.xevos-toc a:hover {
+  color: var(--color-accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Legal content body
+   -------------------------------------------------------------------------- */
+.xevos-legal-content {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.125vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.xevos-legal-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  text-transform: uppercase;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.xevos-legal-content h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.xevos-legal-content p {
+  margin-bottom: 1rem;
+}
+
+.xevos-legal-content ul,
+.xevos-legal-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.xevos-legal-content li {
+  margin-bottom: 0.375rem;
+}
+
+.xevos-legal-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.xevos-legal-content a:hover {
+  color: var(--color-white);
+}
+
+.xevos-legal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.xevos-legal-content th,
+.xevos-legal-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  font-size: var(--font-size-sm);
+}
+
+.xevos-legal-content th {
+  background: var(--bg-card);
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.xevos-legal-content blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+
+/* Responsive */
+@media (max-width: 767px) {
+  .xevos-legal__container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .xevos-legal__title {
+    font-size: 2rem;
+  }
+
+  .xevos-toc {
+    padding: 1rem 1.25rem;
+  }
+
+  .xevos-legal-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .xevos-legal-content h3 {
+    font-size: 1.125rem;
+    margin-top: 1.5rem;
+  }
+
+  .xevos-legal-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 479px) {
+  .xevos-legal__title {
+    font-size: 1.75rem;
+  }
+
+  .xevos-toc {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+}

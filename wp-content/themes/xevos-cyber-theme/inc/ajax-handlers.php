@@ -1,0 +1,128 @@
+<?php
+/**
+ * AJAX handlers: live search, archive filtering.
+ *
+ * @package Xevos\CyberTheme
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+// Live search.
+add_action( 'wp_ajax_xevos_live_search', 'xevos_live_search_handler' );
+add_action( 'wp_ajax_nopriv_xevos_live_search', 'xevos_live_search_handler' );
+
+function xevos_live_search_handler(): void {
+	check_ajax_referer( 'xevos_nonce', 'nonce' );
+
+	$query = sanitize_text_field( wp_unslash( $_GET['query'] ?? '' ) );
+
+	if ( strlen( $query ) < 3 ) {
+		wp_send_json_success( [ 'results' => [] ] );
+	}
+
+	$results = [];
+
+	$post_types = [
+		'skoleni'   => __( 'Školení', 'xevos-cyber' ),
+		'aktualita' => __( 'Aktuality', 'xevos-cyber' ),
+		'page'      => __( 'Stránky', 'xevos-cyber' ),
+	];
+
+	foreach ( $post_types as $type => $label ) {
+		$search_query = new WP_Query( [
+			'post_type'      => $type,
+			'post_status'    => 'publish',
+			's'              => $query,
+			'posts_per_page' => 5,
+		] );
+
+		if ( $search_query->have_posts() ) {
+			$group = [
+				'type'  => $label,
+				'items' => [],
+			];
+
+			while ( $search_query->have_posts() ) {
+				$search_query->the_post();
+				$group['items'][] = [
+					'title'   => get_the_title(),
+					'url'     => get_the_permalink(),
+					'excerpt' => wp_trim_words( get_the_excerpt(), 15 ),
+				];
+			}
+
+			$results[] = $group;
+		}
+
+		wp_reset_postdata();
+	}
+
+	wp_send_json_success( [ 'results' => $results ] );
+}
+
+// Archive filter (aktuality / skoleni).
+add_action( 'wp_ajax_xevos_filter_archive', 'xevos_filter_archive_handler' );
+add_action( 'wp_ajax_nopriv_xevos_filter_archive', 'xevos_filter_archive_handler' );
+
+function xevos_filter_archive_handler(): void {
+	check_ajax_referer( 'xevos_nonce', 'nonce' );
+
+	$post_type = sanitize_text_field( wp_unslash( $_POST['post_type'] ?? 'aktualita' ) );
+	$taxonomy  = sanitize_text_field( wp_unslash( $_POST['taxonomy'] ?? '' ) );
+	$term      = sanitize_text_field( wp_unslash( $_POST['term'] ?? '' ) );
+	$order     = sanitize_text_field( wp_unslash( $_POST['order'] ?? 'DESC' ) );
+	$paged     = absint( $_POST['paged'] ?? 1 );
+
+	// Whitelist allowed post types.
+	if ( ! in_array( $post_type, [ 'aktualita', 'skoleni' ], true ) ) {
+		wp_send_json_error( [ 'message' => 'Invalid post type.' ] );
+	}
+
+	$args = [
+		'post_type'      => $post_type,
+		'post_status'    => 'publish',
+		'posts_per_page' => 12,
+		'paged'          => $paged,
+		'orderby'        => 'date',
+		'order'          => in_array( $order, [ 'ASC', 'DESC' ], true ) ? $order : 'DESC',
+	];
+
+	if ( $taxonomy && $term ) {
+		$args['tax_query'] = [
+			[
+				'taxonomy' => $taxonomy,
+				'field'    => 'slug',
+				'terms'    => $term,
+			],
+		];
+	}
+
+	$query = new WP_Query( $args );
+
+	ob_start();
+
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+
+			$variant = sanitize_text_field( wp_unslash( $_POST['card_variant'] ?? '' ) );
+			$template = "template-parts/components/card-{$post_type}";
+			if ( $variant ) {
+				$template .= '-' . $variant;
+			}
+			get_template_part( $template );
+		}
+	} else {
+		echo '<p class="xevos-no-results">' . esc_html__( 'Žádné výsledky.', 'xevos-cyber' ) . '</p>';
+	}
+
+	$html = ob_get_clean();
+
+	wp_send_json_success( [
+		'html'       => $html,
+		'found'      => $query->found_posts,
+		'max_pages'  => $query->max_num_pages,
+	] );
+
+	wp_reset_postdata();
+}

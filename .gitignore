@@ -1,0 +1,34 @@
+# WordPress core (managed separately)
+/wp-admin/
+/wp-includes/
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/plugins/
+/wp-content/themes/twenty*/
+
+# Config
+wp-config.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Dependencies
+vendor/
+
+# Claude / MCP
+.claude/
+.mcp.json
+
+# EWWW image optimizer cache
+/wp-content/ewww/
+
+# Misc
+*.log
+.htaccess
+.vscode-upload.json

@@ -1,0 +1,16 @@
+{
+  "name": "xevos/cyber-theme",
+  "description": "XEVOS Cyber Security Center WordPress theme",
+  "type": "wordpress-theme",
+  "autoload": {
+    "psr-4": {
+      "Xevos\\CyberTheme\\": "inc/classes/"
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

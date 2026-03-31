@@ -1,0 +1,153 @@
+<?php
+/**
+ * Enqueue styles and scripts.
+ *
+ * @package Xevos\CyberTheme
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+add_action( 'wp_enqueue_scripts', 'xevos_enqueue_assets' );
+
+function xevos_enqueue_assets(): void {
+	$theme_uri = XEVOS_THEME_URI;
+	$version   = XEVOS_THEME_VERSION;
+
+	// Main CSS (fonts are self-hosted via @font-face in main.css).
+	wp_enqueue_style(
+		'xevos-main',
+		$theme_uri . '/assets/css/main.css',
+		[],
+		$version
+	);
+
+	// Kyber testování + politika CSS (shared between homepage and kyber page).
+	if ( is_front_page() || is_page_template( 'page-kyberneticke-testovani.php' ) ) {
+		wp_enqueue_style(
+			'xevos-kyber-testovani',
+			$theme_uri . '/assets/css/kyber-testovani.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Školení CSS (archive only).
+	if ( is_post_type_archive( 'skoleni' ) ) {
+		wp_enqueue_style(
+			'xevos-skoleni',
+			$theme_uri . '/assets/css/skoleni.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Školení detail CSS (single only).
+	if ( is_singular( 'skoleni' ) ) {
+		wp_enqueue_style(
+			'xevos-detail-skoleni',
+			$theme_uri . '/assets/css/detail-skoleni.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Přehled školení CSS (training overview page).
+	if ( is_page_template( 'page-prehled-skoleni.php' ) ) {
+		wp_enqueue_style(
+			'xevos-prehled-skoleni',
+			$theme_uri . '/assets/css/prehled-skoleni.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Blog / Archive CSS (aktuality + školení).
+	if (
+		is_post_type_archive( 'aktualita' ) || is_singular( 'aktualita' ) || is_tax( 'kategorie-aktualit' ) ||
+		is_post_type_archive( 'skoleni' ) || is_singular( 'skoleni' ) || is_tax( 'kategorie-skoleni' )
+	) {
+		wp_enqueue_style(
+			'xevos-blog',
+			$theme_uri . '/assets/css/blog.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Legal CSS (Obchodní podmínky, GDPR, Cookies).
+	if (
+		is_page_template( 'page-obchodni-podminky.php' ) ||
+		is_page_template( 'page-zasady-ochrany-osobnich-udaju.php' ) ||
+		is_page_template( 'page-zasady-cookies.php' ) ||
+		is_page_template( 'page-legal.php' )
+	) {
+		wp_enqueue_style(
+			'xevos-legal',
+			$theme_uri . '/assets/css/legal.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Kontakt CSS (only on contact page).
+	if ( is_page_template( 'page-kontakt.php' ) ) {
+		wp_enqueue_style(
+			'xevos-kontakt',
+			$theme_uri . '/assets/css/kontakt.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Frontpage CSS (only on homepage).
+	if ( is_front_page() ) {
+		wp_enqueue_style(
+			'xevos-frontpage',
+			$theme_uri . '/assets/css/frontpage.css',
+			[ 'xevos-main', 'xevos-kyber-testovani' ],
+			$version
+		);
+	}
+
+	// Swiper.js (CDN).
+	wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11' );
+	wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11', true );
+
+	// Main JS.
+	wp_enqueue_script(
+		'xevos-main',
+		$theme_uri . '/assets/js/main.js',
+		[ 'swiper' ],
+		$version,
+		true
+	);
+
+	// Localize script for AJAX.
+	wp_localize_script( 'xevos-main', 'xevosAjax', [
+		'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+		'restUrl' => rest_url( 'xevos/v1/' ),
+		'nonce'   => wp_create_nonce( 'xevos_nonce' ),
+	] );
+
+	// Archive filter JS — only on archive pages.
+	if ( is_post_type_archive( 'aktualita' ) || is_tax( 'kategorie-aktualit' ) ) {
+		wp_enqueue_script(
+			'xevos-archive-filter',
+			$theme_uri . '/assets/js/archive-filter.js',
+			[ 'xevos-main' ],
+			$version,
+			true
+		);
+	}
+
+	// Školení archive filter JS.
+	if ( is_post_type_archive( 'skoleni' ) || is_tax( 'kategorie-skoleni' ) ) {
+		wp_enqueue_script(
+			'xevos-skoleni-filter',
+			$theme_uri . '/assets/js/skoleni-filter.js',
+			[ 'xevos-main' ],
+			$version,
+			true
+		);
+	}
+}
