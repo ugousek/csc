@@ -1845,6 +1845,17 @@ b {
 }
 
 /* Swiper pagination dots — shared for aktuality + recenze */
+/* Recenze pagination: hidden on desktop, visible under 767px */
+.xevos-recenze-pagination {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .xevos-recenze-pagination {
+    display: block;
+  }
+}
+
 .xevos-aktuality-pagination,
 .xevos-recenze-pagination {
   text-align: center;
@@ -3335,7 +3346,7 @@ body::after {
   align-items: center;
   gap: 1rem;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.58;
   color: var(--color-text);
 }
@@ -3455,7 +3466,7 @@ body::after {
 }
 
 /* Ellipse 21 + 24 — purple glow blobs on hero (Figma: LIGHTEN) */
-.xevos-blog-hero::before {
+/* .xevos-blog-hero::before {
   content: '';
   position: absolute;
   top: -100px;
@@ -3467,7 +3478,7 @@ body::after {
   background: radial-gradient(circle at 10% 30%, rgba(87, 24, 244, 0.28) 0%, transparent 40%),
     radial-gradient(circle at 95% 20%, rgba(87, 24, 244, 0.4) 0%, transparent 35%);
   mix-blend-mode: lighten;
-}
+} */
 
 .xevos-blog-hero__grid {
   display: grid;

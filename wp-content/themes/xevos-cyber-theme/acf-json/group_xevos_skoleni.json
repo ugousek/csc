@@ -29,10 +29,12 @@
       "key": "field_sk_hero_popis",
       "label": "Hero popis",
       "name": "hero_popis",
-      "type": "textarea",
-      "rows": 3,
+      "type": "wysiwyg",
       "instructions": "Krátký popis pod nadpisem v hero. Tučný text (B) = bílá barva, zbytek šedý. Prázdné = zkrácený hlavní popis.",
-      "placeholder": "S novým ZoKB je školení kyberbezpečnosti povinné..."
+      "placeholder": "S novým ZoKB je školení kyberbezpečnosti povinné...",
+      "tabs": "all",
+      "toolbar": "basic",
+      "media_upload": 0
     },
     {
       "key": "field_sk_popis",
@@ -73,7 +75,6 @@
       "default_value": "prezencni",
       "allow_null": 0
     },
-
     {
       "key": "field_sk_pro_koho_tab",
       "label": "2. Pro koho",
@@ -97,7 +98,6 @@
       "media_upload": 0,
       "instructions": "Obsah sekce pod hero. Tučný text (B) = bílá barva, zbytek šedý. Prázdné = použije se hlavní Popis školení."
     },
-
     {
       "key": "field_sk_terminy_tab",
       "label": "3. Termíny",
@@ -119,7 +119,9 @@
           "type": "date_picker",
           "display_format": "d.m.Y",
           "return_format": "d.m.Y",
-          "wrapper": { "width": "20" }
+          "wrapper": {
+            "width": "20"
+          }
         },
         {
           "key": "field_sk_termin_cas_od",
@@ -128,7 +130,9 @@
           "type": "time_picker",
           "display_format": "H:i",
           "return_format": "H:i",
-          "wrapper": { "width": "15" }
+          "wrapper": {
+            "width": "15"
+          }
         },
         {
           "key": "field_sk_termin_cas_do",
@@ -137,14 +141,18 @@
           "type": "time_picker",
           "display_format": "H:i",
           "return_format": "H:i",
-          "wrapper": { "width": "15" }
+          "wrapper": {
+            "width": "15"
+          }
         },
         {
           "key": "field_sk_termin_misto",
           "label": "Místo",
           "name": "misto",
           "type": "text",
-          "wrapper": { "width": "25" }
+          "wrapper": {
+            "width": "25"
+          }
         },
         {
           "key": "field_sk_termin_kapacita",
@@ -152,7 +160,9 @@
           "name": "kapacita",
           "type": "number",
           "min": 1,
-          "wrapper": { "width": "12" }
+          "wrapper": {
+            "width": "12"
+          }
         },
         {
           "key": "field_sk_termin_registrace",
@@ -161,12 +171,13 @@
           "type": "number",
           "default_value": 0,
           "min": 0,
-          "wrapper": { "width": "13" },
+          "wrapper": {
+            "width": "13"
+          },
           "instructions": "Automaticky navyšováno po objednávce"
         }
       ]
     },
-
     {
       "key": "field_sk_lektori_tab",
       "label": "4. Lektoři",
@@ -205,7 +216,6 @@
         }
       ]
     },
-
     {
       "key": "field_sk_harmonogram_tab",
       "label": "5. Harmonogram, Osnova & Co si odnesete",
@@ -226,14 +236,18 @@
           "name": "cas",
           "type": "text",
           "placeholder": "09:00–10:30",
-          "wrapper": { "width": "30" }
+          "wrapper": {
+            "width": "30"
+          }
         },
         {
           "key": "field_sk_harm_aktivita",
           "label": "Aktivita",
           "name": "aktivita",
           "type": "text",
-          "wrapper": { "width": "70" }
+          "wrapper": {
+            "width": "70"
+          }
         }
       ]
     },
@@ -253,7 +267,6 @@
         }
       ]
     },
-
     {
       "key": "field_sk_co_odnesete",
       "label": "Co si odnesete",
@@ -262,10 +275,14 @@
       "layout": "table",
       "button_label": "Přidat bod",
       "sub_fields": [
-        { "key": "field_sk_co_odnesete_bod", "label": "Bod", "name": "bod", "type": "text" }
+        {
+          "key": "field_sk_co_odnesete_bod",
+          "label": "Bod",
+          "name": "bod",
+          "type": "text"
+        }
       ]
     },
-
     {
       "key": "field_sk_parkovat_tab",
       "label": "6. Kde parkovat",
@@ -289,7 +306,6 @@
       "return_format": "array",
       "preview_size": "medium"
     },
-
     {
       "key": "field_sk_recenze_tab",
       "label": "7. Recenze",
@@ -312,7 +328,6 @@
       "rows": 3,
       "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
     },
-
     {
       "key": "field_sk_formular_tab",
       "label": "8. Objednávka",
@@ -368,5 +383,6 @@
   "style": "default",
   "label_placement": "top",
   "instruction_placement": "label",
-  "active": true
+  "active": true,
+  "modified": 1775086321
 }
