@@ -1,7 +1,142 @@
 /* ==========================================================================
    Školení – Detail page styles (single-skoleni.php)
-   Figma node: 319-56 (CSC web lokálně 2)
+   Figma node: 319-55 (WEB) + 319-56 (CSC web lokálně 2)
    ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   0. Page background – faithful recreation of Figma layer stack:
+      Layer 1 (main bg): #010129 dark navy — same as body
+      Layer 2 (::before): Rectangle 22 — #12014A solid + top fade, starts ~19%
+      Layer 3 (.bg-pattern): Pattern texture, COLOR_DODGE 4%, tiled 1000px
+      Layer 4 (::after): Ellipses 21-23 — purple radial glows (LIGHTEN)
+      Layer 5 (.bg-bottom): Bottom image rect "2 23" (SCREEN) + gradient
+   -------------------------------------------------------------------------- */
+.xevos-page-hero__bg--gradient {
+    background:
+        radial-gradient(ellipse at 3% 22%, rgba(74, 108, 247, 0.2) 0%, transparent 25%),
+        radial-gradient(ellipse at 30% 70%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+        #010129
+}
+
+.xevos-skoleni-detail {
+    position: relative;
+    background: var(--bg-primary);
+    /* #010129 */
+    overflow: hidden;
+}
+
+/* Layer 2 — Rectangle 22: #12014A base starting below hero (~19% from top)
+   with 80% opacity gradient at top: #010129 → transparent over first 10% */
+/* .xevos-skoleni-detail::before {
+    content: '';
+    position: absolute;
+    top: 19%;
+    left: 0;
+    width: 100%;
+    height: 81%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom, rgba(1, 1, 41, 0.8) 0%, transparent 10%),
+        #12014A;
+} */
+
+/* Layer 3 — Pattern texture: fixed overlay, visible from Pro koho to footer */
+.xevos-skoleni-bg-pattern {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url('../img/pattern.png');
+    background-size: 50%;
+    background-repeat: repeat;
+    opacity: 0.02;
+}
+
+/* Glow ellipses on hero — now in main.css on .xevos-blog-hero */
+
+
+/* Layer 5 — Bottom decorative image (SCREEN) + gradient fade to #110146 */
+.xevos-skoleni-bg-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 19%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom, rgba(17, 1, 70, 0) 0%, rgba(17, 1, 70, 1) 71%),
+        url('../img/detail-skoleni/bg-bottom.png') center / cover no-repeat;
+    mix-blend-mode: screen;
+}
+
+/* All direct children above the background layers */
+.xevos-skoleni-detail>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Pattern overlay wrapper — from "Pro koho" section down through footer */
+.xevos-skoleni-pattern-wrap {
+    position: relative;
+}
+
+.xevos-partners {
+    position: relative;
+}
+
+.xevos-skoleni-pattern-wrap::before,
+.xevos-partners::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../img/pattern.png");
+    background-size: 50%;
+    background-repeat: repeat;
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.xevos-skoleni-pattern-wrap>* {
+    position: relative;
+}
+
+/* Partners bar in footer — dark bg matching lower section */
+.xevos-partners {
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #100245;
+}
+
+/* Detail page uses the shared recenze template inside a local pattern wrapper.
+   Match homepage behavior locally: dedicated glow wrap + normal section render,
+   because the single template's pattern wrapper changes the blend backdrop. */
+.xevos-skoleni-recenze-wrap {
+    overflow: visible;
+}
+
+.xevos-skoleni-recenze-glow {
+    width: 2095px;
+    height: 2095px;
+    top: 100px;
+    right: -600px;
+    background: radial-gradient(circle, rgba(45, 0, 144, 0.5) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.xevos-skoleni-detail .xevos-hp-recenze {
+    position: relative;
+    z-index: 1;
+    isolation: auto;
+    mix-blend-mode: normal;
+    background:
+        linear-gradient(358deg, rgba(17, 1, 70, 0.00) -7.33%, #010129 83.67%), url(../img/backgrounds/bg-rekli-o-nas.png) 50% / cover no-repeat
+}
+
+.xevos-skoleni-detail .xevos-hp-recenze::before {
+    display: none;
+}
 
 
 /* --------------------------------------------------------------------------
@@ -10,6 +145,22 @@
    -------------------------------------------------------------------------- */
 .xevos-skoleni-hero {
     overflow: hidden;
+}
+
+/* Remove the dark ::after overlay — it's meant for image-based heroes,
+   but on školení detail the hero uses a gradient bg so the overlay
+   adds an unwanted grayish tint (rgba(10,14,39)) over the dark navy. */
+.xevos-skoleni-hero .xevos-page-hero__bg::after {
+    display: none;
+}
+
+.xevos-skoleni-hero .xevos-blog-hero__content h1 {
+    color: var(--color-white);
+}
+
+.xevos-skoleni-hero .xevos-blog-hero__content h1 strong {
+    color: var(--color-accent);
+    font-weight: 900;
 }
 
 .xevos-skoleni-hero .xevos-blog-hero__desc {
@@ -50,7 +201,7 @@
 .xevos-skoleni-pro-koho h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: 2rem;
     line-height: 1.22;
     letter-spacing: 0.32px;
     color: var(--color-white);
@@ -60,10 +211,15 @@
 .xevos-skoleni-pro-koho .xevos-article-content__body,
 .xevos-skoleni-pro-koho .xevos-article-content__body p {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-size: 1.5rem;
     line-height: 1.58;
     letter-spacing: 0.48px;
     color: rgba(236, 236, 236, 0.7);
+}
+
+.xevos-skoleni-pro-koho .xevos-article-content__body strong {
+    color: var(--color-white);
+    font-weight: 700;
 }
 
 
@@ -79,7 +235,7 @@
 .xevos-skoleni-terminy h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: 2rem;
     line-height: 1.22;
     letter-spacing: 0.32px;
     color: var(--color-white);
@@ -88,7 +244,7 @@
 
 .xevos-termin-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 40px 80px;
     margin: 0;
     padding-bottom: 0;
@@ -110,7 +266,7 @@
 .xevos-termin-card__date {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(1.75rem, 3.25vw, 3.25rem);
+    font-size: 3.25rem;
     line-height: normal;
     color: var(--color-text);
     margin-bottom: 0.625rem;
@@ -118,7 +274,7 @@
 
 .xevos-termin-card__location {
     font-family: var(--font-body);
-    font-size: clamp(0.875rem, 1.25vw, 1.5rem);
+    font-size: 1.5rem;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.48px;
@@ -129,7 +285,8 @@
 .xevos-termin-card__location a {
     color: #ECECEC;
     font-family: Sora;
-    font-size: 24px;
+    font-size: 1.5rem;
+    word-break: break-word;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
@@ -144,7 +301,7 @@
 
 .xevos-termin-card__time {
     font-family: var(--font-body);
-    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+    font-size: 1.125rem;
     line-height: 1.61;
     letter-spacing: 0.36px;
     color: var(--color-text);
@@ -158,16 +315,36 @@
     text-decoration: line-through;
 }
 
+/* The xevos-glow-wrap on detail page doesn't need its own overflow:hidden
+   since .xevos-skoleni-detail handles it */
+.xevos-skoleni-detail .xevos-glow-wrap {
+    /* z-index: 0; */
+    overflow: visible;
+}
+
+.xevos-skoleni-detail .xevos-glow-blob--left.xevos-glow-blob--lg {
+    width: 2400px;
+    height: 2400px;
+    top: 600px;
+    left: -1200px;
+    opacity: 1;
+}
+
 .xevos-glow.first {
-    width: 100%;
-    height: 100%;
-    overflow: inherit;
+    position: relative;
 }
 
 .xevos-glow.first::before {
-    height: 1000px;
-    width: 1000px;
-    right: -500px;
+    content: '';
+    position: absolute;
+    width: 2400px;
+    height: 2400px;
+    right: -1200px;
+    top: -1200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(87, 24, 244, 0.35) 0%, transparent 60%);
+    mix-blend-mode: lighten;
+    pointer-events: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -177,7 +354,7 @@
 .xevos-skoleni-lektori-section h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-size: 3.25rem;
     line-height: 1.21;
     letter-spacing: 0.52px;
     color: var(--color-white);
@@ -190,11 +367,30 @@
     gap: 1.5rem;
 }
 
+/* Static grid for 1-2 lektori (no swiper) */
 .xevos-skoleni-lektori__cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 5rem;
     flex: 1;
+}
+
+.xevos-skoleni-lektori__static {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+}
+
+@media (max-width: 767px) {
+    .xevos-skoleni-lektori__static {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Swiper overrides for lektori */
+.xevos-lektori-swiper {
+    flex: 1;
+    overflow: hidden;
 }
 
 .xevos-lektor-card {
@@ -209,6 +405,7 @@
     position: relative;
     width: 300px;
     height: 300px;
+    margin-inline: auto;
 }
 
 .xevos-lektor-card__foto {
@@ -238,7 +435,7 @@
 .xevos-lektor-card__name {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(1.25rem, 2vw, 2rem);
+    font-size: 2rem;
     line-height: 1.22;
     letter-spacing: 0.32px;
     color: var(--color-white);
@@ -248,7 +445,7 @@
 .xevos-lektor-card__role {
     width: fit-content;
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-size: 1.5rem;
     line-height: 1.58;
     letter-spacing: 0.48px;
     color: var(--color-text);
@@ -260,36 +457,14 @@
     color: rgba(236, 236, 236, 0.70);
     text-align: center;
     font-family: Sora;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.48px;
 }
 
-/* Nav arrows – Figma: 48x48 circle, rgba(0,187,255,0.2) bg, cyan arrow */
-.xevos-lektor-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-full);
-    background: rgba(0, 187, 255, 0.2);
-    border: none;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background var(--transition-base);
-    padding: 0;
-}
-
-.xevos-lektor-nav:hover {
-    background: rgba(0, 187, 255, 0.35);
-}
-
-.xevos-lektor-nav svg {
-    color: #00bbff;
-}
+/* Nav arrows — uses shared .xevos-nav-arrow from main.css */
 
 
 /* --------------------------------------------------------------------------
@@ -318,7 +493,7 @@
 .xevos-skoleni-content-cols h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-size: 3.25rem;
     line-height: 1.21;
     letter-spacing: 0.52px;
     color: var(--color-white);
@@ -338,7 +513,7 @@
     padding: 0;
     border-bottom: none;
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-size: 1.5rem;
     line-height: 1.58;
     letter-spacing: 0.48px;
     color: rgba(236, 236, 236, 0.7);
@@ -347,8 +522,8 @@
 .xevos-harmonogram-item__cas {
     flex-shrink: 0;
     width: auto;
-    color: rgba(236, 236, 236, 0.7);
-    font-weight: 400;
+    color: var(--color-white);
+    font-weight: 700;
 }
 
 .xevos-harmonogram-item__text {
@@ -362,13 +537,21 @@
 }
 
 .xevos-osnova-list li {
-    color: #ECECEC;
+    color: rgba(236, 236, 236, 0.70);
     font-family: Sora;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.48px;
+}
+
+/* Strong = white in harmonogram, osnova & co si odnesete */
+.xevos-harmonogram-item strong,
+.xevos-osnova-list li strong,
+.xevos-skoleni-benefits strong {
+    color: var(--color-white);
+    font-weight: 700;
 }
 
 
@@ -384,7 +567,7 @@
 .xevos-skoleni-benefits h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-size: 3.25rem;
     line-height: 1.21;
     letter-spacing: 0.52px;
     color: var(--color-white);
@@ -394,10 +577,13 @@
 /* Checklist styles now in main.css (shared component) */
 
 
-/* --------------------------------------------------------------------------
-   7. Kde parkovat – image left, text right
-   Figma: Rectangle 9 (799x542) with image, text frame on right
+/* -------------------------------------------------------------------------
+   7. Kde parkovat – 
    -------------------------------------------------------------------------- */
+.xevos-skoleni-kde-parkovat {
+    z-index: 2;
+}
+
 .xevos-skoleni-parking {
     display: grid;
     grid-template-columns: 1fr;
@@ -408,29 +594,66 @@
 @media (min-width: 768px) {
     .xevos-skoleni-parking {
         grid-template-columns: 55% 1fr;
-        gap: 0;
+        gap: 68px;
     }
 }
 
 .xevos-skoleni-parking__image {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    isolation: isolate;
 }
+
+/* Cyan radial glow behind the parking image — Figma: Ellipse 28 (1307x841) */
+/* .xevos-skoleni-kde-parkovat::before {
+    content: '';
+    position: absolute;
+    width: 195%;
+    height: 196%;
+    top: -62%;
+    left: -44%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(0 187 255 / 60%) 0%, rgba(0, 187, 255, 0.12) 44%, transparent 68%);
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: 0;
+} */
+
+.xevos-skoleni-parking__image::before {
+    content: '';
+    position: absolute;
+    width: 211%;
+    height: 190%;
+    top: -39%;
+    left: -60%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(0 187 255 / 60%) 0%, rgba(0, 187, 255, 0.12) 45%, transparent 54%);
+    filter: blur(54px);
+    pointer-events: none;
+    z-index: 0;
+}
+
 
 .xevos-skoleni-parking__image img {
     width: 100%;
+    max-width: 799px;
     height: auto;
+    aspect-ratio: 799 / 542;
+    object-fit: cover;
     display: block;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(0, 187, 255, 0.2);
 }
 
 .xevos-skoleni-parking__text {
-    padding: 24px;
+    padding: 24px 0;
 }
 
 .xevos-skoleni-parking__text h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-size: 3.25rem;
     line-height: 1.21;
     letter-spacing: 0.52px;
     color: var(--color-white);
@@ -439,10 +662,15 @@
 
 .xevos-skoleni-parking__text p {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-size: 1.5rem;
     line-height: 1.58;
     letter-spacing: 0.48px;
-    color: var(--color-text);
+    color: rgba(236, 236, 236, 0.7);
+}
+
+.xevos-skoleni-parking__text p strong {
+    color: var(--color-white);
+    font-weight: 700;
 }
 
 
@@ -507,7 +735,7 @@
 
 .xevos-form__checkbox-label {
     font-family: var(--font-body);
-    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+    font-size: 1.125rem;
     letter-spacing: 0.36px;
     color: var(--color-text);
     cursor: pointer;
@@ -560,7 +788,7 @@
 .xevos-skoleni-section-header h2 {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-size: 3.25rem;
     line-height: 1.21;
     letter-spacing: 0.52px;
     color: var(--color-white);
@@ -569,11 +797,15 @@
 
 .xevos-skoleni-section-header p {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-size: 1.5rem;
     line-height: 1.58;
     letter-spacing: 0.48px;
     color: rgba(236, 236, 236, 0.7);
     max-width: 972px;
+}
+
+#objednavka {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #100245;
 }
 
 #objednavka .xevos-btn--primary {
@@ -629,6 +861,20 @@
         width: 48px;
         height: 48px;
     }
+
+    .xevos-order-submit {
+        min-height: 52px;
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .xevos-skoleni-parking__image::before {
+        display: none;
+    }
+
+    .xevos-skoleni-detail .xevos-glow-blob--left.xevos-glow-blob--lg {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -642,4 +888,28 @@
     .xevos-termin-cards {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+
+/* --------------------------------------------------------------------------
+   12. Order form messages (AJAX success/error)
+   -------------------------------------------------------------------------- */
+.xevos-order-message {
+    padding: 1rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+}
+
+.xevos-order-message--success {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+}
+
+.xevos-order-message--error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
 }

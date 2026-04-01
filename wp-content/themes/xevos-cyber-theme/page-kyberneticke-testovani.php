@@ -198,7 +198,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 	<?php get_template_part('template-parts/components/aktuality'); ?>
 
 	<!-- 7. Recenze -->
-	<?php get_template_part('template-parts/homepage/recenze'); ?>
+	<?php get_template_part('template-parts/components/recenze'); ?>
 
 	<!-- 8. Formulář -->
 	<?php

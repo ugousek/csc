@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Search results – standalone stylesheet
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Results count
+   -------------------------------------------------------------------------- */
+.xevos-search-results__count {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.xevos-search-results__count strong {
+  color: var(--color-white);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Results grid – overlay cards (same as blog archive / homepage)
+   -------------------------------------------------------------------------- */
+.xevos-search-results__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .xevos-search-results__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .xevos-search-results__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Apply overlay card style */
+.xevos-search-results__grid .xevos-card {
+  position: relative;
+  border: 1px solid #74747466;
+  border-radius: 0;
+  padding: 0;
+}
+
+.xevos-search-results__grid .xevos-card__image {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+  z-index: 0;
+}
+
+.xevos-search-results__grid .xevos-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.xevos-search-results__grid .xevos-card__image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../img/pattern.png');
+  background-size: 50%;
+  background-repeat: repeat;
+  opacity: 0.04;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.xevos-search-results__grid .xevos-card__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(1, 1, 41, 0.95) 0%, rgba(1, 1, 41, 0.6) 40%, transparent 100%);
+  z-index: 2;
+}
+
+.xevos-search-results__grid .xevos-card__body {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+  min-height: 400px;
+}
+
+.xevos-search-results__grid .xevos-card__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--color-text);
+  letter-spacing: -0.64px;
+}
+
+.xevos-search-results__grid .xevos-card__excerpt {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.xevos-search-results__grid .xevos-card__badge,
+.xevos-search-results__grid .xevos-card__meta {
+  display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Empty state
+   -------------------------------------------------------------------------- */
+.xevos-search-results__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.xevos-search-results__empty-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--color-text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.xevos-search-results__empty h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.xevos-search-results__empty p {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.xevos-search-results__empty p strong {
+  color: var(--color-white);
+}
+
+.xevos-search-results__form {
+  width: 100%;
+  max-width: 480px;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Responsive – Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .xevos-search-results__empty {
+    padding: 2rem 1rem;
+  }
+
+  .xevos-search-results__empty h2 {
+    font-size: 1.5rem;
+  }
+
+  .xevos-search-results__grid .xevos-card__body {
+    min-height: 300px;
+  }
+}

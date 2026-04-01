@@ -26,6 +26,9 @@ $bg         = get_field('hero_background');
 		<div class="xevos-hero__eclipse"></div>
 		<div class="xevos-hero__eclipse"></div>
 		<div class="xevos-hero__grid"></div>
+		<!-- Figma Ellipse 21 (left, lighten) & Ellipse 24 (center, multiply) -->
+		<div class="xevos-hero__glow xevos-hero__glow--left"></div>
+		<div class="xevos-hero__glow xevos-hero__glow--center"></div>
 	</div>
 
 	<div class="xevos-hero__content">

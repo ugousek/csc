@@ -12,6 +12,16 @@ $heading = get_field('eventy_heading') ?: 'Aktuální eventy';
 $desc    = get_field('eventy_popis') ?: '<strong>Workshopy, školení a odborné akce</strong> zaměřené na praktickou kybernetickou bezpečnost, aktuální hrozby a reálné scénáře z praxe.';
 $count   = (int) (get_field('eventy_pocet') ?: 10);
 
+// CTA box (Cyber pohotovost) – ACF editable.
+$cta_title     = get_field('eventy_cta_title') ?: 'Cyber pohotovost';
+$cta_text      = get_field('eventy_cta_text') ?: 'Okamžitá pomoc a kroky, které pomohou rychle zastavit probíhající útok, omezit škody a zahájit správný postup reakce.';
+$cta_btn1_text = get_field('eventy_cta_btn1_text') ?: 'POTŘEBUJI POMOC!';
+$cta_btn1_url  = get_field('eventy_cta_btn1_url') ?: home_url('/kontakt/');
+$cta_btn2_text = get_field('eventy_cta_btn2_text') ?: 'JAK POSTUPOVAT?';
+$cta_btn2_url  = get_field('eventy_cta_btn2_url') ?: home_url('/jak-postupovat/');
+$cta_image     = get_field('eventy_cta_image');
+$cta_img_url   = $cta_image ? $cta_image['url'] : get_theme_file_uri('assets/img/homepage/eventy-cta.png');
+
 $query = new WP_Query([
 	'post_type'      => 'skoleni',
 	'post_status'    => 'publish',
@@ -43,7 +53,7 @@ $typ_colors = [
 			<div class="xevos-eventy__left">
 				<div class="xevos-eventy__header">
 					<h2><?php echo esc_html($heading); ?></h2>
-					<p class="xevos-eventy__desc"><?php echo wp_kses_post($desc); ?></p>
+					<div class="xevos-eventy__desc"><?php echo wp_kses_post($desc); ?></div>
 				</div>
 
 				<div class="xevos-eventy__list-wrap">
@@ -105,10 +115,6 @@ $typ_colors = [
 										<div class="xevos-eventy__meta">
 											<?php if ($dostupnost) : ?>
 												<span class="xevos-eventy__meta-seats">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
-														<path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
 													Volná místa <span class="xevos-eventy__meta-capacity">(<?php echo esc_html($dostupnost['registrace'] . '/' . $dostupnost['kapacita']); ?>)</span>
 												</span>
 											<?php endif; ?>
@@ -144,10 +150,6 @@ $typ_colors = [
 										<div class="xevos-eventy__meta">
 											<?php if ($demo['seats']) : ?>
 												<span class="xevos-eventy__meta-seats">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
-														<path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
 													Volná místa <span class="xevos-eventy__meta-capacity">(<?php echo $demo['seats']; ?>)</span>
 												</span>
 											<?php endif; ?>
@@ -172,7 +174,7 @@ $typ_colors = [
 			<!-- RIGHT COLUMN: image + emergency CTA overlay -->
 			<div class="xevos-eventy__cta">
 				<div class="xevos-eventy__cta-img">
-					<img src="<?php echo esc_url(get_theme_file_uri('assets/img/homepage/eventy-cta.png')); ?>" alt="Cyber Security Center" loading="lazy">
+					<img src="<?php echo esc_url($cta_img_url); ?>" alt="<?php echo esc_attr($cta_title); ?>" loading="lazy">
 				</div>
 				<!-- Chevron arrow -->
 				<button class="xevos-eventy__cta-arrow" aria-label="Předchozí">
@@ -183,15 +185,17 @@ $typ_colors = [
 
 				<div class="xevos-eventy__cta-content">
 					<div class="xevos-eventy__cta-text">
-						<h3 class="xevos-eventy__cta-title">Cyber pohotovost</h3>
-						<p>Okamžitá pomoc a kroky, které pomohou rychle zastavit probíhající útok, omezit škody a zahájit správný postup reakce.</p>
+						<h3 class="xevos-eventy__cta-title"><?php echo esc_html($cta_title); ?></h3>
+						<p><?php echo esc_html($cta_text); ?></p>
 					</div>
 					<div class="xevos-eventy__cta-buttons">
-						<a href="<?php echo esc_url(home_url('/kontakt/')); ?>" class="xevos-btn xevos-btn--primary">
+						<a href="<?php echo esc_url($cta_btn1_url); ?>" class="xevos-btn xevos-btn--primary">
 							<span class="xevos-btn__arrow"></span>
-							POTŘEBUJI POMOC!
+							<?php echo esc_html($cta_btn1_text); ?>
 						</a>
-						<a href="<?php echo esc_url(home_url('/jak-postupovat/')); ?>" class="xevos-btn xevos-btn--outline">JAK POSTUPOVAT?</a>
+						<?php if ($cta_btn2_text) : ?>
+							<a href="<?php echo esc_url($cta_btn2_url); ?>" class="xevos-btn xevos-btn--outline"><?php echo esc_html($cta_btn2_text); ?></a>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

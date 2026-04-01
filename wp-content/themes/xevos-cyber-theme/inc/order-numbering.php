@@ -13,8 +13,8 @@ defined( 'ABSPATH' ) || exit;
  */
 add_action( 'wp_insert_post', 'xevos_auto_number_order', 10, 3 );
 
-function xevos_auto_number_order( int $post_id, WP_Post $post, bool $update ): void {
-	if ( $update || 'objednavka' !== $post->post_type ) {
+function xevos_auto_number_order( int $post_id, ?WP_Post $post, bool $update ): void {
+	if ( $update || ! $post || 'objednavka' !== $post->post_type ) {
 		return;
 	}
 

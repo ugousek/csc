@@ -9,7 +9,7 @@ if ($show === false) return;
 
 $heading = get_field('kyber_politika_heading') ?: 'Kybernetická politika';
 $desc    = get_field('kyber_politika_popis') ?: 'Soubor pravidel a postupů, které určují, jak organizace řídí bezpečnost, přístup, rizika a provozní standardy.';
-$text    = get_field('kyber_politika_text') ?: 'Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje role, odpovědnosti a postupy pro ochranu aktiv, řešení incidentů a splnění regulatorních požadavků.';
+$text    = get_field('kyber_politika_text') ?: 'Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje role, odpovědnosti a pravidla, podle kterých se chrání data, systémy a provoz.';
 $image   = get_field('kyber_politika_obrazek');
 $seznam  = get_field('kyber_politika_seznam');
 
@@ -30,7 +30,11 @@ $image_url = $image ? $image['url'] : get_theme_file_uri('assets/img/homepage/ky
 		<!-- Centered heading -->
 		<div class="xevos-kyber-politika__header">
 			<h2><?php echo esc_html($heading); ?></h2>
-			<p class="xevos-kyber-politika__desc"><?php echo esc_html($desc); ?></p>
+			<?php if ($desc !== 'Soubor pravidel a postupů, které určují, jak organizace řídí bezpečnost, přístup, rizika a provozní standardy.') : ?>
+				<p class="xevos-kyber-politika__desc"><?php echo esc_html($desc); ?></p>
+			<?php else : ?>
+				<p class="xevos-kyber-politika__desc xevos-kyber-politika__desc--mixed"><strong>Soubor pravidel a postupů</strong>, které určují, jak organizace řídí <strong>bezpečnost, přístup, rizika a provozní standardy.</strong></p>
+			<?php endif; ?>
 		</div>
 
 		<!-- Flex: TEXT vlevo + OBRÁZEK vpravo -->
@@ -38,7 +42,13 @@ $image_url = $image ? $image['url'] : get_theme_file_uri('assets/img/homepage/ky
 			<!-- Panel vlevo -->
 			<div class="xevos-kyber-politika__panel">
 				<h3>Poskytujeme:</h3>
-				<div class="xevos-kyber-politika__panel-desc"><?php echo wp_kses_post($text); ?></div>
+				<?php
+				$default_text = 'Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje role, odpovědnosti a pravidla, podle kterých se chrání data, systémy a provoz.';
+				if ($text === $default_text) : ?>
+					<div class="xevos-kyber-politika__panel-desc xevos-kyber-politika__desc--mixed">Kybernetická politika vytváří <strong>jasný rámec pro řízení bezpečnosti v organizaci.</strong> Určuje <strong>role, odpovědnosti a pravidla</strong>, podle kterých se chrání data, systémy a provoz.</div>
+				<?php else : ?>
+					<div class="xevos-kyber-politika__panel-desc"><?php echo wp_kses_post($text); ?></div>
+				<?php endif; ?>
 
 				<ul class="xevos-kyber-politika__checklist">
 					<?php foreach ($seznam as $item) : ?>

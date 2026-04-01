@@ -125,7 +125,7 @@
   --bg-card-hover: rgba(20, 28, 80, 0.7);
   --bg-header: rgba(10, 14, 39, 0.85);
 
-  /* Figma radial glow layer: #5718F4, 40% opacity, Lighten blend */
+  /* Figma radial glow layer – generic, 40% opacity, Lighten blend */
   --bg-glow-color: rgba(87, 24, 244, 0.4);
 
   /* Accent */
@@ -172,7 +172,7 @@
 
   /* Layout */
   --container-max: 1600px;
-  --gutter: 1.5rem;
+  --gutter: 1rem;
 
   /* Radius */
   --radius-sm: 4px;
@@ -243,16 +243,14 @@ img {
 
 /* --------------------------------------------------------------------------
    2b. Radial glow blobs – decorative elements between sections
-   Figma: radial #5718F4, 40% opacity, Lighten blend
-   Usage: <div class="xevos-glow-blob xevos-glow-blob--right"></div>
-   Place between sections in PHP. No overflow thanks to clip on parent.
+   Generic reusable glow system. HP-specific overrides in frontpage.css.
    -------------------------------------------------------------------------- */
 .xevos-glow-blob {
   position: absolute;
   width: 800px;
   height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--bg-glow-color) 0%, transparent 50%);
+  background: radial-gradient(circle, var(--bg-glow-color) 0%, transparent 60%);
   mix-blend-mode: lighten;
   pointer-events: none;
   z-index: 0;
@@ -270,25 +268,6 @@ img {
 .xevos-glow-blob--center {
   left: 50%;
   transform: translateX(-50%);
-}
-
-/* Size variants */
-.xevos-glow-blob--sm {
-  width: 500px;
-  height: 500px;
-}
-
-.xevos-glow-blob--lg {
-  width: 1200px;
-  height: 1200px;
-}
-
-.xevos-glow-blob--lg.xevos-glow-blob--right {
-  right: -600px;
-}
-
-.xevos-glow-blob--lg.xevos-glow-blob--left {
-  left: -600px;
 }
 
 /* Wrapper: clip overflow so glow never causes scrollbar */
@@ -870,6 +849,8 @@ b {
   .xevos-btn--primary {
     padding: 0.875rem 1.5rem;
     font-size: 0.8125rem;
+    white-space: normal;
+    line-height: normal;
   }
 
   .xevos-btn--lg {
@@ -1013,34 +994,45 @@ b {
   top: 20px;
   left: 0;
   right: 0;
-  z-index: var(--z-sticky);
+  z-index: 310;
   background: transparent;
   border-bottom: 1px solid transparent;
   transition: all var(--transition-base);
-}
-
-.xevos-header--scrolled {
-  background: var(--bg-header);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  padding-inline: var(--gutter);
 }
 
 .xevos-header__inner {
   position: relative;
   width: 100%;
-  max-width: calc(1600px - 48px);
+  max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 104px;
+  border: 1px solid var(--color-border);
   background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: height var(--transition-base);
 }
 
+@media screen and (min-width: 1600px) {
+  .xevos-header__inner {
+    max-width: calc(var(--container-max) - 48px);
+  }
+}
+
+.xevos-header:has(.xevos-header__hamburger.is-active) .xevos-header__inner {
+  border-bottom-color: transparent;
+}
+
 .xevos-header--scrolled .xevos-header__inner {
+
   height: 64px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .xevos-header__logo {
@@ -1062,7 +1054,7 @@ b {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1250px) {
   .xevos-header__nav {
     display: flex;
     align-items: center;
@@ -1158,7 +1150,7 @@ b {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1250px) {
   .xevos-header__phone {
     display: flex;
     align-items: center;
@@ -1194,7 +1186,7 @@ b {
   color: var(--color-white);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1250px) {
   .xevos-header__search-btn {
     display: flex;
   }
@@ -1220,9 +1212,34 @@ b {
   box-shadow: var(--shadow-glow);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1250px) {
   .xevos-header__cta {
     display: inline-flex;
+  }
+}
+
+/* Header squeeze: reduce gaps and sizing under 1450px */
+@media (max-width: 1450px) and (min-width: 1250px) {
+  .xevos-header__inner {
+    padding-left: 1px;
+  }
+
+  .xevos-header__nav-list {
+    gap: 14px;
+  }
+
+  .xevos-header__nav-item>a {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .xevos-header__cta {
+    padding: 8px 1rem;
+    font-size: 0.75rem;
+  }
+
+  .xevos-header__actions {
+    gap: 0.5rem;
   }
 }
 
@@ -1240,7 +1257,7 @@ b {
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1250px) {
   .xevos-header__hamburger {
     display: none;
   }
@@ -1272,22 +1289,62 @@ b {
 /* --------------------------------------------------------------------------
    8. Mobile Menu (dark overlay)
    -------------------------------------------------------------------------- */
+/* Figma: Frame 90 — dropdown from bottom edge of header */
 .xevos-mobile-menu {
   position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  max-width: 400px;
-  height: 100vh;
+  top: calc(20px + 104px);
+  left: 0;
+  right: 0;
   z-index: var(--z-overlay);
-  background: var(--bg-primary);
-  padding: 100px var(--gutter) 3rem;
-  overflow-y: auto;
-  transition: right var(--transition-slow);
+  padding-inline: var(--gutter);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0s 0.3s,
+    top var(--transition-base);
+}
+
+.xevos-header--scrolled~.xevos-mobile-menu {
+  top: calc(20px + 64px);
 }
 
 .xevos-mobile-menu.is-open {
-  right: 0;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0s 0s,
+    top var(--transition-base);
+}
+
+/* Content panel — matches header__inner width + same bg */
+.xevos-mobile-menu__content {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Inner scrollable area */
+.xevos-mobile-menu__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding: 16px 16px 24px;
+  max-height: calc(100vh - 20px - 104px - 32px);
+  overflow-y: auto;
 }
 
 .xevos-mobile-menu__overlay {
@@ -1305,30 +1362,38 @@ b {
   visibility: visible;
 }
 
+/* Nav list — Figma: Sora 16px/400, centered, letter-spacing 2%, gap via padding */
 .xevos-mobile-menu__nav-list {
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.xevos-mobile-menu__nav-item {
-  border-bottom: 1px solid var(--color-border);
+.xevos-mobile-menu__nav-list li {
+  border-bottom: none;
 }
 
-.xevos-mobile-menu__nav-item>a {
+.xevos-mobile-menu__nav-list li>a {
   display: block;
-  padding: 1rem 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: #ECECEC;
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-.xevos-mobile-menu__nav-item>a:hover {
+.xevos-mobile-menu__nav-list li>a:hover {
   color: var(--color-accent);
 }
 
+/* Submenu */
 .xevos-mobile-menu__submenu {
   max-height: 0;
   overflow: hidden;
@@ -1341,47 +1406,45 @@ b {
 
 .xevos-mobile-menu__submenu a {
   display: block;
-  padding: 0.5rem 0 0.5rem 1rem;
-  font-size: var(--font-size-base);
-  color: var(--color-text-muted);
+  padding: 0.375rem 0;
+  font-size: 0.875rem;
+  color: rgba(236, 236, 236, 0.6);
+  text-align: center;
+  text-decoration: none;
 }
 
 .xevos-mobile-menu__submenu a:hover {
   color: var(--color-accent);
 }
 
-/* Submenu toggle button (created by JS for items with children) */
+/* Submenu toggle arrow */
 .xevos-mobile-menu__toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-muted);
+  border: none;
+  color: rgba(236, 236, 236, 0.6);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast);
   flex-shrink: 0;
   margin-left: auto;
 }
 
 .xevos-mobile-menu__toggle:hover {
-  border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
 .xevos-mobile-menu__toggle svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   transition: transform var(--transition-fast);
 }
 
 .xevos-mobile-menu__toggle.is-active {
-  background: rgba(255, 0, 128, 0.1);
-  border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
@@ -1389,11 +1452,12 @@ b {
   transform: rotate(180deg);
 }
 
-/* Parent menu item: flex row so link + toggle sit side by side */
+/* Parent items with children */
 .xevos-mobile-menu__nav .menu-item-has-children {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 .xevos-mobile-menu__nav .menu-item-has-children>a {
@@ -1483,32 +1547,32 @@ b {
    Swiper nav arrows — shared (recenze, aktuality, lektoři)
    -------------------------------------------------------------------------- */
 .xevos-nav-arrow {
-  position: relative;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid rgba(217, 217, 217, 0.3);
-  background: rgba(217, 217, 217, 0.08);
-  color: var(--color-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 187, 255, 0.2);
+  border: none;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  padding: 0;
+  transition: background var(--transition-base);
 }
 
-.xevos-nav-arrow--prev {
-  left: -24px;
-}
-
-.xevos-nav-arrow--next {
-  right: -24px;
+.xevos-nav-arrow svg {
+  color: #00bbff;
 }
 
 .xevos-nav-arrow:hover {
-  background: rgba(217, 217, 217, 0.15);
-  border-color: var(--color-cyan);
+  background: rgba(0, 187, 255, 0.35);
+}
+
+.xevos-nav-arrow.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 }
 
 @media (max-width: 767px) {
@@ -1535,7 +1599,7 @@ b {
 .xevos-hp-aktuality__header h2 {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: clamp(1.75rem, 3.25vw, 3.25rem);
+  font-size: 3.25rem;
   text-transform: uppercase;
   letter-spacing: 0.01em;
   margin-bottom: 0.625rem;
@@ -1543,9 +1607,22 @@ b {
 
 .xevos-hp-aktuality__header p {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  font-size: 1.5rem;
   line-height: 1.6;
   color: rgba(236, 236, 236, 1);
+}
+
+/* Figma: subtitle with mixed opacity — base 70%, <strong> at 100% */
+.xevos-hp-aktuality__desc--mixed,
+.xevos-hp-aktuality__desc--mixed p {
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 0;
+}
+
+.xevos-hp-aktuality__desc--mixed strong,
+.xevos-hp-aktuality__desc--mixed p strong {
+  color: var(--color-white);
+  font-weight: 700;
 }
 
 .xevos-hp-aktuality__carousel {
@@ -1554,9 +1631,11 @@ b {
   gap: 1rem;
 }
 
-.xevos-hp-aktuality__carousel .xevos-aktuality-archive__grid {
+.xevos-hp-aktuality__carousel .xevos-aktuality-archive__grid,
+.xevos-hp-aktuality__carousel .xevos-aktuality-swiper {
   flex: 1;
   min-width: 0;
+  overflow: hidden;
 }
 
 .xevos-hp-aktuality__footer {
@@ -1575,6 +1654,16 @@ b {
 @media (min-width: 768px) {
   .xevos-hp-aktuality .xevos-aktuality-archive__grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .xevos-hp-aktuality__header h2 {
+    font-size: 26px;
+  }
+
+  .xevos-hp-aktuality__header p {
+    font-size: 16px;
   }
 }
 
@@ -1651,7 +1740,7 @@ b {
 .xevos-blog-archive .xevos-card__title {
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: clamp(1.125rem, 2vw, 2rem);
+  font-size: 2rem;
   color: var(--color-text);
   letter-spacing: -0.64px;
 }
@@ -1674,7 +1763,8 @@ b {
   display: none;
 }
 
-@media (max-width: 1023px) {
+
+@media (min-width: 992px) and (max-width: 1023px) {
   .xevos-hp-aktuality__carousel {
     flex-direction: column;
   }
@@ -1684,14 +1774,23 @@ b {
   }
 }
 
+@media screen and (max-width: 767px) {
+
+  .xevos-card--overlay .xevos-card__title,
+  .xevos-hp-aktuality .xevos-card__title,
+  .xevos-blog-archive .xevos-card__title {
+    font-size: 22px;
+  }
+
+}
+
 
 /* --------------------------------------------------------------------------
    Řekli o nás — shared section (HP, Kontakt, Detail školení, Kyber testing)
    -------------------------------------------------------------------------- */
 /* BG přesahuje do partnerů — negative margin + extra padding */
 .xevos-hp-recenze {
-  background:
-    linear-gradient(180deg, rgba(17, 1, 70, 0.00) 43.67%, #110146 83.67%),
+  background: linear-gradient(180deg, rgba(17, 1, 70, 0.00) 43.67%, #110146 83.67%),
     url('../img/backgrounds/bg-rekli-o-nas.png') lightgray 50% / cover no-repeat;
   mix-blend-mode: lighten;
   margin-bottom: -207px;
@@ -1708,7 +1807,7 @@ b {
 .xevos-hp-recenze__header h2 {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: clamp(1.75rem, 3.25vw, 3.25rem);
+  font-size: 3.25rem;
   text-transform: uppercase;
   letter-spacing: 0.01em;
   margin-bottom: 0.625rem;
@@ -1716,9 +1815,22 @@ b {
 
 .xevos-hp-recenze__header p {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  font-size: 1.5rem;
   line-height: 1.6;
-  color: var(--color-text);
+  color: rgba(236, 236, 236, 0.7);
+}
+
+/* Figma: subtitle with mixed opacity — base 70%, <strong> at 100% */
+.xevos-hp-recenze__desc-mixed,
+.xevos-hp-recenze__desc-mixed p {
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 0;
+}
+
+.xevos-hp-recenze__desc-mixed strong,
+.xevos-hp-recenze__desc-mixed p strong {
+  color: var(--color-white);
+  font-weight: 700;
 }
 
 .xevos-hp-recenze__carousel {
@@ -1730,6 +1842,43 @@ b {
 .xevos-hp-recenze__carousel .xevos-recenze-swiper {
   flex: 1;
   min-width: 0;
+}
+
+/* Swiper pagination dots — shared for aktuality + recenze */
+.xevos-aktuality-pagination,
+.xevos-recenze-pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.xevos-aktuality-pagination .swiper-pagination-bullet,
+.xevos-recenze-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 1;
+  margin: 0 5px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.xevos-aktuality-pagination .swiper-pagination-bullet-active,
+.xevos-recenze-pagination .swiper-pagination-bullet-active {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
+/* Hide arrows + show dots on small screens */
+@media (max-width: 991px) {
+  .xevos-hp-aktuality__carousel>.xevos-nav-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .xevos-hp-recenze__carousel>.xevos-nav-arrow {
+    display: none;
+  }
 }
 
 .xevos-recenze-swiper {
@@ -1767,7 +1916,7 @@ b {
 
 .xevos-recenze-card__quote {
   display: block;
-  width: clamp(48px, 5vw, 79px);
+  width: 79px;
   height: auto;
   margin-bottom: 0.5rem;
   pointer-events: none;
@@ -1775,7 +1924,7 @@ b {
 
 .xevos-recenze-card__text {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  font-size: 1.5rem;
   line-height: 1.6;
   font-style: normal;
   color: var(--color-text);
@@ -1785,8 +1934,6 @@ b {
   border: none;
 }
 
-
-/* Figma Section 07: bg rgb(16,2,69), border-top rgb(116,116,116), vertical gap 40 */
 .xevos-footer {
   position: relative;
   z-index: 1;
@@ -1796,22 +1943,11 @@ b {
   padding: 5rem 0 2.5rem;
 }
 
-/* Partners bar — Figma: 1600px, SPACE_BETWEEN, no gap */
 .xevos-partners {
   padding: 4rem 0;
 }
 
-.xevos-partners__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-/* Figma: 200x80 per logo — all images now exported at same 400x160 (2x) */
 .xevos-partners__inner img {
-  width: 200px;
-  height: 80px;
   object-fit: contain;
   opacity: 0.7;
   transition: opacity var(--transition-fast);
@@ -1820,6 +1956,34 @@ b {
 .xevos-partners__inner img:hover {
   opacity: 1;
 }
+
+/* Partners — single container, Swiper activated via JS under 1240px */
+.xevos-partners__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.xevos-partners__swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.xevos-partners__slide {
+  display: flex;
+  justify-content: center;
+}
+
+.xevos-partners__slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xevos-partners__slide img {
+  width: 200px;
+  height: 80px;
+}
+
 
 /* Footer inner — Figma: logo | menu (gap 32) | social (gap 15), vertical gap 40 */
 .xevos-footer__inner {
@@ -1878,6 +2042,11 @@ b {
   text-decoration-color: var(--color-accent);
 }
 
+/* Nav + Social wrapper — transparent on desktop, row on mobile */
+.xevos-footer__nav-social {
+  display: contents;
+}
+
 /* Figma: social icons 24x24, gap 15, white fill */
 .xevos-footer__social {
   display: flex;
@@ -1923,7 +2092,6 @@ b {
   color: var(--color-white);
 }
 
-/* Figma: Sora 14px white, no underline */
 .xevos-footer__copy a {
   color: var(--color-white);
   text-decoration: none;
@@ -1934,28 +2102,114 @@ b {
   color: var(--color-accent);
 }
 
-/* Mobile footer */
+@media (min-width: 1400px) {
+  nav.xevos-footer__nav {
+    margin-right: 14%;
+  }
+}
+
+@media (min-width: 1240px) {
+  .xevos-partners__track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    transform: none !important;
+  }
+
+  .xevos-partners__slide {
+    flex-shrink: 0;
+    width: auto !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  .xevos-partners__slide img {
+    height: 60px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 1140px) {
+  .xevos-footer__inner {
+    flex-direction: column;
+  }
+
+  .xevos-footer__social {
+    margin-top: 10px;
+  }
+}
+
 @media (max-width: 767px) {
   .xevos-footer__inner {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    margin-bottom: 40px;
   }
 
   .xevos-footer__logo img {
-    height: 40px;
+    height: 60px;
   }
 
   .xevos-footer__nav ul {
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .xevos-footer__social {
+    justify-content: center;
+    gap: 15px;
   }
 
   .xevos-footer__copy {
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 8px;
   }
 }
+
+@media (max-width: 500px) {
+
+  .xevos-footer__nav-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: stretch;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .xevos-footer__nav {
+    text-align: center;
+  }
+
+  .xevos-footer__nav ul {
+    align-items: flex-start;
+  }
+
+  .xevos-footer__nav ul li {
+    text-align: left;
+  }
+
+  .xevos-footer__social {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+  }
+
+  .xevos-header__logo img {
+    height: 32px;
+  }
+
+  .xevos-header--scrolled .xevos-header__logo img {
+    height: 24px;
+  }
+}
+
 
 
 /* --------------------------------------------------------------------------
@@ -2229,7 +2483,7 @@ b {
 @media (min-width: 1024px) {
   .xevos-order-section {
     grid-template-columns: 1fr 574px;
-    gap: clamp(2rem, 7.75vw, 7.75rem);
+    gap: 7.75rem;
   }
 }
 
@@ -2278,7 +2532,7 @@ b {
 .xevos-order-summary__contact-text,
 .xevos-order-summary__contact-text a {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+  font-size: 1.125rem;
   line-height: 1.61;
   letter-spacing: 0.36px;
   color: var(--color-text);
@@ -2364,34 +2618,678 @@ b {
   font-weight: 300;
 }
 
-/* Mobile menu refinements */
-.xevos-mobile-menu__header {
+/* Search bar — Figma: glass bg with inline magnifier icon */
+.xevos-mobile-menu__search {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.xevos-mobile-search-form {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border);
+  gap: 10px;
 }
 
-.xevos-mobile-menu__close {
-  background: none;
+.xevos-mobile-search-form__icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--color-white);
+}
+
+.xevos-mobile-search-form__input {
+  background: transparent;
   border: none;
   color: var(--color-white);
-  cursor: pointer;
-  padding: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 16px;
+  width: 100%;
+  outline: none;
 }
 
-.xevos-mobile-menu__search {
+.xevos-mobile-search-form__input::placeholder {
+  color: rgba(236, 236, 236, 0.4);
+}
+
+/* CTA button — Figma: outline accent, Montserrat 700/16px uppercase, full width */
+.xevos-mobile-menu__cta {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.xevos-mobile-menu__cta .xevos-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 13px 40px;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.xevos-mobile-menu__cta .xevos-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+
+/* ==========================================================================
+   Kybernetické testování & Kybernetická politika – shared styles
+   Used on both homepage and /kyberneticke-testovani/ page.
+   ========================================================================== */
+
+/* Pattern overlay */
+body {
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: var(--pattern-top, 50%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../img/pattern.png);
+  background-size: 50%;
+  background-repeat: repeat;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Kybernetické testování – slider section
+   -------------------------------------------------------------------------- */
+.xevos-blog-hero {
+  z-index: 1;
+}
+
+.xevos-page-hero__bg--gradient {
+  z-index: -1;
+}
+
+.xevos-kyber-test-section {
+  background: transparent;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.xevos-kyber-test__header {
+  text-align: center;
+  max-width: 1030px;
+  margin: 0 auto 2.5rem;
+}
+
+.xevos-kyber-test__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 52px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.625rem;
+}
+
+.xevos-kyber-test__desc,
+.xevos-kyber-test__desc p {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 0;
+}
+
+.xevos-kyber-test__desc strong,
+.xevos-kyber-test__desc p strong {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.xevos-kyber-test__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+
+
+
+.xevos-kyber-test__visual {
+  position: relative;
+  flex: 1.3;
+  min-width: 0;
+  margin-left: -3%;
+}
+
+.xevos-kyber-test__visual img {
+  width: 100%;
+  max-width: none;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+#kyber-test-main-img {
+  width: 110%;
+  max-width: none;
+  display: block;
+  position: relative;
+  left: -8%;
+  z-index: 1;
+}
+
+.xevos-kyber-test__blesk {
+  position: absolute !important;
+  top: -4%;
+  right: 70px;
+  width: auto !important;
+  max-width: none !important;
+  z-index: 2 !important;
+  pointer-events: none;
+  display: none !important;
+}
+
+.xevos-kyber-test__glow {
+  position: absolute;
+  top: -10%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(ellipse at center, rgba(0, 187, 255, 0.15) 0%, rgba(0, 187, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+.xevos-kyber-test__panel {
+  flex: 1;
+  min-width: 0;
+  max-width: 650px;
+}
+
+.xevos-kyber-test__panel h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: var(--color-white);
   margin-bottom: 1.5rem;
 }
 
-.xevos-mobile-menu__cta {
-  margin-top: 2rem;
+.xevos-kyber-test__panel-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 4rem;
 }
 
-.xevos-mobile-menu__emergency {
-  margin-top: 2rem;
+.xevos-kyber-test__checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.xevos-kyber-test__checklist li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.xevos-kyber-test__check-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(124, 218, 248, 0.80) 0%, rgba(27, 51, 229, 0.80) 100%), rgba(255, 255, 255, 0.10);
+  box-shadow: 0 0 13.2px 0 rgba(0, 183, 255, 0.80);
+}
+
+.xevos-kyber-test__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-white);
+  background: var(--color-accent);
+  border: 1px solid var(--color-white);
+  padding: 0.5rem 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.xevos-kyber-test__cta-btn:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.xevos-kyber-test__cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+}
+
+.xevos-kyber-test__panel .swiper-slide {
+  padding-left: 10px;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
+}
+
+.xevos-kyber-test__panel .swiper-slide-active {
+  opacity: 1 !important;
+}
+
+.xevos-kyber-test__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.25rem;
+  width: fit-content !important;
+  margin-inline: auto;
+  position: relative;
+  top: -60px !important;
+}
+
+.xevos-kyber-test__pagination .swiper-pagination-bullet {
+  width: auto;
+  height: auto;
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.xevos-kyber-test__pagination .swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  padding-inline: 64px;
+}
+
+@media (min-width: 1024px) {
+  .xevos-kyber-test-section {
+    padding-bottom: 3rem;
+  }
+
+  .xevos-kyber-test__body {
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .xevos-kyber-test__pagination {
+    top: 35px !important;
+  }
+}
+
+
+
+@media screen and (max-width: 991px) {
+  .xevos-kyber-test__body {
+    flex-direction: column-reverse;
+  }
+
+  .xevos-kyber-test__panel {
+    max-width: 100%;
+  }
+
+  #kyber-test-main-img {
+    left: unset;
+  }
+
+  .xevos-kyber-test__visual {
+    margin-left: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Kybernetická politika
+   -------------------------------------------------------------------------- */
+.xevos-kyber-politika {
+  background: transparent;
+  overflow: hidden;
+}
+
+.xevos-kyber-politika__header {
+  text-align: center;
+  max-width: 890px;
+  margin: 0 auto 4rem;
+}
+
+.xevos-kyber-politika__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 52px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.625rem;
+}
+
+.xevos-kyber-politika__desc,
+.xevos-kyber-politika__desc p {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 0;
+}
+
+.xevos-kyber-politika__desc strong,
+.xevos-kyber-politika__desc p strong {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.xevos-kyber-politika__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .xevos-kyber-politika__body {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.xevos-kyber-politika__panel {
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
+.xevos-kyber-politika__visual {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .xevos-kyber-politika__visual {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+  }
+}
+
+.xevos-kyber-politika__visual img {
+  width: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.xevos-kyber-politika__glow {
+  position: absolute;
+  top: -10%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(ellipse at center, rgba(0, 187, 255, 0.15) 0%, rgba(0, 187, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+.xevos-kyber-politika__panel h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+}
+
+.xevos-kyber-politika__panel-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+.xevos-kyber-politika__checklist {
+  margin-bottom: 4rem;
+}
+
+.xevos-kyber-politika__checklist li {
+  white-space: nowrap;
+}
+
+/* --- Mid-desktop: reduce image overflow at 1024-1500px --- */
+@media (min-width: 1024px) and (max-width: 1500px) {
+  .xevos-kyber-test__visual {
+    margin-left: 0;
+  }
+
+  #kyber-test-main-img {
+    width: 100%;
+    left: 0;
+  }
+
+  .xevos-kyber-test__panel {
+    max-width: 550px;
+  }
+
+  .xevos-kyber-test__cta-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* --- Shared responsive: kyber-test + kyber-politika (1023px) --- */
+@media (max-width: 1023px) {
+
+  .xevos-kyber-test__header h2,
+  .xevos-kyber-politika__header h2 {
+    font-size: 36px;
+  }
+
+  .xevos-kyber-test__desc,
+  .xevos-kyber-politika__desc {
+    font-size: 18px;
+  }
+
+  .xevos-kyber-test__panel h3,
+  .xevos-kyber-politika__panel h3 {
+    font-size: 24px;
+  }
+
+  .xevos-kyber-test__panel-desc,
+  .xevos-kyber-politika__panel-desc {
+    font-size: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .xevos-kyber-test__checklist {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 4rem;
+  }
+
+  .xevos-kyber-test__checklist li,
+  .xevos-kyber-politika__checklist li {
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .xevos-kyber-test__cta-btn {
+    font-size: 16px;
+  }
+
+  .xevos-kyber-test__cta-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .xevos-kyber-politika__visual {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .xevos-kyber-politika__panel {
+    flex: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .xevos-kyber-test__pagination {
+    top: -20px !important;
+  }
+}
+
+/* --- Shared responsive: kyber-test + kyber-politika (767px) --- */
+@media (max-width: 767px) {
+  .xevos-kyber-test__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .xevos-kyber-test__body {
+    gap: 1.5rem;
+  }
+
+  .xevos-kyber-test__visual {
+    margin-left: 0;
+  }
+
+  #kyber-test-main-img {
+    width: 100%;
+    left: 0;
+  }
+
+  /* .xevos-kyber-test__visual img,
+  .xevos-kyber-politika__visual img {
+    max-height: 280px;
+    object-fit: contain;
+  } */
+
+  .xevos-kyber-test__panel {
+    padding: 20px;
+  }
+
+  .xevos-kyber-test__header h2,
+  .xevos-kyber-politika__header h2 {
+    font-size: 26px;
+  }
+
+  .xevos-kyber-test__desc,
+  .xevos-kyber-politika__desc {
+    font-size: 14px;
+  }
+
+  .xevos-kyber-test__panel h3,
+  .xevos-kyber-politika__panel h3 {
+    font-size: 22px;
+    margin-bottom: 1rem;
+  }
+
+  .xevos-kyber-test__panel-desc,
+  .xevos-kyber-politika__panel-desc {
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+  }
+
+  .xevos-kyber-test__checklist li,
+  .xevos-kyber-politika__checklist li {
+    font-size: 13px;
+  }
+
+  .xevos-kyber-test__cta-btn {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+
+  .xevos-kyber-test__cta-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .xevos-kyber-test__pagination .swiper-pagination-bullet {
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+
+  .xevos-kyber-test__pagination .swiper-pagination-bullet-active {
+    padding-inline: 32px;
+  }
+
+  .xevos-kyber-politika__header {
+    margin-bottom: 2rem;
+  }
+
+  .xevos-kyber-politika__checklist {
+    margin-bottom: 2rem;
+  }
+}
+
+/* --- Shared responsive: kyber-test + kyber-politika (479px) --- */
+@media (max-width: 479px) {
+
+  .xevos-kyber-test__header h2,
+  .xevos-kyber-politika__header h2 {
+    font-size: 22px;
+  }
+
+  .xevos-kyber-test__panel h3,
+  .xevos-kyber-politika__panel h3 {
+    font-size: 20px;
+  }
+
+  .xevos-kyber-test__cta-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .xevos-kyber-test__cta-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .xevos-kyber-test__pagination .swiper-pagination-bullet {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .xevos-kyber-test__pagination .swiper-pagination-bullet-active {
+    padding-inline: 1.5rem;
+  }
 }
 
 
@@ -2437,7 +3335,7 @@ b {
   align-items: center;
   gap: 1rem;
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.25vw, 1.25rem);
+  font-size: 18px;
   line-height: 1.58;
   color: var(--color-text);
 }
@@ -2488,6 +3386,7 @@ b {
   .xevos-kyber-politika__checklist {
     flex-direction: column;
     gap: 0.75rem;
+    margin-bottom: 4rem;
   }
 }
 
@@ -2495,14 +3394,7 @@ b {
 /* --------------------------------------------------------------------------
    31. Partners bar refinements
    -------------------------------------------------------------------------- */
-.xevos-partners__placeholder {
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-  color: var(--color-text-dim);
-  opacity: 0.4;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
+/* Removed — consolidated into partners section above */
 
 
 /* --------------------------------------------------------------------------
@@ -2542,8 +3434,7 @@ b {
 .xevos-page-hero__bg--gradient {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 70% 30%, rgba(74, 108, 247, 0.2) 0%, transparent 50%),
+  background: radial-gradient(ellipse at 70% 30%, rgba(74, 108, 247, 0.2) 0%, transparent 50%),
     radial-gradient(ellipse at 30% 70%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
     var(--bg-primary);
 }
@@ -2559,6 +3450,23 @@ b {
   padding-top: 160px;
   min-height: auto;
   padding-bottom: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Ellipse 21 + 24 — purple glow blobs on hero (Figma: LIGHTEN) */
+.xevos-blog-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 10% 30%, rgba(87, 24, 244, 0.28) 0%, transparent 40%),
+    radial-gradient(circle at 95% 20%, rgba(87, 24, 244, 0.4) 0%, transparent 35%);
+  mix-blend-mode: lighten;
 }
 
 .xevos-blog-hero__grid {
@@ -2578,7 +3486,7 @@ b {
 .xevos-blog-hero__content h1 {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: clamp(2rem, 5vw, 5rem);
+  font-size: 5rem;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   line-height: 1.05;
@@ -2589,9 +3497,18 @@ b {
 
 .xevos-blog-hero__desc {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  font-size: 1.5rem;
   line-height: normal;
   color: rgba(236, 236, 236, 0.7);
+}
+
+.xevos-blog-hero__desc strong {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.xevos-blog-hero__content h1 strong {
+  color: var(--color-accent);
 }
 
 .xevos-blog-hero__image img {
@@ -2748,24 +3665,6 @@ b {
   .xevos-two-col {
     grid-template-columns: 1fr;
   }
-
-  .xevos-footer__inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .xevos-footer__nav ul {
-    justify-content: center;
-  }
-
-  .xevos-footer__social {
-    justify-content: center;
-  }
-
-  .xevos-footer__copy {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 @media (max-width: 479px) {
@@ -2777,6 +3676,11 @@ b {
 
   .xevos-header__inner {
     height: 64px;
+    padding-left: 10px;
+  }
+
+  .xevos-mobile-menu {
+    top: calc(20px + 64px);
   }
 }
 
@@ -3018,7 +3922,7 @@ b {
   left: 0;
   right: 0;
   z-index: var(--z-modal);
-  background: var(--bg-secondary);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%), rgba(0, 0, 0, 0.40);
   border-top: 1px solid var(--color-border);
   padding: 1rem var(--gutter);
   display: flex;
@@ -3034,6 +3938,14 @@ b {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.xevos-cookie-banner__text::before {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: url('../img/global/cookie.svg') no-repeat center / contain;
 }
 
 .xevos-cookie-banner__actions {
@@ -3085,7 +3997,7 @@ b {
 }
 
 .xevos-404__title {
-  font-size: clamp(5rem, 15vw, 12rem);
+  font-size: 12rem;
   font-weight: 800;
   color: var(--color-accent);
   opacity: 0.2;
@@ -3203,6 +4115,11 @@ body.admin-bar .xevos-search-overlay {
 /* --------------------------------------------------------------------------
    55. Swiper overrides (dark theme dots)
    -------------------------------------------------------------------------- */
+
+.swiper-pagination {
+  position: relative !important;
+}
+
 .swiper-pagination-bullet {
   background: var(--color-text-dim);
   opacity: 0.5;
@@ -3235,6 +4152,21 @@ body.admin-bar .xevos-search-overlay {
    Global mobile enhancements
    -------------------------------------------------------------------------- */
 @media (max-width: 767px) {
+
+  /* Prevent long words from causing horizontal scroll */
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  a,
+  li,
+  span,
+  td {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
   .xevos-section__container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -3254,13 +4186,13 @@ body.admin-bar .xevos-search-overlay {
   }
 
   .xevos-btn {
-    font-size: 0.875rem;
-    padding: 0.625rem 1.25rem;
+    font-size: 16px;
+    padding: 1rem 1.25rem;
   }
 
   .xevos-btn__arrow {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
   }
 
   .xevos-breadcrumbs {
@@ -3302,23 +4234,7 @@ body.admin-bar .xevos-search-overlay {
     font-size: 6rem;
   }
 
-  /* Partners bar mobile */
-  .xevos-partners__list {
-    gap: 2rem;
-  }
-
-  .xevos-partners__logo img {
-    max-height: 28px;
-  }
-
-  /* Footer mobile */
-  .xevos-footer__inner {
-    text-align: center;
-  }
-
-  .xevos-footer__logo img {
-    margin: 0 auto;
-  }
+  /* Partners + footer — consolidated above */
 }
 
 @media (max-width: 479px) {
@@ -3360,14 +4276,14 @@ body.admin-bar .xevos-search-overlay {
 .xevos-platba-result h1 {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: 4rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
 .xevos-platba-result p {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  font-size: 1.25rem;
   color: var(--color-text-muted);
   max-width: 600px;
   margin-bottom: 2.5rem;

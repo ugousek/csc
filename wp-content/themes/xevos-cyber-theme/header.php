@@ -60,48 +60,32 @@
 
 	<!-- Mobile menu panel -->
 	<div class="xevos-mobile-menu" id="mobile-menu" aria-hidden="true">
-		<!-- Close button -->
-		<div class="xevos-mobile-menu__header">
-			<a href="<?php echo esc_url(home_url('/')); ?>" class="xevos-header__logo">
-				<img src="<?php echo esc_url(get_theme_file_uri('assets/img/global/csc-logo.png')); ?>" alt="XEVOS Cyber Security" style="height:28px;">
-			</a>
-			<button class="xevos-mobile-menu__close" aria-label="Zavřít menu">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-					<path d="M18 6L6 18M6 6l12 12" />
-				</svg>
-			</button>
-		</div>
+		<div class="xevos-mobile-menu__content">
+			<div class="xevos-mobile-menu__inner">
+				<!-- Search with inline icon -->
+				<div class="xevos-mobile-menu__search">
+					<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="xevos-mobile-search-form">
+						<svg class="xevos-mobile-search-form__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+						<input type="search" name="s" placeholder="Hledat..." class="xevos-mobile-search-form__input" value="<?php echo get_search_query(); ?>">
+					</form>
+				</div>
 
-		<!-- Search -->
-		<div class="xevos-mobile-menu__search">
-			<?php get_search_form(); ?>
-		</div>
+				<!-- Navigation -->
+				<?php
+				wp_nav_menu([
+					'theme_location' => 'primary',
+					'container'      => false,
+					'menu_class'     => 'xevos-mobile-menu__nav-list',
+					'fallback_cb'    => 'xevos_fallback_menu',
+					'depth'          => 2,
+				]);
+				?>
 
-		<!-- Navigation -->
-		<?php
-		wp_nav_menu([
-			'theme_location' => 'primary',
-			'container'      => false,
-			'menu_class'     => 'xevos-mobile-menu__nav-list',
-			'fallback_cb'    => 'xevos_fallback_menu',
-			'depth'          => 2,
-		]);
-		?>
-
-		<!-- CTA -->
-		<div class="xevos-mobile-menu__cta">
-			<a href="<?php echo esc_url($cta_url); ?>" class="xevos-btn xevos-btn--outline xevos-btn--full">
-				<?php echo esc_html(strtoupper($cta_text)); ?>
-			</a>
-		</div>
-
-		<!-- Emergency CTA -->
-		<div class="xevos-mobile-menu__emergency">
-			<div class="xevos-emergency-badge">
-				<span class="xevos-emergency-badge__icon">☣</span>
-				<div>
-					<span class="xevos-emergency-badge__title">Jsem terčem <strong>ÚTOKU!</strong></span>
-					<span class="xevos-emergency-badge__sub">Jak postupovat?</span>
+				<!-- CTA -->
+				<div class="xevos-mobile-menu__cta">
+					<a href="<?php echo esc_url($cta_url); ?>" class="xevos-btn xevos-btn--outline xevos-btn--full">
+						<?php echo esc_html(strtoupper($cta_text)); ?>
+					</a>
 				</div>
 			</div>
 		</div>

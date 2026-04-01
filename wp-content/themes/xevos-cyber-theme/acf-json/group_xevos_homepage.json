@@ -53,6 +53,7 @@
       "name": "hero_popis",
       "type": "textarea",
       "rows": 3,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý.",
       "conditional_logic": [
         [
           {
@@ -157,14 +158,6 @@
       ],
       "sub_fields": [
         {
-          "key": "field_hp_sluzba_ikona",
-          "label": "Ikona",
-          "name": "ikona",
-          "type": "image",
-          "return_format": "array",
-          "preview_size": "thumbnail"
-        },
-        {
           "key": "field_hp_sluzba_nazev",
           "label": "Název",
           "name": "nazev",
@@ -185,6 +178,95 @@
           "type": "url"
         }
       ]
+    },
+    {
+      "key": "field_hp_eventy_tab",
+      "label": "Eventy / Školení",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_eventy_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "eventy_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_hp_eventy_heading",
+      "label": "Nadpis",
+      "name": "eventy_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_hp_eventy_popis",
+      "label": "Popis",
+      "name": "eventy_popis",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
+      "key": "field_hp_eventy_pocet",
+      "label": "Počet zobrazených",
+      "name": "eventy_pocet",
+      "type": "number",
+      "default_value": 3,
+      "min": 1,
+      "max": 12
+    },
+    {
+      "key": "field_hp_eventy_cta_title",
+      "label": "CTA box – nadpis",
+      "name": "eventy_cta_title",
+      "type": "text",
+      "default_value": "Cyber pohotovost",
+      "instructions": "Nadpis pravého CTA boxu (Figma: \"Cyber pohotovost\")"
+    },
+    {
+      "key": "field_hp_eventy_cta_text",
+      "label": "CTA box – popis",
+      "name": "eventy_cta_text",
+      "type": "textarea",
+      "rows": 3,
+      "default_value": "Okamžitá pomoc a kroky, které pomohou rychle zastavit probíhající útok, omezit škody a zahájit správný postup reakce."
+    },
+    {
+      "key": "field_hp_eventy_cta_btn1_text",
+      "label": "CTA box – tlačítko 1 text",
+      "name": "eventy_cta_btn1_text",
+      "type": "text",
+      "default_value": "POTŘEBUJI POMOC!"
+    },
+    {
+      "key": "field_hp_eventy_cta_btn1_url",
+      "label": "CTA box – tlačítko 1 URL",
+      "name": "eventy_cta_btn1_url",
+      "type": "url"
+    },
+    {
+      "key": "field_hp_eventy_cta_btn2_text",
+      "label": "CTA box – tlačítko 2 text",
+      "name": "eventy_cta_btn2_text",
+      "type": "text",
+      "default_value": "JAK POSTUPOVAT?"
+    },
+    {
+      "key": "field_hp_eventy_cta_btn2_url",
+      "label": "CTA box – tlačítko 2 URL",
+      "name": "eventy_cta_btn2_url",
+      "type": "url"
+    },
+    {
+      "key": "field_hp_eventy_cta_image",
+      "label": "CTA box – obrázek na pozadí",
+      "name": "eventy_cta_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "instructions": "Obrázek za CTA boxem (fallback: assets/img/homepage/eventy-cta.png)"
     },
     {
       "key": "field_hp_kyber_test_tab",
@@ -222,6 +304,7 @@
       "type": "wysiwyg",
       "toolbar": "basic",
       "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý.",
       "conditional_logic": [
         [
           {
@@ -322,6 +405,7 @@
       "name": "statistiky_popis",
       "type": "textarea",
       "rows": 3,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý.",
       "default_value": "Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci."
     },
     {
@@ -415,6 +499,7 @@
       "type": "wysiwyg",
       "toolbar": "basic",
       "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý.",
       "conditional_logic": [
         [
           {
@@ -467,42 +552,6 @@
       ]
     },
     {
-      "key": "field_hp_eventy_tab",
-      "label": "Eventy / Školení",
-      "name": "",
-      "type": "tab"
-    },
-    {
-      "key": "field_hp_eventy_zobrazit",
-      "label": "Zobrazit sekci",
-      "name": "eventy_zobrazit_sekci",
-      "type": "true_false",
-      "default_value": 1,
-      "ui": 1
-    },
-    {
-      "key": "field_hp_eventy_heading",
-      "label": "Nadpis",
-      "name": "eventy_heading",
-      "type": "text"
-    },
-    {
-      "key": "field_hp_eventy_popis",
-      "label": "Popis",
-      "name": "eventy_popis",
-      "type": "textarea",
-      "rows": 3
-    },
-    {
-      "key": "field_hp_eventy_pocet",
-      "label": "Počet zobrazených",
-      "name": "eventy_pocet",
-      "type": "number",
-      "default_value": 3,
-      "min": 1,
-      "max": 12
-    },
-    {
       "key": "field_hp_aktuality_tab",
       "label": "Aktuality",
       "name": "",
@@ -527,7 +576,7 @@
       "label": "Počet zobrazených",
       "name": "aktuality_pocet",
       "type": "number",
-      "default_value": 3,
+      "default_value": 9,
       "min": 1,
       "max": 12
     },
@@ -546,10 +595,28 @@
       "ui": 1
     },
     {
+      "key": "field_hp_recenze_pocet",
+      "label": "Počet zobrazených",
+      "name": "recenze_pocet",
+      "type": "number",
+      "default_value": 9,
+      "min": 1,
+      "max": 20
+    },
+    {
       "key": "field_hp_recenze_heading",
       "label": "Nadpis",
       "name": "recenze_heading",
-      "type": "text"
+      "type": "text",
+      "placeholder": "Řekli o nás"
+    },
+    {
+      "key": "field_hp_recenze_popis",
+      "label": "Popis",
+      "name": "recenze_popis",
+      "type": "textarea",
+      "rows": 3,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
     },
     {
       "key": "field_hp_cta_tab",

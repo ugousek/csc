@@ -83,7 +83,7 @@ get_header();
 		<?php endif; ?>
 	<?php endwhile; ?>
 
-	<?php get_template_part( 'template-parts/homepage/recenze' ); ?>
+	<?php get_template_part( 'template-parts/components/recenze' ); ?>
 
 </main>
 

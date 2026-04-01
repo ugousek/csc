@@ -30,7 +30,7 @@
 @media (min-width: 1024px) {
   .xevos-kontakt {
     grid-template-columns: 1.6fr 1fr;
-    gap: clamp(3rem, 7.75vw, 7.75rem);
+    gap: 7.75rem;
   }
 }
 
@@ -56,7 +56,7 @@
    -------------------------------------------------------------------------- */
 .xevos-kontakt-form .xevos-form__label {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.125vw, 1.125rem);
+  font-size: 1.125rem;
   margin-bottom: 0.5rem;
 }
 

@@ -271,7 +271,7 @@ function xevos_import_demo_content(): void {
 		// Aktuality.
 		update_field( 'aktuality_zobrazit_sekci', true, $front_page_id );
 		update_field( 'aktuality_heading', 'Kyber aktuality', $front_page_id );
-		update_field( 'aktuality_pocet', 3, $front_page_id );
+		update_field( 'aktuality_pocet', 9, $front_page_id );
 
 		// Recenze.
 		update_field( 'recenze_zobrazit_sekci', true, $front_page_id );

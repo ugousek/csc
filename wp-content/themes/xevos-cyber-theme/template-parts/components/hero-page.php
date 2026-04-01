@@ -34,9 +34,9 @@ if ( $css_class ) {
 	<div class="xevos-section__container">
 		<div class="xevos-blog-hero__grid">
 			<div class="xevos-blog-hero__content">
-				<h1><?php echo esc_html( $heading ); ?></h1>
+				<h1><?php echo wp_kses( $heading, [ 'strong' => [], 'em' => [], 'span' => [ 'class' => [], 'style' => [] ], 'br' => [] ] ); ?></h1>
 				<?php if ( $desc ) : ?>
-					<p class="xevos-blog-hero__desc"><?php echo esc_html( $desc ); ?></p>
+					<p class="xevos-blog-hero__desc"><?php echo wp_kses( $desc, [ 'strong' => [], 'em' => [], 'span' => [ 'class' => [], 'style' => [] ], 'br' => [] ] ); ?></p>
 				<?php endif; ?>
 				<?php if ( $cta_text ) : ?>
 					<a href="<?php echo esc_url( $cta_url ); ?>" class="xevos-btn xevos-btn--primary" style="margin-top:2rem;">

@@ -29,6 +29,7 @@ $xevos_includes = [
 	'/inc/admin/order-columns.php',
 	'/inc/admin/order-filters.php',
 	'/inc/order-numbering.php',
+	'/inc/ecomail.php',
 	'/inc/cron.php',
 	'/inc/schema.php',
 	'/inc/demo-content.php',

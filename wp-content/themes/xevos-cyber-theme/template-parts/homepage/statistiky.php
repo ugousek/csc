@@ -13,9 +13,9 @@ $stats = get_field('statistiky');
 
 if (! $stats) {
 	$stats = [
-		['cislo' => 'až 40%', 'popis' => 'Počet vysokých nebo kritických zranitelností'],
-		['cislo' => 'až 40%', 'popis' => 'Firem zasažených phishingovým útokem'],
-		['cislo' => 'až 40%', 'popis' => 'Průměrná škoda kybernetického incidentu v ČR'],
+		['cislo' => '~95%', 'popis' => 'Firem má zranitelnosti'],
+		['cislo' => '1×', 'popis' => 'Stačí kliknout na phishingový e-mail'],
+		['cislo' => '72H', 'popis' => 'Průměrná doba do prvního kompromitování'],
 	];
 }
 

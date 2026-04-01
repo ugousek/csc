@@ -43,6 +43,32 @@ function xevos_theme_setup(): void {
 }
 
 /**
+ * Disable Gutenberg editor on front page — all content via ACF.
+ */
+add_action( 'init', function (): void {
+	$front_page_id = (int) get_option( 'page_on_front' );
+	if ( $front_page_id ) {
+		add_filter( 'use_block_editor_for_post', function ( bool $use, \WP_Post $post ) use ( $front_page_id ): bool {
+			return $post->ID === $front_page_id ? false : $use;
+		}, 10, 2 );
+	}
+} );
+
+add_action( 'admin_init', function (): void {
+	$front_page_id = (int) get_option( 'page_on_front' );
+	if ( $front_page_id ) {
+		remove_post_type_support( 'page', 'editor' );
+		// Re-add for non-front pages.
+		add_action( 'load-post.php', function () use ( $front_page_id ): void {
+			$post_id = isset( $_GET['post'] ) ? (int) $_GET['post'] : 0;
+			if ( $post_id !== $front_page_id ) {
+				add_post_type_support( 'page', 'editor' );
+			}
+		} );
+	}
+} );
+
+/**
  * Make custom sizes available in WP media picker.
  */
 add_filter( 'image_size_names_choose', function ( array $sizes ): array {

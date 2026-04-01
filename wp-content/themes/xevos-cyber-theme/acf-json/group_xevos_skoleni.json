@@ -9,14 +9,40 @@
       "type": "tab"
     },
     {
+      "key": "field_sk_hero_nadpis",
+      "label": "Hero nadpis",
+      "name": "hero_nadpis",
+      "type": "text",
+      "instructions": "Nadpis v hero sekci. Text ve &lt;strong&gt; bude růžový (accent). Prázdné = název školení.",
+      "placeholder": "Kybernetická bezpečnost - <strong>obecná</strong>"
+    },
+    {
+      "key": "field_sk_hero_obrazek",
+      "label": "Hero obrázek",
+      "name": "hero_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "instructions": "Obrázek v pravé části hero sekce. Pokud nevyplníte, použije se výchozí."
+    },
+    {
+      "key": "field_sk_hero_popis",
+      "label": "Hero popis",
+      "name": "hero_popis",
+      "type": "textarea",
+      "rows": 3,
+      "instructions": "Krátký popis pod nadpisem v hero. Tučný text (B) = bílá barva, zbytek šedý. Prázdné = zkrácený hlavní popis.",
+      "placeholder": "S novým ZoKB je školení kyberbezpečnosti povinné..."
+    },
+    {
       "key": "field_sk_popis",
-      "label": "Popis školení",
+      "label": "Popis školení (pro přehled)",
       "name": "popis",
       "type": "wysiwyg",
       "toolbar": "full",
       "media_upload": 1,
       "tabs": "all",
-      "instructions": "Zobrazuje se v hero sekci (zkráceně) a v sekci Pro koho je školení určeno (celý)"
+      "instructions": "Krátký popis zobrazovaný v přehledu/výpisu všech školení (archive). Nemá vliv na hero ani sekci Pro koho."
     },
     {
       "key": "field_sk_cena",
@@ -49,8 +75,32 @@
     },
 
     {
+      "key": "field_sk_pro_koho_tab",
+      "label": "2. Pro koho",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_pro_koho_nadpis",
+      "label": "Nadpis sekce",
+      "name": "pro_koho_nadpis",
+      "type": "text",
+      "instructions": "Prázdné = Pro koho je školení určeno.",
+      "placeholder": "Pro koho je školení určeno"
+    },
+    {
+      "key": "field_sk_pro_koho_text",
+      "label": "Text sekce",
+      "name": "pro_koho_text",
+      "type": "wysiwyg",
+      "toolbar": "full",
+      "media_upload": 0,
+      "instructions": "Obsah sekce pod hero. Tučný text (B) = bílá barva, zbytek šedý. Prázdné = použije se hlavní Popis školení."
+    },
+
+    {
       "key": "field_sk_terminy_tab",
-      "label": "2. Termíny",
+      "label": "3. Termíny",
       "name": "",
       "type": "tab"
     },
@@ -119,7 +169,7 @@
 
     {
       "key": "field_sk_lektori_tab",
-      "label": "3. Lektoři",
+      "label": "4. Lektoři",
       "name": "",
       "type": "tab"
     },
@@ -158,7 +208,7 @@
 
     {
       "key": "field_sk_harmonogram_tab",
-      "label": "4. Harmonogram & Osnova",
+      "label": "5. Harmonogram, Osnova & Co si odnesete",
       "name": "",
       "type": "tab"
     },
@@ -205,12 +255,6 @@
     },
 
     {
-      "key": "field_sk_benefity_tab",
-      "label": "5. Co si odnesete & Kde parkovat",
-      "name": "",
-      "type": "tab"
-    },
-    {
       "key": "field_sk_co_odnesete",
       "label": "Co si odnesete",
       "name": "co_odnesete",
@@ -221,12 +265,21 @@
         { "key": "field_sk_co_odnesete_bod", "label": "Bod", "name": "bod", "type": "text" }
       ]
     },
+
+    {
+      "key": "field_sk_parkovat_tab",
+      "label": "6. Kde parkovat",
+      "name": "",
+      "type": "tab"
+    },
     {
       "key": "field_sk_kde_parkovat",
       "label": "Kde parkovat",
       "name": "kde_parkovat",
-      "type": "textarea",
-      "rows": 3
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
     },
     {
       "key": "field_sk_kde_parkovat_img",
@@ -238,8 +291,31 @@
     },
 
     {
+      "key": "field_sk_recenze_tab",
+      "label": "7. Recenze",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_recenze_heading",
+      "label": "Nadpis sekce recenzí",
+      "name": "recenze_heading",
+      "type": "text",
+      "placeholder": "Řekli o nás",
+      "instructions": "Prázdné = Řekli o nás."
+    },
+    {
+      "key": "field_sk_recenze_popis",
+      "label": "Popis sekce recenzí",
+      "name": "recenze_popis",
+      "type": "textarea",
+      "rows": 3,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+
+    {
       "key": "field_sk_formular_tab",
-      "label": "6. Objednávka",
+      "label": "8. Objednávka",
       "name": "",
       "type": "tab"
     },
@@ -250,6 +326,32 @@
       "type": "true_false",
       "default_value": 1,
       "ui": 1
+    },
+    {
+      "key": "field_sk_registrace_zdarma",
+      "label": "Objednávka nebo registrace zdarma",
+      "name": "registrace_zdarma",
+      "type": "true_false",
+      "default_value": 0,
+      "ui": 1,
+      "instructions": "Pokud je zapnuto, formulář funguje jako registrace zdarma (bez platby) a kontakt se odešle do Ecomailu."
+    },
+    {
+      "key": "field_sk_ecomail_list_id",
+      "label": "Ecomail List ID",
+      "name": "ecomail_list_id",
+      "type": "text",
+      "instructions": "ID mailing listu v Ecomailu, do kterého se přidá kontakt po registraci (např. 22).",
+      "placeholder": "22",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_sk_registrace_zdarma",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
     }
   ],
   "location": [

@@ -103,3 +103,60 @@ function xevos_breadcrumbs(): string {
 
 	return '<nav class="xevos-breadcrumbs" aria-label="breadcrumb">' . implode( ' <span class="xevos-breadcrumbs__sep">/</span> ', $items ) . '</nav>';
 }
+
+/**
+ * Trim HTML text to N words while preserving <strong>, <em>, <br> tags.
+ *
+ * @param string $html  Input HTML.
+ * @param int    $words Max word count.
+ * @return string Trimmed and sanitized HTML.
+ */
+function xevos_trim_html( string $html, int $words = 30 ): string {
+	$allowed = [ 'strong' => [], 'em' => [], 'br' => [] ];
+	$clean   = wp_kses( $html, $allowed );
+	$clean   = preg_replace( '/\s+/', ' ', strip_tags( str_replace( '>', '> ', $clean ), '<strong><em><br>' ) );
+
+	$all   = preg_split( '/\s+/', trim( $clean ), -1, PREG_SPLIT_NO_EMPTY );
+	$plain = preg_split( '/\s+/', trim( strip_tags( $clean ) ), -1, PREG_SPLIT_NO_EMPTY );
+
+	if ( count( $plain ) <= $words ) {
+		return wp_kses( $clean, $allowed );
+	}
+
+	// Walk through tokens, count only real words (not tags).
+	$word_count = 0;
+	$result     = '';
+	$in_tag     = false;
+
+	for ( $i = 0, $len = strlen( $clean ); $i < $len; $i++ ) {
+		$char = $clean[ $i ];
+
+		if ( $char === '<' ) {
+			$in_tag = true;
+			$result .= $char;
+			continue;
+		}
+		if ( $char === '>' ) {
+			$in_tag = false;
+			$result .= $char;
+			continue;
+		}
+		if ( $in_tag ) {
+			$result .= $char;
+			continue;
+		}
+
+		if ( $char === ' ' && $i > 0 && $clean[ $i - 1 ] !== '>' ) {
+			$word_count++;
+			if ( $word_count >= $words ) {
+				break;
+			}
+		}
+		$result .= $char;
+	}
+
+	// Close any open tags.
+	$result = force_balance_tags( trim( $result ) . '&hellip;' );
+
+	return wp_kses( $result, $allowed );
+}

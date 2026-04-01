@@ -54,7 +54,7 @@
 
 .xevos-skoleni-list-card__title {
   font-family: var(--font-heading);
-  font-size: clamp(1.125rem, 2vw, 2rem);
+  font-size: 2rem;
   font-weight: 600;
   color: var(--color-text);
   margin: 0 0 0.5rem;
@@ -62,7 +62,7 @@
 
 .xevos-skoleni-list-card__desc {
   font-family: var(--font-body);
-  font-size: clamp(0.8125rem, 1.125vw, 1.125rem);
+  font-size: 1.125rem;
   color: var(--color-text-muted);
   margin: 0;
 }
@@ -111,7 +111,7 @@
 
 .xevos-skoleni-list-card__meta-col--price .xevos-skoleni-list-card__price {
   font-family: var(--font-body);
-  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-size: 2rem;
   font-weight: 400;
   color: var(--color-text);
   white-space: nowrap;
@@ -196,7 +196,7 @@
 
 .xevos-termin-card {
   flex: 0 0 auto;
-  width: clamp(280px, 30vw, 480px);
+  width: 480px;
   background: rgba(0, 187, 255, 0.2);
   border: 1px solid var(--color-cyan);
   border-radius: 0;

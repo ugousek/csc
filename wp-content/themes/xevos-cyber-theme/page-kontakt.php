@@ -78,7 +78,7 @@ $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/ko
 	</section>
 
 	<!-- Recenze -->
-	<?php get_template_part('template-parts/homepage/recenze'); ?>
+	<?php get_template_part('template-parts/components/recenze'); ?>
 
 </main>
 

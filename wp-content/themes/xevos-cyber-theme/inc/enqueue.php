@@ -21,8 +21,8 @@ function xevos_enqueue_assets(): void {
 		$version
 	);
 
-	// Kyber testování + politika CSS (shared between homepage and kyber page).
-	if ( is_front_page() || is_page_template( 'page-kyberneticke-testovani.php' ) ) {
+	// Kyber testování page-specific CSS (shared styles moved to main.css).
+	if ( is_page_template( 'page-kyberneticke-testovani.php' ) ) {
 		wp_enqueue_style(
 			'xevos-kyber-testovani',
 			$theme_uri . '/assets/css/kyber-testovani.css',
@@ -74,6 +74,16 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
+	// Search results CSS.
+	if ( is_search() ) {
+		wp_enqueue_style(
+			'xevos-search',
+			$theme_uri . '/assets/css/search.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
 	// Legal CSS (Obchodní podmínky, GDPR, Cookies).
 	if (
 		is_page_template( 'page-obchodni-podminky.php' ) ||
@@ -99,13 +109,20 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
-	// Frontpage CSS (only on homepage).
+	// Frontpage CSS + JS (only on homepage).
 	if ( is_front_page() ) {
 		wp_enqueue_style(
 			'xevos-frontpage',
 			$theme_uri . '/assets/css/frontpage.css',
-			[ 'xevos-main', 'xevos-kyber-testovani' ],
+			[ 'xevos-main' ],
 			$version
+		);
+		wp_enqueue_script(
+			'xevos-homepage',
+			$theme_uri . '/assets/js/homepage.js',
+			[ 'swiper' ],
+			$version,
+			true
 		);
 	}
 
@@ -134,6 +151,17 @@ function xevos_enqueue_assets(): void {
 		wp_enqueue_script(
 			'xevos-archive-filter',
 			$theme_uri . '/assets/js/archive-filter.js',
+			[ 'xevos-main' ],
+			$version,
+			true
+		);
+	}
+
+	// Ecomail free registration JS (single skoleni with registrace_zdarma).
+	if ( is_singular( 'skoleni' ) && get_field( 'registrace_zdarma' ) ) {
+		wp_enqueue_script(
+			'xevos-ecomail-register',
+			$theme_uri . '/assets/js/ecomail-register.js',
 			[ 'xevos-main' ],
 			$version,
 			true

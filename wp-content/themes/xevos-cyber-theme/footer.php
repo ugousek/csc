@@ -9,13 +9,12 @@ $socials = xevos_get_option('socialni_site');
 $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 ?>
 
-<!-- Partners bar — Figma: 1600px container, space-between -->
+<!-- Partners bar — Figma: 1600px container, space-between; Swiper under 991px -->
 <section class="xevos-section xevos-partners">
 	<div class="xevos-section__container xevos-partners__inner">
 		<?php
 		$partners = xevos_get_option('partneri');
 
-		/* Fallback logos by partner name — used when ACF entry has no uploaded image */
 		$fallback_logos = [
 			'cisco'    => 'cisco.png',
 			'eset'     => 'eset.png',
@@ -25,18 +24,15 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 			'pentera'  => 'pentera.png',
 		];
 
-		$has_any = false;
+		$partner_items = [];
 
 		if ($partners) :
 			foreach ($partners as $p) :
 				$name = $p['nazev'] ?? '';
 				$logo_url = '';
-
 				if (! empty($p['logo']['url'])) {
-					/* ACF uploaded logo */
 					$logo_url = $p['logo']['url'];
 				} else {
-					/* Match name to fallback file */
 					$key = strtolower(trim($name));
 					foreach ($fallback_logos as $match => $file) {
 						if (str_contains($key, $match)) {
@@ -45,28 +41,32 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 						}
 					}
 				}
-
-				if ($logo_url) :
-					$has_any = true; ?>
-					<img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($name); ?>">
-				<?php endif;
+				if ($logo_url) {
+					$partner_items[] = ['url' => $logo_url, 'name' => $name];
+				}
 			endforeach;
 		endif;
 
-		/* If nothing rendered (no ACF data at all), show all fallbacks */
-		if (! $has_any) :
-			$all_fallbacks = [
-				['file' => 'cisco.png', 'name' => 'Cisco'],
-				['file' => 'eset.png', 'name' => 'ESET Gold Partner'],
-				['file' => 'apple.png', 'name' => 'Apple Technical Partner'],
-				['file' => 'paloalto.png', 'name' => 'Palo Alto Networks'],
-				['file' => 'pentera.png', 'name' => 'Pentera'],
+		if (empty($partner_items)) :
+			$partner_items = [
+				['url' => get_theme_file_uri('assets/img/global/partners/cisco.png'), 'name' => 'Cisco'],
+				['url' => get_theme_file_uri('assets/img/global/partners/eset.png'), 'name' => 'ESET Gold Partner'],
+				['url' => get_theme_file_uri('assets/img/global/partners/apple.png'), 'name' => 'Apple Technical Partner'],
+				['url' => get_theme_file_uri('assets/img/global/partners/paloalto.png'), 'name' => 'Palo Alto Networks'],
+				['url' => get_theme_file_uri('assets/img/global/partners/pentera.png'), 'name' => 'Pentera'],
 			];
-			foreach ($all_fallbacks as $fp) : ?>
-				<img src="<?php echo esc_url(get_theme_file_uri('assets/img/global/partners/' . $fp['file'])); ?>"
-					alt="<?php echo esc_attr($fp['name']); ?>">
-		<?php endforeach;
-		endif; ?>
+		endif;
+		?>
+
+		<div class="swiper xevos-partners__swiper" id="partners-swiper">
+			<div class="swiper-wrapper xevos-partners__track">
+				<?php foreach ($partner_items as $pi) : ?>
+					<div class="swiper-slide xevos-partners__slide">
+						<img src="<?php echo esc_url($pi['url']); ?>" alt="<?php echo esc_attr($pi['name']); ?>">
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -84,20 +84,21 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 			</a>
 		</div>
 
-		<!-- Nav — Figma: Sora 16px, gap 32, first item bold + magenta -->
-		<nav class="xevos-footer__nav">
-			<?php
-			wp_nav_menu([
-				'theme_location' => 'footer',
-				'container'      => false,
-				'depth'          => 1,
-				'fallback_cb'    => 'xevos_fallback_menu',
-			]);
-			?>
-		</nav>
+		<!-- Nav + Social — on mobile: row (menu left, socials right) -->
+		<div class="xevos-footer__nav-social">
+			<nav class="xevos-footer__nav">
+				<?php
+				wp_nav_menu([
+					'theme_location' => 'footer',
+					'container'      => false,
+					'depth'          => 1,
+					'fallback_cb'    => 'xevos_fallback_menu',
+				]);
+				?>
+			</nav>
 
-		<!-- Social icons — Figma: 24x24, gap 15, white fill -->
-		<div class="xevos-footer__social">
+			<!-- Social icons — Figma: 24x24, gap 15, white fill -->
+			<div class="xevos-footer__social">
 			<?php
 			/* Inline SVG icons by network name — exact Figma exports */
 			$social_icons = [
@@ -142,6 +143,7 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 			<?php endforeach;
 			endif; ?>
 		</div>
+		</div><!-- /.xevos-footer__nav-social -->
 	</div>
 
 	<!-- Copyright  -->

@@ -158,6 +158,20 @@
       "return_format": "array",
       "preview_size": "thumbnail",
       "instructions": "Zdrojový soubor pro favicon (SVG nebo PNG min. 512x512)"
+    },
+    {
+      "key": "field_xevos_ecomail_tab",
+      "label": "Ecomail",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_xevos_ecomail_api_key",
+      "label": "Ecomail API klíč",
+      "name": "ecomail_api_key",
+      "type": "text",
+      "instructions": "API klíč pro Ecomail (najdete v Ecomail → Nastavení → API).",
+      "placeholder": "5db1a8700b1e75db1a8700b291"
     }
   ],
   "location": [

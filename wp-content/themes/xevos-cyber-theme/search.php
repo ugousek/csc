@@ -10,40 +10,42 @@ get_header();
 
 <main id="main" class="xevos-main">
 
-	<!-- Hero: two-column — same pattern as blog-hero -->
-	<section class="xevos-page-hero xevos-blog-hero">
-		<div class="xevos-page-hero__bg xevos-page-hero__bg--gradient"></div>
-		<div class="xevos-section__container">
-			<div class="xevos-blog-hero__grid">
-				<div class="xevos-blog-hero__content">
-					<h1>Výsledky vyhledávání</h1>
-					<p class="xevos-blog-hero__desc"><?php printf( esc_html__( 'Hledaný výraz: „%s"', 'xevos-cyber' ), get_search_query() ); ?></p>
-				</div>
-			</div>
-		</div>
-	</section>
+	<!-- Hero -->
+	<?php get_template_part( 'template-parts/components/hero-page', null, [
+		'heading'     => __( 'Výsledky vyhledávání', 'xevos-cyber' ),
+		'description' => sprintf( __( 'Hledaný výraz: „%s"', 'xevos-cyber' ), get_search_query() ),
+	] ); ?>
 
-	<section class="xevos-section xevos-blog-archive">
+	<!-- Results -->
+	<section class="xevos-section xevos-search-results">
 		<div class="xevos-section__container">
 
-			<!-- Cards grid -->
-			<div class="xevos-aktuality-archive__grid" id="search-results-grid">
-				<?php if ( have_posts() ) : ?>
+			<?php if ( have_posts() ) : ?>
+				<p class="xevos-search-results__count">
+					<?php printf( __( 'Nalezeno %s výsledků', 'xevos-cyber' ), '<strong>' . $wp_query->found_posts . '</strong>' ); ?>
+				</p>
+
+				<div class="xevos-search-results__grid">
 					<?php while ( have_posts() ) : the_post(); ?>
 						<?php get_template_part( 'template-parts/components/card-aktualita' ); ?>
 					<?php endwhile; ?>
-				<?php else : ?>
-					<div class="xevos-no-results">
-						<p><?php esc_html_e( 'Žádné výsledky pro zadaný výraz.', 'xevos-cyber' ); ?></p>
-						<?php get_search_form(); ?>
-					</div>
-				<?php endif; ?>
-			</div>
+				</div>
 
-			<!-- Pagination -->
-			<?php if ( have_posts() ) : ?>
 				<div class="xevos-archive-bottom">
 					<?php the_posts_pagination( [ 'class' => 'xevos-pagination' ] ); ?>
+				</div>
+
+			<?php else : ?>
+				<div class="xevos-search-results__empty">
+					<svg width="64" height="64" viewBox="0 0 24 24" fill="none" class="xevos-search-results__empty-icon">
+						<circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+						<path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+					</svg>
+					<h2><?php esc_html_e( 'Žádné výsledky', 'xevos-cyber' ); ?></h2>
+					<p><?php printf( __( 'Pro výraz „%s" jsme nic nenašli. Zkuste jiný dotaz.', 'xevos-cyber' ), '<strong>' . esc_html( get_search_query() ) . '</strong>' ); ?></p>
+					<div class="xevos-search-results__form">
+						<?php get_search_form(); ?>
+					</div>
 				</div>
 			<?php endif; ?>
 
