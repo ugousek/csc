@@ -3506,6 +3506,22 @@ body::after {
   filter: drop-shadow(0 0 1.75rem rgba(0, 0, 0, 1));
 }
 
+.xevos-blog-hero__subheading {
+  color: #EEE;
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .xevos-blog-hero__subheading {
+    text-align: center;
+    font-size: 26px;
+  }
+}
+
 .xevos-blog-hero__desc {
   font-family: var(--font-body);
   font-size: 1.5rem;

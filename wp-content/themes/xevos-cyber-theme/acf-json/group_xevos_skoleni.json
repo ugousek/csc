@@ -17,6 +17,15 @@
       "placeholder": "Kybernetická bezpečnost - <strong>obecná</strong>"
     },
     {
+      "key": "field_sk_hero_podnadpis",
+      "label": "Hero podnadpis",
+      "name": "hero_podnadpis",
+      "type": "text",
+      "instructions": "Menší text pod hlavním nadpisem (např. \"Bez strašení. S jistotou\"). Nepovinné.",
+      "required": 0,
+      "default_value": ""
+    },
+    {
       "key": "field_sk_hero_obrazek",
       "label": "Hero obrázek",
       "name": "hero_obrazek",
@@ -384,5 +393,5 @@
   "label_placement": "top",
   "instruction_placement": "label",
   "active": true,
-  "modified": 1775086321
+  "modified": 1775087196
 }

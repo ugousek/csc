@@ -50,11 +50,13 @@ while (have_posts()) : the_post();
 			$cta_label = 'Objednat';
 		}
 
-		$hero_nadpis = get_field('hero_nadpis') ?: get_the_title();
-		$hero_popis  = get_field('hero_popis');
+		$hero_nadpis    = get_field('hero_nadpis') ?: get_the_title();
+		$hero_podnadpis = get_field('hero_podnadpis') ?: '';
+		$hero_popis     = get_field('hero_popis');
 
 		get_template_part('template-parts/components/hero-page', null, [
 			'heading'     => $hero_nadpis,
+			'subheading'  => $hero_podnadpis,
 			'description' => $hero_popis ?: '',
 			'cta_text'    => $cta_label,
 			'cta_url'     => '#objednavka',

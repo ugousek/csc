@@ -13,13 +13,14 @@
  *   loading      – img loading attribute ('lazy' default, 'eager' for above-fold)
  */
 
-$heading   = $args['heading'] ?? '';
-$desc      = $args['description'] ?? '';
-$cta_text  = $args['cta_text'] ?? '';
-$cta_url   = $args['cta_url'] ?? '';
-$image_url = $args['image_url'] ?? '';
-$css_class = $args['css_class'] ?? '';
-$loading   = $args['loading'] ?? 'lazy';
+$heading    = $args['heading'] ?? '';
+$subheading = $args['subheading'] ?? '';
+$desc       = $args['description'] ?? '';
+$cta_text   = $args['cta_text'] ?? '';
+$cta_url    = $args['cta_url'] ?? '';
+$image_url  = $args['image_url'] ?? '';
+$css_class  = $args['css_class'] ?? '';
+$loading    = $args['loading'] ?? 'lazy';
 
 if ( ! $heading ) return;
 
@@ -35,6 +36,9 @@ if ( $css_class ) {
 		<div class="xevos-blog-hero__grid">
 			<div class="xevos-blog-hero__content">
 				<h1><?php echo wp_kses( $heading, [ 'strong' => [], 'em' => [], 'span' => [ 'class' => [], 'style' => [] ], 'br' => [] ] ); ?></h1>
+				<?php if ( $subheading ) : ?>
+					<p class="xevos-blog-hero__subheading"><?php echo esc_html( $subheading ); ?></p>
+				<?php endif; ?>
 				<?php if ( $desc ) : ?>
 					<p class="xevos-blog-hero__desc"><?php echo wp_kses( $desc, [ 'strong' => [], 'em' => [], 'span' => [ 'class' => [], 'style' => [] ], 'br' => [] ] ); ?></p>
 				<?php endif; ?>

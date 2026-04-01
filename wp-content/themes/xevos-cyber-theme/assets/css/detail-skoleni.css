@@ -464,6 +464,12 @@
     letter-spacing: 0.48px;
 }
 
+@media (max-width: 1700px) {
+    .xevos-termin-cards {
+        gap: 40px;
+    }
+}
+
 /* Nav arrows — uses shared .xevos-nav-arrow from main.css */
 
 
@@ -816,23 +822,215 @@
 /* --------------------------------------------------------------------------
    11. Responsive overrides
    -------------------------------------------------------------------------- */
+
+/* === Tablet (768px – 1023px) === */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* Hero */
+    .xevos-skoleni-hero .xevos-blog-hero__content h1 {
+        font-size: 3.5rem;
+    }
+
+    .xevos-skoleni-hero .xevos-blog-hero__desc {
+        max-width: 100%;
+    }
+
+    /* Pro koho */
+    .xevos-skoleni-pro-koho h2 {
+        font-size: 1.75rem;
+    }
+
+    .xevos-skoleni-pro-koho .xevos-article-content__body,
+    .xevos-skoleni-pro-koho .xevos-article-content__body p {
+        font-size: 1.125rem;
+    }
+
+    /* Termíny */
+    .xevos-termin-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .xevos-termin-card__date {
+        font-size: 2.5rem;
+    }
+
+    .xevos-termin-card__location,
+    .xevos-termin-card__location a {
+        font-size: 1.125rem;
+    }
+
+    /* Lektoři */
+    .xevos-skoleni-lektori-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .xevos-lektor-card__foto,
+    .xevos-lektor-card__foto-wrap {
+        width: 220px;
+        height: 220px;
+    }
+
+    .xevos-lektor-card__name {
+        font-size: 1.5rem;
+    }
+
+    .xevos-lektor-card__role,
+    .xevos-lektor-card__bio {
+        font-size: 1.125rem;
+    }
+
+    /* Harmonogram + Osnova */
+    .xevos-skoleni-content-cols h2 {
+        font-size: 2.5rem;
+    }
+
+    .xevos-harmonogram-item,
+    .xevos-osnova-list li {
+        font-size: 1.125rem;
+    }
+
+    /* Co si odnesete */
+    .xevos-skoleni-benefits h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Kde parkovat */
+    .xevos-skoleni-parking__text h2 {
+        font-size: 2.5rem;
+    }
+
+    .xevos-skoleni-parking__text p {
+        font-size: 1.125rem;
+    }
+
+    .xevos-skoleni-parking__image::before {
+        width: 170%;
+        height: 170%;
+        top: -30%;
+        left: -40%;
+    }
+
+    /* Objednávka */
+    .xevos-skoleni-section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .xevos-skoleni-section-header p {
+        font-size: 1.125rem;
+    }
+
+    .xevos-order-summary__price-main {
+        font-size: 48px;
+    }
+
+    .xevos-order-summary__price-label {
+        font-size: 24px;
+    }
+
+    /* Glow blobs – smaller on tablet */
+    .xevos-skoleni-detail .xevos-glow-blob--left.xevos-glow-blob--lg {
+        width: 1600px;
+        height: 1600px;
+        top: 400px;
+        left: -900px;
+    }
+
+    .xevos-glow.first::before {
+        width: 1600px;
+        height: 1600px;
+        right: -900px;
+        top: -900px;
+    }
+}
+
+/* === Desktop (1024px+) === */
+@media (min-width: 1024px) {
+    .xevos-termin-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* === Mobile (max 767px) === */
 @media (max-width: 767px) {
+
+    /* Hero */
     .xevos-skoleni-hero .xevos-blog-hero__content {
         text-align: center;
     }
 
     .xevos-skoleni-hero .xevos-blog-hero__content h1 {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        margin-top: 120px;
+    }
+
+    .xevos-skoleni-hero .xevos-blog-hero__desc {
+        max-width: 100%;
+        font-size: 16px;
     }
 
     .xevos-skoleni-hero .xevos-btn--primary {
-        font-size: 1.125rem;
+        font-size: 1rem;
         padding: 10px 24px;
+    }
+
+    .xevos-blog-hero .xevos-btn {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 1.5rem auto 0;
+    }
+
+    /* Pro koho */
+    .xevos-skoleni-pro-koho h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .xevos-skoleni-pro-koho .xevos-article-content__body,
+    .xevos-skoleni-pro-koho .xevos-article-content__body p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* Termíny */
+    .xevos-skoleni-terminy {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .xevos-skoleni-terminy h2 {
+        font-size: 1.5rem;
     }
 
     .xevos-termin-cards {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .xevos-termin-card {
+        padding: 12px;
+    }
+
+    .xevos-termin-card__date {
+        font-size: 2rem;
+    }
+
+    .xevos-termin-card__location,
+    .xevos-termin-card__location a {
+        font-size: 1rem;
+    }
+
+    .xevos-termin-card__time {
+        font-size: 16px;
+    }
+
+    /* Lektoři */
+    .xevos-skoleni-lektori-section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
     }
 
     .xevos-skoleni-lektori__carousel {
@@ -849,8 +1047,63 @@
         height: 160px;
     }
 
+    .xevos-lektor-card__name {
+        font-size: 1.25rem;
+    }
+
+    .xevos-lektor-card__role,
+    .xevos-lektor-card__bio {
+        font-size: 1rem;
+    }
+
+    /* Harmonogram + Osnova */
+    .xevos-skoleni-content-cols {
+        gap: 2rem;
+    }
+
+    .xevos-skoleni-content-cols h2 {
+        font-size: 1.75rem;
+    }
+
+    .xevos-harmonogram-item,
+    .xevos-osnova-list li {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* Co si odnesete */
+    .xevos-skoleni-benefits {
+        margin-top: 3rem;
+    }
+
+    .xevos-skoleni-benefits h2 {
+        font-size: 1.75rem;
+    }
+
+    /* Kde parkovat */
     .xevos-skoleni-parking {
         grid-template-columns: 1fr;
+    }
+
+    .xevos-skoleni-parking__text h2 {
+        font-size: 1.75rem;
+    }
+
+    .xevos-skoleni-parking__text p {
+        font-size: 1rem;
+    }
+
+    .xevos-skoleni-parking__image::before {
+        display: none;
+    }
+
+    /* Objednávka */
+    .xevos-skoleni-section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .xevos-skoleni-section-header p {
+        font-size: 1rem;
     }
 
     .xevos-order-section {
@@ -868,25 +1121,37 @@
         padding: 8px 16px;
     }
 
-    .xevos-skoleni-parking__image::before {
-        display: none;
+    .xevos-order-summary__price-main {
+        font-size: 36px;
     }
 
+    .xevos-order-summary__price-label {
+        font-size: 20px;
+    }
+
+    .xevos-order-summary__price-main small {
+        font-size: 16px;
+    }
+
+    .xevos-order-summary__price-secondary {
+        font-size: 16px;
+    }
+
+    /* Hide glow blobs on mobile */
     .xevos-skoleni-detail .xevos-glow-blob--left.xevos-glow-blob--lg {
         display: none;
     }
-}
 
-@media (min-width: 768px) and (max-width: 1023px) {
-    .xevos-termin-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+    .xevos-glow.first::before {
+        display: none;
     }
-}
 
-@media (min-width: 1024px) {
-    .xevos-termin-cards {
-        grid-template-columns: repeat(3, 1fr);
+    /* Recenze glow smaller */
+    .xevos-skoleni-recenze-glow {
+        width: 800px;
+        height: 800px;
+        top: 50px;
+        right: -400px;
     }
 }
 
