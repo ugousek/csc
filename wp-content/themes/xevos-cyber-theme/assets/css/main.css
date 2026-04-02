@@ -3512,7 +3512,7 @@ body::after {
   font-size: 40px;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.625rem;
 }
 
 @media (max-width: 767px) {
@@ -4055,9 +4055,6 @@ body.admin-bar .xevos-header {
   top: 32px;
 }
 
-body.admin-bar .xevos-mobile-menu {
-  padding-top: 132px;
-}
 
 body.admin-bar .xevos-search-overlay {
   padding-top: calc(20vh + 32px);

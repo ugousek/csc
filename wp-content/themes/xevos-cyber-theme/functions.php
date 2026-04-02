@@ -37,6 +37,13 @@ $xevos_includes = [
 	'/inc/optimization.php',
 ];
 
+/**
+ * Fix WP dashboard "Quick Draft" error when get_default_post_to_edit returns null.
+ */
+add_action( 'wp_dashboard_setup', function () {
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+}, 20 );
+
 foreach ( $xevos_includes as $file ) {
 	$filepath = XEVOS_THEME_DIR . $file;
 	if ( file_exists( $filepath ) ) {
