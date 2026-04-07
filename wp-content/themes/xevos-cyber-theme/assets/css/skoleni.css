@@ -60,11 +60,24 @@
   margin: 0 0 0.5rem;
 }
 
+.xevos-skoleni-list-card__title strong {
+  color: var(--Primary, #0BF);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
 .xevos-skoleni-list-card__desc {
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  color: var(--color-text-muted);
-  margin: 0;
+  color: #ECECEC;
+  font-family: Sora;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  /* 28.8px */
+  letter-spacing: 0.36px;
 }
 
 .xevos-skoleni-list-card__meta-row {
@@ -109,6 +122,26 @@
   color: var(--color-cyan);
 }
 
+/* Capacity number (e.g. "14/20") */
+.xevos-skoleni-list-card__meta-capacity {
+  color: rgba(236, 236, 236, 0.70);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.28px;
+  margin-left: 0.25rem;
+}
+
+/* Capacity status colors */
+.xevos-skoleni-list-card__meta-value--warning {
+  color: var(--color-warning);
+}
+
+.xevos-skoleni-list-card__meta-value--full {
+  color: var(--color-danger);
+}
+
 .xevos-skoleni-list-card__meta-col--price .xevos-skoleni-list-card__price {
   font-family: var(--font-body);
   font-size: 2rem;
@@ -120,6 +153,10 @@
 .xevos-skoleni-archive__list {
   display: flex;
   flex-direction: column;
+}
+
+.xevos-btn--outline {
+  padding: 12px 40px;
 }
 
 

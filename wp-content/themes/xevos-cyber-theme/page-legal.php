@@ -33,7 +33,7 @@ get_header();
 			</div>
 		</article>
 	<?php endwhile; ?>
-</main>
+
 
 <script>
 // Generate TOC from h2/h3.

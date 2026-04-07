@@ -42,7 +42,7 @@ if (! $sluzby) {
 						<a href="<?php echo esc_url($url); ?>" class="xevos-services__card">
 							<div class="xevos-services__card-number"><?php echo esc_html(str_pad($i + 1, 2, '0', STR_PAD_LEFT)); ?></div>
 							<h3 class="xevos-services__card-title"><?php echo esc_html($s['nazev'] ?? ''); ?></h3>
-							<p class="xevos-services__card-text"><?php echo esc_html($s['popis'] ?? ''); ?></p>
+							<p class="xevos-services__card-text"><?php echo wp_kses_post(strip_tags($s['popis'] ?? '', '<strong><b><em><br>')); ?></p>
 							<span class="xevos-services__card-link">
 								Zjistit více <img src="<?php echo esc_url(get_theme_file_uri('assets/img/global/card-arrow.svg')); ?>" alt="" class="xevos-services__card-arrow">
 							</span>

@@ -13,9 +13,9 @@ $stats = get_field('statistiky');
 
 if (! $stats) {
 	$stats = [
-		['cislo' => '~95%', 'popis' => 'Firem má zranitelnosti'],
-		['cislo' => '1×', 'popis' => 'Stačí kliknout na phishingový e-mail'],
-		['cislo' => '72H', 'popis' => 'Průměrná doba do prvního kompromitování'],
+		['popis' => 'Firem má zranitelnosti'],
+		['popis' => 'Stačí kliknout na phishingový e-mail'],
+		['popis' => 'Průměrná doba do prvního kompromitování'],
 	];
 }
 
@@ -37,7 +37,7 @@ $fallback_png = get_theme_file_uri('assets/img/homepage/stat-graphic.png');
 			</div>
 			<div class="xevos-statistiky__feature-text">
 				<h2><?php echo esc_html($heading); ?></h2>
-				<p><?php echo esc_html($desc); ?></p>
+				<p><?php echo wp_kses_post(strip_tags($desc, '<strong><b><em><br>')); ?></p>
 			</div>
 		</div>
 
@@ -51,7 +51,7 @@ $fallback_png = get_theme_file_uri('assets/img/homepage/stat-graphic.png');
 						<img src="<?php echo esc_url($card_img); ?>"
 							alt="" loading="lazy" aria-hidden="true" />
 					</div>
-					<h3 class="xevos-statistiky__card-title"><?php echo esc_html($s['popis'] ?? ''); ?></h3>
+					<h3 class="xevos-statistiky__card-title"><?php echo wp_kses_post($s['popis'] ?? ''); ?></h3>
 				</div>
 			<?php endforeach; ?>
 		</div>

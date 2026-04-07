@@ -20,6 +20,6 @@ get_header();
 			ZPĚT NA HLAVNÍ STRÁNKU
 		</a>
 	</div>
-</main>
+
 
 <?php get_footer(); ?>

@@ -62,7 +62,7 @@ get_header();
 					<div class="xevos-services__card">
 						<div class="xevos-services__card-number"><?php echo esc_html( $k['num'] ); ?></div>
 						<h3 class="xevos-services__card-title"><?php echo esc_html( $k['title'] ); ?></h3>
-						<p class="xevos-services__card-text"><?php echo esc_html( $k['desc'] ); ?></p>
+						<p class="xevos-services__card-text"><?php echo wp_kses_post( $k['desc'] ); ?></p>
 					</div>
 				<?php endforeach; ?>
 			</div>
@@ -83,6 +83,6 @@ get_header();
 		</div>
 	</section>
 
-</main>
+
 
 <?php get_footer(); ?>

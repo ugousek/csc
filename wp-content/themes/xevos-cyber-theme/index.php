@@ -24,7 +24,7 @@ get_header();
 	<?php else : ?>
 		<p><?php esc_html_e( 'No content found.', 'xevos-cyber' ); ?></p>
 	<?php endif; ?>
-</main>
+
 
 <?php
 get_footer();

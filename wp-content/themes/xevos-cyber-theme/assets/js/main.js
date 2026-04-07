@@ -319,4 +319,34 @@
     window.addEventListener('resize', initPartnersSwiper);
   }
 
+  /* ===== Kyber test panel slider — numbered pagination + image swap ===== */
+  var ktPanelEl = document.getElementById('kyber-test-panel-swiper');
+  var ktPagination = document.getElementById('kyber-test-pagination');
+  if (ktPanelEl && ktPagination && typeof Swiper !== 'undefined') {
+    var ktMainImg = document.getElementById('kyber-test-main-img');
+    var ktImagesData = document.getElementById('kyber-test-images');
+    var ktImages = ktImagesData ? JSON.parse(ktImagesData.textContent) : [];
+
+    new Swiper(ktPanelEl, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      pagination: {
+        el: ktPagination,
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+      },
+      on: {
+        slideChange: function () {
+          if (ktMainImg && ktImages[this.activeIndex]) {
+            ktMainImg.src = ktImages[this.activeIndex];
+          }
+        },
+      },
+    });
+  }
+
 })();

@@ -1,0 +1,35 @@
+{
+  "key": "group_xevos_zasady_ochrany",
+  "title": "Zásady ochrany osobních údajů",
+  "fields": [
+    {
+      "key": "field_zas_nadpis",
+      "label": "Nadpis",
+      "name": "zasady_nadpis",
+      "type": "text",
+      "default_value": "Zásady ochrany osobních údajů"
+    },
+    {
+      "key": "field_zas_obsah",
+      "label": "Obsah",
+      "name": "zasady_obsah",
+      "type": "wysiwyg",
+      "toolbar": "full",
+      "media_upload": 1,
+      "instructions": "Kompletní text zásad ochrany osobních údajů."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-zasady-ochrany-osobnich-udaju.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "active": true
+}

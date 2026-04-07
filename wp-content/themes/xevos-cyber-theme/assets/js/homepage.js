@@ -6,6 +6,19 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
+
+    /* ===== Hero Lottie map animation ===== */
+    var lottieContainer = document.getElementById('hero-lottie-map');
+    if (lottieContainer && typeof lottie !== 'undefined' && typeof xevosHero !== 'undefined') {
+      lottie.loadAnimation({
+        container: lottieContainer,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: xevosHero.lottieUrl
+      });
+    }
+
     if (typeof Swiper === 'undefined') return;
 
     /* ===== Services — Swiper only when 5+ cards ===== */
@@ -46,35 +59,7 @@
       });
     }
 
-    /* ===== Kyber test panel slider — custom numbered pagination + image swap ===== */
-    var ktPanelEl = document.getElementById('kyber-test-panel-swiper');
-    var ktPagination = document.getElementById('kyber-test-pagination');
-    if (ktPanelEl && ktPagination) {
-      var ktMainImg = document.getElementById('kyber-test-main-img');
-      var ktImagesData = document.getElementById('kyber-test-images');
-      var ktImages = ktImagesData ? JSON.parse(ktImagesData.textContent) : [];
-
-      new Swiper(ktPanelEl, {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        pagination: {
-          el: ktPagination,
-          clickable: true,
-          renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>';
-          },
-        },
-        on: {
-          slideChange: function () {
-            if (ktMainImg && ktImages[this.activeIndex]) {
-              ktMainImg.src = ktImages[this.activeIndex];
-            }
-          },
-        },
-      });
-    }
+    /* Kyber test slider moved to main.js */
 
     /* ===== Eventy scrollbar ===== */
     var eventyList = document.querySelector('.xevos-eventy__list');

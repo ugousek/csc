@@ -27,7 +27,7 @@ if ( ! $vyhody ) {
 	<div class="xevos-section__container">
 		<div class="xevos-hp-recenze__header">
 			<h2><?php echo esc_html( $heading ); ?></h2>
-			<p><?php echo wp_kses_post( $text ); ?></p>
+			<p><?php echo wp_kses_post( strip_tags( $text, '<strong><b><em><br>' ) ); ?></p>
 		</div>
 
 		<div class="xevos-kt-pentest__grid">

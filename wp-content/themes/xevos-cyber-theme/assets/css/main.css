@@ -256,6 +256,17 @@ img {
   z-index: 0;
 }
 
+/* Size variants */
+.xevos-glow-blob--sm {
+  width: 500px;
+  height: 500px;
+}
+
+.xevos-glow-blob--lg {
+  width: 1200px;
+  height: 1200px;
+}
+
 /* Position variants */
 .xevos-glow-blob--right {
   right: -400px;
@@ -270,16 +281,102 @@ img {
   transform: translateX(-50%);
 }
 
-/* Wrapper: clip overflow so glow never causes scrollbar */
-.xevos-glow-wrap {
-  position: relative;
-  overflow: hidden;
+.xevos-glow-blob--top {
+  top: -400px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Children stay above glow */
+.xevos-glow-blob--top.xevos-glow-blob--lg {
+  top: -600px;
+}
+
+.xevos-glow-blob--left-second {
+  left: -600px;
+}
+
+.xevos-glow-blob--left-second.xevos-glow-blob--lg {
+  left: -800px;
+}
+
+.xevos-glow-blob--right-second {
+  right: -600px;
+}
+
+.xevos-glow-blob--right-second.xevos-glow-blob--lg {
+  right: -800px;
+}
+
+/* Glows directly in <main> — clip both axes */
+.xevos-main--glows {
+  position: relative;
+  overflow: clip;
+}
+
+.xevos-main--glows>.xevos-glow-blob {
+  z-index: 0;
+}
+
+.xevos-main--glows>section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Legacy wrapper (detail-skoleni, homepage) */
+.xevos-glow-wrap {
+  position: relative;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
 .xevos-glow-wrap>*:not(.xevos-glow-blob) {
   position: relative;
   z-index: 1;
+}
+
+/* Glow section – pseudo-element glow (e.g. .xevos-glow.first) */
+.xevos-glow {
+  position: relative;
+}
+
+.xevos-glow::before {
+  content: '';
+  position: absolute;
+  width: 2400px;
+  height: 2400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(87, 24, 244, 0.35) 0%, transparent 60%);
+  mix-blend-mode: lighten;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.xevos-glow.first::before {
+  right: -1200px;
+  top: -1200px;
+}
+
+.xevos-glow>* {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1023px) {
+  .xevos-glow::before {
+    width: 1600px;
+    height: 1600px;
+  }
+
+  .xevos-glow.first::before {
+    right: -900px;
+    top: -900px;
+  }
+}
+
+@media (max-width: 767px) {
+  .xevos-glow::before {
+    display: none;
+  }
 }
 
 
@@ -910,6 +1007,32 @@ b {
   resize: vertical;
 }
 
+/* Select – custom arrow, consistent across all forms */
+select.xevos-form__input,
+.xevos-form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0' fill='%23ECECEC'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+select.xevos-form__input option,
+.xevos-form__select option {
+  background: #1a1a4e;
+  color: var(--color-white);
+  padding: 0.5rem;
+}
+
+select.xevos-form__input option:hover,
+.xevos-form__select option:hover,
+select.xevos-form__input option:checked,
+.xevos-form__select option:checked {
+  background: #2a2a6e;
+}
+
 .xevos-form__error {
   margin-top: 0.25rem;
   font-size: var(--font-size-xs);
@@ -1020,7 +1143,7 @@ b {
 
 @media screen and (min-width: 1600px) {
   .xevos-header__inner {
-    max-width: calc(var(--container-max) - 48px);
+    max-width: calc(var(--container-max) - var(--gutter));
   }
 }
 
@@ -1075,7 +1198,7 @@ b {
   color: var(--color-white);
 }
 
-.xevos-header__nav-list a:hover {
+  {
   color: #F527AA;
 }
 
@@ -1093,6 +1216,16 @@ b {
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
+}
+
+.current-menu-item>a,
+.xevos-header__nav-list a:hover {
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--color-accent);
 }
 
 .xevos-header__nav-item>a:hover,
@@ -1609,7 +1742,6 @@ b {
   font-family: var(--font-body);
   font-size: 1.5rem;
   line-height: 1.6;
-  color: rgba(236, 236, 236, 1);
 }
 
 /* Figma: subtitle with mixed opacity — base 70%, <strong> at 100% */
@@ -1622,7 +1754,7 @@ b {
 .xevos-hp-aktuality__desc--mixed strong,
 .xevos-hp-aktuality__desc--mixed p strong {
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .xevos-hp-aktuality__carousel {
@@ -1790,18 +1922,32 @@ b {
    -------------------------------------------------------------------------- */
 /* BG přesahuje do partnerů — negative margin + extra padding */
 .xevos-hp-recenze {
-  background: linear-gradient(180deg, rgba(17, 1, 70, 0.00) 43.67%, #110146 83.67%),
-    url('../img/backgrounds/bg-rekli-o-nas.png') lightgray 50% / cover no-repeat;
-  mix-blend-mode: lighten;
-  margin-bottom: -207px;
-  padding-bottom: 400px;
+  position: relative;
+  overflow: hidden;
+}
 
+/* Wave Three.js canvas container */
+.xevos-hp-recenze__wave {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.xevos-hp-recenze__wave canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.xevos-hp-recenze>.xevos-section__container {
+  position: relative;
+  z-index: 1;
 }
 
 .xevos-hp-recenze__header {
   text-align: center;
   max-width: 972px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 6rem;
 }
 
 .xevos-hp-recenze__header h2 {
@@ -1830,7 +1976,7 @@ b {
 .xevos-hp-recenze__desc-mixed strong,
 .xevos-hp-recenze__desc-mixed p strong {
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .xevos-hp-recenze__carousel {
@@ -1860,6 +2006,19 @@ b {
 .xevos-recenze-pagination {
   text-align: center;
   margin-top: 2rem;
+}
+
+.xevos-aktuality-pagination,
+.xevos-recenze-pagination {
+  display: none;
+}
+
+@media (max-width: 991px) {
+
+  .xevos-aktuality-pagination,
+  .xevos-recenze-pagination {
+    display: block;
+  }
 }
 
 .xevos-aktuality-pagination .swiper-pagination-bullet,
@@ -1939,10 +2098,18 @@ b {
   line-height: 1.6;
   font-style: normal;
   color: var(--color-text);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
   flex: 1;
   padding-top: 1rem;
   border: none;
+}
+
+.xevos-recenze-card__author {
+  display: block;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
 }
 
 .xevos-footer {
@@ -2124,7 +2291,7 @@ b {
     display: flex !important;
     flex-wrap: nowrap !important;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 3rem;
     transform: none !important;
   }
@@ -2556,6 +2723,7 @@ b {
   text-underline-position: from-font;
 }
 
+
 .xevos-contact-info__item a:hover,
 .xevos-order-summary__contact-text a:hover {
   color: var(--color-white);
@@ -2706,7 +2874,8 @@ body {
 body::after {
   content: "";
   position: absolute;
-  top: var(--pattern-top, 50%);
+  /* top: var(--pattern-top, 50%); */
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -2840,8 +3009,13 @@ body::after {
   font-family: var(--font-body);
   font-size: 24px;
   line-height: 1.6;
-  color: var(--color-text);
+  color: rgba(236, 236, 236, 0.7);
   margin-bottom: 4rem;
+}
+
+.xevos-kyber-test__panel-desc strong {
+  color: var(--color-white);
+  font-weight: 400;
 }
 
 .xevos-kyber-test__checklist {
@@ -3022,7 +3196,7 @@ body::after {
 .xevos-kyber-politika__desc strong,
 .xevos-kyber-politika__desc p strong {
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .xevos-kyber-politika__body {
@@ -3094,8 +3268,13 @@ body::after {
   margin-bottom: 1.5rem;
 }
 
+.xevos-kyber-politika__panel-desc strong {
+  color: var(--color-white);
+  font-weight: 400;
+}
+
 .xevos-kyber-politika__checklist {
-  margin-bottom: 4rem;
+  margin-bottom: 4rem !important;
 }
 
 .xevos-kyber-politika__checklist li {
@@ -3383,8 +3562,8 @@ body::after {
 
 .xevos-checklist__icon svg,
 .xevos-kyber-test__check-circle svg {
-  width: 16px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
 }
 
 /* Horizontal layout variant (homepage kyber-politika) */
@@ -3531,11 +3710,12 @@ body::after {
 
 .xevos-blog-hero__desc strong {
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .xevos-blog-hero__content h1 strong {
   color: var(--color-accent);
+  font-weight: 900;
 }
 
 .xevos-blog-hero__image img {
@@ -3950,8 +4130,13 @@ body::after {
   right: 0;
   z-index: var(--z-modal);
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%), rgba(0, 0, 0, 0.40);
+  backdrop-filter: blur(20px);
   border-top: 1px solid var(--color-border);
-  padding: 1rem var(--gutter);
+  padding: 2rem var(--gutter);
+
+}
+
+.xevos-cookie-banner .xevos-section__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3961,7 +4146,7 @@ body::after {
 
 .xevos-cookie-banner__text {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -4142,6 +4327,13 @@ body.admin-bar .xevos-search-overlay {
 
 .swiper-pagination {
   position: relative !important;
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .swiper-pagination {
+    display: block;
+  }
 }
 
 .swiper-pagination-bullet {

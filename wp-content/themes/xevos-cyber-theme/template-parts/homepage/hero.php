@@ -19,9 +19,7 @@ $bg         = get_field('hero_background');
 <section class="xevos-hero">
 	<div class="xevos-hero__bg">
 
-		<video autoplay muted loop playsinline>
-			<source src="<?php echo esc_url(get_theme_file_uri('assets/video/hp-hero.mp4')); ?>" type="video/mp4">
-		</video>
+		<div id="hero-lottie-map" class="xevos-hero__lottie"></div>
 		<div class="xevos-hero__eclipse"></div>
 		<div class="xevos-hero__eclipse"></div>
 		<div class="xevos-hero__eclipse"></div>

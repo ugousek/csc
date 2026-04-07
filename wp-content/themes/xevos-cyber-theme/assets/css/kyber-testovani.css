@@ -7,6 +7,77 @@
 /* --------------------------------------------------------------------------
    1. Postup testování (5 numbered steps grid)
    -------------------------------------------------------------------------- */
+
+.xevos-glow-blob--left {
+  position: absolute;
+  left: -903px;
+  top: -542px;
+  width: 1755px;
+  height: 1755px;
+  border-radius: 1755px;
+  opacity: 0.4;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(87, 24, 244, 0.70) 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 2 !important;
+}
+
+.xevos-glow-blob--top {
+  position: absolute;
+  right: 82px;
+  top: -892px;
+  width: 1755px;
+  height: 1755px;
+  border-radius: 1755px;
+  opacity: 0.3;
+  background: radial-gradient(50% 50% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+  mix-blend-mode: multiply;
+  z-index: 2 !important;
+}
+
+.xevos-page-hero__bg--gradient {
+  background: unset;
+}
+
+.xevos-glow-blob--right {
+  position: absolute;
+  right: -1085px;
+  top: 577px;
+  width: 2095px;
+  height: 2095px;
+  border-radius: 2095px;
+  opacity: 0.4;
+  background: radial-gradient(50% 50% at 50% 50%, #5718F4 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 2 !important;
+}
+
+
+.xevos-glow-blob--right-second {
+  position: absolute;
+  right: -843px;
+  bottom: 1053px;
+  width: 2095px;
+  height: 2095px;
+  border-radius: 2095px;
+  opacity: 0.3;
+  background: radial-gradient(50% 50% at 50% 50%, #5718F4 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 0;
+}
+
+.xevos-glow-blob--left-second {
+  position: absolute;
+  left: -781px;
+  top: -1300px;
+  width: 2095px;
+  height: 2095px;
+  border-radius: 2095px;
+  opacity: 0.3;
+  background: radial-gradient(50% 50% at 50% 50%, #5718F4 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 2;
+}
+
 .xevos-postup-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -58,27 +129,32 @@
 }
 
 .xevos-postup-step__num {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 48px;
+  font-size: 52px;
   text-transform: uppercase;
   letter-spacing: 0.52px;
   color: var(--color-white);
-  padding: 24px 40px;
-  margin-bottom: 2rem;
-  background:
-    linear-gradient(180deg,
-      rgba(124, 218, 248, 0.20) 0%,
-      rgba(27, 51, 229, 0.20) 100%),
-    rgba(255, 255, 255, 0.10);
-  box-shadow: 0px 0px 81px 0px rgba(0, 183, 255, 0.20);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 187, 255, 0.20);
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 80px 0 #00B7FF,
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 .xevos-postup-step__title {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: var(--font-size-base);
+  font-size: 18px;
   text-transform: uppercase;
   color: var(--color-white);
   margin-bottom: 0.5rem;
@@ -86,7 +162,7 @@
 }
 
 .xevos-postup-step__text {
-  font-size: var(--font-size-sm);
+  font-size: 18px;
   color: var(--color-text-muted);
 }
 
@@ -97,6 +173,7 @@
 
 /* --- Tablet (768–1023px) --- */
 @media (max-width: 1023px) {
+
   .xevos-kyber-test__body,
   .xevos-kyber-politika__body {
     min-height: auto;
@@ -238,15 +315,10 @@
   padding-bottom: 0;
 }
 
-.xevos-two-col h2 {
-  color: #FFF;
-  font-family: var(--font-heading);
-  font-size: 3.25rem;
-  font-weight: 900;
-  line-height: 121.9%;
-  letter-spacing: 0.52px;
+.xevos-two-col h3 {
+  letter-spacing: 0.32px;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .xevos-benefity-section__desc,
@@ -261,14 +333,16 @@
 .xevos-benefity-section__desc strong,
 .xevos-benefity-section__desc p strong {
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .xevos-benefity-section .xevos-kyber-politika__checklist {
+  flex-direction: column;
   margin-bottom: 0;
 }
 
 .xevos-benefity-section .xevos-kyber-politika__checklist li {
+  font-size: 18px;
   white-space: normal;
 }
 
@@ -302,7 +376,7 @@
   }
 }
 
-.xevos-two-col > * {
+.xevos-two-col>* {
   flex: 1;
   min-width: 0;
 }
@@ -318,6 +392,8 @@
 
 .xevos-kt-banner__inner {
   position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 .xevos-kt-banner__bg {
@@ -325,6 +401,9 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .xevos-kt-banner__inner::after {
@@ -339,6 +418,7 @@
   position: relative;
   z-index: 2;
   padding: 4rem 3rem;
+
 }
 
 .xevos-kt-banner__content h2 {
@@ -358,12 +438,92 @@
   max-width: 850px;
 }
 
-.xevos-order-summary {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-border);
-  padding: 2rem;
+
+
+@media screen and (min-width: 991px) {
+  .xevos-kt-banner__content {
+    max-width: 50%;
+  }
 }
 
-.xevos-partners {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #140354;
+/* --------------------------------------------------------------------------
+   8. Postup testování – new layout (Figma)
+   Row of 5 numbered circles with lines, then 3+2 description grid below
+   -------------------------------------------------------------------------- */
+
+/* Circles row: stretched across full width */
+.xevos-postup-circles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.xevos-postup-circles .xevos-postup-step__num {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.xevos-postup-circles__line {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  max-width: 10%;
+}
+
+/* Descriptions: 3 columns */
+.xevos-postup-descs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 3rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .xevos-postup-descs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.xevos-postup-desc {
+  padding: 0;
+}
+
+/* Mobile: circles smaller, vertical stack */
+@media (max-width: 767px) {
+  .xevos-postup-circles {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .xevos-postup-circles__line {
+    max-width: 40px;
+  }
+
+  .xevos-postup-circles .xevos-postup-step__num {
+    font-size: 28px;
+    padding: 14px 18px;
+  }
+
+  .xevos-postup-descs {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .xevos-postup-circles .xevos-postup-step__num {
+    font-size: 22px;
+    padding: 12px 16px;
+    box-shadow: 0 0 40px 0 #00B7FF;
+  }
+
+  .xevos-postup-circles__line {
+    max-width: 20px;
+    height: 4px;
+  }
 }

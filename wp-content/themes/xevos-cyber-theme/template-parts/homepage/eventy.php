@@ -110,12 +110,15 @@ $typ_colors = [
 									</div>
 
 									<div class="xevos-eventy__content">
-										<h3 class="xevos-eventy__title"><?php the_title(); ?></h3>
+										<h3 class="xevos-eventy__title"><?php echo wp_kses_post(get_field('hero_nadpis') ?: get_the_title()); ?></h3>
 
 										<div class="xevos-eventy__meta">
 											<?php if ($dostupnost) : ?>
-												<span class="xevos-eventy__meta-seats">
-													Volná místa <span class="xevos-eventy__meta-capacity">(<?php echo esc_html($dostupnost['registrace'] . '/' . $dostupnost['kapacita']); ?>)</span>
+												<span class="xevos-eventy__meta-seats xevos-eventy__meta-seats--<?php echo esc_attr($dostupnost['stav']); ?>">
+													<?php echo esc_html($dostupnost['label']); ?>
+													<?php if (!empty($dostupnost['cislo'])) : ?>
+														<span class="xevos-eventy__meta-capacity"><?php echo esc_html($dostupnost['cislo']); ?></span>
+													<?php endif; ?>
 												</span>
 											<?php endif; ?>
 											<span class="xevos-eventy__meta-type xevos-eventy__meta-type--<?php echo esc_attr($typ_color); ?>">
@@ -186,7 +189,7 @@ $typ_colors = [
 				<div class="xevos-eventy__cta-content">
 					<div class="xevos-eventy__cta-text">
 						<h3 class="xevos-eventy__cta-title"><?php echo esc_html($cta_title); ?></h3>
-						<p><?php echo esc_html($cta_text); ?></p>
+						<p><?php echo wp_kses_post(strip_tags($cta_text, '<strong><b><em><br>')); ?></p>
 					</div>
 					<div class="xevos-eventy__cta-buttons">
 						<a href="<?php echo esc_url($cta_btn1_url); ?>" class="xevos-btn xevos-btn--primary">

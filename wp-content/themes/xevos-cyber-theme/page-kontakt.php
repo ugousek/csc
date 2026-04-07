@@ -15,7 +15,13 @@ $hero_img = get_field('kontakt_hero_obrazek');
 $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/kontakt/kontakt-hero.png');
 ?>
 
-<main id="main" class="xevos-main">
+<main id="main" class="xevos-main xevos-main--glows">
+
+	<!-- Glow blobs -->
+	<div class="xevos-glow-blob xevos-glow-blob--left xevos-glow-blob--lg" style="top:-400px;"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--top xevos-glow-blob--lg"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--right xevos-glow-blob--lg" style="top:800px;"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--left-second xevos-glow-blob--lg" style="bottom:0;"></div>
 
 	<!-- Hero: shared component -->
 	<?php get_template_part('template-parts/components/hero-page', null, [
@@ -80,6 +86,6 @@ $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/ko
 	<!-- Recenze -->
 	<?php get_template_part('template-parts/components/recenze'); ?>
 
-</main>
+
 
 <?php get_footer(); ?>

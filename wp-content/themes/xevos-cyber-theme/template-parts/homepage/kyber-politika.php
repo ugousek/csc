@@ -7,9 +7,12 @@
 $show = get_field('kyber_politika_zobrazit_sekci');
 if ($show === false) return;
 
-$heading = get_field('kyber_politika_heading') ?: 'Kybernetická politika';
-$desc    = get_field('kyber_politika_popis') ?: 'Soubor pravidel a postupů, které určují, jak organizace řídí bezpečnost, přístup, rizika a provozní standardy.';
-$text    = get_field('kyber_politika_text') ?: 'Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje role, odpovědnosti a pravidla, podle kterých se chrání data, systémy a provoz.';
+$heading      = get_field('kyber_politika_heading') ?: 'Kybernetická politika';
+$desc         = get_field('kyber_politika_popis') ?: '<strong>Soubor pravidel a postupů</strong>, které určují, jak organizace řídí <strong>bezpečnost, přístup, rizika a provozní standardy.</strong>';
+$panel_nadpis = get_field('kyber_politika_panel_nadpis') ?: 'Poskytujeme:';
+$text         = get_field('kyber_politika_text') ?: '<strong>Kybernetická politika</strong> vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje <strong>role, odpovědnosti a pravidla</strong>, podle kterých se chrání data, systémy a provoz.';
+$cta_text     = get_field('kyber_politika_cta_text') ?: 'VYŘEŠIT NIS2';
+$cta_url      = get_field('kyber_politika_cta_url') ?: home_url('/nis2/');
 $image   = get_field('kyber_politika_obrazek');
 $seznam  = get_field('kyber_politika_seznam');
 
@@ -30,25 +33,15 @@ $image_url = $image ? $image['url'] : get_theme_file_uri('assets/img/homepage/ky
 		<!-- Centered heading -->
 		<div class="xevos-kyber-politika__header">
 			<h2><?php echo esc_html($heading); ?></h2>
-			<?php if ($desc !== 'Soubor pravidel a postupů, které určují, jak organizace řídí bezpečnost, přístup, rizika a provozní standardy.') : ?>
-				<p class="xevos-kyber-politika__desc"><?php echo esc_html($desc); ?></p>
-			<?php else : ?>
-				<p class="xevos-kyber-politika__desc xevos-kyber-politika__desc--mixed"><strong>Soubor pravidel a postupů</strong>, které určují, jak organizace řídí <strong>bezpečnost, přístup, rizika a provozní standardy.</strong></p>
-			<?php endif; ?>
+			<p class="xevos-kyber-politika__desc xevos-kyber-politika__desc--mixed"><?php echo wp_kses_post(strip_tags($desc, '<strong><b><em><br>')); ?></p>
 		</div>
 
 		<!-- Flex: TEXT vlevo + OBRÁZEK vpravo -->
 		<div class="xevos-kyber-politika__body">
 			<!-- Panel vlevo -->
 			<div class="xevos-kyber-politika__panel">
-				<h3>Poskytujeme:</h3>
-				<?php
-				$default_text = 'Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje role, odpovědnosti a pravidla, podle kterých se chrání data, systémy a provoz.';
-				if ($text === $default_text) : ?>
-					<div class="xevos-kyber-politika__panel-desc xevos-kyber-politika__desc--mixed">Kybernetická politika vytváří <strong>jasný rámec pro řízení bezpečnosti v organizaci.</strong> Určuje <strong>role, odpovědnosti a pravidla</strong>, podle kterých se chrání data, systémy a provoz.</div>
-				<?php else : ?>
-					<div class="xevos-kyber-politika__panel-desc"><?php echo wp_kses_post($text); ?></div>
-				<?php endif; ?>
+				<h3><?php echo esc_html($panel_nadpis); ?></h3>
+				<p class="xevos-kyber-politika__panel-desc"><?php echo wp_kses_post(strip_tags($text, '<strong><b><em><br>')); ?></p>
 
 				<ul class="xevos-kyber-politika__checklist">
 					<?php foreach ($seznam as $item) : ?>
@@ -77,9 +70,9 @@ $image_url = $image ? $image['url'] : get_theme_file_uri('assets/img/homepage/ky
 					<?php endforeach; ?>
 				</ul>
 
-				<a href="<?php echo esc_url(home_url('/nis2/')); ?>" class="xevos-btn xevos-btn--primary">
+				<a href="<?php echo esc_url($cta_url); ?>" class="xevos-btn xevos-btn--primary">
 					<span class="xevos-btn__arrow"></span>
-					VYŘEŠIT NIS2
+					<?php echo esc_html($cta_text); ?>
 				</a>
 			</div>
 

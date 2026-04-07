@@ -58,7 +58,7 @@ get_header();
 			</div>
 		</article>
 	<?php endwhile; ?>
-</main>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {

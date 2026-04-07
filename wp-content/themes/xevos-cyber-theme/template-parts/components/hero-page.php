@@ -40,7 +40,7 @@ if ( $css_class ) {
 					<p class="xevos-blog-hero__subheading"><?php echo esc_html( $subheading ); ?></p>
 				<?php endif; ?>
 				<?php if ( $desc ) : ?>
-					<p class="xevos-blog-hero__desc"><?php echo wp_kses( $desc, [ 'strong' => [], 'em' => [], 'span' => [ 'class' => [], 'style' => [] ], 'br' => [] ] ); ?></p>
+					<p class="xevos-blog-hero__desc"><?php echo wp_kses( strip_tags( $desc, '<strong><b><em><br><span>' ), [ 'strong' => [], 'b' => [], 'em' => [], 'span' => [ 'class' => [], 'style' => [] ], 'br' => [] ] ); ?></p>
 				<?php endif; ?>
 				<?php if ( $cta_text ) : ?>
 					<a href="<?php echo esc_url( $cta_url ); ?>" class="xevos-btn xevos-btn--primary" style="margin-top:2rem;">

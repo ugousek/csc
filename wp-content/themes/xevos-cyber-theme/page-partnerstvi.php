@@ -36,7 +36,7 @@ get_header();
 								<span class="xevos-card__badge"><?php echo esc_html( $p['uroven'] ); ?></span>
 							<?php endif; ?>
 							<?php if ( ! empty( $p['popis'] ) ) : ?>
-								<p class="xevos-text-muted"><?php echo esc_html( $p['popis'] ); ?></p>
+								<p class="xevos-text-muted"><?php echo wp_kses_post( $p['popis'] ); ?></p>
 							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
@@ -88,6 +88,6 @@ get_header();
 		</div>
 	</section>
 
-</main>
+
 
 <?php get_footer(); ?>

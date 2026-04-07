@@ -58,6 +58,6 @@ $categories = get_the_terms( get_the_ID(), 'kategorie-aktualit' );
 		</article>
 
 	<?php endwhile; ?>
-</main>
+
 
 <?php get_footer(); ?>

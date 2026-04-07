@@ -26,10 +26,8 @@ if (is_array($terminy) && !empty($terminy)) {
 			$datum = $t['datum'];
 			$cas_od = $t['cas_od'] ?? '';
 			$cas_do = $t['cas_do'] ?? '';
-			$kap = (int) ($t['kapacita'] ?? 0);
-			$reg = (int) ($t['pocet_registraci'] ?? 0);
-			$volno = $kap - $reg;
-			$kapacita_text = $volno <= 0 ? 'Obsazeno' : $reg . '/' . $kap;
+			$dostupnost = xevos_get_termin_dostupnost(get_the_ID(), $i);
+			$kapacita_text = $dostupnost['label'];
 			break;
 		}
 	}
@@ -45,7 +43,7 @@ if ($cas_od && $cas_do) {
 <a href="<?php the_permalink(); ?>" class="xevos-skoleni-list-card">
 	<!-- Title + description -->
 	<div class="xevos-skoleni-list-card__header">
-		<h3 class="xevos-skoleni-list-card__title"><?php the_title(); ?></h3>
+		<h3 class="xevos-skoleni-list-card__title"><?php echo wp_kses_post(get_field('hero_nadpis') ?: get_the_title()); ?></h3>
 		<?php if ($popis) : ?>
 			<p class="xevos-skoleni-list-card__desc"><?php echo esc_html(wp_trim_words(wp_strip_all_tags($popis), 20)); ?></p>
 		<?php endif; ?>
@@ -85,9 +83,12 @@ if ($cas_od && $cas_do) {
 			<?php if ($kapacita_text) : ?>
 				<div class="xevos-skoleni-list-card__meta-col">
 					<span class="xevos-skoleni-list-card__meta-label">Kapacita</span>
-					<span class="xevos-skoleni-list-card__meta-value">
+					<span class="xevos-skoleni-list-card__meta-value xevos-skoleni-list-card__meta-value--<?php echo esc_attr($dostupnost['stav'] ?? 'available'); ?>">
 						<img src="<?php echo esc_url(get_theme_file_uri('assets/img/prehled-skoleni/kapacita.svg')); ?>" alt="" width="24" height="24">
-						K dispozici <?php echo esc_html($kapacita_text); ?>
+						<?php echo esc_html($dostupnost['label']); ?>
+						<?php if (!empty($dostupnost['cislo'])) : ?>
+							<span class="xevos-skoleni-list-card__meta-capacity"><?php echo esc_html($dostupnost['cislo']); ?></span>
+						<?php endif; ?>
 					</span>
 				</div>
 			<?php endif; ?>

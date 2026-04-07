@@ -12,19 +12,32 @@ get_header();
 $terms = get_terms(['taxonomy' => 'kategorie-aktualit', 'hide_empty' => true]);
 ?>
 
-<main id="main" class="xevos-main">
+<?php
+$aka_heading = get_field('aka_heading', 'option') ?: 'Znalosti, které posilují bezpečnost';
+$aka_desc    = get_field('aka_description', 'option') ?: 'Odborné články, analýzy a aktuální pohledy na kybernetickou bezpečnost, legislativu i moderní technologie. Sdílíme zkušenosti z praxe, vysvětlujeme nové hrozby a přinášíme doporučení, která vám pomohou lépe chránit data, infrastrukturu i celou organizaci v dynamicky se měnícím digitálním prostředí.';
+$aka_image   = get_field('aka_image', 'option');
+$aka_img_url = $aka_image ? $aka_image['url'] : get_theme_file_uri('assets/img/blog/blog-hero.png');
+?>
 
-	<!-- Hero: two-column — Figma: Claim 690px left + image 910px right -->
+<main id="main" class="xevos-main xevos-main--glows">
+
+	<!-- Glow blobs -->
+	<div class="xevos-glow-blob xevos-glow-blob--left xevos-glow-blob--lg" style="top:-400px;"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--top xevos-glow-blob--lg"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--right xevos-glow-blob--lg" style="top:1200px;"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--left-second xevos-glow-blob--lg" style="bottom:0;"></div>
+
+	<!-- Hero: two-column -->
 	<section class="xevos-page-hero xevos-blog-hero">
 		<div class="xevos-page-hero__bg xevos-page-hero__bg--gradient"></div>
 		<div class="xevos-section__container">
 			<div class="xevos-blog-hero__grid">
 				<div class="xevos-blog-hero__content">
-					<h1>Znalosti, které posilují bezpečnost</h1>
-					<p class="xevos-blog-hero__desc">Odborné články, analýzy a aktuální pohledy na kybernetickou bezpečnost, legislativu i moderní technologie. Sdílíme zkušenosti z praxe, vysvětlujeme nové hrozby a přinášíme doporučení, která vám pomohou lépe chránit data, infrastrukturu i celou organizaci v dynamicky se měnícím digitálním prostředí.</p>
+					<h1><?php echo wp_kses_post($aka_heading); ?></h1>
+					<p class="xevos-blog-hero__desc"><?php echo wp_kses_post(strip_tags($aka_desc, '<strong><b><em><br>')); ?></p>
 				</div>
 				<div class="xevos-blog-hero__image">
-					<img src="<?php echo esc_url(get_theme_file_uri('assets/img/blog/blog-hero.png')); ?>" alt="Blog" loading="lazy">
+					<img src="<?php echo esc_url($aka_img_url); ?>" alt="Blog" loading="lazy">
 				</div>
 			</div>
 		</div>
@@ -35,9 +48,11 @@ $terms = get_terms(['taxonomy' => 'kategorie-aktualit', 'hide_empty' => true]);
 
 			<div class="xevos-archive-toolbar">
 				<div class="xevos-aktuality-archive__filters" id="aktuality-filters">
-					<button class="xevos-filter-pill is-active" data-term=""><?php esc_html_e('Vše', 'xevos-cyber'); ?></button>
 					<?php if (! empty($terms) && ! is_wp_error($terms)) : ?>
-						<?php foreach ($terms as $term) : ?>
+						<button class="xevos-filter-pill is-active" data-term=""><?php esc_html_e('Vše', 'xevos-cyber'); ?></button>
+						<?php foreach ($terms as $term) :
+							if ($term->slug === 'skoleni') continue; // Skip "Školení" filter
+						?>
 							<button class="xevos-filter-pill" data-term="<?php echo esc_attr($term->slug); ?>">
 								<?php echo esc_html($term->name); ?>
 							</button>
@@ -79,6 +94,9 @@ $terms = get_terms(['taxonomy' => 'kategorie-aktualit', 'hide_empty' => true]);
 		</div>
 	</section>
 
-</main>
+	<!-- Glow blob at bottom -->
+	<div class="xevos-glow-blob xevos-glow-blob--left-second xevos-glow-blob--lg" style="bottom:0;"></div>
+
+
 
 <?php get_footer(); ?>

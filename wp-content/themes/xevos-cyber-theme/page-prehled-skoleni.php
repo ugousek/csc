@@ -24,6 +24,6 @@ get_header();
 		'cta_url'  => home_url( '/kontakt/' ),
 	] ); ?>
 
-</main>
+
 
 <?php get_footer(); ?>

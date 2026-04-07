@@ -1,0 +1,51 @@
+{
+  "key": "group_xevos_kontakt",
+  "title": "Kontakt",
+  "fields": [
+    {
+      "key": "field_kontakt_heading",
+      "label": "Nadpis",
+      "name": "kontakt_heading",
+      "type": "text",
+      "default_value": "Kontaktujte naše specialisty",
+      "instructions": "Text ve &lt;strong&gt; bude růžový (accent)."
+    },
+    {
+      "key": "field_kontakt_popis",
+      "label": "Popis",
+      "name": "kontakt_popis",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva (fw 400), zbytek šedý."
+    },
+    {
+      "key": "field_kontakt_hero_obrazek",
+      "label": "Hero obrázek",
+      "name": "kontakt_hero_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_kontakt_formular_shortcode",
+      "label": "CF7 shortcode",
+      "name": "kontakt_formular_shortcode",
+      "type": "text",
+      "instructions": "Vložte shortcode Contact Form 7, např. [contact-form-7 id=\"123\"]. Pokud prázdné, zobrazí se výchozí formulář."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-kontakt.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "active": true
+}

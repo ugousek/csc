@@ -45,27 +45,53 @@ function xevos_theme_setup(): void {
 /**
  * Disable Gutenberg editor on front page — all content via ACF.
  */
-add_action( 'init', function (): void {
-	$front_page_id = (int) get_option( 'page_on_front' );
-	if ( $front_page_id ) {
-		add_filter( 'use_block_editor_for_post', function ( bool $use, \WP_Post $post ) use ( $front_page_id ): bool {
-			return $post->ID === $front_page_id ? false : $use;
-		}, 10, 2 );
-	}
-} );
+/**
+ * Disable Gutenberg on pages that have ACF administration (custom templates + front page).
+ */
+add_filter( 'use_block_editor_for_post', function ( bool $use, \WP_Post $post ): bool {
+	if ( $post->post_type !== 'page' ) return $use;
 
-add_action( 'admin_init', function (): void {
+	// Front page.
 	$front_page_id = (int) get_option( 'page_on_front' );
-	if ( $front_page_id ) {
-		remove_post_type_support( 'page', 'editor' );
-		// Re-add for non-front pages.
-		add_action( 'load-post.php', function () use ( $front_page_id ): void {
-			$post_id = isset( $_GET['post'] ) ? (int) $_GET['post'] : 0;
-			if ( $post_id !== $front_page_id ) {
-				add_post_type_support( 'page', 'editor' );
-			}
-		} );
-	}
+	if ( $post->ID === $front_page_id ) return false;
+
+	// Pages with custom templates (ACF-managed).
+	$template = get_post_meta( $post->ID, '_wp_page_template', true );
+	$acf_templates = [
+		'page-kyberneticke-testovani.php',
+		'page-kontakt.php',
+		'page-sluzby.php',
+		'page-nis2.php',
+		'page-o-nas.php',
+		'page-partnerstvi.php',
+		'page-zasady-ochrany-osobnich-udaju.php',
+	];
+	if ( in_array( $template, $acf_templates, true ) ) return false;
+
+	return $use;
+}, 10, 2 );
+
+// Also disable classic editor on these pages.
+add_action( 'admin_init', function (): void {
+	add_action( 'load-post.php', function (): void {
+		$post_id = isset( $_GET['post'] ) ? (int) $_GET['post'] : 0;
+		if ( ! $post_id ) return;
+
+		$front_page_id = (int) get_option( 'page_on_front' );
+		$template = get_post_meta( $post_id, '_wp_page_template', true );
+		$acf_templates = [
+			'page-kyberneticke-testovani.php',
+			'page-kontakt.php',
+			'page-sluzby.php',
+			'page-nis2.php',
+			'page-o-nas.php',
+			'page-partnerstvi.php',
+		];
+
+		if ( $post_id === $front_page_id || in_array( $template, $acf_templates, true ) ) {
+			remove_post_type_support( 'page', 'editor' );
+		}
+	} );
 } );
 
 /**

@@ -1,0 +1,44 @@
+{
+  "key": "group_xevos_aktuality_archive",
+  "title": "Archiv aktualit – nastavení",
+  "fields": [
+    {
+      "key": "field_aka_heading",
+      "label": "Nadpis",
+      "name": "aka_heading",
+      "type": "text",
+      "default_value": "Znalosti, které posilují bezpečnost",
+      "instructions": "Text ve &lt;strong&gt; bude růžový (accent)."
+    },
+    {
+      "key": "field_aka_description",
+      "label": "Popis",
+      "name": "aka_description",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva (fw 400), zbytek šedý."
+    },
+    {
+      "key": "field_aka_image",
+      "label": "Hero obrázek",
+      "name": "aka_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "xevos-aktuality-archive"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "active": true
+}

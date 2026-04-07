@@ -107,6 +107,18 @@ body.home .xevos-glow-blob--multiply {
   object-fit: cover;
 }
 
+/* Lottie map animation — max container width, centered */
+.xevos-hero__lottie {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: calc(var(--container-max) + 6%);
+  height: auto;
+  z-index: 0;
+}
+
 .xevos-hero__grid {
   position: absolute;
   inset: 0;
@@ -124,8 +136,8 @@ body.home .xevos-glow-blob--multiply {
   inset: 0;
   z-index: 2;
   background: linear-gradient(180deg,
-      rgba(10, 14, 39, 0.3) 0%,
-      rgba(10, 14, 39, 0.7) 60%,
+      rgba(10, 14, 39, 0.15) 0%,
+      rgba(10, 14, 39, 0.45) 60%,
       var(--bg-primary) 100%);
 }
 
@@ -133,7 +145,7 @@ body.home .xevos-glow-blob--multiply {
 .xevos-hero__eclipse {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(50% 50% at 50% 50%, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -279,7 +291,7 @@ body.home .xevos-glow-blob--multiply {
   font-family: var(--font-body);
   font-size: 20px;
   font-weight: 400;
-  color: rgba(236, 236, 236, 0.7);
+  color: #ececec;
   max-width: 560px;
   margin: 0 auto 2.5rem;
   line-height: 1.7;
@@ -470,11 +482,11 @@ body.home .xevos-glow-blob--multiply {
 
 @media screen and (min-width: 1630px) {
   .xevos-services__nav--prev {
-    left: -24px;
+    left: -1rem;
   }
 
   .xevos-services__nav--next {
-    right: -24px;
+    right: -1rem;
   }
 }
 
@@ -770,7 +782,8 @@ body.home .xevos-glow-blob--multiply {
 }
 
 .xevos-eventy__date-slash {
-  font-family: var(--font-mono);
+  position: relative;
+  top: 5px;
   font-size: 40px;
   font-weight: 600;
   color: var(--color-cyan);
@@ -831,11 +844,18 @@ body.home .xevos-glow-blob--multiply {
   height: 18px;
   background: url('../img/global/checkbox.svg') no-repeat center / contain;
   flex-shrink: 0;
+  position: relative;
+  top: -2px;
 }
 
 .xevos-eventy__meta-capacity {
+  color: rgba(236, 236, 236, 0.70);
+  font-family: var(--font-body);
   font-size: 14px;
-  opacity: 0.5;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.28px;
+  margin-left: 0.25rem;
 }
 
 /* Type badge with colored dot — Figma: Sora 18px */
@@ -999,8 +1019,8 @@ body.home .xevos-glow-blob--multiply {
 }
 
 .xevos-eventy__cta-text p strong {
-  color: var(--color-text);
-  font-weight: 400;
+  color: var(--color-white);
+  font-weight: 700;
 }
 
 /* CTA buttons — Figma: horizontal, gap 24px */
@@ -1166,7 +1186,7 @@ body.home .xevos-glow-blob--multiply {
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 10rem;
 }
 
 .xevos-statistiky__feature-graphic {
@@ -1192,7 +1212,12 @@ body.home .xevos-glow-blob--multiply {
   font-family: var(--font-body);
   font-size: 24px;
   line-height: 1.6;
-  color: var(--color-text);
+  color: rgba(236, 236, 236, 0.7);
+}
+
+.xevos-statistiky__feature-text p strong {
+  color: var(--color-white);
+  font-weight: 400;
 }
 
 /* 3 stat cards — flex, equal spacing */
@@ -1469,14 +1494,11 @@ body.home .xevos-glow-blob--multiply {
 
 /* Partners bar negative margin to overlap with card section */
 .xevos-hp-recenze {
-  margin-bottom: 0;
+  margin-bottom: 7rem;
 }
 
 @media screen and (min-width: 768px) {
-  .xevos-partners {
-    background-color: transparent;
-    margin-top: -213px;
-  }
+  .xevos-partners {}
 }
 
 /* --------------------------------------------------------------------------

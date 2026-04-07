@@ -33,7 +33,7 @@ get_header();
 			</div>
 		</article>
 	<?php endwhile; ?>
-</main>
+
 
 <?php
 get_footer();

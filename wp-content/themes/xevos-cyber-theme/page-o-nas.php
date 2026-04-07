@@ -85,6 +85,6 @@ get_header();
 
 	<?php get_template_part( 'template-parts/components/recenze' ); ?>
 
-</main>
+
 
 <?php get_footer(); ?>

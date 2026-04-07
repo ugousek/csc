@@ -21,7 +21,7 @@ function xevos_enqueue_assets(): void {
 		$version
 	);
 
-	// Kyber testování page-specific CSS (shared styles moved to main.css).
+	// Kyber testování page-specific CSS.
 	if ( is_page_template( 'page-kyberneticke-testovani.php' ) ) {
 		wp_enqueue_style(
 			'xevos-kyber-testovani',
@@ -117,13 +117,28 @@ function xevos_enqueue_assets(): void {
 			[ 'xevos-main' ],
 			$version
 		);
+
+		// Lottie player for hero map animation.
+		wp_enqueue_script(
+			'lottie',
+			'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js',
+			[],
+			'5.12.2',
+			true
+		);
+
 		wp_enqueue_script(
 			'xevos-homepage',
 			$theme_uri . '/assets/js/homepage.js',
-			[ 'swiper' ],
+			[ 'swiper', 'lottie' ],
 			$version,
 			true
 		);
+
+		// Pass lottie JSON path to JS.
+		wp_localize_script( 'xevos-homepage', 'xevosHero', [
+			'lottieUrl' => $theme_uri . '/assets/js/mapa-lottie.json',
+		] );
 	}
 
 	// Swiper.js (CDN).
@@ -157,11 +172,22 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
-	// Ecomail free registration JS (single skoleni with registrace_zdarma).
-	if ( is_singular( 'skoleni' ) && get_field( 'registrace_zdarma' ) ) {
+	// Ecomail free registration JS (single skoleni with free/invitation mode).
+	if ( is_singular( 'skoleni' ) && function_exists( 'get_field' ) && in_array( get_field( 'typ_prihlaseni' ), [ 'zdarma', 'pozvanka' ], true ) ) {
 		wp_enqueue_script(
 			'xevos-ecomail-register',
 			$theme_uri . '/assets/js/ecomail-register.js',
+			[ 'xevos-main' ],
+			$version,
+			true
+		);
+	}
+
+	// Comgate paid order JS (single skoleni with paid mode).
+	if ( is_singular( 'skoleni' ) && function_exists( 'get_field' ) && ! in_array( get_field( 'typ_prihlaseni' ), [ 'zdarma', 'pozvanka' ], true ) ) {
+		wp_enqueue_script(
+			'xevos-comgate-payment',
+			$theme_uri . '/assets/js/comgate-payment.js',
 			[ 'xevos-main' ],
 			$version,
 			true

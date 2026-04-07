@@ -100,7 +100,7 @@ if (! $slides) {
 					?>
 						<div class="swiper-slide">
 							<h3><?php echo esc_html($slide['title'] ?? $slide['nazev'] ?? ''); ?></h3>
-							<p class="xevos-kyber-test__panel-desc"><?php echo wp_kses_post($slide['desc'] ?? $slide['popis'] ?? ''); ?></p>
+							<p class="xevos-kyber-test__panel-desc"><?php echo wp_kses_post(strip_tags($slide['desc'] ?? $slide['popis'] ?? '', '<strong><b><em><br>')); ?></p>
 
 							<?php if ($items) : ?>
 								<ul class="xevos-kyber-test__checklist">

@@ -38,6 +38,24 @@ function xevos_acf_options_pages(): void {
 		'icon_url'    => 'dashicons-admin-generic',
 		'position'    => 2,
 	] );
+
+	// Archiv školení – options subpage under Školení menu.
+	acf_add_options_sub_page( [
+		'page_title'  => __( 'Nastavení archivu', 'xevos-cyber' ),
+		'menu_title'  => __( 'Nastavení archivu', 'xevos-cyber' ),
+		'menu_slug'   => 'xevos-skoleni-archive',
+		'parent_slug' => 'edit.php?post_type=skoleni',
+		'capability'  => 'manage_options',
+	] );
+
+	// Archiv aktualit – options subpage under Aktuality menu.
+	acf_add_options_sub_page( [
+		'page_title'  => __( 'Nastavení archivu', 'xevos-cyber' ),
+		'menu_title'  => __( 'Nastavení archivu', 'xevos-cyber' ),
+		'menu_slug'   => 'xevos-aktuality-archive',
+		'parent_slug' => 'edit.php?post_type=aktualita',
+		'capability'  => 'manage_options',
+	] );
 }
 
 /**
@@ -125,10 +143,40 @@ function xevos_get_termin_dostupnost( int $skoleni_id, int $termin_index ): arra
 	$kapacita  = (int) ( $termin['kapacita'] ?? 0 );
 	$registrace = (int) ( $termin['pocet_registraci'] ?? 0 );
 
+	$volna  = max( 0, $kapacita - $registrace );
+	$plne   = $registrace >= $kapacita;
+	$procent = $kapacita > 0 ? ( $registrace / $kapacita ) * 100 : 100;
+
+	// Label logic:
+	// 0-50% obsazeno → "K dispozici"
+	// 51-89% obsazeno → "K dispozici - X/Y" (s počtem míst)
+	// 90%+ obsazeno → "Poslední místa - X/Y"
+	// 100% → "Obsazeno"
+	if ( $plne ) {
+		$label = 'Obsazeno';
+		$cislo = '';
+		$stav  = 'full';
+	} elseif ( $procent >= 90 ) {
+		$label = 'Poslední místa';
+		$cislo = $registrace . '/' . $kapacita;
+		$stav  = 'warning';
+	} elseif ( $procent > 50 ) {
+		$label = 'K dispozici';
+		$cislo = $registrace . '/' . $kapacita;
+		$stav  = 'available';
+	} else {
+		$label = 'K dispozici';
+		$cislo = '';
+		$stav  = 'available';
+	}
+
 	return [
 		'kapacita'    => $kapacita,
 		'registrace'  => $registrace,
-		'volna_mista' => max( 0, $kapacita - $registrace ),
-		'plne'        => $registrace >= $kapacita,
+		'volna_mista' => $volna,
+		'plne'        => $plne,
+		'label'       => $label,
+		'cislo'       => $cislo,
+		'stav'        => $stav,
 	];
 }

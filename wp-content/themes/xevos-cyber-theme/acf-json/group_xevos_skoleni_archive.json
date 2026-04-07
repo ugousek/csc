@@ -1,0 +1,44 @@
+{
+  "key": "group_xevos_skoleni_archive",
+  "title": "Archiv školení – nastavení",
+  "fields": [
+    {
+      "key": "field_ska_heading",
+      "label": "Nadpis",
+      "name": "ska_heading",
+      "type": "text",
+      "default_value": "Školení, která posilují bezpečnost",
+      "instructions": "Text ve &lt;strong&gt; bude růžový (accent)."
+    },
+    {
+      "key": "field_ska_description",
+      "label": "Popis",
+      "name": "ska_description",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
+      "key": "field_ska_image",
+      "label": "Hero obrázek",
+      "name": "ska_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "xevos-skoleni-archive"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "active": true
+}

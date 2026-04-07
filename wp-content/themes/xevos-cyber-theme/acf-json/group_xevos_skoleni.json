@@ -12,18 +12,11 @@
       "key": "field_sk_hero_nadpis",
       "label": "Hero nadpis",
       "name": "hero_nadpis",
-      "type": "text",
+      "type": "textarea",
+      "rows": 1,
+      "new_lines": "",
       "instructions": "Nadpis v hero sekci. Text ve &lt;strong&gt; bude růžový (accent). Prázdné = název školení.",
       "placeholder": "Kybernetická bezpečnost - <strong>obecná</strong>"
-    },
-    {
-      "key": "field_sk_hero_podnadpis",
-      "label": "Hero podnadpis",
-      "name": "hero_podnadpis",
-      "type": "text",
-      "instructions": "Menší text pod hlavním nadpisem (např. \"Bez strašení. S jistotou\"). Nepovinné.",
-      "required": 0,
-      "default_value": ""
     },
     {
       "key": "field_sk_hero_obrazek",
@@ -209,6 +202,13 @@
           "required": 1
         },
         {
+          "key": "field_sk_lektor_pozice",
+          "label": "Pozice",
+          "name": "pozice",
+          "type": "text",
+          "placeholder": "Cyber Security Specialist"
+        },
+        {
           "key": "field_sk_lektor_foto",
           "label": "Foto",
           "name": "foto",
@@ -255,7 +255,7 @@
           "name": "aktivita",
           "type": "text",
           "wrapper": {
-            "width": "70"
+            "width": "55"
           }
         }
       ]
@@ -272,7 +272,10 @@
           "key": "field_sk_osnova_bod",
           "label": "Bod osnovy",
           "name": "bod",
-          "type": "text"
+          "type": "wysiwyg",
+          "toolbar": "basic",
+          "media_upload": 0,
+          "instructions": "Tučný text (B) = bílá barva."
         }
       ]
     },
@@ -333,8 +336,9 @@
       "key": "field_sk_recenze_popis",
       "label": "Popis sekce recenzí",
       "name": "recenze_popis",
-      "type": "textarea",
-      "rows": 3,
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
       "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
     },
     {
@@ -352,13 +356,19 @@
       "ui": 1
     },
     {
-      "key": "field_sk_registrace_zdarma",
-      "label": "Objednávka nebo registrace zdarma",
-      "name": "registrace_zdarma",
-      "type": "true_false",
-      "default_value": 0,
+      "key": "field_sk_typ_prihlaseni",
+      "label": "Způsob přihlášení",
+      "name": "typ_prihlaseni",
+      "type": "select",
+      "default_value": "platba",
+      "choices": {
+        "platba": "Objednávka (placená)",
+        "zdarma": "Registrace zdarma",
+        "pozvanka": "Požádat o pozvánku"
+      },
       "ui": 1,
-      "instructions": "Pokud je zapnuto, formulář funguje jako registrace zdarma (bez platby) a kontakt se odešle do Ecomailu."
+      "return_format": "value",
+      "instructions": "Platba = standardní objednávka s fakturačními údaji. Zdarma = jednoduchá registrace do Ecomailu. Pozvánka = jako zdarma, ale s jiným nadpisem/tlačítkem (právo výběru účastníků)."
     },
     {
       "key": "field_sk_ecomail_list_id",
@@ -370,9 +380,16 @@
       "conditional_logic": [
         [
           {
-            "field": "field_sk_registrace_zdarma",
+            "field": "field_sk_typ_prihlaseni",
             "operator": "==",
-            "value": "1"
+            "value": "zdarma"
+          }
+        ],
+        [
+          {
+            "field": "field_sk_typ_prihlaseni",
+            "operator": "==",
+            "value": "pozvanka"
           }
         ]
       ]

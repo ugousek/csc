@@ -74,7 +74,7 @@
   font-family: var(--font-body);
   font-size: 1.125rem;
   line-height: 1.7;
-  color: var(--color-text);
+  color: #ECECECB2;
 }
 
 .xevos-legal-content h2 {
@@ -84,6 +84,7 @@
   text-transform: uppercase;
   margin-top: 3rem;
   margin-bottom: 1rem;
+  color: #00BBFF;
 }
 
 .xevos-legal-content h3 {

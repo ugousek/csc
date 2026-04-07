@@ -36,6 +36,7 @@ $fallback_recenze = [
 ?>
 
 <section class="xevos-section xevos-hp-recenze">
+	<div class="xevos-hp-recenze__wave" id="recenze-wave-bg"></div>
 	<div class="xevos-section__container">
 
 		<!-- Centered heading -->
@@ -81,4 +82,16 @@ $fallback_recenze = [
 		</div>
 
 	</div>
+
+	<!-- Wave background animation -->
+	<script type="importmap">
+	{ "imports": {
+		"three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+		"three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+	} }
+	</script>
+	<script type="module">
+	import { initWaveBg } from '<?php echo esc_url( get_theme_file_uri( 'assets/js/wave-bg.js' ) ); ?>';
+	initWaveBg(document.getElementById('recenze-wave-bg'));
+	</script>
 </section>

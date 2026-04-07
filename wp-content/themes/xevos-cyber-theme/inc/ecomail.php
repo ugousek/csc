@@ -61,10 +61,14 @@ function xevos_ecomail_register(): void {
 	}
 
 	// Also create an order CPT record for tracking.
+	$typ = sanitize_text_field( $_POST['typ_prihlaseni'] ?? 'zdarma' );
+	$order_title = $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma';
+	$order_status = $typ === 'pozvanka' ? 'draft' : 'publish';
+
 	$order_id = wp_insert_post( [
 		'post_type'   => 'objednavka',
-		'post_status' => 'publish',
-		'post_title'  => 'Registrace zdarma',
+		'post_status' => $order_status,
+		'post_title'  => $order_title,
 	] );
 
 	if ( $order_id && ! is_wp_error( $order_id ) ) {
@@ -76,7 +80,7 @@ function xevos_ecomail_register(): void {
 		update_field( 'skoleni', $skoleni_id, $order_id );
 		update_field( 'termin', sanitize_text_field( $_POST['termin'] ?? '' ), $order_id );
 		update_field( 'castka', 0, $order_id );
-		update_field( 'stav_platby', 'paid', $order_id );
+		update_field( 'stav_platby', $typ === 'pozvanka' ? 'pending' : 'paid', $order_id );
 		update_field( 'datum_objednavky', date( 'd.m.Y' ), $order_id );
 
 		// Increment registration count for the chosen term.
@@ -93,7 +97,11 @@ function xevos_ecomail_register(): void {
 		}
 	}
 
-	wp_send_json_success( [ 'message' => 'Registrace proběhla úspěšně.' ] );
+	$success_msg = $typ === 'pozvanka'
+		? 'Žádost o pozvánku byla odeslána. Ozveme se vám.'
+		: 'Registrace proběhla úspěšně.';
+
+	wp_send_json_success( [ 'message' => $success_msg ] );
 }
 
 /**

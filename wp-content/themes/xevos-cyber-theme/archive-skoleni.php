@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Archive: Školení.
  * Figma node 593-8231: Hero, filter pills, list cards with meta, pagination.
@@ -10,13 +11,25 @@ get_header();
 $terms = get_terms(['taxonomy' => 'kategorie-skoleni', 'hide_empty' => false]);
 ?>
 
-<main id="main" class="xevos-main">
+<main id="main" class="xevos-main xevos-main--glows">
+
+	<!-- Glow blobs -->
+	<div class="xevos-glow-blob xevos-glow-blob--left xevos-glow-blob--lg"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--top xevos-glow-blob--lg"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--right xevos-glow-blob--lg"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--left-second xevos-glow-blob--lg"></div>
 
 	<!-- Hero -->
-	<?php get_template_part('template-parts/components/hero-page', null, [
-		'heading'     => 'Školení, která posilují bezpečnost',
-		'description' => 'Praktická a odborně vedená školení zaměřená na kybernetickou bezpečnost, legislativní požadavky i každodenní bezpečnostní návyky. Pomáháme managementu i zaměstnancům budovat reálnou odolnost organizace vůči moderním hrozbám.',
-		'image_url'   => get_theme_file_uri('assets/img/prehled-skoleni/hero.png'),
+	<?php
+	$ska_heading = get_field('ska_heading', 'option') ?: 'Školení, která posilují bezpečnost';
+	$ska_desc    = get_field('ska_description', 'option') ?: 'Praktická a odborně vedená školení zaměřená na kybernetickou bezpečnost, legislativní požadavky i každodenní bezpečnostní návyky. Pomáháme managementu i zaměstnancům budovat reálnou odolnost organizace vůči moderním hrozbám.';
+	$ska_image   = get_field('ska_image', 'option');
+	$ska_img_url = $ska_image ? $ska_image['url'] : get_theme_file_uri('assets/img/prehled-skoleni/hero.png');
+
+	get_template_part('template-parts/components/hero-page', null, [
+		'heading'     => $ska_heading,
+		'description' => $ska_desc,
+		'image_url'   => $ska_img_url,
 	]); ?>
 
 	<section class="xevos-section xevos-skoleni-archive">
@@ -72,6 +85,6 @@ $terms = get_terms(['taxonomy' => 'kategorie-skoleni', 'hide_empty' => false]);
 		</div>
 	</section>
 
-</main>
 
-<?php get_footer(); ?>
+
+	<?php get_footer(); ?>

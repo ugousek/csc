@@ -58,8 +58,8 @@
 
 
 /* Layer 5 — Bottom decorative image (SCREEN) + gradient fade to #110146 */
-.xevos-skoleni-bg-bottom {
-    position: absolute;
+/*.xevos-skoleni-bg-bottom {
+     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -70,7 +70,7 @@
         linear-gradient(to bottom, rgba(17, 1, 70, 0) 0%, rgba(17, 1, 70, 1) 71%),
         url('../img/detail-skoleni/bg-bottom.png') center / cover no-repeat;
     mix-blend-mode: screen;
-}
+} */
 
 /* All direct children above the background layers */
 .xevos-skoleni-detail>* {
@@ -87,8 +87,7 @@
     position: relative;
 }
 
-.xevos-skoleni-pattern-wrap::before,
-.xevos-partners::before {
+.xevos-skoleni-pattern-wrap::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -102,11 +101,6 @@
 
 .xevos-skoleni-pattern-wrap>* {
     position: relative;
-}
-
-/* Partners bar in footer — dark bg matching lower section */
-.xevos-partners {
-    background: linear-gradient(360deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #100245;
 }
 
 /* Detail page uses the shared recenze template inside a local pattern wrapper.
@@ -128,11 +122,12 @@
 .xevos-skoleni-detail .xevos-hp-recenze {
     position: relative;
     z-index: 1;
-    isolation: auto;
-    mix-blend-mode: normal;
-    background:
-        linear-gradient(358deg, rgba(17, 1, 70, 0.00) -7.33%, #010129 83.67%), url(../img/backgrounds/bg-rekli-o-nas.png) 50% / cover no-repeat
+    isolation: isolate;
 }
+
+/* .xevos-skoleni-detail .xevos-recenze-card {
+    background: rgba(15, 20, 60, 0.9);
+} */
 
 .xevos-skoleni-detail .xevos-hp-recenze::before {
     display: none;
@@ -322,13 +317,13 @@
     overflow: visible;
 }
 
-.xevos-skoleni-detail .xevos-glow-blob--left.xevos-glow-blob--lg {
+/* .xevos-skoleni-detail .xevos-glow-blob--left.xevos-glow-blob--lg {
     width: 2400px;
     height: 2400px;
     top: 600px;
     left: -1200px;
     opacity: 1;
-}
+} */
 
 .xevos-glow.first {
     position: relative;
@@ -529,12 +524,14 @@
     flex-shrink: 0;
     width: auto;
     color: var(--color-white);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .xevos-harmonogram-item__text {
     color: rgba(236, 236, 236, 0.7);
 }
+
+/* Harmonogram: čas = bílá (700), aktivita = šedá — bez zvýraznění */
 
 /* Osnova items – Figma: Sora/400/24px, body text with spacing */
 .xevos-osnova-list {
@@ -557,7 +554,7 @@
 .xevos-osnova-list li strong,
 .xevos-skoleni-benefits strong {
     color: var(--color-white);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 
@@ -654,6 +651,7 @@
 
 .xevos-skoleni-parking__text {
     padding: 24px 0;
+    font-size: 24px;
 }
 
 .xevos-skoleni-parking__text h2 {
@@ -676,7 +674,7 @@
 
 .xevos-skoleni-parking__text p strong {
     color: var(--color-white);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 
@@ -695,13 +693,7 @@
     box-shadow: 0 0 0 2px rgba(0, 187, 255, 0.2);
 }
 
-.xevos-order-section select.xevos-form__input {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0' fill='%23ECECEC'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
-}
+/* Select styles moved to main.css */
 
 /* DPH checkbox – Figma: 52x52, aligned to bottom of row like inputs */
 .xevos-form__checkbox-wrap {
@@ -810,9 +802,7 @@
     max-width: 972px;
 }
 
-#objednavka {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #100245;
-}
+
 
 #objednavka .xevos-btn--primary {
     width: fit-content;

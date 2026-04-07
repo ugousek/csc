@@ -42,11 +42,8 @@ $fallback_aktuality = [
 			<h2><?php echo esc_html($heading); ?></h2>
 			<?php
 			$default_desc = 'Aktuality ze světa kybernetické bezpečnosti, legislativy a praxe. Sdílíme novinky k NIS2, ISO normám, reálným incidentům i změnám, které mají dopad na firmy a jejich bezpečnost.';
-			if ($desc === $default_desc) : ?>
-				<p class="xevos-hp-aktuality__desc--mixed"><strong>Aktuality</strong> ze světa <strong>kybernetické bezpečnosti, legislativy a praxe.</strong> Sdílíme novinky k <strong>NIS2</strong>, <strong>ISO normám</strong>, reálným incidentům i změnám, které mají dopad na firmy a jejich bezpečnost.</p>
-			<?php else : ?>
-				<p><?php echo esc_html($desc); ?></p>
-			<?php endif; ?>
+		?>
+				<p class="xevos-hp-aktuality__desc--mixed"><?php echo wp_kses_post(strip_tags($desc, '<strong><b><em><br>')); ?></p>
 		</div>
 
 		<!-- Cards carousel -->

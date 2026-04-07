@@ -80,7 +80,7 @@ get_header();
 				<div class="xevos-service-detail__content">
 					<span class="xevos-service-detail__num"><?php echo esc_html( $s['cislo'] ?? str_pad( $i + 1, 2, '0', STR_PAD_LEFT ) ); ?></span>
 					<h2><?php echo esc_html( $s['nazev'] ?? '' ); ?></h2>
-					<p class="xevos-text-muted"><?php echo esc_html( $s['popis'] ?? '' ); ?></p>
+					<p class="xevos-text-muted"><?php echo wp_kses_post( $s['popis'] ?? '' ); ?></p>
 					<?php if ( ! empty( $s['body'] ) ) :
 						xevos_component( 'checklist', [ 'items' => $s['body'] ] );
 					endif; ?>
@@ -117,6 +117,6 @@ get_header();
 		</div>
 	</section>
 
-</main>
+
 
 <?php get_footer(); ?>

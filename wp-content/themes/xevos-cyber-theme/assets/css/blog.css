@@ -7,6 +7,77 @@
 
 /* Base .xevos-blog-hero styles are in main.css (shared component) */
 
+/* Blobs */
+
+.xevos-glow-blob--left {
+  position: absolute;
+  left: -903px;
+  top: -400px;
+  width: 1755px;
+  height: 1755px;
+  border-radius: 1755px;
+  opacity: 0.4;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(87, 24, 244, 0.70) 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 2 !important;
+}
+
+.xevos-glow-blob--top {
+  position: absolute;
+  right: 82px;
+  top: -892px;
+  width: 1755px;
+  height: 1755px;
+  border-radius: 1755px;
+  opacity: 0.3;
+  background: radial-gradient(50% 50% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+  mix-blend-mode: multiply;
+  z-index: 2 !important;
+}
+
+.xevos-page-hero__bg--gradient {
+  background: unset;
+}
+
+.xevos-glow-blob--right {
+  position: absolute;
+  right: -1085px;
+  top: 577px;
+  width: 2095px;
+  height: 2095px;
+  border-radius: 2095px;
+  opacity: 0.4;
+  background: radial-gradient(50% 50% at 50% 50%, #5718F4 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 2 !important;
+}
+
+
+.xevos-glow-blob--right-second {
+  position: absolute;
+  right: -843px;
+  bottom: 1053px;
+  width: 2095px;
+  height: 2095px;
+  border-radius: 2095px;
+  opacity: 0.3;
+  background: radial-gradient(50% 50% at 50% 50%, #5718F4 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+  z-index: 0;
+}
+
+.xevos-glow-blob--left-second {
+  position: absolute;
+  left: -781px;
+  bottom: -700px;
+  width: 2095px;
+  height: 2095px;
+  border-radius: 2095px;
+  opacity: 0.3;
+  background: radial-gradient(50% 50% at 50% 50%, #5718F4 0%, rgba(87, 24, 244, 0.00) 100%);
+  mix-blend-mode: lighten;
+}
+
 
 /* --------------------------------------------------------------------------
    2. Archive filters (category pills)
@@ -92,12 +163,17 @@
    5. Filter pills (shared between archive pages)
    -------------------------------------------------------------------------- */
 .xevos-filter-pill {
-  padding: 0.5rem 1.125rem;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+  color: #ECECEC;
+  font-family: Sora;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.36px;
+  padding: 16px;
   border: 1px solid var(--color-border-light);
   background: rgba(0, 187, 255, 0.20);
-  color: var(--color-text-muted);
+  backdrop-filter: blur(25px);
   cursor: pointer;
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -142,13 +218,19 @@
 
 .xevos-archive-toolbar__sort select {
   appearance: none;
-  padding: 0.5rem 2.5rem 0.5rem 1.125rem;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  font-family: var(--font-body);
+  -webkit-appearance: none;
+  padding: 16px 40px 16px 16px;
+  color: #ECECEC;
+  font-family: Sora;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.36px;
   border: 1px solid var(--color-border-light);
-  background: rgba(0, 187, 255, 0.20) url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
-  color: var(--color-text-muted);
+  background: rgba(0, 187, 255, 0.20) url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center;
+  background-size: 10px 6px;
+  backdrop-filter: blur(25px);
   cursor: pointer;
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -163,6 +245,16 @@
   border-color: var(--color-white);
   color: var(--color-white);
   outline: none;
+}
+
+.xevos-archive-toolbar__sort select option {
+  background: #1a1a4e;
+  color: var(--color-white);
+  padding: 0.5rem;
+}
+
+.xevos-archive-toolbar__sort select option:checked {
+  background: #2a2a6e;
 }
 
 
@@ -436,9 +528,14 @@
 
 /* Sort select label (select itself styled above in toolbar section) */
 .xevos-archive-toolbar__sort label {
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-dim);
+  color: #ECECEC;
+  font-family: Sora;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  /* 28.8px */
+  letter-spacing: 0.36px;
   cursor: pointer;
 }
 
