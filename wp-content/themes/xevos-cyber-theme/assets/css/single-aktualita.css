@@ -1,11 +1,5 @@
-/* ==========================================================================
-   Single Aktualita (blog article) – standalone stylesheet
-   Figma node 595:12671
-   ========================================================================== */
-
-
 /* --------------------------------------------------------------------------
-   1. Hero – Figma: image inside container, 770px height, gradient, tags + H1
+   1. Hero 
    -------------------------------------------------------------------------- */
 .xevos-article-hero {
   position: relative;
@@ -30,7 +24,6 @@
   position: relative;
 }
 
-/* Gradient overlay + shadow at bottom */
 .xevos-article-hero__bg::after {
   content: '';
   position: absolute;
@@ -39,18 +32,15 @@
   z-index: 1;
 }
 
-/* Content overlaps bottom of image */
 .xevos-article-hero__content {
   position: relative;
   z-index: 2;
 }
 
-/* Tags row – uses shared .xevos-filter-pill from blog.css */
 .xevos-article-hero__tags {
   margin-block: 1rem 1.5rem;
 }
 
-/* H1 – Figma: Montserrat 900, 80px, white, UPPER, text-shadow */
 .xevos-article-hero__title {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -66,13 +56,12 @@
 
 
 /* --------------------------------------------------------------------------
-   2. Article content – Figma: 1200px max-width, gap 80px between sections
+   2. Article content 
    -------------------------------------------------------------------------- */
 .xevos-article-content__inner {
   max-width: 1200px;
 }
 
-/* Body text – Figma: Sora 400, 18px, rgba(236,236,236,0.70) */
 .xevos-article-content__body,
 .xevos-article-content__body p {
   color: rgba(236, 236, 236, 0.70);
@@ -89,7 +78,6 @@
   font-weight: 600;
 }
 
-/* H2 – Figma: Montserrat 900, 52px, #00BBFF, UPPER */
 .xevos-article-content__body h2 {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -101,12 +89,10 @@
   margin-bottom: 24px;
 }
 
-/* First h2 after start – no extra top margin */
 .xevos-article-content__body>h2:first-child {
   margin-top: 0;
 }
 
-/* H3 – Figma: Montserrat 900, 32px, white, UPPER */
 .xevos-article-content__body h3 {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -131,7 +117,6 @@
   margin-bottom: 24px;
 }
 
-/* Images – Figma: full-width, 660px height, no border-radius */
 .xevos-article-content__body img {
   border-radius: 0;
   margin: 40px 0;
@@ -343,6 +328,7 @@
 /* --------------------------------------------------------------------------
    5. Responsive
    -------------------------------------------------------------------------- */
+
 @media (max-width: 1023px) {
   .xevos-article-hero__bg {
     height: 550px;
