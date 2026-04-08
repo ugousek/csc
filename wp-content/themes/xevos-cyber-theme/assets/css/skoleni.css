@@ -395,16 +395,67 @@
 /* --------------------------------------------------------------------------
    8. Responsive
    -------------------------------------------------------------------------- */
-@media (max-width: 767px) {
-  .xevos-skoleni-list-card {
-    padding: 1rem 1.25rem;
+@media (max-width: 1440px) {
+  .xevos-skoleni-list-card__meta {
+    gap: 0.5rem 1.5rem;
   }
 
-  .xevos-skoleni-list-card__title {
-    font-size: 1.125rem;
+  .xevos-skoleni-list-card__meta-col--price .xevos-skoleni-list-card__price {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .xevos-skoleni-archive .xevos-archive-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .xevos-skoleni-archive .xevos-pagination {
+    position: static;
+    justify-content: center;
+  }
+
+  .xevos-skoleni-list-card__meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .xevos-skoleni-list-card__meta-row .xevos-btn {
+    margin-inline: auto;
   }
 
   .xevos-skoleni-list-card__meta {
+    width: 100%;
+  }
+
+  .xevos-skoleni-list-card__title {
+    font-size: 26px;
+  }
+
+  .xevos-skoleni-list-card__title strong {
+    font-size: 36px;
+  }
+
+  .xevos-skoleni-list-card__desc {
+    font-size: 16px;
+  }
+
+  .xevos-skoleni-list-card__meta-col--price .xevos-skoleni-list-card__price {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .xevos-skoleni-list-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .xevos-skoleni-list-card__meta {
+    display: flex;
+    flex-direction: column;
     gap: 0.75rem;
   }
 

@@ -84,7 +84,7 @@
    -------------------------------------------------------------------------- */
 .xevos-aktuality-archive__filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
 }
 
@@ -201,22 +201,35 @@
    -------------------------------------------------------------------------- */
 .xevos-archive-toolbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 1rem;
   margin-bottom: 1.25rem;
 }
 
 .xevos-archive-toolbar .xevos-aktuality-archive__filters {
-  flex: 1;
-  min-width: 0;
-  overflow-x: hidden;
-  flex-wrap: nowrap;
-  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-.xevos-archive-toolbar .xevos-aktuality-archive__filters .xevos-filter-pill {
-  flex-shrink: 0;
+.xevos-archive-toolbar__sort {
+  align-self: flex-start;
+}
+
+@media (max-width: 991px) {
+  .xevos-archive-toolbar .xevos-aktuality-archive__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .xevos-archive-toolbar .xevos-aktuality-archive__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .xevos-archive-toolbar .xevos-aktuality-archive__filters .xevos-filter-pill {
+    flex-shrink: 0;
+  }
 }
 
 .xevos-archive-toolbar__sort {
@@ -451,18 +464,34 @@
 @media (max-width: 767px) {
   .xevos-archive-toolbar {
     flex-direction: column;
+    align-items: stretch;
     gap: 0.75rem;
   }
 
-  .xevos-aktuality-archive__filters {
-    overflow-x: auto;
-    flex-wrap: nowrap;
+  .xevos-archive-toolbar .xevos-aktuality-archive__filters {
+    width: 100%;
     padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
   }
 
-  .xevos-filter-pill {
-    flex-shrink: 0;
+  .xevos-archive-toolbar .xevos-filter-pill {
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .xevos-archive-toolbar__sort {
+    width: 100%;
+  }
+
+  .xevos-archive-toolbar__sort label {
+    font-size: 14px;
+  }
+
+  .xevos-archive-toolbar__sort select {
+    flex: 1;
+    padding: 10px 36px 10px 14px;
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   .xevos-archive-bottom {
@@ -551,23 +580,8 @@
 }
 
 
-/* --------------------------------------------------------------------------
-   Mobile: 360px — Figma node 631:36305
-   -------------------------------------------------------------------------- */
+/* --- 360px --- */
 @media (max-width: 360px) {
-  .xevos-archive-toolbar {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .xevos-archive-toolbar__sort {
-    width: 100%;
-  }
-
-  .xevos-archive-toolbar__sort select {
-    flex: 1;
-  }
-
   .xevos-archive-bottom {
     flex-direction: column;
     gap: 1rem;
