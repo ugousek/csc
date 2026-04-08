@@ -19,7 +19,7 @@ get_header();
 	<!-- Hero -->
 	<?php get_template_part( 'template-parts/components/hero-page', null, [
 		'heading'     => __( 'Výsledky <span style="color:#F527AA">vyhledávání</span>', 'xevos-cyber' ),
-		'description' => sprintf( __( 'Hledaný výraz: „%s" — nalezeno %s výsledků', 'xevos-cyber' ), get_search_query(), $wp_query->found_posts ),
+		'description' => sprintf( __( 'Hledaný výraz: „<strong>%s</strong>" — nalezeno <strong>%s</strong> výsledků', 'xevos-cyber' ), esc_html( get_search_query() ), $wp_query->found_posts ),
 	] ); ?>
 
 	<!-- Results -->

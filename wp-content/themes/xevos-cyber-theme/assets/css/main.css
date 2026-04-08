@@ -3849,30 +3849,149 @@ body::after {
    52. 404 page (dark theme update)
    -------------------------------------------------------------------------- */
 .xevos-404 {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  padding: 8rem var(--gutter) 6rem;
+  padding: 12rem var(--gutter) 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  justify-content: center;
 }
 
-.xevos-404__title {
-  font-size: 12rem;
-  font-weight: 800;
-  color: var(--color-accent);
-  opacity: 0.2;
-  line-height: 1;
-  margin-bottom: 1rem;
-}
-
-.xevos-404__text {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
+/* Shield icon badge */
+.xevos-404__badge {
   margin-bottom: 2rem;
-  max-width: 500px;
-  margin-inline: auto;
+  animation: float404 3s ease-in-out infinite;
 }
 
+.xevos-404__shield {
+  filter: drop-shadow(0 0 30px rgba(245, 39, 170, 0.4));
+}
+
+@keyframes float404 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Large 404 number */
+.xevos-404__title {
+  font-family: var(--font-heading);
+  font-size: 10rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(180deg, var(--color-accent) 0%, rgba(245, 39, 170, 0.2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 40px rgba(245, 39, 170, 0.3));
+}
+
+/* Subheading */
+.xevos-404__heading {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+/* Description text */
+.xevos-404__text {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text-70);
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+
+/* Search form — glass style */
 .xevos-404__search {
-  max-width: 400px;
-  margin: 0 auto 2rem;
+  max-width: 480px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.xevos-404__search-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--color-border);
+  padding: 12px 20px;
+  transition: border-color var(--transition-fast);
+}
+
+.xevos-404__search-form:focus-within {
+  border-color: var(--color-accent);
+}
+
+.xevos-404__search-icon {
+  flex-shrink: 0;
+  color: var(--color-text-60);
+}
+
+.xevos-404__search-input {
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}
+
+.xevos-404__search-input::placeholder {
+  color: var(--color-text-60);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .xevos-404 {
+    padding: 8rem var(--gutter) 4rem;
+    min-height: 70vh;
+  }
+
+  .xevos-404__title {
+    font-size: 6rem;
+  }
+
+  .xevos-404__heading {
+    font-size: 24px;
+  }
+
+  .xevos-404__text {
+    font-size: 16px;
+  }
+
+  .xevos-404__badge svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 479px) {
+  .xevos-404__title {
+    font-size: 4rem;
+  }
+
+  .xevos-404__heading {
+    font-size: 20px;
+  }
 }
 
 
@@ -4151,10 +4270,7 @@ td {
   font-size: 0.75rem;
 }
 
-/* 404 mobile */
-.xevos-404__title {
-  font-size: 6rem;
-}
+/* 404 mobile — consolidated above */
 
 /* 
 

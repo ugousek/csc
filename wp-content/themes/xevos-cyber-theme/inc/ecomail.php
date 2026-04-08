@@ -97,6 +97,45 @@ function xevos_ecomail_register(): void {
 		}
 	}
 
+	// Send confirmation email to the customer.
+	if ( $email && function_exists( 'xevos_send_email' ) ) {
+		$skoleni_title = get_the_title( $skoleni_id );
+		$termin_str    = sanitize_text_field( $_POST['termin'] ?? '' );
+		$firma_nazev   = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
+
+		if ( $typ === 'pozvanka' ) {
+			xevos_send_email( $email, 'Žádost o pozvánku – ' . $skoleni_title, 'invitation-request', [
+				'jmeno'         => $jmeno,
+				'nazev_skoleni' => $skoleni_title,
+				'termin'        => $termin_str,
+				'kontakt_email' => get_option( 'admin_email' ),
+				'firma'         => $firma_nazev,
+			] );
+		} else {
+			xevos_send_email( $email, 'Potvrzení registrace – ' . $skoleni_title, 'registration-confirmation', [
+				'jmeno'         => $jmeno,
+				'nazev_skoleni' => $skoleni_title,
+				'termin'        => $termin_str,
+				'misto'         => '',
+				'kontakt_email' => get_option( 'admin_email' ),
+				'firma'         => $firma_nazev,
+			] );
+		}
+
+		// Notify admin about free registration / invitation request.
+		xevos_send_email( get_option( 'admin_email' ), ( $typ === 'pozvanka' ? 'Nová žádost o pozvánku: ' : 'Nová registrace: ' ) . $skoleni_title, 'admin-notification-free', [
+			'typ'            => $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma',
+			'jmeno'          => $jmeno,
+			'prijmeni'       => $prijmeni,
+			'email'          => $email,
+			'telefon'        => $telefon,
+			'firma_nazev'    => $firma,
+			'nazev_skoleni'  => $skoleni_title,
+			'termin'         => $termin_str,
+			'admin_url'      => $order_id ? admin_url( 'post.php?post=' . $order_id . '&action=edit' ) : '',
+		] );
+	}
+
 	$success_msg = $typ === 'pozvanka'
 		? 'Žádost o pozvánku byla odeslána. Ozveme se vám.'
 		: 'Registrace proběhla úspěšně.';

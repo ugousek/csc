@@ -28,6 +28,7 @@ $xevos_includes = [
 	'/inc/email.php',
 	'/inc/admin/order-columns.php',
 	'/inc/admin/order-filters.php',
+	'/inc/admin/email-templates.php',
 	'/inc/order-numbering.php',
 	'/inc/ecomail.php',
 	'/inc/cron.php',
