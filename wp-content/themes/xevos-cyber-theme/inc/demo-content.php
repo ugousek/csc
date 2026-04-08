@@ -287,8 +287,70 @@ function xevos_import_demo_content(): void {
 	$aktuality = [
 		[
 			'title'    => 'NIS2: Co přináší nová směrnice a jak se připravit',
-			'excerpt'  => 'Směrnice NIS2 rozšiřuje povinnosti v oblasti kybernetické bezpečnosti na širší okruh organizací. Přinášíme přehled klíčových změn.',
-			'content'  => "<h2>Co je NIS2?</h2>\n<p>Směrnice NIS2 je nová evropská legislativa zaměřená na posílení kybernetické bezpečnosti v celé EU. Vstoupila v platnost v lednu 2023 a členské státy ji musí implementovat do října 2024.</p>\n\n<h2>Koho se týká?</h2>\n<p>NIS2 výrazně rozšiřuje okruh subjektů, které spadají pod regulaci. Nově se týká i středních podniků v klíčových sektorech jako energetika, doprava, zdravotnictví, digitální infrastruktura a výrobní průmysl.</p>\n\n<h2>Klíčové požadavky</h2>\n<ul>\n<li>Řízení kybernetických rizik</li>\n<li>Povinné hlášení incidentů (24h / 72h)</li>\n<li>Odpovědnost vedení organizace</li>\n<li>Supply chain security</li>\n<li>Business continuity plánování</li>\n</ul>\n\n<h2>Jak se připravit?</h2>\n<p>Doporučujeme začít gap analýzou stávajícího stavu bezpečnosti a identifikovat oblasti, kde nesplňujete požadavky NIS2. XEVOS vám s tímto procesem rádi pomůže.</p>",
+			'excerpt'  => 'Směrnice NIS2 rozšiřuje povinnosti v oblasti kybernetické bezpečnosti na širší okruh organizací. Přinášíme přehled klíčových změn a praktické kroky k jejich naplnění.',
+			'content'  => '<h2>Co je NIS2?</h2>
+<p>Směrnice NIS2 (Network and Information Systems Directive 2) je <strong>nová evropská legislativa</strong> zaměřená na posílení kybernetické bezpečnosti v celé EU. Vstoupila v platnost v lednu 2023 a členské státy ji musí implementovat do října 2024.</p>
+
+<p>Oproti původní směrnici NIS výrazně rozšiřuje okruh regulovaných subjektů, zpřísňuje požadavky na řízení rizik a zavádí <strong>přísnější sankce za nedodržení</strong> — až 10 milionů EUR nebo 2 % celosvětového obratu.</p>
+
+<h2>Koho se NIS2 týká?</h2>
+<p>NIS2 výrazně rozšiřuje okruh subjektů, které spadají pod regulaci. Nově se týká i středních podniků (50+ zaměstnanců) v klíčových sektorech:</p>
+
+<ul>
+<li><strong>Energetika</strong> — elektřina, plyn, ropa, teplárenství</li>
+<li><strong>Doprava</strong> — letecká, železniční, vodní, silniční</li>
+<li><strong>Zdravotnictví</strong> — nemocnice, laboratoře, výrobci zdravotnických prostředků</li>
+<li><strong>Digitální infrastruktura</strong> — DNS, TLD, cloud, datová centra</li>
+<li><strong>Veřejná správa</strong> — ústřední i regionální orgány</li>
+<li><strong>Výrobní průmysl</strong> — chemie, potraviny, strojírenství</li>
+</ul>
+
+<h2>Klíčové požadavky</h2>
+<p>Směrnice stanovuje konkrétní oblasti, ve kterých musí organizace prokázat soulad. Jedná se zejména o:</p>
+
+<h3>Řízení kybernetických rizik</h3>
+<p>Organizace musí implementovat <strong>systematický přístup k identifikaci, hodnocení a mitigaci</strong> kybernetických rizik. To zahrnuje pravidelné risk assessmenty, penetrační testy a vulnerability scany.</p>
+
+<h3>Povinné hlášení incidentů</h3>
+<p>NIS2 zavádí třístupňový systém hlášení bezpečnostních incidentů:</p>
+<ol>
+<li><strong>Prvotní oznámení</strong> — do 24 hodin od zjištění</li>
+<li><strong>Průběžná zpráva</strong> — do 72 hodin s analýzou dopadu</li>
+<li><strong>Závěrečná zpráva</strong> — do 1 měsíce s kompletním vyhodnocením</li>
+</ol>
+
+<h3>Odpovědnost vedení</h3>
+<p>Vedení organizace nese přímou odpovědnost za kybernetickou bezpečnost. Management musí absolvovat školení a schvalovat opatření k řízení rizik.</p>
+
+<blockquote>Kybernetická bezpečnost už není jen záležitostí IT oddělení. NIS2 ji posouvá na úroveň strategického rozhodování celé organizace.</blockquote>
+
+<h2>Supply chain security</h2>
+<p>Jednou z nejvýznamnějších novinek je důraz na <strong>bezpečnost dodavatelského řetězce</strong>. Organizace musí vyhodnocovat bezpečnostní rizika spojená se svými dodavateli a poskytovateli služeb.</p>
+
+<p>V praxi to znamená:</p>
+<ul>
+<li>Bezpečnostní požadavky ve smlouvách s dodavateli</li>
+<li>Pravidelné audity klíčových dodavatelů</li>
+<li>Monitoring bezpečnostních incidentů v supply chain</li>
+<li>Plány kontinuity při výpadku dodavatele</li>
+</ul>
+
+<h2>Jak se připravit?</h2>
+<p>Doporučujeme začít <strong>gap analýzou</strong> stávajícího stavu bezpečnosti a identifikovat oblasti, kde nesplňujete požadavky NIS2. Následující kroky vám pomohou se systematicky připravit:</p>
+
+<ol>
+<li><strong>Gap analýza</strong> — zmapujte aktuální stav vs. požadavky NIS2</li>
+<li><strong>Risk assessment</strong> — proveďte komplexní hodnocení rizik</li>
+<li><strong>Implementace opatření</strong> — nastavte procesy a technická řešení</li>
+<li><strong>Školení</strong> — proškolte management i zaměstnance</li>
+<li><strong>Dokumentace</strong> — připravte politiky, směrnice a incident response plány</li>
+<li><strong>Testování</strong> — ověřte účinnost opatření penetračními testy</li>
+</ol>
+
+<h2>Jak vám může XEVOS pomoci?</h2>
+<p>Náš tým specialistů vás provede celým procesem přípravy na NIS2. Nabízíme kompletní servis od počáteční analýzy přes implementaci opatření až po pravidelné audity a školení.</p>
+
+<p><strong>Neodkládejte přípravu.</strong> Kontaktujte nás a domluvme si nezávaznou konzultaci, kde společně vyhodnotíme váš aktuální stav a navrhneme optimální postup.</p>',
 			'category' => 'Legislativa & NIS2',
 		],
 		[

@@ -1,0 +1,446 @@
+/* ==========================================================================
+   Single Aktualita (blog article) – standalone stylesheet
+   Figma node 595:12671
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Hero – Figma: image inside container, 770px height, gradient, tags + H1
+   -------------------------------------------------------------------------- */
+.xevos-article-hero {
+  position: relative;
+  padding-top: 160px;
+
+}
+
+.xevos-article-hero__bg {
+  position: relative;
+  height: 770px;
+  overflow: hidden;
+}
+
+.xevos-article-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-mask-image: radial-gradient(ellipse 55% 50% at center, #000 72%, transparent 100%);
+  mask-image: radial-gradient(ellipse 55% 50% at center, #000 72%, transparent 100%);
+  z-index: 4;
+  position: relative;
+}
+
+/* Gradient overlay + shadow at bottom */
+.xevos-article-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(1, 1, 41, 1) 0%, rgba(1, 1, 41, 0.7) 30%, transparent 60%);
+  z-index: 1;
+}
+
+/* Content overlaps bottom of image */
+.xevos-article-hero__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tags row – uses shared .xevos-filter-pill from blog.css */
+.xevos-article-hero__tags {
+  margin-block: 1rem 1.5rem;
+}
+
+/* H1 – Figma: Montserrat 900, 80px, white, UPPER, text-shadow */
+.xevos-article-hero__title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 80px;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0px -5px 20px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0 0 1.75rem rgba(0, 0, 0, 1));
+  margin: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Article content – Figma: 1200px max-width, gap 80px between sections
+   -------------------------------------------------------------------------- */
+.xevos-article-content__inner {
+  max-width: 1200px;
+}
+
+/* Body text – Figma: Sora 400, 18px, rgba(236,236,236,0.70) */
+.xevos-article-content__body,
+.xevos-article-content__body p {
+  color: rgba(236, 236, 236, 0.70);
+  font-family: Sora, var(--font-body);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.36px;
+}
+
+.xevos-article-content__body strong {
+  color: #ECECEC;
+  font-weight: 600;
+}
+
+/* H2 – Figma: Montserrat 900, 52px, #00BBFF, UPPER */
+.xevos-article-content__body h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.22;
+  text-transform: uppercase;
+  color: #00BBFF;
+  margin-top: 80px !important;
+  margin-bottom: 24px;
+}
+
+/* First h2 after start – no extra top margin */
+.xevos-article-content__body>h2:first-child {
+  margin-top: 0;
+}
+
+/* H3 – Figma: Montserrat 900, 32px, white, UPPER */
+.xevos-article-content__body h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.22;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.xevos-article-content__body h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.xevos-article-content__body p {
+  margin-bottom: 24px;
+}
+
+/* Images – Figma: full-width, 660px height, no border-radius */
+.xevos-article-content__body img {
+  border-radius: 0;
+  margin: 40px 0;
+  width: 100%;
+  height: auto;
+}
+
+.xevos-article-content__body ul,
+.xevos-article-content__body ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.xevos-article-content__body li {
+  margin-bottom: 8px;
+  color: rgba(236, 236, 236, 0.70);
+}
+
+.xevos-article-content__body a {
+  color: #F527AA;
+  font-family: Sora, var(--font-body);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.36px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
+.xevos-article-content__body a:hover {
+  color: #FFFFFF;
+}
+
+.xevos-article-content__body blockquote {
+  border-left: 3px solid #00BBFF;
+  padding: 24px 32px;
+  margin: 40px 0;
+  font-style: italic;
+  color: rgba(236, 236, 236, 0.5);
+  background: rgba(0, 187, 255, 0.05);
+}
+
+.xevos-article-content__body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Code */
+.xevos-article-content__body pre,
+.xevos-article-content__body code {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.xevos-article-content__body code {
+  padding: 0.15em 0.4em;
+}
+
+.xevos-article-content__body pre {
+  padding: 24px;
+  margin: 32px 0;
+  overflow-x: auto;
+}
+
+.xevos-article-content__body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Tables */
+.xevos-article-content__body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+}
+
+.xevos-article-content__body th,
+.xevos-article-content__body td {
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  font-size: 16px;
+}
+
+.xevos-article-content__body th {
+  background: var(--bg-card);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Figcaption */
+.xevos-article-content__body figcaption {
+  font-size: 14px;
+  color: rgba(236, 236, 236, 0.4);
+  text-align: center;
+  margin-top: -24px;
+  margin-bottom: 32px;
+}
+
+/* WP alignment */
+.xevos-article-content__body .aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.xevos-article-content__body .alignleft {
+  float: left;
+  margin-right: 32px;
+  margin-bottom: 16px;
+  max-width: 50%;
+}
+
+.xevos-article-content__body .alignright {
+  float: right;
+  margin-left: 32px;
+  margin-bottom: 16px;
+  max-width: 50%;
+}
+
+/* WP gallery */
+.xevos-article-content__body .wp-block-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.xevos-article-content__body .wp-block-gallery img {
+  margin: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Share buttons
+   -------------------------------------------------------------------------- */
+.xevos-aktualita-single__share {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.xevos-aktualita-single__share-label {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: rgba(236, 236, 236, 0.5);
+  margin-right: 8px;
+}
+
+.xevos-aktualita-single__share a,
+.xevos-aktualita-single__share button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 187, 255, 0.1);
+  color: rgba(236, 236, 236, 0.5);
+  border: 1px solid rgba(0, 187, 255, 0.3);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.xevos-aktualita-single__share a:hover,
+.xevos-aktualita-single__share button:hover {
+  background: var(--color-accent);
+  color: #FFFFFF;
+  border-color: var(--color-accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Prev/Next navigation
+   -------------------------------------------------------------------------- */
+.xevos-aktualita-single__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.xevos-aktualita-single__nav a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(236, 236, 236, 0.5);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.xevos-aktualita-single__nav a:hover {
+  color: var(--color-accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .xevos-article-hero__bg {
+    height: 550px;
+  }
+
+  .xevos-article-hero__title {
+    font-size: 52px;
+  }
+
+  .xevos-article-content__body h2 {
+    font-size: 40px;
+    margin-top: 60px;
+  }
+
+  .xevos-article-content__body h3 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .xevos-article-hero__bg,
+  .xevos-article-hero__bg img {
+    height: auto;
+  }
+
+  .xevos-article-hero__title {
+    font-size: 36px;
+  }
+
+  .xevos-section {
+    padding: 2rem 0;
+  }
+
+  .xevos-article-content__body {
+    font-size: 16px;
+  }
+
+  .xevos-article-content__body h2 {
+    font-size: 28px;
+    margin-top: 4rem !important;
+  }
+
+  .xevos-article-content__body h3 {
+    font-size: 22px;
+    margin-top: 32px;
+  }
+
+  .xevos-article-content__body h4 {
+    font-size: 18px;
+  }
+
+  .xevos-article-content__body img {
+    margin: 24px 0;
+  }
+
+  .xevos-aktualita-single__share {
+    flex-wrap: wrap;
+  }
+
+  .xevos-aktualita-single__nav {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .xevos-article-content__body .alignleft,
+  .xevos-article-content__body .alignright {
+    float: none;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .xevos-article-content__body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 500px) {
+  .xevos-article-hero {
+    padding-top: 140px;
+  }
+}
+
+@media (max-width: 479px) {
+  .xevos-article-hero__title {
+    font-size: 26px;
+  }
+
+  .xevos-article-content__body h2 {
+    font-size: 24px;
+  }
+
+  .xevos-article-content__body h3 {
+    font-size: 18px;
+  }
+
+}

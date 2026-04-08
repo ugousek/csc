@@ -41,6 +41,16 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
+	// Single aktualita CSS.
+	if ( is_singular( 'aktualita' ) ) {
+		wp_enqueue_style(
+			'xevos-single-aktualita',
+			$theme_uri . '/assets/css/single-aktualita.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
 	// Školení detail CSS (single only).
 	if ( is_singular( 'skoleni' ) ) {
 		wp_enqueue_style(

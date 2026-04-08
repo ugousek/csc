@@ -8,6 +8,29 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Czech typography: non-breaking space after single-char prepositions/conjunctions.
+ * Prevents orphaned v, k, s, z, i, a, o, u etc. at end of line.
+ */
+function xevos_fix_czech_typo( string $text ): string {
+	// Match single-char Czech prepositions/conjunctions followed by a space (outside HTML tags).
+	// Pattern: word boundary + single letter (v,k,s,z,i,a,o,u,V,K,S,Z,I,A,O,U) + space
+	return preg_replace(
+		'/(?<=\s|^)([vkszVKSZ]|[iaoIAO]|[uU])\s+(?=[^\s<])/u',
+		'$1&nbsp;',
+		$text
+	);
+}
+
+// Apply to all text output.
+add_filter( 'the_content', 'xevos_fix_czech_typo', 99 );
+add_filter( 'the_title', 'xevos_fix_czech_typo', 99 );
+add_filter( 'the_excerpt', 'xevos_fix_czech_typo', 99 );
+add_filter( 'widget_text', 'xevos_fix_czech_typo', 99 );
+add_filter( 'acf/format_value/type=wysiwyg', 'xevos_fix_czech_typo', 99 );
+add_filter( 'acf/format_value/type=text', 'xevos_fix_czech_typo', 99 );
+add_filter( 'acf/format_value/type=textarea', 'xevos_fix_czech_typo', 99 );
+
+/**
  * Fallback menu when no WP menu is assigned.
  */
 function xevos_fallback_menu(): void {

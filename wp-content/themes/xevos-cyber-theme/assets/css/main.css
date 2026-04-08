@@ -985,6 +985,7 @@ b {
   font-size: var(--font-size-base);
   color: var(--color-white);
   background: #00BBFF33;
+  backdrop-filter: blur(25px);
   border: 1px solid #747474;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -3936,7 +3937,7 @@ body::after {
   display: flex;
   gap: 0;
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius);
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -4245,7 +4246,7 @@ body.admin-bar .xevos-search-overlay {
   padding-top: calc(20vh + 32px);
 }
 
-@media (max-width: 782px) {
+/* @media (max-width: 782px) {
   body.admin-bar {
     padding-top: 110px;
   }
@@ -4259,7 +4260,7 @@ body.admin-bar .xevos-search-overlay {
   body.admin-bar {
     padding-top: 110px;
   }
-}
+} */
 
 
 /* --------------------------------------------------------------------------

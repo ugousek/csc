@@ -1,0 +1,32 @@
+{
+  "key": "group_xevos_aktualita_single",
+  "title": "Obsah článku",
+  "fields": [
+    {
+      "key": "field_aktualita_obsah",
+      "label": "Obsah",
+      "name": "aktualita_obsah",
+      "type": "wysiwyg",
+      "toolbar": "full",
+      "media_upload": 1,
+      "instructions": "H2 = cyan nadpis sekce, H3 = bílý podnadpis, <strong>tučný text (B) = bílá barva</strong>."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "aktualita"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "active": true,
+  "hide_on_screen": [
+    "the_content"
+  ]
+}
