@@ -117,7 +117,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 					<div class="xevos-two-col">
 						<div>
 							<h3><?php echo esc_html($ziskate_heading); ?></h3>
-							<p class="xevos-benefity-section__desc"><?php echo wp_kses_post($ziskate_text); ?></p>
+							<div class="xevos-benefity-section__desc"><?php echo wp_kses_post($ziskate_text); ?></div>
 							<ul class="xevos-kyber-politika__checklist">
 								<?php foreach ($ziskate_seznam as $item) : ?>
 									<li>
@@ -147,7 +147,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 						</div>
 						<div>
 							<h3><?php echo esc_html($prokoho_heading); ?></h3>
-							<p class="xevos-benefity-section__desc"><?php echo wp_kses_post($prokoho_text); ?></p>
+							<div class="xevos-benefity-section__desc"><?php echo wp_kses_post($prokoho_text); ?></div>
 							<ul class="xevos-kyber-politika__checklist">
 								<?php foreach ($prokoho_seznam as $item) : ?>
 									<li>
@@ -204,7 +204,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 					<img src="<?php echo esc_url($banner_img_url); ?>" alt="" class="xevos-kt-banner__bg" loading="lazy">
 					<div class="xevos-kt-banner__content">
 						<h2><?php echo esc_html($banner_heading); ?></h2>
-						<p><?php echo wp_kses_post($banner_text); ?></p>
+						<p><?php echo wp_kses( strip_tags( $banner_text, '<strong><b><em><a><br>' ), [ 'strong' => [], 'b' => [], 'em' => [], 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ], 'br' => [] ] ); ?></p>
 						<a href="<?php echo esc_url($banner_btn_url); ?>" class="xevos-btn xevos-btn--primary">
 							<span class="xevos-btn__arrow"><svg width="18" height="18" viewBox="0 0 20 20" fill="none">
 									<path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

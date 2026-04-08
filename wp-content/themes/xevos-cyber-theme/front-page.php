@@ -11,7 +11,6 @@ get_header();
 
 <main id="main" class="xevos-main xevos-main--glows">
 
-	<!-- Glow blobs -->
 	<div class="xevos-glow-blob xevos-glow-blob--right" style="top:577px;"></div>
 	<div class="xevos-glow-blob xevos-glow-blob--left" style="top:1800px;"></div>
 	<div class="xevos-glow-blob xevos-glow-blob--right-second" style="top:3500px;"></div>
@@ -28,4 +27,4 @@ get_header();
 	?>
 
 
-<?php get_footer(); ?>
+	<?php get_footer(); ?>

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Homepage: Kybernetické testování — slider s 6 snímky.
- * Figma: obrázek vlevo (statický), text vpravo se mění (Swiper), čísla dole.
+ * Kybernetické testování — slider component.
+ * Each page has its own ACF fields — HP and /kyberneticke-testovani/ are independent.
  */
 
 $show = get_field('kyber_test_zobrazit_sekci');
@@ -14,7 +14,7 @@ $default_cta_text = 'Chci test';
 $default_cta_url  = '/kyberneticke-testovani/';
 $default_image_url = get_theme_file_uri('assets/img/homepage/kyber-testovani.png');
 
-/* 6 slides — configurable via ACF repeater 'kyber_test_slidy' or hardcoded fallback */
+/* Slides — from current page's ACF */
 $slides = get_field('kyber_test_slidy');
 if (! $slides) {
 	$slides = [
@@ -56,11 +56,11 @@ if (! $slides) {
 	<div class="xevos-section__container">
 
 		<!-- Centered heading (only on homepage) -->
-		<?php if ( is_front_page() ) : ?>
-		<div class="xevos-kyber-test__header">
-			<h2><?php echo esc_html($heading); ?></h2>
-			<div class="xevos-kyber-test__desc"><?php echo wp_kses_post($desc); ?></div>
-		</div>
+		<?php if (is_front_page()) : ?>
+			<div class="xevos-kyber-test__header">
+				<h2><?php echo esc_html($heading); ?></h2>
+				<div class="xevos-kyber-test__desc"><?php echo wp_kses_post($desc); ?></div>
+			</div>
 		<?php endif; ?>
 
 		<!-- Image + slider panel -->

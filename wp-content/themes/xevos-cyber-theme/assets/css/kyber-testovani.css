@@ -109,6 +109,9 @@
   position: relative;
   text-align: center;
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .xevos-postup-step+.xevos-postup-step::before {
@@ -149,162 +152,28 @@
     0 0 80px 0 #00B7FF,
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
+  margin-bottom: 1.5rem;
 }
 
 .xevos-postup-step__title {
   font-family: var(--font-heading);
   font-weight: 900;
   font-size: 18px;
+  line-height: normal;
   text-transform: uppercase;
   color: var(--color-white);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.625rem;
   letter-spacing: 0.32px;
 }
 
 .xevos-postup-step__text {
+  color: #ECECEC;
+  font-family: Sora;
   font-size: 18px;
-  color: var(--color-text-muted);
-}
-
-
-/* --------------------------------------------------------------------------
-   2. Responsive overrides – page-specific
-   -------------------------------------------------------------------------- */
-
-/* --- Tablet (768–1023px) --- */
-@media (max-width: 1023px) {
-
-  .xevos-kyber-test__body,
-  .xevos-kyber-politika__body {
-    min-height: auto;
-  }
-
-  .xevos-kyber-test__panel,
-  .xevos-kyber-politika__panel {
-    position: static;
-    width: 100%;
-    max-width: none;
-    backdrop-filter: none;
-    background: rgba(15, 20, 60, 0.95);
-    padding: 1.5rem;
-  }
-
-  .xevos-kyber-test__checklist,
-  .xevos-kyber-politika__checklist {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .xevos-kyber-politika__visual {
-    position: static;
-    width: 100%;
-    transform: none;
-  }
-}
-
-/* --- Tablet: postup grid 3 columns --- */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .xevos-postup-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* --- Mobile (480–767px) --- */
-@media (max-width: 767px) {
-  .xevos-postup-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .xevos-postup-step__num {
-    font-size: 36px;
-    padding: 18px 24px;
-    margin-bottom: 1.5rem;
-  }
-
-  .xevos-two-col {
-    gap: 3rem;
-    flex-direction: column;
-  }
-
-  .xevos-postup-step__title {
-    font-size: 0.875rem;
-  }
-
-  .xevos-postup-step__text {
-    font-size: 0.8125rem;
-  }
-
-  .xevos-two-col h2 {
-    font-size: 22px;
-  }
-
-  .xevos-benefity-section__desc {
-    font-size: 0.875rem;
-  }
-
-  .xevos-benefity-section .xevos-kyber-politika__checklist li {
-    font-size: 0.8125rem;
-  }
-
-  .xevos-kt-banner {
-    padding-top: 4rem;
-  }
-
-  .xevos-kt-banner__content {
-    padding: 2rem 1.5rem;
-  }
-
-  .xevos-kt-banner__content h2 {
-    font-size: 22px;
-  }
-
-  .xevos-kt-banner__content p {
-    font-size: 0.875rem;
-  }
-
-  .xevos-order-section {
-    grid-template-columns: 1fr !important;
-  }
-
-  .xevos-form-row {
-    grid-template-columns: 1fr !important;
-  }
-
-  .xevos-order-summary {
-    padding: 1.5rem;
-  }
-}
-
-/* --- Mobile (≤479px) --- */
-@media (max-width: 479px) {
-  .xevos-postup-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .xevos-postup-step__num {
-    font-size: 28px;
-    padding: 16px 20px;
-    box-shadow: 0 0 40px 0 #00B7FF;
-    margin-bottom: 1rem;
-  }
-
-  .xevos-two-col h2 {
-    font-size: 20px;
-  }
-
-  .xevos-kt-banner {
-    padding-top: 3rem;
-  }
-
-  .xevos-kt-banner__content {
-    padding: 1.5rem 1rem;
-  }
-
-  .xevos-kt-banner__content h2 {
-    font-size: 20px;
-  }
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.36px;
 }
 
 
@@ -341,11 +210,6 @@
   margin-bottom: 0;
 }
 
-.xevos-benefity-section .xevos-kyber-politika__checklist li {
-  font-size: 18px;
-  white-space: normal;
-}
-
 .xevos-benefity-section__cta {
   text-align: center;
   margin-top: 3rem;
@@ -373,6 +237,20 @@
 @media (min-width: 1280px) {
   .xevos-two-col {
     gap: 10rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .xevos-two-col {
+    gap: 3rem;
+  }
+
+  .xevos-benefity-section {
+    padding-top: 0;
+  }
+
+  .xevos-benefity-section .xevos-kyber-politika__checklist {
+    margin-bottom: 0rem !important;
   }
 }
 
@@ -439,12 +317,144 @@
 }
 
 
-
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 992px) {
   .xevos-kt-banner__content {
     max-width: 50%;
   }
 }
+
+/* --- Under 1200px: smaller step numbers --- */
+@media (max-width: 1200px) {
+  .xevos-postup-step__num {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+
+  .xevos-postup-grid {
+    gap: 1.5rem;
+  }
+
+  .xevos-postup-step__title {
+    font-size: 16px;
+  }
+
+  .xevos-postup-step__text {
+    font-size: 16px;
+  }
+}
+
+/* --- Tablet: postup grid 3 columns --- */
+@media (max-width: 1023px) {
+  .xevos-postup-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+
+@media screen and (max-width: 991px) {
+  .xevos-glow-blob--top {
+    display: none;
+  }
+
+  .xevos-kt-banner {
+    padding-block: 4rem 0;
+  }
+
+  .xevos-kt-banner__content h2 {
+    font-size: 26px;
+  }
+
+  .xevos-kt-banner__content p {
+    font-size: 16px;
+  }
+}
+
+/* --- Mobile (480–767px) --- */
+@media (max-width: 767px) {
+  .xevos-postup-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .xevos-postup-step__num {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+    margin-bottom: 1rem;
+  }
+
+  .xevos-two-col {
+    gap: 3rem;
+    flex-direction: column;
+  }
+
+  .xevos-two-col h2 {
+    font-size: 22px;
+  }
+
+  .xevos-benefity-section__desc {
+    font-size: 0.875rem;
+  }
+
+  .xevos-kt-banner {
+    padding-top: 4rem;
+  }
+
+  .xevos-kt-banner__content {
+    padding: 2rem 1.5rem;
+  }
+
+  .xevos-kt-banner__content h2 {
+    font-size: 22px;
+  }
+
+  .xevos-kt-banner__content p {
+    font-size: 0.875rem;
+  }
+
+  .xevos-order-section {
+    grid-template-columns: 1fr !important;
+  }
+
+  .xevos-form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- Mobile (≤479px) --- */
+@media (max-width: 479px) {
+  .xevos-postup-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .xevos-postup-step__num {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    box-shadow: 0 0 40px 0 #00B7FF;
+    margin-bottom: 0.75rem;
+  }
+
+  .xevos-two-col h2 {
+    font-size: 20px;
+  }
+
+  .xevos-kt-banner {
+    padding-top: 3rem;
+  }
+
+  .xevos-kt-banner__content {
+    padding: 1.5rem;
+  }
+
+  .xevos-kt-banner__content h2 {
+    font-size: 20px;
+  }
+}
+
 
 /* --------------------------------------------------------------------------
    8. Postup testování – new layout (Figma)
