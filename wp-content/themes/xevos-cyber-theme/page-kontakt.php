@@ -36,11 +36,6 @@ $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/ko
 			<div class="xevos-kontakt">
 				<!-- Form -->
 				<div class="xevos-kontakt__form">
-					<?php
-					$cf7 = get_field('kontakt_formular_shortcode');
-					if ($cf7) :
-						echo do_shortcode($cf7);
-					else : ?>
 						<form class="xevos-kontakt-form" method="post" id="xevos-contact-form">
 							<input type="hidden" name="action" value="xevos_contact_form">
 							<?php wp_nonce_field( 'xevos_contact', 'xevos_contact_nonce' ); ?>
@@ -77,7 +72,6 @@ $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/ko
 								ODESLAT
 							</button>
 						</form>
-					<?php endif; ?>
 				</div>
 
 				<!-- Contact sidebar — shared component -->
