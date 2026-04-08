@@ -945,18 +945,6 @@ select.xevos-form__input option:checked,
 }
 
 
-@media (max-width: 479px) {
-
-  .xevos-header__inner {
-    height: 64px;
-    padding-left: 10px;
-  }
-
-  .xevos-mobile-menu {
-    top: calc(20px + 64px);
-  }
-}
-
 .xevos-header:has(.xevos-header__hamburger.is-active) .xevos-header__inner {
   border-bottom-color: transparent;
 }
@@ -1228,6 +1216,14 @@ select.xevos-form__input option:checked,
   transform: translateY(-7px) rotate(-45deg);
 }
 
+@media (max-width: 479px) {
+
+  .xevos-header__inner {
+    height: 64px;
+    padding-left: 10px;
+  }
+
+}
 
 /* --------------------------------------------------------------------------
    8. Mobile Menu (dark overlay)
@@ -1428,6 +1424,13 @@ select.xevos-form__input option:checked,
 .xevos-mobile-menu__contact p a {
   color: var(--color-white);
   font-weight: 500;
+}
+
+@media (max-width: 479px) {
+
+  .xevos-mobile-menu {
+    top: calc(20px + 64px);
+  }
 }
 
 
