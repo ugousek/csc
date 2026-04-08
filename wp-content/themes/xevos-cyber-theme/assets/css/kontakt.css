@@ -12,7 +12,6 @@
    -------------------------------------------------------------------------- */
 .xevos-blog-hero__image img {
   position: relative;
-  top: -35px;
 }
 
 .xevos-kontakt {
@@ -22,6 +21,10 @@
 }
 
 @media (min-width: 768px) {
+  .xevos-blog-hero__image img {
+    top: -35px;
+  }
+
   .xevos-kontakt {
     grid-template-columns: 3fr 2fr;
   }
@@ -50,17 +53,6 @@
   }
 }
 
-
-/* --------------------------------------------------------------------------
-   3. Form labels – Figma: Sora 18px
-   -------------------------------------------------------------------------- */
-.xevos-kontakt-form .xevos-form__label {
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-}
-
-
 /* --------------------------------------------------------------------------
    4. Responsive – Mobile
    -------------------------------------------------------------------------- */
@@ -74,4 +66,10 @@
 
 #formular .xevos-btn--primary {
   margin-top: 2.5rem;
+}
+
+@media (max-width: 767px) {
+  #formular .xevos-btn--primary {
+    margin-top: 12px;
+  }
 }

@@ -142,20 +142,8 @@
     overflow: hidden;
 }
 
-/* Remove the dark ::after overlay — it's meant for image-based heroes,
-   but on školení detail the hero uses a gradient bg so the overlay
-   adds an unwanted grayish tint (rgba(10,14,39)) over the dark navy. */
 .xevos-skoleni-hero .xevos-page-hero__bg::after {
     display: none;
-}
-
-.xevos-skoleni-hero .xevos-blog-hero__content h1 {
-    color: var(--color-white);
-}
-
-.xevos-skoleni-hero .xevos-blog-hero__content h1 strong {
-    color: var(--color-accent);
-    font-weight: 900;
 }
 
 .xevos-skoleni-hero .xevos-blog-hero__desc {
@@ -201,6 +189,7 @@
     letter-spacing: 0.32px;
     color: var(--color-white);
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .xevos-skoleni-pro-koho .xevos-article-content__body,
@@ -210,6 +199,8 @@
     line-height: 1.58;
     letter-spacing: 0.48px;
     color: rgba(236, 236, 236, 0.7);
+    text-align: center;
+
 }
 
 .xevos-skoleni-pro-koho .xevos-article-content__body strong {
@@ -377,8 +368,13 @@
 }
 
 @media (max-width: 767px) {
+    .xevos-skoleni-lektori-section {
+        padding-bottom: 0;
+    }
+
     .xevos-skoleni-lektori__static {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
 
@@ -564,7 +560,7 @@
    -------------------------------------------------------------------------- */
 
 .xevos-skoleni-benefits {
-    margin-top: 7.5rem;
+    margin-top: 5rem;
 }
 
 .xevos-skoleni-benefits h2 {
@@ -575,6 +571,13 @@
     letter-spacing: 0.52px;
     color: var(--color-white);
     margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+    .xevos-skoleni-benefits {
+        margin-top: 2.5rem;
+    }
+
 }
 
 /* Checklist styles now in main.css (shared component) */
@@ -598,6 +601,12 @@
     .xevos-skoleni-parking {
         grid-template-columns: 55% 1fr;
         gap: 68px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xevos-skoleni-kde-parkovat {
+        padding-top: 1rem;
     }
 }
 
@@ -678,37 +687,27 @@
 }
 
 
-/* Order section, form inputs, order summary, honeypot — base in main.css */
 
-/* Školení-specific: cyan-bordered inputs with 52px height */
-.xevos-order-section .xevos-form__input {
-    height: 52px;
-    padding: 16px;
-    border-color: rgba(0, 187, 255, 0.6);
-    border-radius: 0;
-}
-
-.xevos-order-section .xevos-form__input:focus {
-    border-color: #00bbff;
-    box-shadow: 0 0 0 2px rgba(0, 187, 255, 0.2);
-}
-
-/* Select styles moved to main.css */
-
-/* DPH checkbox – Figma: 52x52, aligned to bottom of row like inputs */
+/* DPH checkbox – aligned to bottom of row next to PSČ input */
 .xevos-form__checkbox-wrap {
     display: flex;
-    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
 }
 
-/* The parent .xevos-form__group needs flex + justify-end so checkbox sits at bottom */
 .xevos-form__group:has(.xevos-form__checkbox-wrap) {
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
 }
 
+.xevos-form__group:has(.xevos-form__checkbox-wrap) .xevos-form__checkbox-wrap {
+    height: 50px;
+}
+
 .xevos-form__checkbox {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     flex-shrink: 0;
     appearance: none;
     background: rgba(0, 187, 255, 0.2);
@@ -809,9 +808,40 @@
 
 }
 
+.xevos-harmonogram-item:not(:last-child),
+.xevos-osnova-list li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
 /* --------------------------------------------------------------------------
    11. Responsive overrides
    -------------------------------------------------------------------------- */
+
+/* === Order sidebar reorder (≤1200px): price+submit first, contact second === */
+@media (max-width: 1200px) {
+    .xevos-order-summary {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .xevos-order-summary .xevos-order-summary__contact,
+    .xevos-order-summary .xevos-contact-info {
+        order: 3;
+    }
+
+    .xevos-order-summary .xevos-order-summary__price-block {
+        order: 1;
+        padding-top: 0;
+    }
+
+    .xevos-order-summary .xevos-btn--primary {
+        order: 2;
+    }
+
+    .xevos-order-summary .xevos-order-message {
+        order: 4;
+    }
+}
 
 /* === Tablet (768px – 1023px) === */
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -942,18 +972,11 @@
     }
 }
 
-/* === Mobile (max 767px) === */
 @media (max-width: 767px) {
 
     /* Hero */
     .xevos-skoleni-hero .xevos-blog-hero__content {
         text-align: center;
-    }
-
-    .xevos-skoleni-hero .xevos-blog-hero__content h1 {
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
-        margin-top: 120px;
     }
 
     .xevos-skoleni-hero .xevos-blog-hero__desc {
@@ -1031,11 +1054,11 @@
         grid-template-columns: 1fr;
     }
 
-    .xevos-lektor-card__foto,
+    /* .xevos-lektor-card__foto,
     .xevos-lektor-card__foto-wrap {
         width: 160px;
         height: 160px;
-    }
+    } */
 
     .xevos-lektor-card__name {
         font-size: 1.25rem;
@@ -1048,7 +1071,7 @@
 
     /* Harmonogram + Osnova */
     .xevos-skoleni-content-cols {
-        gap: 2rem;
+        gap: 2.5rem;
     }
 
     .xevos-skoleni-content-cols h2 {
@@ -1061,10 +1084,6 @@
         line-height: 1.5;
     }
 
-    /* Co si odnesete */
-    .xevos-skoleni-benefits {
-        margin-top: 3rem;
-    }
 
     .xevos-skoleni-benefits h2 {
         font-size: 1.75rem;

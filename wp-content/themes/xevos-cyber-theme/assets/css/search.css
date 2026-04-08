@@ -3,6 +3,7 @@
    ========================================================================== */
 
 
+
 .xevos-glow-blob--left {
   z-index: 2 !important;
 }
@@ -47,10 +48,10 @@
 .xevos-search-results__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   .xevos-search-results__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -59,6 +60,7 @@
 @media (min-width: 1024px) {
   .xevos-search-results__grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
   }
 }
 
@@ -185,12 +187,21 @@
    4. Responsive – Mobile
    -------------------------------------------------------------------------- */
 @media (max-width: 767px) {
+
+  .xevos-blog-hero {
+    padding-top: 170px;
+  }
+
   .xevos-search-results__empty {
     padding: 2rem 1rem;
   }
 
   .xevos-search-results__empty h2 {
     font-size: 1.5rem;
+  }
+
+  .xevos-search-results__grid {
+    gap: 1.5rem;
   }
 
   .xevos-search-results__grid .xevos-card__body {

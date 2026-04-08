@@ -109,7 +109,10 @@ while (have_posts()) : the_post();
 		$has_lektori = false;
 		if (is_array($lektori)) {
 			foreach ($lektori as $l) {
-				if (! empty($l['jmeno'])) { $has_lektori = true; break; }
+				if (! empty($l['jmeno'])) {
+					$has_lektori = true;
+					break;
+				}
 			}
 		}
 		if (! $has_lektori) {
@@ -134,7 +137,9 @@ while (have_posts()) : the_post();
 				<div class="xevos-skoleni-lektori__carousel">
 					<?php if ($use_swiper) : ?>
 						<button class="xevos-nav-arrow xevos-nav-arrow--prev" aria-label="Předchozí" type="button">
-							<svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+							<svg width="12" height="20" viewBox="0 0 12 20" fill="none">
+								<path d="M10 2L2 10l8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
 						</button>
 					<?php endif; ?>
 
@@ -171,7 +176,9 @@ while (have_posts()) : the_post();
 
 					<?php if ($use_swiper) : ?>
 						<button class="xevos-nav-arrow xevos-nav-arrow--next" aria-label="Další" type="button">
-							<svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M2 2l8 8-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+							<svg width="12" height="20" viewBox="0 0 12 20" fill="none">
+								<path d="M2 2l8 8-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
 						</button>
 					<?php endif; ?>
 				</div>
@@ -183,7 +190,10 @@ while (have_posts()) : the_post();
 		$has_harmonogram = false;
 		if (is_array($harmonogram)) {
 			foreach ($harmonogram as $h) {
-				if (! empty($h['cas'])) { $has_harmonogram = true; break; }
+				if (! empty($h['cas'])) {
+					$has_harmonogram = true;
+					break;
+				}
 			}
 		}
 		if (! $has_harmonogram) {
@@ -199,7 +209,10 @@ while (have_posts()) : the_post();
 		$has_osnova = false;
 		if (is_array($osnova)) {
 			foreach ($osnova as $o) {
-				if (! empty($o['bod'])) { $has_osnova = true; break; }
+				if (! empty($o['bod'])) {
+					$has_osnova = true;
+					break;
+				}
 			}
 		}
 		if (! $has_osnova) {
@@ -238,7 +251,7 @@ while (have_posts()) : the_post();
 								];
 							}
 							?>
-							<div class="xevos-skoleni-benefits" style="margin-top:5rem;">
+							<div class="xevos-skoleni-benefits">
 								<h2><?php echo esc_html(get_field('co_odnesete_nadpis') ?: 'Co si odnesete'); ?></h2>
 								<?php xevos_component('checklist', ['items' => $co_odnesete]); ?>
 							</div>
@@ -353,8 +366,9 @@ while (have_posts()) : the_post();
 									<label class="xevos-form__label">Termín školení <span class="xevos-form__required">*</span></label>
 									<select class="xevos-form__input" name="termin">
 										<?php if ($terminy) : foreach ($terminy as $t) : ?>
-											<option value="<?php echo esc_attr($t['datum'] ?? ''); ?>"><?php echo esc_html($t['datum'] ?? ''); ?></option>
-										<?php endforeach; endif; ?>
+												<option value="<?php echo esc_attr($t['datum'] ?? ''); ?>"><?php echo esc_html($t['datum'] ?? ''); ?></option>
+										<?php endforeach;
+										endif; ?>
 									</select>
 								</div>
 							</div>
@@ -374,10 +388,10 @@ while (have_posts()) : the_post();
 									<input type="number" class="xevos-form__input" name="pocet" min="1" value="1">
 								</div>
 								<?php if ($typ !== 'hybrid') : ?>
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
-									<input type="text" class="xevos-form__input" name="firma">
-								</div>
+									<div class="xevos-form__group">
+										<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
+										<input type="text" class="xevos-form__input" name="firma">
+									</div>
 								<?php endif; ?>
 							</div>
 							<?php if ($typ === 'hybrid') : ?>
@@ -460,5 +474,5 @@ while (have_posts()) : the_post();
 			</section>
 		<?php endif; ?>
 
-<?php endwhile;
+	<?php endwhile;
 get_footer(); ?>
