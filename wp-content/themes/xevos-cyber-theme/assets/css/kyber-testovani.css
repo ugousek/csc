@@ -394,10 +394,6 @@
     font-size: 22px;
   }
 
-  .xevos-benefity-section__desc {
-    font-size: 0.875rem;
-  }
-
   .xevos-kt-banner {
     padding-top: 4rem;
   }
@@ -410,9 +406,6 @@
     font-size: 22px;
   }
 
-  .xevos-kt-banner__content p {
-    font-size: 0.875rem;
-  }
 
   .xevos-order-section {
     grid-template-columns: 1fr !important;
