@@ -245,14 +245,6 @@ body.home .xevos-glow-blob--multiply {
   }
 }
 
-@media (max-width: 767px) {
-  .xevos-hero__content {
-    transform: translateY(-50%);
-    top: 50%;
-    position: absolute;
-  }
-}
-
 /* Figma: "Bez strašení. S jistotou" – Montserrat Bold, white */
 .xevos-hero__subtitle {
   font-family: var(--font-heading);
@@ -1486,77 +1478,27 @@ body.home .xevos-glow-blob--multiply {
   margin-bottom: 7rem;
 }
 
-/* --------------------------------------------------------------------------
-   12b. MacBook breakpoints (frontpage)
-   -------------------------------------------------------------------------- */
-/*
-@media (max-width: 1440px) {
-  .xevos-hero__title {
-    font-size: 4rem;
-  }
 
-  .xevos-hero__subtitle {
-    font-size: 2rem;
-  }
-
-  .xevos-hero__desc {
-    font-size: 20px;
-  }
-
-  .xevos-services__card {
-    padding: 2rem 1.5rem;
-  }
-
-  .xevos-statistiky__feature-graphic {
-    width: 280px;
-  }
-
-  .xevos-statistiky__feature-text h2 {
-    font-size: 44px;
-  }
-
-  .xevos-statistiky__feature-text p {
-    font-size: 20px;
-  }
-
-  .xevos-statistiky__card-title {
-    font-size: 28px;
-  }
-}
-
-@media (max-width: 1280px) {
-  .xevos-hero__title {
-    font-size: 3.5rem;
-  }
-
-  .xevos-hero__subtitle {
-    font-size: 1.75rem;
-  }
-
-  .xevos-eventy__grid {
-    gap: 5rem;
-  }
-
-  .xevos-eventy__cta-content {
-    padding: 1.5rem;
-  }
-
-  .xevos-statistiky__feature-text h2 {
-    font-size: 40px;
-  }
-}
-
-*/
 /* --------------------------------------------------------------------------
    13. Mobile adjustments (frontpage specific)
    -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .xevos-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .xevos-hero__lottie {
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 767px) {
   .xevos-hero {
     margin-bottom: 0;
-  }
-
-  .xevos-hero__content {
-    padding: 2rem var(--gutter);
+    padding-top: 100px;
   }
 
   .xevos-hero__desc {
@@ -1611,7 +1553,6 @@ body.home .xevos-glow-blob--multiply {
     flex-direction: column;
   }
 
-  /* --- Statistiky: stacked column --- */
   .xevos-statistiky__feature {
     flex-direction: column;
     text-align: center;
@@ -1682,20 +1623,6 @@ body.home .xevos-glow-blob--multiply {
     display: none;
   }
 
-  /* Mobile: checklist overrides moved to kyber-testovani.css */
-
-  /* Partners — in main.css */
-
-  /* Mobile: section padding reduction */
-  .xevos-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  /* Mobile: hero video/bg */
-  .xevos-hero__video {
-    display: none;
-  }
 
   /* Mobile: date column in events */
   .xevos-eventy__date {
@@ -1769,22 +1696,10 @@ body.home .xevos-glow-blob--multiply {
   }
 }
 
-/* }
-
 @media (max-width: 479px) {
-  .xevos-hero__title {
-    font-size: 2.4rem;
+  .xevos-hero {
+    padding-top: 80px;
   }
 
-  .xevos-hero__subtitle {
-    font-size: 1.125rem;
-  }
 
-  .xevos-services__card-number {
-    font-size: 3rem;
-  }
-
-  .xevos-services__card-title {
-    font-size: 1.25rem;
-  }
-} */
+}

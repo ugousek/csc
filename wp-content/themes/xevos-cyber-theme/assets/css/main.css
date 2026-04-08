@@ -241,6 +241,7 @@ img {
 }
 
 
+
 /* --------------------------------------------------------------------------
    2b. Radial glow blobs – decorative elements between sections
    Generic reusable glow system. HP-specific overrides in frontpage.css.
@@ -926,6 +927,19 @@ select.xevos-form__input option:checked,
 @media screen and (min-width: 1600px) {
   .xevos-header__inner {
     max-width: calc(var(--container-max) - 2rem);
+  }
+}
+
+
+@media (max-width: 479px) {
+
+  .xevos-header__inner {
+    height: 64px;
+    padding-left: 10px;
+  }
+
+  .xevos-mobile-menu {
+    top: calc(20px + 64px);
   }
 }
 
@@ -1765,12 +1779,9 @@ select.xevos-form__input option:checked,
 }
 
 /* Swiper pagination dots — shared for aktuality + recenze */
-/* Recenze pagination: hidden on desktop, visible under 767px */
 .xevos-recenze-pagination {
   display: none;
 }
-
-
 
 .xevos-aktuality-pagination,
 .xevos-recenze-pagination {
@@ -2092,7 +2103,6 @@ select.xevos-form__input option:checked,
   .xevos-hp-recenze__header {
     margin-bottom: 2rem;
   }
-
 
 }
 
@@ -3608,22 +3618,6 @@ body::after {
   }
 }
 
-@media (max-width: 479px) {
-  body {
-    padding-top: 64px;
-    background-position: 0 64px;
-    background-size: 100% calc(100% - 64px);
-  }
-
-  .xevos-header__inner {
-    height: 64px;
-    padding-left: 10px;
-  }
-
-  .xevos-mobile-menu {
-    top: calc(20px + 64px);
-  }
-}
 
 
 /* --------------------------------------------------------------------------
