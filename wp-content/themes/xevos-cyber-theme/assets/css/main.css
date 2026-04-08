@@ -1,6 +1,6 @@
 /* ==========================================================================
    XEVOS Cyber Security Center – Main Stylesheet
-   Dark cyber theme based on Figma design.
+   Dark cyber theme.
    Fonts: Montserrat (headings) + Sora (body)
    ========================================================================== */
 
@@ -96,7 +96,7 @@
 }
 
 
-/* Space Mono — used for dates in event cards (Figma: Space Mono Bold 32px) */
+/* Space Mono — used for dates in event cards */
 @font-face {
   font-family: 'Space Mono';
   src: url('../fonts/space-mono/space-mono-regular.ttf') format('truetype');
@@ -125,7 +125,7 @@
   --bg-card-hover: rgba(20, 28, 80, 0.7);
   --bg-header: rgba(10, 14, 39, 0.85);
 
-  /* Figma radial glow layer – generic, 40% opacity, Lighten blend */
+  /* Radial glow layer – generic, 40% opacity, Lighten blend */
   --bg-glow-color: rgba(87, 24, 244, 0.4);
 
   /* Accent */
@@ -158,7 +158,7 @@
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
 
-  /* Typography – Figma: Montserrat (headings) + Sora (body) */
+  /* Typography – Montserrat (headings) + Sora (body) */
   --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Sora', sans-serif;
   --font-mono: 'Space Mono', monospace;
@@ -217,7 +217,7 @@ html {
 
 body {
   margin: 0;
-  padding-top: 80px;
+  padding-top: 0px;
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: 400;
@@ -256,12 +256,6 @@ img {
   z-index: 0;
 }
 
-/* Size variants */
-.xevos-glow-blob--sm {
-  width: 500px;
-  height: 500px;
-}
-
 .xevos-glow-blob--lg {
   width: 1200px;
   height: 1200px;
@@ -274,11 +268,6 @@ img {
 
 .xevos-glow-blob--left {
   left: -400px;
-}
-
-.xevos-glow-blob--center {
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .xevos-glow-blob--top {
@@ -318,18 +307,6 @@ img {
 }
 
 .xevos-main--glows>section {
-  position: relative;
-  z-index: 1;
-}
-
-/* Legacy wrapper (detail-skoleni, homepage) */
-.xevos-glow-wrap {
-  position: relative;
-  overflow-x: clip;
-  overflow-y: visible;
-}
-
-.xevos-glow-wrap>*:not(.xevos-glow-blob) {
   position: relative;
   z-index: 1;
 }
@@ -381,7 +358,7 @@ img {
 
 
 /* --------------------------------------------------------------------------
-   3. Typography – Figma Design System
+   3. Typography
    Desktop: H1=80/Black, H2=52/Black, H3=32/Black, H6=18/Black
    Mobile:  H1=36/Black, H2=26/Black, H3=22/Black, H6=18/Black
    Body:    Sora – Body-1=24/Regular(desktop) 16(mobile), Body-2=16(d) 14(m)
@@ -463,42 +440,6 @@ h2 span,
   color: var(--color-accent);
 }
 
-/* H1 description variant: Montserrat Bold (not Black) */
-.xevos-h1-desc {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.625rem;
-  /* 26px mobile */
-  line-height: 1.3;
-  color: var(--color-white);
-  text-transform: uppercase;
-}
-
-@media (min-width: 1024px) {
-  .xevos-h1-desc {
-    font-size: 2.5rem;
-  }
-
-  /* 40px desktop */
-}
-
-/* H2-bold variant: Montserrat Bold (700) instead of Black (900) */
-.xevos-h2-bold {
-  font-weight: 700;
-}
-
-/* H3 variants */
-.xevos-h3-regular {
-  font-weight: 400;
-}
-
-.xevos-h3-medium {
-  font-weight: 500;
-}
-
-.xevos-h3-bold {
-  font-weight: 700;
-}
 
 /* Numbers variant: Montserrat 52px Bold */
 .xevos-number {
@@ -556,93 +497,11 @@ h2 span,
   /* 24px */
 }
 
-/* Date display: Sora */
-.xevos-date {
-  font-family: var(--font-body);
-}
-
-.xevos-date__day {
-  font-size: 2rem;
-  /* 32px Sora Regular */
-  font-weight: 400;
-}
-
-.xevos-date__month {
-  font-size: 2.5rem;
-  /* 40px Sora SemiBold */
-  font-weight: 600;
-}
-
 /* Body text: Sora */
 p {
   margin-top: 0;
   margin-bottom: 1rem;
   color: var(--color-text);
-}
-
-/* Body-1: Sora 16px(mobile) / 24px(desktop) Regular */
-.xevos-body-1 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.xevos-body-1-medium {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-@media (min-width: 1024px) {
-  .xevos-body-1 {
-    font-size: 1.5rem;
-  }
-
-  /* 24px */
-  .xevos-body-1-medium {
-    font-size: 1.5rem;
-  }
-}
-
-/* Body-2: Sora 14px(mobile) / 16px(desktop) Regular */
-.xevos-body-2 {
-  font-size: 0.875rem;
-  font-weight: 400;
-}
-
-@media (min-width: 1024px) {
-  .xevos-body-2 {
-    font-size: 1rem;
-  }
-}
-
-/* Body-4: Sora 14px Regular */
-.xevos-body-4 {
-  font-size: 0.875rem;
-  font-weight: 400;
-}
-
-/* Body-1-mix: Montserrat Regular + Black */
-.xevos-body-mix {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-.xevos-body-mix strong {
-  font-weight: 900;
-  font-size: 1.5rem;
-}
-
-@media (min-width: 1024px) {
-  .xevos-body-mix {
-    font-size: 1.5rem;
-  }
-
-  /* 24px */
-  .xevos-body-mix strong {
-    font-size: 2rem;
-  }
-
-  /* 32px */
 }
 
 /* Recenze text: Sora 22px Regular */
@@ -739,7 +598,7 @@ b {
 
 
 /* --------------------------------------------------------------------------
-   5. Buttons – Figma Design System
+   5. Buttons
    Main-btn:      Magenta gradient fill, white text, arrow icon
    Secondary-btn: Dark BG, magenta border, magenta text (smaller)
    Tercial-btn:   Outline thin border, smaller
@@ -770,7 +629,7 @@ b {
   outline-offset: 2px;
 }
 
-/* Arrow icon inside button (Figma: ↗ icon left of text) */
+/* Arrow icon inside button */
 .xevos-btn__arrow {
   display: inline-flex;
   align-items: center;
@@ -787,7 +646,6 @@ b {
 
 /* ================================================================
    Main-btn (Primary) – Magenta filled, gradient, shadow
-   Figma: Background gradient from magenta to slightly darker
    ================================================================ */
 .xevos-btn--primary {
   background: #F527AA;
@@ -814,7 +672,6 @@ b {
 
 /* ================================================================
    Secondary-btn – Dark bg, magenta border + text
-   Figma: Smaller button, transparent bg, magenta border
    ================================================================ */
 .xevos-btn--secondary {
   background: rgba(255, 0, 128, 0.08);
@@ -833,7 +690,6 @@ b {
 
 /* ================================================================
    Tercial-btn – Thin outline, subtle
-   Figma: Thinner border, smaller padding
    ================================================================ */
 .xevos-btn--outline {
   background: transparent;
@@ -849,75 +705,6 @@ b {
   background: var(--color-accent);
   color: var(--color-white);
   box-shadow: var(--shadow-glow);
-}
-
-/* ================================================================
-   Link-btn – Text link, magenta, uppercase, no border
-   Figma: "ZOBRAZIT VŠECHNY ŠKOLENÍ" style
-   ================================================================ */
-.xevos-btn--link {
-  background: none;
-  color: var(--color-accent);
-  border: none;
-  padding: 0;
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  position: relative;
-}
-
-.xevos-btn--link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 1.5px;
-  background: var(--color-accent);
-  transition: width var(--transition-base);
-}
-
-.xevos-btn--link:hover::after {
-  width: 100%;
-}
-
-.xevos-btn--link:hover {
-  color: var(--color-accent);
-}
-
-/* Ghost – read more style: "Číst více ———→" */
-.xevos-btn--ghost {
-  background: transparent;
-  color: var(--color-accent);
-  border-color: transparent;
-  padding: 0.5rem 0;
-  text-transform: none;
-  letter-spacing: 0;
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.875rem;
-}
-
-.xevos-btn--ghost::after {
-  content: '';
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--color-accent);
-  margin-left: 0.75rem;
-  transition: width var(--transition-base);
-  vertical-align: middle;
-}
-
-.xevos-btn--ghost:hover::after {
-  width: 48px;
-}
-
-.xevos-btn--ghost:hover {
-  color: var(--color-white);
 }
 
 /* ---- Size variants ---- */
@@ -1032,12 +819,6 @@ select.xevos-form__input option:hover,
 select.xevos-form__input option:checked,
 .xevos-form__select option:checked {
   background: #2a2a6e;
-}
-
-.xevos-form__error {
-  margin-top: 0.25rem;
-  font-size: var(--font-size-xs);
-  color: var(--color-danger);
 }
 
 .xevos-form__hp {
@@ -1423,7 +1204,7 @@ select.xevos-form__input option:checked,
 /* --------------------------------------------------------------------------
    8. Mobile Menu (dark overlay)
    -------------------------------------------------------------------------- */
-/* Figma: Frame 90 — dropdown from bottom edge of header */
+/* Dropdown from bottom edge of header */
 .xevos-mobile-menu {
   position: fixed;
   top: calc(20px + 104px);
@@ -1496,7 +1277,7 @@ select.xevos-form__input option:checked,
   visibility: visible;
 }
 
-/* Nav list — Figma: Sora 16px/400, centered, letter-spacing 2%, gap via padding */
+/* Nav list — Sora 16px/400, centered */
 .xevos-mobile-menu__nav-list {
   list-style: none;
   margin: 0;
@@ -1658,6 +1439,7 @@ select.xevos-form__input option:checked,
   font-weight: 500;
   border: 1px solid var(--color-border-light);
   background: rgba(0, 187, 255, 0.20);
+  backdrop-filter: blur(25px);
   color: var(--color-text-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -1745,7 +1527,7 @@ select.xevos-form__input option:checked,
   line-height: 1.6;
 }
 
-/* Figma: subtitle with mixed opacity — base 70%, <strong> at 100% */
+/* Subtitle with mixed opacity — base 70%, <strong> at 100% */
 .xevos-hp-aktuality__desc--mixed,
 .xevos-hp-aktuality__desc--mixed p {
   color: rgba(236, 236, 236, 0.7);
@@ -1801,7 +1583,6 @@ select.xevos-form__input option:checked,
 }
 
 /* Overlay card – shared style (fullscreen bg image + pattern + gradient) */
-.xevos-card--overlay,
 .xevos-hp-aktuality .xevos-card,
 .xevos-blog-archive .xevos-card {
   position: relative;
@@ -1810,7 +1591,6 @@ select.xevos-form__input option:checked,
   padding: 0;
 }
 
-.xevos-card--overlay .xevos-card__image,
 .xevos-hp-aktuality .xevos-card__image,
 .xevos-blog-archive .xevos-card__image {
   position: absolute;
@@ -1819,7 +1599,6 @@ select.xevos-form__input option:checked,
   z-index: 0;
 }
 
-.xevos-card--overlay .xevos-card__image img,
 .xevos-hp-aktuality .xevos-card__image img,
 .xevos-blog-archive .xevos-card__image img {
   width: 100%;
@@ -1827,7 +1606,6 @@ select.xevos-form__input option:checked,
   object-fit: cover;
 }
 
-.xevos-card--overlay .xevos-card__image::before,
 .xevos-hp-aktuality .xevos-card__image::before,
 .xevos-blog-archive .xevos-card__image::before {
   content: '';
@@ -1841,7 +1619,6 @@ select.xevos-form__input option:checked,
   pointer-events: none;
 }
 
-.xevos-card--overlay .xevos-card__image::after,
 .xevos-hp-aktuality .xevos-card__image::after,
 .xevos-blog-archive .xevos-card__image::after {
   content: '';
@@ -1851,7 +1628,6 @@ select.xevos-form__input option:checked,
   z-index: 2;
 }
 
-.xevos-card--overlay .xevos-card__body,
 .xevos-hp-aktuality .xevos-card__body,
 .xevos-blog-archive .xevos-card__body {
   position: relative;
@@ -1868,7 +1644,6 @@ select.xevos-form__input option:checked,
   min-height: 480px;
 }
 
-.xevos-card--overlay .xevos-card__title,
 .xevos-hp-aktuality .xevos-card__title,
 .xevos-blog-archive .xevos-card__title {
   font-family: var(--font-heading);
@@ -1878,7 +1653,6 @@ select.xevos-form__input option:checked,
   letter-spacing: -0.64px;
 }
 
-.xevos-card--overlay .xevos-card__excerpt,
 .xevos-hp-aktuality .xevos-card__excerpt,
 .xevos-blog-archive .xevos-card__excerpt {
   font-family: var(--font-body);
@@ -1887,8 +1661,6 @@ select.xevos-form__input option:checked,
   line-height: 1.6;
 }
 
-.xevos-card--overlay .xevos-card__badge,
-.xevos-card--overlay .xevos-card__meta,
 .xevos-hp-aktuality .xevos-card__badge,
 .xevos-hp-aktuality .xevos-card__meta,
 .xevos-blog-archive .xevos-card__badge,
@@ -1909,7 +1681,6 @@ select.xevos-form__input option:checked,
 
 @media screen and (max-width: 767px) {
 
-  .xevos-card--overlay .xevos-card__title,
   .xevos-hp-aktuality .xevos-card__title,
   .xevos-blog-archive .xevos-card__title {
     font-size: 22px;
@@ -1938,6 +1709,8 @@ select.xevos-form__input option:checked,
 .xevos-hp-recenze__wave canvas {
   width: 100% !important;
   height: 100% !important;
+  position: relative;
+  top: 260px;
 }
 
 .xevos-hp-recenze>.xevos-section__container {
@@ -1967,7 +1740,7 @@ select.xevos-form__input option:checked,
   color: rgba(236, 236, 236, 0.7);
 }
 
-/* Figma: subtitle with mixed opacity — base 70%, <strong> at 100% */
+/* Subtitle with mixed opacity — base 70%, <strong> at 100% */
 .xevos-hp-recenze__desc-mixed,
 .xevos-hp-recenze__desc-mixed p {
   color: rgba(236, 236, 236, 0.7);
@@ -1997,11 +1770,7 @@ select.xevos-form__input option:checked,
   display: none;
 }
 
-@media (max-width: 767px) {
-  .xevos-recenze-pagination {
-    display: block;
-  }
-}
+
 
 .xevos-aktuality-pagination,
 .xevos-recenze-pagination {
@@ -2040,17 +1809,7 @@ select.xevos-form__input option:checked,
 }
 
 /* Hide arrows + show dots on small screens */
-@media (max-width: 991px) {
-  .xevos-hp-aktuality__carousel>.xevos-nav-arrow {
-    display: none;
-  }
-}
 
-@media (max-width: 767px) {
-  .xevos-hp-recenze__carousel>.xevos-nav-arrow {
-    display: none;
-  }
-}
 
 .xevos-recenze-swiper {
   overflow: visible;
@@ -2064,7 +1823,7 @@ select.xevos-form__input option:checked,
   margin-right: 0;
 }
 
-/* Recenze card — Figma: 417x303, cyan 20% bg, cyan stroke */
+/* Recenze card — cyan bg, cyan stroke */
 .xevos-recenze-card {
   background: rgba(0, 187, 255, 0.2);
   backdrop-filter: blur(25px);
@@ -2164,7 +1923,7 @@ select.xevos-form__input option:checked,
 }
 
 
-/* Footer inner — Figma: logo | menu (gap 32) | social (gap 15), vertical gap 40 */
+/* Footer inner — logo | menu | social */
 .xevos-footer__inner {
   width: 100%;
   max-width: var(--container-max);
@@ -2178,13 +1937,13 @@ select.xevos-form__input option:checked,
   margin-bottom: 3.750rem;
 }
 
-/* Figma: 329x60 logo */
+/* Footer logo */
 .xevos-footer__logo img {
   height: 60px;
   width: auto;
 }
 
-/* Figma: Sora 16px, gap 32, first item Sora 700 magenta */
+/* Footer nav */
 .xevos-footer__nav ul {
   display: flex;
   gap: 2rem;
@@ -2226,7 +1985,7 @@ select.xevos-form__input option:checked,
   display: contents;
 }
 
-/* Figma: social icons 24x24, gap 15, white fill */
+/* Social icons */
 .xevos-footer__social {
   display: flex;
   gap: 0.9375rem;
@@ -2257,7 +2016,7 @@ select.xevos-form__input option:checked,
   filter: brightness(0) invert(1);
 }
 
-/* Copyright — Figma: Sora 14px, gap 32, centered */
+/* Copyright */
 .xevos-footer__copy {
   width: 100%;
   max-width: var(--container-max);
@@ -2320,7 +2079,40 @@ select.xevos-form__input option:checked,
   }
 }
 
-@media (max-width: 767px) {
+
+@media screen and (max-width: 991px) {
+  .xevos-hp-aktuality__carousel>.xevos-nav-arrow {
+    display: none;
+  }
+
+  .xevos-hp-recenze {
+    margin-bottom: 0rem;
+  }
+
+  .xevos-hp-recenze__header {
+    margin-bottom: 2rem;
+  }
+
+
+}
+
+@media screen and (max-width: 767px) {
+  .xevos-hp-recenze__header p {
+    font-size: 16px;
+  }
+
+  .xevos-recenze-card__text {
+    font-size: 22px;
+  }
+
+  .xevos-recenze-pagination {
+    display: block;
+  }
+
+  .xevos-hp-recenze__carousel>.xevos-nav-arrow {
+    display: none;
+  }
+
   .xevos-footer__inner {
     flex-direction: column;
     align-items: center;
@@ -2550,39 +2342,14 @@ select.xevos-form__input option:checked,
 }
 
 
-/* --------------------------------------------------------------------------
-   16. Breadcrumbs
-   -------------------------------------------------------------------------- */
-.xevos-breadcrumbs {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-dim);
-}
-
-.xevos-breadcrumbs a {
-  color: var(--color-text-dim);
-}
-
-.xevos-breadcrumbs a:hover {
-  color: var(--color-accent);
-}
-
-.xevos-breadcrumbs__sep {
-  margin: 0 0.5rem;
-  color: var(--color-text-dim);
-}
+/* Breadcrumbs — removed (not used) */
 
 
 /* Aktuality archive + single styles moved to blog.css */
 
 
 /* --------------------------------------------------------------------------
-   18. Školení archive (list layout from Figma) + single
+   18. Školení archive (list layout) + single
    -------------------------------------------------------------------------- */
 /* Školení archive & detail styles moved to skoleni.css */
 
@@ -2632,7 +2399,7 @@ select.xevos-form__input option:checked,
   border-color: var(--color-accent);
 }
 
-/* Load more button (Figma style) */
+/* Load more button */
 .xevos-load-more {
   display: flex;
   justify-content: center;
@@ -2644,14 +2411,14 @@ select.xevos-form__input option:checked,
 
 
 /* --------------------------------------------------------------------------
-   22. Školení detail – special sections from Figma
+   22. Školení detail – special sections
    -------------------------------------------------------------------------- */
 /* Školení price badge, lektori styles moved to skoleni.css */
 
 
 /* --------------------------------------------------------------------------
    23. Order form + sidebar (shared: školení detail + kyber testování)
-   Figma: Form left + contact/price sidebar right, cyan inputs
+   Form left + contact/price sidebar right, cyan inputs
    -------------------------------------------------------------------------- */
 .xevos-order-section {
   display: grid;
@@ -2798,7 +2565,7 @@ select.xevos-form__input option:checked,
   font-weight: 300;
 }
 
-/* Search bar — Figma: glass bg with inline magnifier icon */
+/* Search bar — glass bg with inline magnifier icon */
 .xevos-mobile-menu__search {
   background: rgba(255, 255, 255, 0.1);
   padding: 8px 16px;
@@ -2832,7 +2599,7 @@ select.xevos-form__input option:checked,
   color: rgba(236, 236, 236, 0.4);
 }
 
-/* CTA button — Figma: outline accent, Montserrat 700/16px uppercase, full width */
+/* CTA button — outline accent, full width */
 .xevos-mobile-menu__cta {
   margin-top: 8px;
   width: 100%;
@@ -3094,6 +2861,7 @@ body::after {
   align-items: center;
   gap: 0;
   background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   padding: 0.25rem;
@@ -3116,6 +2884,7 @@ body::after {
   opacity: 1;
   cursor: pointer;
   transition: all var(--transition-fast);
+  margin-inline: 0 !important;
 }
 
 .xevos-kyber-test__pagination .swiper-pagination-bullet-active {
@@ -3159,6 +2928,15 @@ body::after {
 
   .xevos-kyber-test__visual {
     margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+
+  .xevos-kyber-test__desc,
+  .xevos-kyber-test__desc p {
+    font-size: 16px;
+
   }
 }
 
@@ -3282,6 +3060,63 @@ body::after {
   white-space: nowrap;
 }
 
+
+.xevos-checklist,
+.xevos-kyber-politika__checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.xevos-checklist li,
+.xevos-kyber-politika__checklist li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.58;
+  color: var(--color-text);
+}
+
+/* Inline SVG icon container (cyan circle + checkmark with inner shadow) */
+.xevos-checklist__icon,
+.xevos-kyber-test__check-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, rgba(124, 218, 248, 0.80) 0%, rgba(27, 51, 229, 0.80) 100%), rgba(255, 255, 255, 0.10);
+  box-shadow: 0 0 13.2px 0 rgba(0, 183, 255, 0.80);
+  border: 1px solid rgba(0, 187, 255, 0.6);
+}
+
+.xevos-checklist__icon svg,
+.xevos-kyber-test__check-circle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Horizontal layout variant (homepage kyber-politika) */
+.xevos-kyber-politika__checklist {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1023px) {
+  .xevos-kyber-politika__checklist {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 4rem;
+  }
+}
+
 /* --- Mid-desktop: reduce image overflow at 1024-1500px --- */
 @media (min-width: 1024px) and (max-width: 1500px) {
   .xevos-kyber-test__visual {
@@ -3361,14 +3196,14 @@ body::after {
 
 @media (max-width: 991px) {
   .xevos-kyber-test__pagination {
-    top: -20px !important;
+    top: -5px !important;
   }
 }
 
 /* --- Shared responsive: kyber-test + kyber-politika (767px) --- */
 @media (max-width: 767px) {
   .xevos-kyber-test__header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .xevos-kyber-test__body {
@@ -3383,12 +3218,6 @@ body::after {
     width: 100%;
     left: 0;
   }
-
-  /* .xevos-kyber-test__visual img,
-  .xevos-kyber-politika__visual img {
-    max-height: 280px;
-    object-fit: contain;
-  } */
 
   .xevos-kyber-test__panel {
     padding: 20px;
@@ -3412,17 +3241,12 @@ body::after {
 
   .xevos-kyber-test__panel-desc,
   .xevos-kyber-politika__panel-desc {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 1.5rem;
   }
 
-  .xevos-kyber-test__checklist li,
-  .xevos-kyber-politika__checklist li {
-    font-size: 13px;
-  }
-
   .xevos-kyber-test__cta-btn {
-    font-size: 14px;
+    font-size: 16px;
     padding: 0.5rem 1rem;
   }
 
@@ -3441,7 +3265,7 @@ body::after {
   }
 
   .xevos-kyber-politika__header {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   .xevos-kyber-politika__checklist {
@@ -3449,7 +3273,7 @@ body::after {
   }
 }
 
-/* --- Shared responsive: kyber-test + kyber-politika (479px) --- */
+/* 
 @media (max-width: 479px) {
 
   .xevos-kyber-test__header h2,
@@ -3481,23 +3305,16 @@ body::after {
   .xevos-kyber-test__pagination .swiper-pagination-bullet-active {
     padding-inline: 1.5rem;
   }
-}
+} */
 
 
-/* Emergency box (Figma: "CYBER POHOTOVOST") */
+/* Emergency box ("CYBER POHOTOVOST") */
 .xevos-emergency-box {
   background: linear-gradient(135deg, rgba(255, 0, 128, 0.1) 0%, rgba(74, 108, 247, 0.1) 100%);
   border: 1px solid var(--color-border-accent);
   border-radius: var(--radius-lg);
   padding: 2rem;
   margin-top: 3rem;
-}
-
-.xevos-emergency-box__title {
-  color: var(--color-accent);
-  margin-bottom: 0.75rem;
-  font-style: normal;
-  text-transform: none;
 }
 
 .xevos-emergency-box p {
@@ -3507,91 +3324,7 @@ body::after {
 }
 
 
-/* Checklist – shared component (cyan circle + checkmark SVG icon) */
-.xevos-checklist,
-.xevos-check-list,
-.xevos-kyber-politika__checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
 
-.xevos-checklist li,
-.xevos-check-list li,
-.xevos-kyber-politika__checklist li {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: var(--font-body);
-  font-size: 24px;
-  line-height: 1.58;
-  color: var(--color-text);
-}
-
-/* ::before fallback for lists that don't use inline SVG (legacy .xevos-check-list) */
-.xevos-check-list li::before {
-  content: '';
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-  border: 1px solid rgba(0, 187, 255, 0.6);
-  background-image: url("data:image/svg+xml,%3Csvg width='23' height='17' viewBox='0 0 23 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.6 2.8L8.5 16.9L0 8.4L2.8 5.6L8.5 11.3L19.8 0L22.6 2.8Z' fill='%2300BBFF'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 16px 12px;
-}
-
-/* Inline SVG icon container (cyan circle + checkmark with inner shadow) */
-.xevos-checklist__icon,
-.xevos-kyber-test__check-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(180deg, rgba(124, 218, 248, 0.80) 0%, rgba(27, 51, 229, 0.80) 100%), rgba(255, 255, 255, 0.10);
-  box-shadow: 0 0 13.2px 0 rgba(0, 183, 255, 0.80);
-  border: 1px solid rgba(0, 187, 255, 0.6);
-}
-
-.xevos-checklist__icon svg,
-.xevos-kyber-test__check-circle svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* Horizontal layout variant (homepage kyber-politika) */
-.xevos-kyber-politika__checklist {
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 1023px) {
-  .xevos-kyber-politika__checklist {
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 4rem;
-  }
-}
-
-
-/* --------------------------------------------------------------------------
-   31. Partners bar refinements
-   -------------------------------------------------------------------------- */
-/* Removed — consolidated into partners section above */
-
-
-/* --------------------------------------------------------------------------
-   34. Fallback menu (when no WP menu assigned)
-   -------------------------------------------------------------------------- */
-/* handled by PHP fallback function */
 
 
 /* --------------------------------------------------------------------------
@@ -3645,7 +3378,7 @@ body::after {
   overflow: visible;
 }
 
-/* Ellipse 21 + 24 — purple glow blobs on hero (Figma: LIGHTEN) */
+/* Purple glow blobs on hero (LIGHTEN blend) */
 /* .xevos-blog-hero::before {
   content: '';
   position: absolute;
@@ -3936,7 +3669,7 @@ body::after {
 .xevos-search-overlay .xevos-search-form__wrap {
   display: flex;
   gap: 0;
-  border: 1px solid var(--color-border-light);
+  border: 1px solid var(--color-accent);
   border-radius: 0;
   overflow: hidden;
 }
@@ -3945,7 +3678,7 @@ body::after {
   flex: 1;
   padding: 1rem 1.25rem;
   font-size: 1.125rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(245, 39, 170, 0.08);
   border: none;
   color: var(--color-white);
 }
@@ -3976,8 +3709,8 @@ body::after {
 .xevos-search-form__results {
   margin-top: 0.5rem;
   background: var(--bg-secondary);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius);
+  border: 1px solid var(--color-accent);
+  border-radius: 0;
   max-height: 400px;
   overflow-y: auto;
 }
@@ -4122,86 +3855,6 @@ body::after {
 
 
 /* --------------------------------------------------------------------------
-   51. Cookie banner placeholder (styled to match Figma)
-   -------------------------------------------------------------------------- */
-.xevos-cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: var(--z-modal);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%), rgba(0, 0, 0, 0.40);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--color-border);
-  padding: 2rem var(--gutter);
-
-}
-
-.xevos-cookie-banner .xevos-section__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.xevos-cookie-banner__text {
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.xevos-cookie-banner__text::before {
-  content: '';
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  background: url('../img/global/cookie.svg') no-repeat center / contain;
-}
-
-.xevos-cookie-banner__actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-/* Figma: Montserrat Bold/400, 16px, 220x44 / 188x44 */
-.xevos-cookie-btn {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--color-accent);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.xevos-cookie-btn--reject {
-  font-weight: 700;
-  background: transparent;
-  color: var(--color-accent);
-}
-
-.xevos-cookie-btn--reject:hover {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
-
-.xevos-cookie-btn--accept {
-  font-weight: 400;
-  background: transparent;
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-.xevos-cookie-btn--accept:hover {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
-
-
-/* --------------------------------------------------------------------------
    52. 404 page (dark theme update)
    -------------------------------------------------------------------------- */
 .xevos-404 {
@@ -4272,15 +3925,15 @@ body.admin-bar .xevos-search-overlay {
 
 .xevos-search-form__wrap {
   display: flex;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius);
+  border: 1px solid var(--color-accent);
+  border-radius: 0;
   overflow: hidden;
 }
 
 .xevos-search-form__input {
   flex: 1;
   padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(245, 39, 170, 0.08);
   border: none;
   color: var(--color-white);
   font-size: var(--font-size-base);
@@ -4293,6 +3946,7 @@ body.admin-bar .xevos-search-overlay {
 
 .xevos-search-form__input:focus {
   outline: none;
+  background: rgba(245, 39, 170, 0.12);
 }
 
 .xevos-search-form__submit {
@@ -4366,93 +4020,152 @@ body.admin-bar .xevos-search-overlay {
 
 
 /* --------------------------------------------------------------------------
-   Global mobile enhancements
+   MacBook breakpoints (1280–1728px)
+   MacBook Air 13": 1440x900, MacBook Pro 14": 1512x982, Pro 16": 1728x1117
    -------------------------------------------------------------------------- */
-@media (max-width: 767px) {
-
-  /* Prevent long words from causing horizontal scroll */
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  a,
-  li,
-  span,
-  td {
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-
-  .xevos-section__container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .xevos-page-hero {
-    min-height: 400px;
-    padding-top: 100px;
+/* @media (max-width: 1440px) {
+  :root {
+    --container-max: 1280px;
   }
 
   .xevos-page-hero__title {
-    font-size: 2rem;
+    font-size: 4rem;
   }
 
-  .xevos-page-hero__subtitle {
-    font-size: 1rem;
+  .xevos-kyber-test__header h2 {
+    font-size: 44px;
   }
 
-  .xevos-btn {
-    font-size: 16px;
-    padding: 1rem 1.25rem;
+  .xevos-kyber-test__panel-desc {
+    font-size: 20px;
+    margin-bottom: 3rem;
   }
 
-  .xevos-btn__arrow {
-    width: 32px;
-    height: 32px;
+  .xevos-kyber-test__cta-icon {
+    width: 60px;
+    height: 60px;
   }
-
-  .xevos-breadcrumbs {
-    font-size: 0.75rem;
-    padding: 0.75rem 1rem;
-  }
-
-  .xevos-hp-recenze__header h2,
-  .xevos-section__heading h2 {
-    font-size: 2rem;
-  }
-
-  .xevos-hp-recenze__header p {
-    font-size: 0.875rem;
-  }
-
-  .xevos-card__body {
-    padding: 1rem;
-  }
-
-  .xevos-no-results {
-    padding: 2rem;
-    font-size: 1rem;
-  }
-
-  .xevos-pagination {
-    gap: 0.125rem;
-    margin-top: 2rem;
-  }
-
-  .xevos-pagination .page-numbers {
-    width: 36px;
-    height: 36px;
-    font-size: 0.75rem;
-  }
-
-  /* 404 mobile */
-  .xevos-404__title {
-    font-size: 6rem;
-  }
-
-  /* Partners + footer — consolidated above */
 }
+
+@media (max-width: 1280px) {
+  :root {
+    --container-max: 1140px;
+  }
+
+  .xevos-section__container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .xevos-page-hero__title {
+    font-size: 3.5rem;
+  }
+
+  .xevos-kyber-test__header h2 {
+    font-size: 40px;
+  }
+
+  .xevos-kyber-test__desc {
+    font-size: 20px;
+  }
+
+  .xevos-kyber-test__panel h3 {
+    font-size: 28px;
+  }
+
+  .xevos-kyber-test__panel-desc {
+    font-size: 18px;
+  }
+
+  .xevos-kyber-test__cta-btn {
+    font-size: 20px;
+  }
+} */
+
+
+/* --------------------------------------------------------------------------
+   Global mobile enhancements
+   -------------------------------------------------------------------------- */
+/* 
+   @media (max-width: 767px) {
+
+  /* Prevent long words from causing horizontal scroll */
+/* 
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+span,
+td {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.xevos-section__container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.xevos-page-hero {
+  min-height: 400px;
+  padding-top: 100px;
+}
+
+.xevos-page-hero__title {
+  font-size: 2rem;
+}
+
+.xevos-page-hero__subtitle {
+  font-size: 1rem;
+}
+
+.xevos-btn {
+  font-size: 16px;
+  padding: 1rem 1.25rem;
+}
+
+.xevos-btn__arrow {
+  width: 32px;
+  height: 32px;
+}
+
+/* breadcrumbs removed */
+
+.xevos-hp-recenze__header h2,
+.xevos-section__heading h2 {
+  font-size: 2rem;
+}
+
+
+.xevos-card__body {
+  padding: 1rem;
+}
+
+.xevos-no-results {
+  padding: 2rem;
+  font-size: 1rem;
+}
+
+.xevos-pagination {
+  gap: 0.125rem;
+  margin-top: 2rem;
+}
+
+.xevos-pagination .page-numbers {
+  width: 36px;
+  height: 36px;
+  font-size: 0.75rem;
+}
+
+/* 404 mobile */
+.xevos-404__title {
+  font-size: 6rem;
+}
+
+/* 
 
 @media (max-width: 479px) {
   .xevos-page-hero {
@@ -4472,6 +4185,7 @@ body.admin-bar .xevos-search-overlay {
     font-size: 4rem;
   }
 }
+ */
 
 /* Platba result pages (OK / chyba) */
 .xevos-platba-result {

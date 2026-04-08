@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Complianz GDPR cookie banner – theme overrides
+   Figma node 712:17258: Full-width bottom bar, glass bg, two outline buttons
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Banner – full-width bottom bar, glass effect
+   -------------------------------------------------------------------------- */
+.cmplz-cookiebanner,
+.cmplz-cookiebanner.cmplz-bottom,
+.cmplz-cookiebanner.cmplz-center,
+#cmplz-cookiebanner-container .cmplz-cookiebanner {
+  font-family: 'Sora', sans-serif !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  margin: 0 !important;
+  padding: 24px 160px !important;
+  position: fixed !important;
+  transform: none !important;
+  z-index: 9999999 !important;
+}
+
+/* Show as flex only when Complianz sets it visible */
+.cmplz-cookiebanner.cmplz-show {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 40px !important;
+}
+
+/* Respect Complianz hide states */
+.cmplz-cookiebanner.cmplz-dismissed,
+.cmplz-cookiebanner.cmplz-hidden {
+  display: none !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Hide everything except message + buttons
+   -------------------------------------------------------------------------- */
+/* Visually hide but keep in DOM for Complianz JS to function */
+.cmplz-cookiebanner .cmplz-header,
+.cmplz-cookiebanner .cmplz-title,
+.cmplz-cookiebanner .cmplz-divider,
+.cmplz-cookiebanner .cmplz-divider-header,
+.cmplz-cookiebanner .cmplz-divider-footer,
+.cmplz-cookiebanner .cmplz-links,
+.cmplz-cookiebanner .cmplz-documents,
+.cmplz-cookiebanner .cmplz-close,
+.cmplz-cookiebanner .cmplz-logo,
+.cmplz-cookiebanner .cmplz-categories {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
+/* Extra buttons — hide visually but keep functional */
+.cmplz-cookiebanner .cmplz-buttons a.cmplz-btn.tcf,
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-view-preferences,
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-save-preferences {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Body wrapper — make it flex row
+   -------------------------------------------------------------------------- */
+.cmplz-cookiebanner .cmplz-body {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 40px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Message text — left side with cookie icon
+   -------------------------------------------------------------------------- */
+.cmplz-cookiebanner .cmplz-message,
+.cmplz-cookiebanner .cmplz-message p {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.26 !important;
+  color: #ECECEC !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.cmplz-cookiebanner .cmplz-message {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Buttons — right side, row, gap 40px
+   -------------------------------------------------------------------------- */
+.cmplz-cookiebanner .cmplz-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 40px !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+/* Reset all button widths */
+.cmplz-cookiebanner .cmplz-btn {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  line-height: 1.22 !important;
+  text-transform: uppercase !important;
+  padding: 12px 40px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  transition: all 150ms ease !important;
+  white-space: nowrap !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure buttons are clickable — Complianz soft wall sets pointer-events:none on body */
+.cmplz-cookiebanner,
+.cmplz-cookiebanner *,
+.cmplz-cookiebanner .cmplz-btn,
+.cmplz-cookiebanner .cmplz-body,
+.cmplz-cookiebanner .cmplz-buttons,
+.cmplz-cookiebanner .cmplz-message {
+  pointer-events: auto !important;
+}
+
+/* ZAMÍTNOUT VŠE — border #ECECEC */
+.cmplz-cookiebanner .cmplz-btn.cmplz-deny {
+  border: 1px solid #ECECEC !important;
+  color: #ECECEC !important;
+  order: 2 !important;
+}
+
+.cmplz-cookiebanner .cmplz-btn.cmplz-deny:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+
+/* POVOLIT VŠE — border #F527AA, font-weight 400 */
+.cmplz-cookiebanner .cmplz-btn.cmplz-accept {
+  border: 1px solid #F527AA !important;
+  color: #F527AA !important;
+  font-weight: 400 !important;
+  order: 1 !important;
+}
+
+.cmplz-cookiebanner .cmplz-btn.cmplz-accept:hover {
+  background: #F527AA !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(245, 39, 170, 0.3) !important;
+}
+
+/* Settings/Preferences — same as deny */
+.cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences,
+.cmplz-cookiebanner .cmplz-btn.cmplz-save-preferences {
+  border: 1px solid #ECECEC !important;
+  color: #ECECEC !important;
+  order: 3 !important;
+}
+
+.cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences:hover,
+.cmplz-cookiebanner .cmplz-btn.cmplz-save-preferences:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Manage consent floating button
+   -------------------------------------------------------------------------- */
+#cmplz-manage-consent .cmplz-manage-consent {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(236, 236, 236, 0.2) !important;
+  border-radius: 0 !important;
+  color: #ECECEC !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 14px !important;
+}
+
+#cmplz-manage-consent .cmplz-manage-consent:hover {
+  background: rgba(245, 39, 170, 0.1) !important;
+  border-color: #F527AA !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Soft cookie wall overlay
+   -------------------------------------------------------------------------- */
+.cmplz-soft-cookiewall {
+  background: rgba(1, 1, 41, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+
+  .cmplz-cookiebanner,
+  .cmplz-cookiebanner.cmplz-bottom,
+  #cmplz-cookiebanner-container .cmplz-cookiebanner {
+    padding: 20px 40px !important;
+    gap: 24px !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-body {
+    gap: 24px !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-buttons {
+    gap: 16px !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-btn {
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .cmplz-cookiebanner,
+  .cmplz-cookiebanner.cmplz-bottom,
+  #cmplz-cookiebanner-container .cmplz-cookiebanner {
+    padding: 16px !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-body {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-message,
+  .cmplz-cookiebanner .cmplz-message p {
+    font-size: 14px !important;
+    text-align: center !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-buttons {
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-btn {
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+    flex: 1 !important;
+  }
+}

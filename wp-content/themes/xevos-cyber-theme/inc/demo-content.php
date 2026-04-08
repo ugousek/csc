@@ -106,8 +106,7 @@ function xevos_import_demo_content(): void {
 		'NIS 2'                    => [ 'slug' => 'nis2', 'template' => 'page-nis2.php' ],
 		'Kybernetické testování'   => [ 'slug' => 'kyberneticke-testovani', 'template' => 'page-kyberneticke-testovani.php' ],
 		'Eventy'                   => [ 'slug' => 'eventy', 'template' => 'page-eventy.php' ],
-		'Přehled školení'          => [ 'slug' => 'prehled-skoleni', 'template' => 'page-prehled-skoleni.php' ],
-		'Partnerství'              => [ 'slug' => 'partnerstvi', 'template' => 'page-partnerstvi.php' ],
+'Partnerství'              => [ 'slug' => 'partnerstvi', 'template' => 'page-partnerstvi.php' ],
 		'O nás'                    => [ 'slug' => 'o-nas', 'template' => 'page-o-nas.php' ],
 		'Kontakt'                  => [ 'slug' => 'kontakt', 'template' => 'page-kontakt.php' ],
 		'Obchodní podmínky'        => [ 'slug' => 'obchodni-podminky', 'template' => 'page-obchodni-podminky.php', 'content' => '<h2>Úvodní ustanovení</h2>

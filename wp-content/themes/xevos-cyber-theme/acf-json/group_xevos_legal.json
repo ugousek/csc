@@ -3,12 +3,13 @@
   "title": "Právní stránka",
   "fields": [
     {
-      "key": "field_legal_datum",
-      "label": "Datum poslední aktualizace",
-      "name": "datum_posledni_aktualizace",
-      "type": "date_picker",
-      "display_format": "d.m.Y",
-      "return_format": "d.m.Y"
+      "key": "field_legal_obsah",
+      "label": "Obsah stránky",
+      "name": "legal_obsah",
+      "type": "wysiwyg",
+      "toolbar": "full",
+      "media_upload": 0,
+      "instructions": "H2 = cyan nadpis sekce, H3 = bílý podnadpis, <strong>tučný text (B) = bílá barva</strong>. Pro cookies stránku použijte shortcode: [cmplz-document type=\"cookie-statement\"]"
     }
   ],
   "location": [
@@ -42,8 +43,11 @@
     ]
   ],
   "menu_order": 0,
-  "position": "side",
+  "position": "normal",
   "style": "default",
   "label_placement": "top",
-  "active": true
+  "active": true,
+  "hide_on_screen": [
+    "the_content"
+  ]
 }

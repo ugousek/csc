@@ -9,7 +9,6 @@ get_header();
 ?>
 
 <main id="main" class="xevos-main">
-	<?php echo xevos_breadcrumbs(); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article class="xevos-page">

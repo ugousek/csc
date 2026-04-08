@@ -61,17 +61,7 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
-	// Přehled školení CSS (training overview page).
-	if ( is_page_template( 'page-prehled-skoleni.php' ) ) {
-		wp_enqueue_style(
-			'xevos-prehled-skoleni',
-			$theme_uri . '/assets/css/prehled-skoleni.css',
-			[ 'xevos-main' ],
-			$version
-		);
-	}
-
-	// Blog / Archive CSS (aktuality + školení).
+// Blog / Archive CSS (aktuality + školení).
 	if (
 		is_post_type_archive( 'aktualita' ) || is_singular( 'aktualita' ) || is_tax( 'kategorie-aktualit' ) ||
 		is_post_type_archive( 'skoleni' ) || is_singular( 'skoleni' ) || is_tax( 'kategorie-skoleni' )
@@ -149,6 +139,40 @@ function xevos_enqueue_assets(): void {
 		wp_localize_script( 'xevos-homepage', 'xevosHero', [
 			'lottieUrl' => $theme_uri . '/assets/js/mapa-lottie.json',
 		] );
+	}
+
+	// Complianz cookie banner overrides (only when plugin active).
+	if ( defined( 'CMPLZ_VERSION' ) ) {
+		wp_enqueue_style(
+			'xevos-complianz',
+			$theme_uri . '/assets/css/complianz-override.css',
+			[ 'xevos-main' ],
+			$version
+		);
+
+		// Inject cookie icon into Complianz message.
+		add_action( 'wp_footer', function () use ( $theme_uri ) {
+			?>
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var msg = document.querySelector('.cmplz-cookiebanner .cmplz-message');
+				if (msg && !msg.querySelector('.xevos-cookie-icon')) {
+					var icon = document.createElement('img');
+					icon.src = '<?php echo esc_url( $theme_uri . "/assets/img/global/cookie-icon.svg" ); ?>';
+					icon.alt = '';
+					icon.className = 'xevos-cookie-icon';
+					icon.width = 24;
+					icon.height = 24;
+					icon.style.cssText = 'flex-shrink:0;margin-right:6px;';
+					msg.insertBefore(icon, msg.firstChild);
+					msg.style.display = 'flex';
+					msg.style.alignItems = 'center';
+					msg.style.gap = '10px';
+				}
+			});
+			</script>
+			<?php
+		}, 999 );
 	}
 
 	// Swiper.js (CDN).

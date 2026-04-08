@@ -1,8 +1,6 @@
 /* ==========================================================================
-   frontpage.css – Homepage-only styles (XEVOS Cyber Security Center)
-   Figma design: dark navy bg, Montserrat headings, Sora body, magenta CTA
+   frontpage.css – Homepage-only styles (XEVOS Cyber Security Center)  
    ========================================================================== */
-
 
 /* --------------------------------------------------------------------------
    0. Body pattern overlay (homepage only)
@@ -19,12 +17,7 @@ body.home::before {
   z-index: 0;
 }
 
-
-/* --------------------------------------------------------------------------
-   0b. Main gradient (starts visually from services section down)
-   -------------------------------------------------------------------------- */
 body.home .xevos-main {
-  /* Figma Rectangle 20: 1920×940 gradient from #010129 → transparent */
   background: linear-gradient(180deg, #010129 0%, rgba(1, 1, 41, 0) 100%);
   background-size: 100% 940px;
   background-repeat: no-repeat;
@@ -85,7 +78,7 @@ body.home .xevos-glow-blob--multiply {
 .xevos-hero {
   position: relative;
   min-height: 100vh;
-  margin-block: -80px 80px;
+  margin-block: 0 80px;
 
   padding-top: 80px;
   display: flex;
@@ -116,7 +109,7 @@ body.home .xevos-glow-blob--multiply {
   width: 100%;
   max-width: calc(var(--container-max) + 6%);
   height: auto;
-  z-index: 0;
+  z-index: 2;
 }
 
 .xevos-hero__grid {
@@ -381,7 +374,28 @@ body.home .xevos-glow-blob--multiply {
   color: var(--color-white);
 }
 
-/* Mobile: emergency badge inline, full width */
+@media (max-width: 1650px) {
+  .xevos-hero__emergency {
+    right: 25px;
+  }
+
+  .xevos-emergency-badge__icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .xevos-emergency-badge__title,
+  .xevos-emergency-badge__sub {
+    font-size: 18px;
+  }
+
+  .xevos-emergency-badge__title strong {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 1023px) {
   .xevos-emergency-badge {
     padding: 16px;
@@ -389,8 +403,8 @@ body.home .xevos-glow-blob--multiply {
   }
 
   .xevos-emergency-badge__icon {
-    width: 38px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -732,6 +746,10 @@ body.home .xevos-glow-blob--multiply {
   .xevos-eventy__desc p {
     font-size: 16px;
   }
+
+  .xevos-eventy__header h2 {
+    font-size: 26px;
+  }
 }
 
 
@@ -790,15 +808,11 @@ body.home .xevos-glow-blob--multiply {
   line-height: 1;
 }
 
-@media screen and (max-width:) {}
-
-/* Event content */
 .xevos-eventy__content {
   flex: 1;
   min-width: 0;
 }
 
-/* Figma: H3-mix — Montserrat Medium 32px, keyword=Black 40px UPPER cyan */
 .xevos-eventy__title {
   font-family: var(--font-heading);
   font-size: 32px;
@@ -810,7 +824,6 @@ body.home .xevos-glow-blob--multiply {
   letter-spacing: -0.02em;
 }
 
-/* Keyword emphasis in title — add <strong> in WP title */
 .xevos-eventy__title strong {
   display: block;
   font-weight: 900;
@@ -819,7 +832,6 @@ body.home .xevos-glow-blob--multiply {
   color: var(--color-cyan);
 }
 
-/* Meta row: seats + type — Figma: Sora 18px, capacity 14px 50% opacity */
 .xevos-eventy__meta {
   display: flex;
   align-items: center;
@@ -958,7 +970,6 @@ body.home .xevos-glow-blob--multiply {
 
 .xevos-eventy__cta-img img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -1094,6 +1105,12 @@ body.home .xevos-glow-blob--multiply {
   }
 }
 
+@media (max-width: 1500px) {
+  .xevos-eventy__cta-img img {
+    margin-top: 10%;
+  }
+}
+
 @media (max-width: 1300px) {
   .xevos-eventy__cta-img img {
     width: 100%;
@@ -1124,16 +1141,19 @@ body.home .xevos-glow-blob--multiply {
     flex-direction: column;
   }
 
-
   .xevos-eventy__cta-content {
-    position: absolute;
     padding: 1.25rem;
     gap: 1.5rem;
     margin-top: 0;
   }
 
   .xevos-eventy__cta-title {
-    font-size: 1.5rem;
+    font-size: 26px;
+  }
+
+  .xevos-eventy__cta-text p {
+    font-size: 16px;
+    line-height: normal;
   }
 
   .xevos-eventy__cta-buttons {
@@ -1146,30 +1166,15 @@ body.home .xevos-glow-blob--multiply {
     width: 100%;
     justify-content: center;
   }
-}
 
-@media (max-width: 620px) {
-  .xevos-eventy__cta {
-    background: #04003b;
-  }
-
-  .xevos-eventy__cta-img {
-    min-height: 143vw;
+  .xevos-eventy__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.375rem;
+    margin-bottom: 1rem;
   }
 }
 
-@media (max-width: 410px) {
-  .xevos-eventy__cta-img {
-    min-height: 620px;
-  }
-}
-
-
-/* --------------------------------------------------------------------------
-   4. Kybernetické testování – Figma node 231-13626
-   Centered heading, image with cyan glow, overlay content panel right
-   -------------------------------------------------------------------------- */
-/* Kyber test + kyber politika styles moved to kyber-testovani.css */
 
 
 /* --------------------------------------------------------------------------
@@ -1309,9 +1314,6 @@ body.home .xevos-glow-blob--multiply {
 }
 
 @media (max-width: 767px) {
-  .xevos-statistiky__feature-graphic {
-    width: 150px;
-  }
 
   .xevos-statistiky__feature-text h2 {
     font-size: 32px;
@@ -1364,16 +1366,6 @@ body.home .xevos-glow-blob--multiply {
 }
 
 
-/* Aktuality, Recenze, Nav arrows — moved to main.css (shared across pages) */
-
-
-/* --------------------------------------------------------------------------
-   9. Partners bar 
-   -------------------------------------------------------------------------- */
-
-/* Partners bar — styles moved to main.css (global component) */
-
-
 /* --------------------------------------------------------------------------
    10. CTA section – gradient box
    -------------------------------------------------------------------------- */
@@ -1400,9 +1392,6 @@ body.home .xevos-glow-blob--multiply {
   font-size: 0.9375rem;
   line-height: 1.7;
 }
-
-
-/* (Section 11 merged into section 7 above) */
 
 
 /* --------------------------------------------------------------------------
@@ -1497,19 +1486,83 @@ body.home .xevos-glow-blob--multiply {
   margin-bottom: 7rem;
 }
 
-@media screen and (min-width: 768px) {
-  .xevos-partners {}
+/* --------------------------------------------------------------------------
+   12b. MacBook breakpoints (frontpage)
+   -------------------------------------------------------------------------- */
+/*
+@media (max-width: 1440px) {
+  .xevos-hero__title {
+    font-size: 4rem;
+  }
+
+  .xevos-hero__subtitle {
+    font-size: 2rem;
+  }
+
+  .xevos-hero__desc {
+    font-size: 20px;
+  }
+
+  .xevos-services__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .xevos-statistiky__feature-graphic {
+    width: 280px;
+  }
+
+  .xevos-statistiky__feature-text h2 {
+    font-size: 44px;
+  }
+
+  .xevos-statistiky__feature-text p {
+    font-size: 20px;
+  }
+
+  .xevos-statistiky__card-title {
+    font-size: 28px;
+  }
 }
 
+@media (max-width: 1280px) {
+  .xevos-hero__title {
+    font-size: 3.5rem;
+  }
+
+  .xevos-hero__subtitle {
+    font-size: 1.75rem;
+  }
+
+  .xevos-eventy__grid {
+    gap: 5rem;
+  }
+
+  .xevos-eventy__cta-content {
+    padding: 1.5rem;
+  }
+
+  .xevos-statistiky__feature-text h2 {
+    font-size: 40px;
+  }
+}
+
+*/
 /* --------------------------------------------------------------------------
    13. Mobile adjustments (frontpage specific)
    -------------------------------------------------------------------------- */
 @media (max-width: 767px) {
+  .xevos-hero {
+    margin-bottom: 0;
+  }
+
   .xevos-hero__content {
     padding: 2rem var(--gutter);
   }
 
-  /* --- Services cards: single column, Figma 360px --- */
+  .xevos-hero__desc {
+    font-size: 16px;
+  }
+
   .xevos-services__container {
     flex-direction: column;
   }
@@ -1534,7 +1587,6 @@ body.home .xevos-glow-blob--multiply {
     font-size: 16px;
   }
 
-  /* --- Eventy: single column, stacked --- */
   .xevos-eventy__grid {
     grid-template-columns: 1fr;
   }
@@ -1564,10 +1616,7 @@ body.home .xevos-glow-blob--multiply {
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
-  }
-
-  .xevos-statistiky__feature-graphic {
-    width: 150px;
+    margin-bottom: 4rem;
   }
 
   .xevos-statistiky__grid {
@@ -1655,18 +1704,16 @@ body.home .xevos-glow-blob--multiply {
   }
 
   .xevos-eventy__title {
-    font-size: 1rem;
+    font-size: 22px;
+    margin-bottom: 1.5rem;
   }
 
-
-
-  .xevos-eventy__meta {
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .xevos-eventy__title strong {
+    font-size: 26px;
   }
 
   .xevos-eventy__all-link {
-    font-size: 0.875rem;
+    font-size: 16px;
   }
 
 
@@ -1701,22 +1748,10 @@ body.home .xevos-glow-blob--multiply {
     margin-bottom: 0.75rem;
   }
 
-  .xevos-eventy__title {
-    font-size: 26px;
-    margin-bottom: 1.75rem;
-  }
-
   .xevos-eventy__meta-seats,
   .xevos-eventy__meta-type,
   .xevos-eventy__register-btn {
     font-size: 16px;
-  }
-
-  .xevos-eventy__meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.375rem;
-    margin-bottom: 1rem;
   }
 
   .xevos-eventy__meta-type {
@@ -1732,15 +1767,13 @@ body.home .xevos-glow-blob--multiply {
   .xevos-statistiky__card-value {
     font-size: 2rem;
   }
-
-  .xevos-recenze-card__text {
-    font-size: 0.875rem;
-  }
 }
+
+/* }
 
 @media (max-width: 479px) {
   .xevos-hero__title {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 
   .xevos-hero__subtitle {
@@ -1754,4 +1787,4 @@ body.home .xevos-glow-blob--multiply {
   .xevos-services__card-title {
     font-size: 1.25rem;
   }
-}
+} */

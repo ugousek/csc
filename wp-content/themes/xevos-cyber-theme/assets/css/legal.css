@@ -8,6 +8,16 @@
 /* --------------------------------------------------------------------------
    1. Container
    -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+
+  .page-template-page-legal .xevos-section.xevos-legal,
+  .page-template-page-obchodni-podminky .xevos-section.xevos-legal,
+  .page-template-page-zasady-cookies .xevos-section.xevos-legal,
+  .page-template-page-zasady-ochrany-osobnich-udaju .xevos-section.xevos-legal {
+    padding-block: 12rem 4rem;
+  }
+}
+
 .xevos-legal__container {
   max-width: 1200px;
 }
@@ -145,6 +155,256 @@
   margin: 2rem 0;
   font-style: italic;
   color: var(--color-text-muted);
+}
+
+
+/* --------------------------------------------------------------------------
+   Complianz cookie declaration overrides
+   -------------------------------------------------------------------------- */
+
+/* Base text */
+.xevos-legal-content .cmplz-document,
+.xevos-legal-content .cmplz-document p {
+  color: #ECECECB2;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.xevos-legal-content .cmplz-document h2 {
+  color: #00BBFF;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-top: 3rem;
+}
+
+.xevos-legal-content .cmplz-document h3 {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.xevos-legal-content .cmplz-document h4 {
+  color: #FFFFFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.xevos-legal-content .cmplz-document a {
+  color: #F527AA;
+}
+
+/* Service dropdown (details/summary) */
+#cmplz-cookies-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cmplz-dropdown.cmplz-service-desc {
+  border: 1px solid rgba(0, 187, 255, 0.3);
+  background: rgba(0, 187, 255, 0.05);
+  backdrop-filter: blur(25px);
+  margin-bottom: 0;
+}
+
+.cmplz-service-header {
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.cmplz-service-header::-webkit-details-marker {
+  display: none;
+}
+
+.cmplz-service-header>div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cmplz-service-header h3 {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+.cmplz-service-header p {
+  font-size: 14px !important;
+  color: #ECECECB2 !important;
+  margin: 0 !important;
+}
+
+/* Checkbox toggle inside summary */
+.cmplz-service-header input[type="checkbox"] {
+  margin-left: auto;
+  width: 40px;
+  height: 22px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 11px;
+  position: relative;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.cmplz-service-header input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  top: 3px;
+  left: 3px;
+  transition: transform 150ms ease;
+}
+
+.cmplz-service-header input[type="checkbox"]:checked {
+  background: #00BBFF;
+}
+
+.cmplz-service-header input[type="checkbox"]:checked::before {
+  transform: translateX(18px);
+}
+
+/* Expanded content */
+.cmplz-dropdown.cmplz-service-desc[open] .cmplz-service-header {
+  border-bottom: 1px solid rgba(0, 187, 255, 0.2);
+}
+
+.cmplz-service-description,
+.cmplz-sharing-data {
+  padding: 16px 20px;
+}
+
+.cmplz-service-description h4,
+.cmplz-sharing-data h4 {
+  color: #00BBFF;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px;
+}
+
+.cmplz-service-description p,
+.cmplz-sharing-data p {
+  font-size: 14px !important;
+  color: #ECECECB2 !important;
+}
+
+/* Cookies per purpose — grid layout from div structure */
+.cookies-per-purpose {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(0, 187, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 0;
+}
+
+.cookies-per-purpose .purpose {
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+}
+
+.cookies-per-purpose .purpose h4 {
+  color: #00BBFF;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Header row */
+.cookies-per-purpose .name-header,
+.cookies-per-purpose .retention-header,
+.cookies-per-purpose .function-header {
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+}
+
+.cookies-per-purpose .name-header h5,
+.cookies-per-purpose .retention-header h5,
+.cookies-per-purpose .function-header h5 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(236, 236, 236, 0.5);
+  margin: 0;
+}
+
+/* Data row */
+.cookies-per-purpose .name,
+.cookies-per-purpose .retention,
+.cookies-per-purpose .function {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  color: #ECECECB2;
+}
+
+.cookies-per-purpose .name a {
+  color: #F527AA;
+}
+
+/* Arrow indicator on summary */
+.cmplz-dropdown.cmplz-service-desc>summary::after {
+  content: '▸';
+  font-size: 14px;
+  color: #00BBFF;
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+
+.cmplz-dropdown.cmplz-service-desc[open]>summary::after {
+  transform: rotate(90deg);
+}
+
+/* Hide default marker */
+.cmplz-dropdown.cmplz-service-desc>summary {
+  list-style: none;
+}
+
+/* Consent per service label — hide visually */
+.cmplz_consent_per_service_label .screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .cmplz-service-header h3 {
+    font-size: 16px !important;
+  }
+
+  .cookies-per-purpose {
+    grid-template-columns: 1fr;
+  }
+
+  .cookies-per-purpose .name-header,
+  .cookies-per-purpose .retention-header,
+  .cookies-per-purpose .function-header {
+    margin-top: 8px;
+  }
 }
 
 

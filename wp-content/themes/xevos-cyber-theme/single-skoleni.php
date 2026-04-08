@@ -130,7 +130,7 @@ while (have_posts()) : the_post();
 		?>
 		<section class="xevos-section xevos-skoleni-lektori-section">
 			<div class="xevos-section__container">
-				<h2>Obsahem vás provede:</h2>
+				<h2><?php echo esc_html(get_field('lektori_nadpis') ?: 'Obsahem vás provede:'); ?></h2>
 				<div class="xevos-skoleni-lektori__carousel">
 					<?php if ($use_swiper) : ?>
 						<button class="xevos-nav-arrow xevos-nav-arrow--prev" aria-label="Předchozí" type="button">
@@ -218,7 +218,7 @@ while (have_posts()) : the_post();
 				<div class="xevos-skoleni-content-cols">
 					<?php if ($harmonogram) : ?>
 						<div class="xevos-skoleni-content-cols__col">
-							<h2>Harmonogram školení</h2>
+							<h2><?php echo esc_html(get_field('harmonogram_nadpis') ?: 'Harmonogram školení'); ?></h2>
 							<div class="xevos-harmonogram-list">
 								<?php foreach ($harmonogram as $h) : ?>
 									<div class="xevos-harmonogram-item">
@@ -239,7 +239,7 @@ while (have_posts()) : the_post();
 							}
 							?>
 							<div class="xevos-skoleni-benefits" style="margin-top:5rem;">
-								<h2>Co si odnesete?</h2>
+								<h2><?php echo esc_html(get_field('co_odnesete_nadpis') ?: 'Co si odnesete'); ?></h2>
 								<?php xevos_component('checklist', ['items' => $co_odnesete]); ?>
 							</div>
 						</div>
@@ -247,7 +247,7 @@ while (have_posts()) : the_post();
 
 					<?php if ($osnova) : ?>
 						<div class="xevos-skoleni-content-cols__col">
-							<h2>Osnova školení</h2>
+							<h2><?php echo esc_html(get_field('osnova_nadpis') ?: 'Osnova školení'); ?></h2>
 							<ul class="xevos-osnova-list">
 								<?php foreach ($osnova as $o) : ?>
 									<li><?php echo wp_kses(strip_tags($o['bod'] ?? '', '<strong><b>'), ['strong' => [], 'b' => []]); ?></li>

@@ -8,12 +8,18 @@
 get_header();
 ?>
 
-<main id="main" class="xevos-main">
+<main id="main" class="xevos-main xevos-main--glows">
+
+	<!-- Glow blobs -->
+	<div class="xevos-glow-blob xevos-glow-blob--left xevos-glow-blob--lg" style="top:-400px;"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--top xevos-glow-blob--lg"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--right xevos-glow-blob--lg" style="top:800px;"></div>
+	<div class="xevos-glow-blob xevos-glow-blob--left-second xevos-glow-blob--lg" style="bottom:0;"></div>
 
 	<!-- Hero -->
 	<?php get_template_part( 'template-parts/components/hero-page', null, [
-		'heading'     => __( 'Výsledky vyhledávání', 'xevos-cyber' ),
-		'description' => sprintf( __( 'Hledaný výraz: „%s"', 'xevos-cyber' ), get_search_query() ),
+		'heading'     => __( 'Výsledky <span style="color:#F527AA">vyhledávání</span>', 'xevos-cyber' ),
+		'description' => sprintf( __( 'Hledaný výraz: „%s" — nalezeno %s výsledků', 'xevos-cyber' ), get_search_query(), $wp_query->found_posts ),
 	] ); ?>
 
 	<!-- Results -->
@@ -21,9 +27,6 @@ get_header();
 		<div class="xevos-section__container">
 
 			<?php if ( have_posts() ) : ?>
-				<p class="xevos-search-results__count">
-					<?php printf( __( 'Nalezeno %s výsledků', 'xevos-cyber' ), '<strong>' . $wp_query->found_posts . '</strong>' ); ?>
-				</p>
 
 				<div class="xevos-search-results__grid">
 					<?php while ( have_posts() ) : the_post(); ?>

@@ -3,6 +3,29 @@
    ========================================================================== */
 
 
+.xevos-glow-blob--left {
+  z-index: 2 !important;
+}
+
+.xevos-blog-hero__content h1 {
+  margin-bottom: 1rem !important;
+}
+
+.xevos-blog-hero__desc {
+  margin-bottom: 3rem !important;
+}
+
+/* --------------------------------------------------------------------------
+   0. Hero spacing override – tighten gaps
+   -------------------------------------------------------------------------- */
+.xevos-search-results {
+  padding-top: 0;
+}
+
+.xevos-search-results .xevos-section__container {
+  padding-top: 0;
+}
+
 /* --------------------------------------------------------------------------
    1. Results count
    -------------------------------------------------------------------------- */
@@ -10,7 +33,7 @@
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .xevos-search-results__count strong {

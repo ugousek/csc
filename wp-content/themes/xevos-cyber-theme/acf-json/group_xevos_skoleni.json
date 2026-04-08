@@ -187,6 +187,14 @@
       "type": "tab"
     },
     {
+      "key": "field_sk_lektori_nadpis",
+      "label": "Nadpis sekce",
+      "name": "lektori_nadpis",
+      "type": "text",
+      "placeholder": "Obsahem vás provede:",
+      "instructions": "Prázdné = Obsahem vás provede:"
+    },
+    {
       "key": "field_sk_lektori",
       "label": "Lektoři",
       "name": "lektori",
@@ -232,6 +240,14 @@
       "type": "tab"
     },
     {
+      "key": "field_sk_harmonogram_nadpis",
+      "label": "Nadpis harmonogramu",
+      "name": "harmonogram_nadpis",
+      "type": "text",
+      "placeholder": "Harmonogram školení",
+      "instructions": "Prázdné = Harmonogram školení."
+    },
+    {
       "key": "field_sk_harmonogram",
       "label": "Harmonogram",
       "name": "harmonogram",
@@ -261,6 +277,14 @@
       ]
     },
     {
+      "key": "field_sk_osnova_nadpis",
+      "label": "Nadpis osnovy",
+      "name": "osnova_nadpis",
+      "type": "text",
+      "placeholder": "Osnova školení",
+      "instructions": "Prázdné = Osnova školení."
+    },
+    {
       "key": "field_sk_osnova",
       "label": "Osnova",
       "name": "osnova",
@@ -278,6 +302,14 @@
           "instructions": "Tučný text (B) = bílá barva."
         }
       ]
+    },
+    {
+      "key": "field_sk_co_odnesete_nadpis",
+      "label": "Nadpis sekce Co si odnesete",
+      "name": "co_odnesete_nadpis",
+      "type": "text",
+      "placeholder": "Co si odnesete",
+      "instructions": "Prázdné = Co si odnesete."
     },
     {
       "key": "field_sk_co_odnesete",

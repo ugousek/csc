@@ -33,7 +33,7 @@ $xevos_includes = [
 	'/inc/cron.php',
 	'/inc/schema.php',
 	'/inc/demo-content.php',
-	'/inc/cookie-consent.php',
+	// '/inc/cookie-consent.php', // Replaced by Complianz plugin
 	'/inc/optimization.php',
 ];
 

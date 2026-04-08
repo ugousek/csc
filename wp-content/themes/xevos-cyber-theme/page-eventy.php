@@ -14,7 +14,7 @@ get_header();
 
 	<?php get_template_part('template-parts/eventy/hero'); ?>
 
-	<?php get_template_part('template-parts/homepage/eventy'); ?>
+	<?php get_template_part('template-parts/components/eventy'); ?>
 
 	<?php xevos_component('cta-banner', [
 		'title'    => 'Chcete privátní školení pro váš tým?',

@@ -20,7 +20,8 @@ $cta_btn1_url  = get_field('eventy_cta_btn1_url') ?: home_url('/kontakt/');
 $cta_btn2_text = get_field('eventy_cta_btn2_text') ?: 'JAK POSTUPOVAT?';
 $cta_btn2_url  = get_field('eventy_cta_btn2_url') ?: home_url('/jak-postupovat/');
 $cta_image     = get_field('eventy_cta_image');
-$cta_img_url   = $cta_image ? $cta_image['url'] : get_theme_file_uri('assets/img/homepage/eventy-cta.png');
+$cta_img_url   = $cta_image ? $cta_image['url'] : get_theme_file_uri('assets/img/homepage/xevos-house.png');
+$cta_img_url_bg   = $cta_image ? $cta_image['url'] : get_theme_file_uri('assets/img/homepage/xevos-house-bg.png');
 
 $query = new WP_Query([
 	'post_type'      => 'skoleni',
@@ -175,7 +176,7 @@ $typ_colors = [
 			</div>
 
 			<!-- RIGHT COLUMN: image + emergency CTA overlay -->
-			<div class="xevos-eventy__cta">
+			<div class="xevos-eventy__cta" style="background-image: url('<?php echo esc_url($cta_img_url_bg); ?>'); background-size: cover; background-position: center;">
 				<div class="xevos-eventy__cta-img">
 					<img src="<?php echo esc_url($cta_img_url); ?>" alt="<?php echo esc_attr($cta_title); ?>" loading="lazy">
 				</div>
