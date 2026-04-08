@@ -60,6 +60,53 @@ function xevos_live_search_handler(): void {
 	wp_send_json_success( [ 'results' => $results ] );
 }
 
+// Contact form.
+add_action( 'wp_ajax_xevos_contact_form', 'xevos_contact_form_handler' );
+add_action( 'wp_ajax_nopriv_xevos_contact_form', 'xevos_contact_form_handler' );
+
+function xevos_contact_form_handler(): void {
+	if ( ! isset( $_POST['xevos_contact_nonce'] ) || ! wp_verify_nonce( $_POST['xevos_contact_nonce'], 'xevos_contact' ) ) {
+		wp_send_json_error( [ 'message' => 'Neplatný bezpečnostní token.' ], 403 );
+	}
+
+	// Honeypot.
+	if ( ! empty( $_POST['website'] ) ) {
+		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
+	}
+
+	$jmeno    = sanitize_text_field( $_POST['jmeno'] ?? '' );
+	$prijmeni = sanitize_text_field( $_POST['prijmeni'] ?? '' );
+	$email    = sanitize_email( $_POST['email'] ?? '' );
+	$telefon  = sanitize_text_field( $_POST['telefon'] ?? '' );
+	$zprava   = sanitize_textarea_field( $_POST['zprava'] ?? '' );
+
+	if ( ! $jmeno || ! $email ) {
+		wp_send_json_error( [ 'message' => 'Jméno a e-mail jsou povinné.' ] );
+	}
+
+	$firma_nazev = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
+
+	// Send notification to admin.
+	if ( function_exists( 'xevos_send_email' ) ) {
+		xevos_send_email( get_option( 'admin_email' ), 'Nová zpráva z kontaktního formuláře – ' . $jmeno . ' ' . $prijmeni, 'admin-notification-contact', [
+			'jmeno'    => $jmeno,
+			'prijmeni' => $prijmeni,
+			'email'    => $email,
+			'telefon'  => $telefon,
+			'zprava'   => $zprava,
+		] );
+
+		// Confirm to the customer.
+		xevos_send_email( $email, 'Děkujeme za Vaši zprávu – ' . $firma_nazev, 'contact-confirmation', [
+			'jmeno'         => $jmeno,
+			'kontakt_email' => get_option( 'admin_email' ),
+			'firma'         => $firma_nazev,
+		] );
+	}
+
+	wp_send_json_success( [ 'message' => 'Zpráva byla úspěšně odeslána. Děkujeme!' ] );
+}
+
 // Archive filter (aktuality / skoleni).
 add_action( 'wp_ajax_xevos_filter_archive', 'xevos_filter_archive_handler' );
 add_action( 'wp_ajax_nopriv_xevos_filter_archive', 'xevos_filter_archive_handler' );

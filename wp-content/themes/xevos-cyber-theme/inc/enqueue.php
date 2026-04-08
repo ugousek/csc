@@ -99,13 +99,20 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
-	// Kontakt CSS (only on contact page).
+	// Kontakt CSS + JS (only on contact page).
 	if ( is_page_template( 'page-kontakt.php' ) ) {
 		wp_enqueue_style(
 			'xevos-kontakt',
 			$theme_uri . '/assets/css/kontakt.css',
 			[ 'xevos-main' ],
 			$version
+		);
+		wp_enqueue_script(
+			'xevos-contact-form',
+			$theme_uri . '/assets/js/contact-form.js',
+			[ 'xevos-main' ],
+			$version,
+			true
 		);
 	}
 

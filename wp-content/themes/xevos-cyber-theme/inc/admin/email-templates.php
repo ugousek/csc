@@ -138,6 +138,30 @@ function xevos_get_email_templates(): array {
 				'firma'         => $firma,
 			],
 		],
+		'contact-confirmation' => [
+			'name'        => 'Potvrzení kontaktní zprávy',
+			'description' => 'Odesílá se zákazníkovi po odeslání kontaktního formuláře.',
+			'trigger'     => 'Odeslání kontaktního formuláře',
+			'recipient'   => 'Zákazník',
+			'sample_data' => [
+				'jmeno'         => 'Jan',
+				'kontakt_email' => get_option( 'admin_email' ),
+				'firma'         => $firma,
+			],
+		],
+		'admin-notification-contact' => [
+			'name'        => 'Notifikace pro admina (kontaktní formulář)',
+			'description' => 'Odesílá se adminovi po odeslání kontaktního formuláře. Obsahuje text zprávy a tlačítko pro odpověď.',
+			'trigger'     => 'Odeslání kontaktního formuláře',
+			'recipient'   => 'Admin',
+			'sample_data' => [
+				'jmeno'    => 'Jan',
+				'prijmeni' => 'Novák',
+				'email'    => 'jan.novak@example.com',
+				'telefon'  => '+420 777 123 456',
+				'zprava'   => 'Dobrý den, mám zájem o školení penetračního testování pro náš tým 5 lidí. Mohli byste nám poslat nabídku? Děkuji.',
+			],
+		],
 		'cancellation' => [
 			'name'        => 'Zrušení účasti',
 			'description' => 'Připraveno pro budoucí použití – odesílá se zákazníkovi při zrušení objednávky.',
