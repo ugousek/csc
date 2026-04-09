@@ -322,13 +322,6 @@
       "toolbar": "basic",
       "media_upload": 0,
       "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
-    },
-    {
-      "key": "field_kt_formular_shortcode_v",
-      "label": "CF7 shortcode",
-      "name": "kt_formular_shortcode",
-      "type": "text",
-      "instructions": "Vložte shortcode Contact Form 7, např. [contact-form-7 id=\"123\"]"
     }
   ],
   "location": [

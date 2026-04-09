@@ -13,17 +13,19 @@ $stats = get_field('statistiky');
 
 if (! $stats) {
 	$stats = [
-		['popis' => 'Firem má zranitelnosti'],
-		['popis' => 'Stačí kliknout na phishingový e-mail'],
-		['popis' => 'Průměrná doba do prvního kompromitování'],
+		['cislo' => '95%', 'popis' => 'Firem má zranitelnosti'],
+		['cislo' => '1×',  'popis' => 'Stačí kliknout na phishingový e-mail'],
+		['cislo' => '72H', 'popis' => 'Průměrná doba do prvního kompromitování'],
 	];
 }
 
 $heading    = get_field('statistiky_heading') ?: 'Počet vysokých nebo kritických zranitelností';
 $desc       = get_field('statistiky_popis') ?: 'Kybernetická politika vytváří jasný rámec pro řízení bezpečnosti v organizaci. Určuje role, odpovědnosti a pravidla, podle kterých se chrání data, systémy a provoz.';
-$main_image = get_field('statistiky_obrazek');
-$main_img_url = $main_image ? $main_image['url'] : get_theme_file_uri('assets/img/homepage/stat-graphic.svg');
-$fallback_png = get_theme_file_uri('assets/img/homepage/stat-graphic.png');
+$main_image     = get_field('statistiky_obrazek');
+$main_img_url   = $main_image ? $main_image['url'] : get_theme_file_uri('assets/img/homepage/stat-graphic.svg');
+$fallback_png   = get_theme_file_uri('assets/img/homepage/stat-graphic.png');
+$shield_cislo   = get_field('statistiky_shield_cislo') ?: '';
+$shield_popis   = get_field('statistiky_shield_popis') ?: '';
 ?>
 
 <section class="xevos-section xevos-statistiky">
@@ -32,8 +34,17 @@ $fallback_png = get_theme_file_uri('assets/img/homepage/stat-graphic.png');
 		<!-- Feature heading row — shield graphic left + H2 + body right -->
 		<div class="xevos-statistiky__feature">
 			<div class="xevos-statistiky__feature-graphic">
-				<img src="<?php echo esc_url($main_img_url); ?>"
-					alt="" loading="lazy" aria-hidden="true" />
+				<div id="shield-lottie" aria-hidden="true"></div>
+				<?php if ($shield_cislo || $shield_popis) : ?>
+					<div class="xevos-statistiky__shield-overlay">
+						<?php if ($shield_popis) : ?>
+							<span class="xevos-statistiky__shield-label"><?php echo esc_html($shield_popis); ?></span>
+						<?php endif; ?>
+						<?php if ($shield_cislo) : ?>
+							<span class="xevos-statistiky__shield-number"><?php echo esc_html($shield_cislo); ?></span>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 			<div class="xevos-statistiky__feature-text">
 				<h2><?php echo esc_html($heading); ?></h2>
@@ -48,10 +59,12 @@ $fallback_png = get_theme_file_uri('assets/img/homepage/stat-graphic.png');
 			?>
 				<div class="xevos-statistiky__card">
 					<div class="xevos-statistiky__card-graphic">
-						<img src="<?php echo esc_url($card_img); ?>"
-							alt="" loading="lazy" aria-hidden="true" />
+						<div class="shield-lottie-card" aria-hidden="true"></div>
+						<?php if (! empty($s['cislo'])) : ?>
+							<span class="xevos-statistiky__card-number"><?php echo esc_html($s['cislo']); ?></span>
+						<?php endif; ?>
 					</div>
-					<h3 class="xevos-statistiky__card-title"><?php echo wp_kses_post($s['popis'] ?? ''); ?></h3>
+					<h3 class="xevos-statistiky__card-title"><?php echo esc_html($s['popis'] ?? ''); ?></h3>
 				</div>
 			<?php endforeach; ?>
 		</div>

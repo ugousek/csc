@@ -26,13 +26,6 @@
       "type": "image",
       "return_format": "array",
       "preview_size": "medium"
-    },
-    {
-      "key": "field_kontakt_formular_shortcode",
-      "label": "CF7 shortcode",
-      "name": "kontakt_formular_shortcode",
-      "type": "text",
-      "instructions": "Vložte shortcode Contact Form 7, např. [contact-form-7 id=\"123\"]. Pokud prázdné, zobrazí se výchozí formulář."
     }
   ],
   "location": [

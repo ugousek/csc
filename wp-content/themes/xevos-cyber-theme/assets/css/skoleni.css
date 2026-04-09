@@ -58,6 +58,15 @@
   font-weight: 600;
   color: var(--color-text);
   margin: 0 0 0.5rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media screen and (max-width: 767px) {
+  .xevos-skoleni-list-card__title {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }
 
 .xevos-skoleni-list-card__title strong {

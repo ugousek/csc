@@ -19,6 +19,32 @@
       });
     }
 
+    /* ===== Shield Lottie animations (statistiky section) ===== */
+    if (typeof lottie !== 'undefined' && typeof xevosHero !== 'undefined' && xevosHero.shieldUrl) {
+      /* Main feature shield */
+      var shieldMain = document.getElementById('shield-lottie');
+      if (shieldMain) {
+        lottie.loadAnimation({
+          container: shieldMain,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: xevosHero.shieldUrl
+        });
+      }
+
+      /* Card shields */
+      document.querySelectorAll('.shield-lottie-card').forEach(function (el) {
+        lottie.loadAnimation({
+          container: el,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: xevosHero.shieldUrl
+        });
+      });
+    }
+
     if (typeof Swiper === 'undefined') return;
 
     /* ===== Services — Swiper only when 5+ cards ===== */

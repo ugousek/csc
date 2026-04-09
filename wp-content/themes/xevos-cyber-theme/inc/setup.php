@@ -75,6 +75,9 @@ add_action( 'init', function () {
 		remove_post_type_support( $pt, 'comments' );
 		remove_post_type_support( $pt, 'trackbacks' );
 	}
+
+	// Hide classic editor on pages — all content managed via ACF.
+	remove_post_type_support( 'page', 'editor' );
 }, 99 );
 
 // Completely disable comments everywhere.

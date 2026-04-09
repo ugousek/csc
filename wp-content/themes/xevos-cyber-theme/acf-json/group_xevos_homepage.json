@@ -421,6 +421,22 @@
       "preview_size": "medium"
     },
     {
+      "key": "field_hp_statistiky_cislo",
+      "label": "Hlavní shield – číslo",
+      "name": "statistiky_shield_cislo",
+      "type": "text",
+      "instructions": "Velký text zobrazený přes shield animaci, např. 95%.",
+      "default_value": ""
+    },
+    {
+      "key": "field_hp_statistiky_shield_popis",
+      "label": "Hlavní shield – popis",
+      "name": "statistiky_shield_popis",
+      "type": "text",
+      "instructions": "Menší text pod číslem, např. Firem má zranitelnosti.",
+      "default_value": ""
+    },
+    {
       "key": "field_hp_stat_items",
       "label": "Statistiky",
       "name": "statistiky",
@@ -438,6 +454,20 @@
       ],
       "sub_fields": [
         {
+          "key": "field_hp_stat_cislo",
+          "label": "Číslo",
+          "name": "cislo",
+          "type": "text",
+          "instructions": "Hlavní hodnota zobrazená přes shield, např. 95%, 1×, 72H."
+        },
+        {
+          "key": "field_hp_stat_popis",
+          "label": "Popis",
+          "name": "popis",
+          "type": "text",
+          "instructions": "Popis pod číslem, např. Firem má zranitelnosti."
+        },
+        {
           "key": "field_hp_stat_card_obrazek",
           "label": "Obrázek karty",
           "name": "obrazek",
@@ -445,15 +475,6 @@
           "return_format": "array",
           "preview_size": "thumbnail",
           "instructions": "Volitelné — pokud není vyplněno, použije se výchozí shield grafika."
-        },
-        {
-          "key": "field_hp_stat_popis",
-          "label": "Popis",
-          "name": "popis",
-          "type": "wysiwyg",
-          "toolbar": "basic",
-          "media_upload": 0,
-          "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
         }
       ]
     },

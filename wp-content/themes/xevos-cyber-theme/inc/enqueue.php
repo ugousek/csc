@@ -151,7 +151,8 @@ function xevos_enqueue_assets(): void {
 
 		// Pass lottie JSON path to JS.
 		wp_localize_script( 'xevos-homepage', 'xevosHero', [
-			'lottieUrl' => $theme_uri . '/assets/js/mapa-lottie.json',
+			'lottieUrl'    => $theme_uri . '/assets/js/mapa-lottie.json',
+			'shieldUrl'    => $theme_uri . '/assets/json/shield-lottie.json',
 		] );
 	}
 

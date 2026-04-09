@@ -1114,13 +1114,49 @@ body.home .xevos-glow-blob--multiply {
 }
 
 .xevos-statistiky__feature-graphic {
+  position: relative;
   flex-shrink: 0;
   width: 350px;
 }
 
-.xevos-statistiky__feature-graphic img {
+.xevos-statistiky__feature-graphic img,
+.xevos-statistiky__feature-graphic svg {
   width: 100%;
   height: auto;
+  display: block;
+}
+
+.xevos-statistiky__shield-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.xevos-statistiky__shield-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  color: #ECECEC;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.xevos-statistiky__shield-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #F527AA;
+  text-transform: uppercase;
+  letter-spacing: 0.24px;
+  line-height: 1;
+  margin-bottom: 4px;
 }
 
 .xevos-statistiky__feature-text h2 {
@@ -1185,14 +1221,33 @@ body.home .xevos-glow-blob--multiply {
 }
 
 .xevos-statistiky__card-graphic {
+  position: relative;
   width: 100%;
   max-width: 351px;
   margin: 0 auto 1.5rem;
 }
 
-.xevos-statistiky__card-graphic img {
+.xevos-statistiky__card-graphic img,
+.xevos-statistiky__card-graphic svg {
   width: 100%;
   height: auto;
+  display: block;
+}
+
+.xevos-statistiky__card-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  color: #ECECEC;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  text-align: center;
+  pointer-events: none;
 }
 
 .xevos-statistiky__card-title {
@@ -1213,6 +1268,14 @@ body.home .xevos-glow-blob--multiply {
 
   .xevos-statistiky__feature-graphic {
     width: 250px;
+  }
+
+  .xevos-statistiky__shield-number {
+    font-size: 40px;
+  }
+
+  .xevos-statistiky__shield-label {
+    font-size: 18px;
   }
 
   .xevos-statistiky__feature-text h2 {
@@ -1244,6 +1307,18 @@ body.home .xevos-glow-blob--multiply {
 
   .xevos-statistiky__card-graphic {
     max-width: 250px;
+  }
+
+  .xevos-statistiky__card-number {
+    font-size: 40px;
+  }
+
+  .xevos-statistiky__shield-number {
+    font-size: 32px;
+  }
+
+  .xevos-statistiky__shield-label {
+    font-size: 14px;
   }
 }
 
@@ -1480,6 +1555,10 @@ body.home .xevos-glow-blob--multiply {
 
   .xevos-statistiky__card-graphic {
     max-width: 200px;
+  }
+
+  .xevos-statistiky__card-number {
+    font-size: 32px;
   }
 
   .xevos-recenze-card {
