@@ -84,6 +84,10 @@ function xevos_contact_form_handler(): void {
 		wp_send_json_error( [ 'message' => 'Jméno a e-mail jsou povinné.' ] );
 	}
 
+	if ( ! is_email( $email ) ) {
+		wp_send_json_error( [ 'message' => 'Zadejte prosím platný e-mail.' ] );
+	}
+
 	$firma_nazev = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
 
 	// Send notification to admin.
@@ -105,6 +109,61 @@ function xevos_contact_form_handler(): void {
 	}
 
 	wp_send_json_success( [ 'message' => 'Zpráva byla úspěšně odeslána. Děkujeme!' ] );
+}
+
+// Inquiry form (kybernetické testování).
+add_action( 'wp_ajax_xevos_inquiry_form', 'xevos_inquiry_form_handler' );
+add_action( 'wp_ajax_nopriv_xevos_inquiry_form', 'xevos_inquiry_form_handler' );
+
+function xevos_inquiry_form_handler(): void {
+	if ( ! isset( $_POST['xevos_inquiry_nonce'] ) || ! wp_verify_nonce( $_POST['xevos_inquiry_nonce'], 'xevos_inquiry' ) ) {
+		wp_send_json_error( [ 'message' => 'Neplatný bezpečnostní token.' ], 403 );
+	}
+
+	if ( ! empty( $_POST['website'] ) ) {
+		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
+	}
+
+	$jmeno      = sanitize_text_field( $_POST['jmeno'] ?? '' );
+	$prijmeni   = sanitize_text_field( $_POST['prijmeni'] ?? '' );
+	$email      = sanitize_email( $_POST['email'] ?? '' );
+	$telefon    = sanitize_text_field( $_POST['telefon'] ?? '' );
+	$firma      = sanitize_text_field( $_POST['firma'] ?? '' );
+	$druh_testu = sanitize_text_field( $_POST['druh_testu'] ?? '' );
+	$zprava     = sanitize_textarea_field( $_POST['zprava'] ?? '' );
+
+	if ( ! $jmeno || ! $prijmeni || ! $email || ! $telefon || ! $druh_testu ) {
+		wp_send_json_error( [ 'message' => 'Vyplňte prosím všechna povinná pole.' ] );
+	}
+
+	if ( ! is_email( $email ) ) {
+		wp_send_json_error( [ 'message' => 'Zadejte prosím platný e-mail.' ] );
+	}
+
+	$firma_nazev = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
+
+	if ( function_exists( 'xevos_send_email' ) ) {
+		// Notify admin.
+		xevos_send_email( get_option( 'admin_email' ), 'Nová poptávka testování – ' . $jmeno . ' ' . $prijmeni, 'admin-notification-inquiry', [
+			'jmeno'      => $jmeno,
+			'prijmeni'   => $prijmeni,
+			'email'      => $email,
+			'telefon'    => $telefon,
+			'firma'      => $firma,
+			'druh_testu' => $druh_testu,
+			'zprava'     => $zprava,
+		] );
+
+		// Confirm to customer.
+		xevos_send_email( $email, 'Potvrzení poptávky – ' . $firma_nazev, 'inquiry-confirmation', [
+			'jmeno'         => $jmeno,
+			'druh_testu'    => $druh_testu,
+			'kontakt_email' => get_option( 'admin_email' ),
+			'firma'         => $firma_nazev,
+		] );
+	}
+
+	wp_send_json_success( [ 'message' => 'Poptávka byla úspěšně odeslána. Budeme Vás kontaktovat.' ] );
 }
 
 // Archive filter (aktuality / skoleni).

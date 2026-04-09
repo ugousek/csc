@@ -71,6 +71,8 @@ function xevos_ecomail_register(): void {
 		'post_title'  => $order_title,
 	] );
 
+	$termin_val = sanitize_text_field( wp_unslash( $_POST['termin'] ?? '' ) );
+
 	if ( $order_id && ! is_wp_error( $order_id ) ) {
 		update_field( 'jmeno', $jmeno, $order_id );
 		update_field( 'prijmeni', $prijmeni, $order_id );
@@ -78,17 +80,17 @@ function xevos_ecomail_register(): void {
 		update_field( 'telefon', $telefon, $order_id );
 		update_field( 'firma', $firma, $order_id );
 		update_field( 'skoleni', $skoleni_id, $order_id );
-		update_field( 'termin', sanitize_text_field( $_POST['termin'] ?? '' ), $order_id );
+		update_field( 'termin', $termin_val, $order_id );
 		update_field( 'castka', 0, $order_id );
 		update_field( 'stav_platby', $typ === 'pozvanka' ? 'pending' : 'paid', $order_id );
 		update_field( 'datum_objednavky', date( 'd.m.Y' ), $order_id );
 
 		// Increment registration count for the chosen term.
-		if ( ! empty( $_POST['termin'] ) ) {
+		if ( ! empty( $termin_val ) ) {
 			$terminy = get_field( 'terminy', $skoleni_id );
 			if ( is_array( $terminy ) ) {
 				foreach ( $terminy as $i => $t ) {
-					if ( ( $t['datum'] ?? '' ) === $_POST['termin'] ) {
+					if ( ( $t['datum'] ?? '' ) === $termin_val ) {
 						xevos_increment_registration( $skoleni_id, $i );
 						break;
 					}
@@ -100,7 +102,7 @@ function xevos_ecomail_register(): void {
 	// Send confirmation email to the customer.
 	if ( $email && function_exists( 'xevos_send_email' ) ) {
 		$skoleni_title = get_the_title( $skoleni_id );
-		$termin_str    = sanitize_text_field( $_POST['termin'] ?? '' );
+		$termin_str    = $termin_val;
 		$firma_nazev   = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
 
 		if ( $typ === 'pozvanka' ) {

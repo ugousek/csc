@@ -162,6 +162,33 @@ function xevos_get_email_templates(): array {
 				'zprava'   => 'Dobrý den, mám zájem o školení penetračního testování pro náš tým 5 lidí. Mohli byste nám poslat nabídku? Děkuji.',
 			],
 		],
+		'inquiry-confirmation' => [
+			'name'        => 'Potvrzení poptávky testování',
+			'description' => 'Odesílá se zákazníkovi po odeslání poptávkového formuláře na stránce kybernetického testování.',
+			'trigger'     => 'Odeslání poptávkového formuláře',
+			'recipient'   => 'Zákazník',
+			'sample_data' => [
+				'jmeno'         => 'Jan',
+				'druh_testu'    => 'Penetrační testy',
+				'kontakt_email' => get_option( 'admin_email' ),
+				'firma'         => $firma,
+			],
+		],
+		'admin-notification-inquiry' => [
+			'name'        => 'Notifikace pro admina (poptávka testování)',
+			'description' => 'Odesílá se adminovi po odeslání poptávky kybernetického testování.',
+			'trigger'     => 'Odeslání poptávkového formuláře',
+			'recipient'   => 'Admin',
+			'sample_data' => [
+				'jmeno'      => 'Jan',
+				'prijmeni'   => 'Novák',
+				'email'      => 'jan.novak@example.com',
+				'telefon'    => '+420 777 123 456',
+				'firma'      => 'ACME s.r.o.',
+				'druh_testu' => 'Penetrační testy',
+				'zprava'     => 'Potřebujeme otestovat naši infrastrukturu před ISO 27001 auditem. Máme 3 servery a 2 webové aplikace.',
+			],
+		],
 		'cancellation' => [
 			'name'        => 'Zrušení účasti',
 			'description' => 'Připraveno pro budoucí použití – odesílá se zákazníkovi při zrušení objednávky.',

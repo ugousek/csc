@@ -73,7 +73,7 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 
 						if ($icon) : ?>
 							<a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr($label); ?>">
-								<?php echo $icon; ?>
+								<?php echo $icon; // phpcs:ignore -- trusted hardcoded SVG ?>
 							</a>
 						<?php endif;
 					endforeach;
@@ -81,7 +81,7 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 					/* No ACF data at all — show all 4 with # links */
 					foreach ($social_icons as $key => $svg) :
 						if ($key === 'twitter') continue; /* skip duplicate of X */ ?>
-						<a href="#" aria-label="<?php echo esc_attr(ucfirst($key)); ?>"><?php echo $svg; ?></a>
+						<a href="#" aria-label="<?php echo esc_attr(ucfirst($key)); ?>"><?php echo $svg; // phpcs:ignore -- trusted hardcoded SVG ?></a>
 				<?php endforeach;
 				endif; ?>
 			</div>

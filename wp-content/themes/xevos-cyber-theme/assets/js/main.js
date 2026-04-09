@@ -51,6 +51,9 @@
     navigator.clipboard.writeText(url).then(function () {
       btn.setAttribute('aria-label', 'Zkopírováno!');
       setTimeout(function () { btn.setAttribute('aria-label', 'Kopírovat URL'); }, 2000);
+    }).catch(function () {
+      btn.setAttribute('aria-label', 'Kopírování selhalo');
+      setTimeout(function () { btn.setAttribute('aria-label', 'Kopírovat URL'); }, 2000);
     });
   });
 
@@ -132,15 +135,15 @@
   });
 
   /* ===== Live search ===== */
-  var searchInput = document.getElementById('xevos-search');
+  var liveSearchInput = document.getElementById('xevos-search');
   var resultsContainer = document.getElementById('live-search-results');
 
-  if (searchInput && resultsContainer) {
+  if (liveSearchInput && resultsContainer) {
     var debounceTimer;
 
-    searchInput.addEventListener('input', function () {
+    liveSearchInput.addEventListener('input', function () {
       clearTimeout(debounceTimer);
-      var query = searchInput.value.trim();
+      var query = liveSearchInput.value.trim();
 
       if (query.length < 3) {
         resultsContainer.hidden = true;
@@ -211,6 +214,14 @@
           resultsContainer.appendChild(empty);
           resultsContainer.hidden = false;
         }
+      })
+      .catch(function () {
+        resultsContainer.textContent = '';
+        var errEl = document.createElement('div');
+        errEl.className = 'xevos-live-search__empty';
+        errEl.textContent = 'Chyba připojení';
+        resultsContainer.appendChild(errEl);
+        resultsContainer.hidden = false;
       });
   }
 
@@ -326,7 +337,10 @@
   if (ktPanelEl && ktPagination && typeof Swiper !== 'undefined') {
     var ktMainImg = document.getElementById('kyber-test-main-img');
     var ktImagesData = document.getElementById('kyber-test-images');
-    var ktImages = ktImagesData ? JSON.parse(ktImagesData.textContent) : [];
+    var ktImages = [];
+    if (ktImagesData) {
+      try { ktImages = JSON.parse(ktImagesData.textContent); } catch (e) { ktImages = []; }
+    }
 
     new Swiper(ktPanelEl, {
       slidesPerView: 1,

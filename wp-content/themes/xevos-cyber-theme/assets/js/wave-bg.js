@@ -120,4 +120,11 @@ export function initWaveBg(container) {
     renderer.setSize(w, h);
   });
   ro.observe(container);
+
+  return function dispose() {
+    ro.disconnect();
+    renderer.dispose();
+    geo.dispose();
+    mat.dispose();
+  };
 }

@@ -34,7 +34,7 @@
 
       if (xhr.status >= 200 && xhr.status < 300 && resp && resp.success) {
         if (msg) {
-          msg.textContent = resp.data.message || 'Zpráva byla odeslána.';
+          msg.textContent = (resp.data && resp.data.message) || 'Zpráva byla odeslána.';
           msg.className = 'xevos-order-message xevos-order-message--success';
           msg.style.display = 'block';
         }

@@ -16,7 +16,7 @@ function xevos_objednavka_filters( string $post_type ): void {
 	}
 
 	// Payment status filter.
-	$current_stav = sanitize_text_field( $_GET['stav_platby'] ?? '' );
+	$current_stav = sanitize_text_field( wp_unslash( $_GET['stav_platby'] ?? '' ) );
 	$stavy = [
 		''          => __( 'Všechny stavy', 'xevos-cyber' ),
 		'pending'   => __( 'Čeká na platbu', 'xevos-cyber' ),
@@ -66,7 +66,7 @@ function xevos_objednavka_filter_query( WP_Query $query ): void {
 	$meta_query = $query->get( 'meta_query' ) ?: [];
 
 	// Filter by payment status.
-	$stav = sanitize_text_field( $_GET['stav_platby'] ?? '' );
+	$stav = sanitize_text_field( wp_unslash( $_GET['stav_platby'] ?? '' ) );
 	if ( $stav ) {
 		$meta_query[] = [
 			'key'   => 'stav_platby',

@@ -21,13 +21,20 @@ function xevos_enqueue_assets(): void {
 		$version
 	);
 
-	// Kyber testování page-specific CSS.
+	// Kyber testování page-specific CSS + JS.
 	if ( is_page_template( 'page-kyberneticke-testovani.php' ) ) {
 		wp_enqueue_style(
 			'xevos-kyber-testovani',
 			$theme_uri . '/assets/css/kyber-testovani.css',
 			[ 'xevos-main' ],
 			$version
+		);
+		wp_enqueue_script(
+			'xevos-inquiry-form',
+			$theme_uri . '/assets/js/inquiry-form.js',
+			[ 'xevos-main' ],
+			$version,
+			true
 		);
 	}
 
@@ -194,6 +201,17 @@ function xevos_enqueue_assets(): void {
 		$version,
 		true
 	);
+
+	// Form validation JS (loaded on pages with forms).
+	if ( is_singular( 'skoleni' ) || is_page_template( 'page-kontakt.php' ) || is_page_template( 'page-kyberneticke-testovani.php' ) ) {
+		wp_enqueue_script(
+			'xevos-form-validation',
+			$theme_uri . '/assets/js/form-validation.js',
+			[ 'xevos-main' ],
+			$version,
+			true
+		);
+	}
 
 	// Localize script for AJAX.
 	wp_localize_script( 'xevos-main', 'xevosAjax', [

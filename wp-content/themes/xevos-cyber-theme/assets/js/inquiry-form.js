@@ -1,29 +1,25 @@
 /**
- * Comgate paid order – AJAX form handler.
- * Loaded only on single-skoleni with typ_prihlaseni === 'platba'.
+ * Inquiry form (kybernetické testování) – AJAX handler.
  *
  * @package Xevos\CyberTheme
  */
 (function () {
   'use strict';
 
-  var form = document.getElementById('xevos-order-form');
-  if (!form || form.dataset.free === '1') return;
-  if (form.dataset.typ !== 'platba') return;
+  var form = document.getElementById('xevos-inquiry-form');
+  if (!form) return;
 
-  var btn = document.getElementById('xevos-order-submit');
-  var msg = document.getElementById('xevos-order-message');
+  var btn = document.getElementById('xevos-inquiry-submit');
+  var msg = document.getElementById('xevos-inquiry-message');
   var btnHtml = btn ? btn.innerHTML : '';
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     var formData = new FormData(form);
-    formData.set('action', 'xevos_create_payment');
-    formData.set('nonce', typeof xevosAjax !== 'undefined' ? xevosAjax.nonce : '');
 
     btn.disabled = true;
-    btn.textContent = 'Zpracovávám objednávku…';
+    btn.textContent = 'Odesílám…';
     if (msg) {
       msg.style.display = 'none';
       msg.className = 'xevos-order-message';
@@ -36,31 +32,23 @@
       var resp;
       try { resp = JSON.parse(xhr.responseText); } catch (ex) { resp = null; }
 
-      if (xhr.status >= 200 && xhr.status < 300 && resp && resp.success && resp.data && resp.data.redirect_url) {
+      if (xhr.status >= 200 && xhr.status < 300 && resp && resp.success) {
         if (msg) {
-          msg.textContent = 'Přesměrování na platební bránu…';
+          msg.textContent = (resp.data && resp.data.message) || 'Poptávka byla odeslána.';
           msg.className = 'xevos-order-message xevos-order-message--success';
           msg.style.display = 'block';
         }
-        try {
-          window.location.href = resp.data.redirect_url;
-        } catch (err) {
-          if (msg) {
-            msg.textContent = 'Přesměrování selhalo. Zkuste to prosím znovu.';
-            msg.className = 'xevos-order-message xevos-order-message--error';
-          }
-          btn.disabled = false;
-          btn.innerHTML = btnHtml;
-        }
+        form.reset();
       } else {
         if (msg) {
           msg.textContent = (resp && resp.data && resp.data.message) || 'Nastala chyba. Zkuste to prosím znovu.';
           msg.className = 'xevos-order-message xevos-order-message--error';
           msg.style.display = 'block';
         }
-        btn.disabled = false;
-        btn.innerHTML = btnHtml;
       }
+
+      btn.disabled = false;
+      btn.innerHTML = btnHtml;
     };
 
     xhr.onerror = function () {

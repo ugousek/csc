@@ -15,7 +15,7 @@
 			id="xevos-search"
 			class="xevos-search-form__input xevos-form__input"
 			placeholder="<?php esc_attr_e( 'Hledat…', 'xevos-cyber' ); ?>"
-			value="<?php echo get_search_query(); ?>"
+			value="<?php echo esc_attr( get_search_query() ); ?>"
 			name="s"
 			autocomplete="off">
 		<button type="submit" class="xevos-search-form__submit xevos-btn xevos-btn--primary">

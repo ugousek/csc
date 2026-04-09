@@ -115,7 +115,10 @@
     fetch(xevosAjax.ajaxUrl, { method: 'POST', body: fd })
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        if (!data.success) return;
+        if (!data.success) {
+          gridEl.innerHTML = '<p class="xevos-archive__empty">Nepodařilo se načíst školení.</p>';
+          return;
+        }
         if (append) {
           gridEl.insertAdjacentHTML('beforeend', data.data.html);
         } else {
@@ -124,6 +127,9 @@
         maxPages = data.data.max_pages || 1;
         renderPagination();
         renderLoadMore();
+      })
+      .catch(function () {
+        gridEl.innerHTML = '<p class="xevos-archive__empty">Chyba připojení. Zkuste to znovu.</p>';
       })
       .finally(function () {
         if (gridWrap) gridWrap.classList.remove('is-loading');
