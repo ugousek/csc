@@ -11,39 +11,24 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Generate order number on post creation.
  */
-add_action( 'wp_insert_post', 'xevos_auto_number_order', 10, 3 );
+add_action( 'wp_insert_post', 'xevos_auto_number_order', 10, 2 );
 
-function xevos_auto_number_order( int $post_id, ?WP_Post $post, bool $update ): void {
-	if ( $update || ! $post || 'objednavka' !== $post->post_type ) {
+function xevos_auto_number_order( int $post_id, ?WP_Post $post ): void {
+	if ( ! $post || 'objednavka' !== $post->post_type ) {
 		return;
 	}
 
-	$year = date( 'Y' );
-
-	// Get next sequence number for this year.
-	$last = get_posts( [
-		'post_type'      => 'objednavka',
-		'posts_per_page' => 1,
-		'post_status'    => 'any',
-		'meta_key'       => '_xevos_order_year',
-		'meta_value'     => $year,
-		'orderby'        => 'meta_value_num',
-		'meta_query'     => [
-			[
-				'key'     => '_xevos_order_seq',
-				'compare' => 'EXISTS',
-			],
-		],
-		'order'          => 'DESC',
-		'fields'         => 'ids',
-		'exclude'        => [ $post_id ],
-	] );
-
-	$seq = 1;
-	if ( ! empty( $last ) ) {
-		$last_seq = (int) get_post_meta( $last[0], '_xevos_order_seq', true );
-		$seq      = $last_seq + 1;
+	// Skip if order number already assigned.
+	if ( get_post_meta( $post_id, '_xevos_order_number', true ) ) {
+		return;
 	}
+
+	$year        = date( 'Y' );
+	$option_key  = '_xevos_order_seq_' . $year;
+
+	// Atomically increment the counter stored as a WP option.
+	$seq = (int) get_option( $option_key, 0 ) + 1;
+	update_option( $option_key, $seq, false );
 
 	$order_number = sprintf( 'OBJ-%s-%04d', $year, $seq );
 
@@ -60,7 +45,60 @@ function xevos_auto_number_order( int $post_id, ?WP_Post $post, bool $update ): 
 }
 
 /**
- * Increment registration count and check capacity.
+ * Build a unique key for a term from its datum + cas_od.
+ * Used as the stored value in orders to distinguish same-date terms.
+ *
+ * @param array $t Term row from ACF repeater.
+ * @return string  e.g. "26.05.2026|08:00" or just "26.05.2026"
+ */
+function xevos_termin_key( array $t ): string {
+	$key = $t['datum'] ?? '';
+	if ( ! empty( $t['cas_od'] ) ) {
+		$key .= '|' . $t['cas_od'];
+	}
+	return $key;
+}
+
+/**
+ * Count active (non-cancelled, non-refunded) registrations for a training term.
+ *
+ * @param int    $skoleni_id  Training post ID.
+ * @param string $termin_datum Date string matching the term's 'datum' field.
+ * @return int
+ */
+function xevos_count_active_registrations( int $skoleni_id, string $termin_datum ): int {
+	$orders = get_posts( [
+		'post_type'      => 'objednavka',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
+		'fields'         => 'ids',
+		'meta_query'     => [
+			'relation' => 'AND',
+			[
+				'key'   => 'skoleni',
+				'value' => $skoleni_id,
+			],
+			[
+				'key'   => 'termin',
+				'value' => $termin_datum,
+			],
+		],
+	] );
+
+	$count = 0;
+	foreach ( $orders as $order_id ) {
+		$stav = get_field( 'stav_platby', $order_id ) ?: 'pending';
+		if ( ! in_array( $stav, [ 'cancelled', 'refunded' ], true ) ) {
+			$count++;
+		}
+	}
+
+	return $count;
+}
+
+/**
+ * Check capacity thresholds and send admin notifications.
+ * Does NOT store anything — count is derived from real orders.
  *
  * Call this after a successful order is created.
  *
@@ -73,50 +111,49 @@ function xevos_increment_registration( int $skoleni_id, int $termin_index ): voi
 		return;
 	}
 
-	$current = (int) ( $terminy[ $termin_index ]['pocet_registraci'] ?? 0 );
-	$kapacita = (int) ( $terminy[ $termin_index ]['kapacita'] ?? 0 );
-	$new_count = $current + 1;
+	$kapacita     = (int) ( $terminy[ $termin_index ]['kapacita'] ?? 0 );
+	$termin_datum = $terminy[ $termin_index ]['datum'] ?? '';
+	$new_count    = xevos_count_active_registrations( $skoleni_id, $termin_datum );
 
-	// Update the repeater sub-field.
-	update_sub_field( [ 'terminy', $termin_index + 1, 'pocet_registraci' ], $new_count, $skoleni_id );
+	if ( $kapacita <= 0 || ! $termin_datum ) {
+		return;
+	}
 
-	// Check capacity thresholds.
-	if ( $kapacita > 0 ) {
-		$percent = ( $new_count / $kapacita ) * 100;
-		$skoleni_title = get_the_title( $skoleni_id );
-		$termin_datum  = $terminy[ $termin_index ]['datum'] ?? '';
-		$admin_email   = get_option( 'admin_email' );
+	$percent       = ( $new_count / $kapacita ) * 100;
+	$prev_count    = $new_count - 1;
+	$prev_percent  = $kapacita > 0 ? ( $prev_count / $kapacita ) * 100 : 0;
+	$skoleni_title = get_the_title( $skoleni_id );
+	$admin_email   = get_option( 'admin_email' );
 
-		// 100% – full.
-		if ( $new_count >= $kapacita ) {
-			wp_mail(
-				$admin_email,
-				sprintf( '[XEVOS] Kapacita naplněna: %s (%s)', $skoleni_title, $termin_datum ),
-				sprintf(
-					"Školení \"%s\" – termín %s má naplněnou kapacitu (%d/%d).\n\nNové registrace nebudou možné.\n\nZkontrolovat: %s",
-					$skoleni_title,
-					$termin_datum,
-					$new_count,
-					$kapacita,
-					admin_url( 'post.php?post=' . $skoleni_id . '&action=edit' )
-				)
-			);
-		}
-		// 80% – warning.
-		elseif ( $percent >= 80 && ( ( $current / $kapacita ) * 100 ) < 80 ) {
-			wp_mail(
-				$admin_email,
-				sprintf( '[XEVOS] 80%% kapacity: %s (%s)', $skoleni_title, $termin_datum ),
-				sprintf(
-					"Školení \"%s\" – termín %s dosáhlo 80%% kapacity (%d/%d).\n\nZbývá %d míst.\n\nZkontrolovat: %s",
-					$skoleni_title,
-					$termin_datum,
-					$new_count,
-					$kapacita,
-					$kapacita - $new_count,
-					admin_url( 'post.php?post=' . $skoleni_id . '&action=edit' )
-				)
-			);
-		}
+	// 100% – full.
+	if ( $new_count >= $kapacita && $prev_count < $kapacita ) {
+		wp_mail(
+			$admin_email,
+			sprintf( '[XEVOS] Kapacita naplněna: %s (%s)', $skoleni_title, $termin_datum ),
+			sprintf(
+				"Školení \"%s\" – termín %s má naplněnou kapacitu (%d/%d).\n\nNové registrace nebudou možné.\n\nZkontrolovat: %s",
+				$skoleni_title,
+				$termin_datum,
+				$new_count,
+				$kapacita,
+				admin_url( 'post.php?post=' . $skoleni_id . '&action=edit' )
+			)
+		);
+	}
+	// 80% – warning.
+	elseif ( $percent >= 80 && $prev_percent < 80 ) {
+		wp_mail(
+			$admin_email,
+			sprintf( '[XEVOS] 80%% kapacity: %s (%s)', $skoleni_title, $termin_datum ),
+			sprintf(
+				"Školení \"%s\" – termín %s dosáhlo 80%% kapacity (%d/%d).\n\nZbývá %d míst.\n\nZkontrolovat: %s",
+				$skoleni_title,
+				$termin_datum,
+				$new_count,
+				$kapacita,
+				$kapacita - $new_count,
+				admin_url( 'post.php?post=' . $skoleni_id . '&action=edit' )
+			)
+		);
 	}
 }

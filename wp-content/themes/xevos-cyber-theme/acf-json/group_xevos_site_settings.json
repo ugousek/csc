@@ -160,6 +160,20 @@
       "instructions": "Zdrojový soubor pro favicon (SVG nebo PNG min. 512x512)"
     },
     {
+      "key": "field_xevos_fakturace_tab",
+      "label": "Fakturace",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_xevos_cislo_uctu",
+      "label": "Číslo bankovního účtu",
+      "name": "cislo_uctu",
+      "type": "text",
+      "instructions": "Číslo účtu ve formátu 1234567890/0800. Zobrazuje se v e-mailu s potvrzením objednávky na fakturu.",
+      "placeholder": "1234567890/0800"
+    },
+    {
       "key": "field_xevos_ecomail_tab",
       "label": "Ecomail",
       "name": "",

@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'XEVOS_THEME_VERSION', '1.0.0' );
+define( 'XEVOS_THEME_VERSION', '1.0.2' );
 define( 'XEVOS_THEME_DIR', get_template_directory() );
 define( 'XEVOS_THEME_URI', get_template_directory_uri() );
 
@@ -28,7 +28,14 @@ $xevos_includes = [
 	'/inc/email.php',
 	'/inc/admin/order-columns.php',
 	'/inc/admin/order-filters.php',
+	'/inc/admin/order-export.php',
+	'/inc/admin/skoleni-registrace.php',
+	'/inc/admin/order-paid-hook.php',
+	'/inc/admin/order-detail.php',
 	'/inc/admin/email-templates.php',
+	'/inc/admin/poptavky-columns.php',
+	'/inc/admin/lektori-columns.php',
+	'/inc/admin/premium-features.php',
 	'/inc/order-numbering.php',
 	'/inc/ecomail.php',
 	'/inc/cron.php',

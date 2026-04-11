@@ -18,11 +18,12 @@ function xevos_objednavka_filters( string $post_type ): void {
 	// Payment status filter.
 	$current_stav = sanitize_text_field( wp_unslash( $_GET['stav_platby'] ?? '' ) );
 	$stavy = [
-		''          => __( 'Všechny stavy', 'xevos-cyber' ),
-		'pending'   => __( 'Čeká na platbu', 'xevos-cyber' ),
-		'paid'      => __( 'Zaplaceno', 'xevos-cyber' ),
-		'cancelled' => __( 'Zrušeno', 'xevos-cyber' ),
-		'refunded'  => __( 'Refundováno', 'xevos-cyber' ),
+		''           => __( 'Všechny stavy', 'xevos-cyber' ),
+		'pending'    => __( 'Čeká na platbu', 'xevos-cyber' ),
+		'paid'       => __( 'Zaplaceno', 'xevos-cyber' ),
+		'registered' => __( 'Registrováno (zdarma)', 'xevos-cyber' ),
+		'cancelled'  => __( 'Zrušeno', 'xevos-cyber' ),
+		'refunded'   => __( 'Refundováno', 'xevos-cyber' ),
 	];
 
 	echo '<select name="stav_platby">';
@@ -31,6 +32,25 @@ function xevos_objednavka_filters( string $post_type ): void {
 			'<option value="%s"%s>%s</option>',
 			esc_attr( $value ),
 			selected( $current_stav, $value, false ),
+			esc_html( $label )
+		);
+	}
+	echo '</select>';
+
+	// Registration type filter.
+	$current_typ = sanitize_text_field( wp_unslash( $_GET['typ_registrace'] ?? '' ) );
+	$typy = [
+		''     => __( 'Všechny typy', 'xevos-cyber' ),
+		'paid' => __( 'Placená', 'xevos-cyber' ),
+		'free' => __( 'Zdarma', 'xevos-cyber' ),
+	];
+
+	echo '<select name="typ_registrace">';
+	foreach ( $typy as $value => $label ) {
+		printf(
+			'<option value="%s"%s>%s</option>',
+			esc_attr( $value ),
+			selected( $current_typ, $value, false ),
 			esc_html( $label )
 		);
 	}
@@ -71,6 +91,15 @@ function xevos_objednavka_filter_query( WP_Query $query ): void {
 		$meta_query[] = [
 			'key'   => 'stav_platby',
 			'value' => $stav,
+		];
+	}
+
+	// Filter by registration type.
+	$typ = sanitize_text_field( wp_unslash( $_GET['typ_registrace'] ?? '' ) );
+	if ( $typ ) {
+		$meta_query[] = [
+			'key'   => 'typ_registrace',
+			'value' => $typ,
 		];
 	}
 

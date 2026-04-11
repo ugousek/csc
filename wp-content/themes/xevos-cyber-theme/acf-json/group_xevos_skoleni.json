@@ -3,6 +3,67 @@
   "title": "Školení – detail",
   "fields": [
     {
+      "key": "field_sk_nastaveni_tab",
+      "label": "Nastavení školení",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_popis",
+      "label": "Popis školení (pro přehled)",
+      "name": "popis",
+      "type": "wysiwyg",
+      "toolbar": "full",
+      "media_upload": 1,
+      "tabs": "all",
+      "instructions": "Krátký popis zobrazovaný v přehledu/výpisu všech školení (archive)."
+    },
+    {
+      "key": "field_sk_typ",
+      "label": "Typ školení",
+      "name": "typ",
+      "type": "select",
+      "choices": {
+        "online": "Online",
+        "prezencni": "Prezenční",
+        "hybrid": "Hybridní"
+      },
+      "default_value": "prezencni",
+      "allow_null": 0
+    },
+    {
+      "key": "field_sk_typ_prihlaseni",
+      "label": "Způsob přihlášení",
+      "name": "typ_prihlaseni",
+      "type": "select",
+      "default_value": "platba",
+      "choices": {
+        "platba": "Objednávka (placená)",
+        "zdarma": "Registrace zdarma",
+        "pozvanka": "Požádat o pozvánku"
+      },
+      "ui": 1,
+      "return_format": "value",
+      "instructions": "Platba = standardní objednávka. Zdarma = registrace. Pozvánka = žádost o pozvánku."
+    },
+    {
+      "key": "field_sk_cena_s_dph",
+      "label": "Cena s DPH",
+      "name": "cena_s_dph",
+      "type": "number",
+      "prepend": "Kč",
+      "min": 0,
+      "conditional_logic": [[{"field": "field_sk_typ_prihlaseni", "operator": "==", "value": "platba"}]]
+    },
+    {
+      "key": "field_sk_ecomail_list_id",
+      "label": "Ecomail List ID",
+      "name": "ecomail_list_id",
+      "type": "text",
+      "instructions": "ID mailing listu v Ecomailu. Pokud nevyplníte, kontakt se do Ecomailu neodešle.",
+      "placeholder": "22"
+    },
+    {
       "key": "field_sk_hero_tab",
       "label": "1. Hero",
       "name": "",
@@ -37,45 +98,6 @@
       "tabs": "all",
       "toolbar": "basic",
       "media_upload": 0
-    },
-    {
-      "key": "field_sk_popis",
-      "label": "Popis školení (pro přehled)",
-      "name": "popis",
-      "type": "wysiwyg",
-      "toolbar": "full",
-      "media_upload": 1,
-      "tabs": "all",
-      "instructions": "Krátký popis zobrazovaný v přehledu/výpisu všech školení (archive). Nemá vliv na hero ani sekci Pro koho."
-    },
-    {
-      "key": "field_sk_cena",
-      "label": "Cena bez DPH",
-      "name": "cena",
-      "type": "number",
-      "prepend": "Kč",
-      "min": 0
-    },
-    {
-      "key": "field_sk_cena_s_dph",
-      "label": "Cena s DPH",
-      "name": "cena_s_dph",
-      "type": "number",
-      "prepend": "Kč",
-      "min": 0
-    },
-    {
-      "key": "field_sk_typ",
-      "label": "Typ školení",
-      "name": "typ",
-      "type": "select",
-      "choices": {
-        "online": "Online",
-        "prezencni": "Prezenční",
-        "hybrid": "Hybridní"
-      },
-      "default_value": "prezencni",
-      "allow_null": 0
     },
     {
       "key": "field_sk_pro_koho_tab",
@@ -167,16 +189,20 @@
           }
         },
         {
-          "key": "field_sk_termin_registrace",
-          "label": "Registrace",
-          "name": "pocet_registraci",
-          "type": "number",
-          "default_value": 0,
-          "min": 0,
-          "wrapper": {
-            "width": "13"
+          "key": "field_sk_termin_uroven",
+          "label": "Úroveň",
+          "name": "uroven",
+          "type": "select",
+          "choices": {
+            "zakladni": "Základní",
+            "pokrocily": "Pokročilý",
+            "expert": "Expert"
           },
-          "instructions": "Automaticky navyšováno po objednávce"
+          "allow_null": 1,
+          "instructions": "Prázdné = nezobrazí se.",
+          "wrapper": {
+            "width": "15"
+          }
         }
       ]
     },
@@ -375,56 +401,34 @@
     },
     {
       "key": "field_sk_formular_tab",
-      "label": "8. Objednávka",
+      "label": "8. Formulář",
       "name": "",
       "type": "tab"
     },
     {
       "key": "field_sk_formular",
-      "label": "Zobrazit objednávkový formulář",
+      "label": "Zobrazit formulář",
       "name": "objednavkovy_formular",
       "type": "true_false",
       "default_value": 1,
       "ui": 1
     },
     {
-      "key": "field_sk_typ_prihlaseni",
-      "label": "Způsob přihlášení",
-      "name": "typ_prihlaseni",
-      "type": "select",
-      "default_value": "platba",
-      "choices": {
-        "platba": "Objednávka (placená)",
-        "zdarma": "Registrace zdarma",
-        "pozvanka": "Požádat o pozvánku"
-      },
-      "ui": 1,
-      "return_format": "value",
-      "instructions": "Platba = standardní objednávka s fakturačními údaji. Zdarma = jednoduchá registrace do Ecomailu. Pozvánka = jako zdarma, ale s jiným nadpisem/tlačítkem (právo výběru účastníků)."
+      "key": "field_sk_formular_nadpis",
+      "label": "Nadpis formuláře",
+      "name": "formular_nadpis",
+      "type": "text",
+      "instructions": "Prázdné = automaticky podle způsobu přihlášení.",
+      "placeholder": "Registrace zdarma"
     },
     {
-      "key": "field_sk_ecomail_list_id",
-      "label": "Ecomail List ID",
-      "name": "ecomail_list_id",
-      "type": "text",
-      "instructions": "ID mailing listu v Ecomailu, do kterého se přidá kontakt po registraci (např. 22).",
-      "placeholder": "22",
-      "conditional_logic": [
-        [
-          {
-            "field": "field_sk_typ_prihlaseni",
-            "operator": "==",
-            "value": "zdarma"
-          }
-        ],
-        [
-          {
-            "field": "field_sk_typ_prihlaseni",
-            "operator": "==",
-            "value": "pozvanka"
-          }
-        ]
-      ]
+      "key": "field_sk_formular_popis",
+      "label": "Popis formuláře",
+      "name": "formular_popis",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Text pod nadpisem formuláře. Tučný text (B) = bílá barva, zbytek šedý."
     }
   ],
   "location": [

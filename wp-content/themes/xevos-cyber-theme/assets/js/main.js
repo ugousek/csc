@@ -229,6 +229,27 @@
 
   /* Školení archive filter — moved to skoleni-filter.js */
 
+  /* ===== Termin card click → scroll to form + set select ===== */
+  document.querySelectorAll('.xevos-termin-card[data-termin]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var termin = this.dataset.termin;
+      var select = document.getElementById('xevos-termin-select');
+      var form = document.getElementById('objednavka');
+      if (select) {
+        select.value = termin;
+      }
+      if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+
   /* ===== Pattern overlay position ===== */
   document.addEventListener('DOMContentLoaded', function () {
     var ktSection = document.querySelector('.xevos-kyber-test-section');
@@ -363,5 +384,18 @@
       },
     });
   }
+
+  // Lektor bio: zobrazit/skrýt po 3 řádcích
+  document.querySelectorAll('.xevos-lektor-card__bio').forEach(function(bio) {
+    var toggle = bio.nextElementSibling;
+    if (!toggle || !toggle.classList.contains('xevos-lektor-card__bio-toggle')) return;
+    if (bio.scrollHeight > bio.clientHeight) {
+      toggle.hidden = false;
+      toggle.addEventListener('click', function() {
+        var expanded = bio.classList.toggle('is-expanded');
+        toggle.textContent = expanded ? 'Zobrazit méně' : 'Zobrazit více';
+      });
+    }
+  });
 
 })();

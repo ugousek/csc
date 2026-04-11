@@ -9,9 +9,10 @@ defined( 'ABSPATH' ) || exit;
 
 add_filter( 'manage_objednavka_posts_columns', 'xevos_objednavka_columns' );
 add_action( 'manage_objednavka_posts_custom_column', 'xevos_objednavka_column_content', 10, 2 );
+add_filter( 'manage_edit-objednavka_sortable_columns', 'xevos_objednavka_sortable_columns' );
 
 function xevos_objednavka_columns( array $columns ): array {
-	$new = [
+	return [
 		'cb'         => $columns['cb'],
 		'title'      => __( 'Číslo objednávky', 'xevos-cyber' ),
 		'ob_jmeno'   => __( 'Jméno', 'xevos-cyber' ),
@@ -19,12 +20,18 @@ function xevos_objednavka_columns( array $columns ): array {
 		'ob_firma'   => __( 'Firma', 'xevos-cyber' ),
 		'ob_skoleni' => __( 'Školení', 'xevos-cyber' ),
 		'ob_termin'  => __( 'Termín', 'xevos-cyber' ),
+		'ob_typ'     => __( 'Typ', 'xevos-cyber' ),
 		'ob_castka'  => __( 'Částka', 'xevos-cyber' ),
-		'ob_stav'    => __( 'Stav platby', 'xevos-cyber' ),
+		'ob_stav'    => __( 'Stav', 'xevos-cyber' ),
 		'date'       => __( 'Datum', 'xevos-cyber' ),
 	];
+}
 
-	return $new;
+function xevos_objednavka_sortable_columns( array $columns ): array {
+	$columns['ob_castka'] = 'ob_castka';
+	$columns['ob_stav']   = 'ob_stav';
+	$columns['ob_typ']    = 'ob_typ';
+	return $columns;
 }
 
 function xevos_objednavka_column_content( string $column, int $post_id ): void {
@@ -40,7 +47,8 @@ function xevos_objednavka_column_content( string $column, int $post_id ): void {
 			break;
 
 		case 'ob_email':
-			echo esc_html( get_field( 'email', $post_id ) ?: '—' );
+			$email = get_field( 'email', $post_id );
+			echo $email ? '<a href="mailto:' . esc_attr( $email ) . '">' . esc_html( $email ) . '</a>' : '—';
 			break;
 
 		case 'ob_firma':
@@ -64,18 +72,38 @@ function xevos_objednavka_column_content( string $column, int $post_id ): void {
 			echo esc_html( get_field( 'termin', $post_id ) ?: '—' );
 			break;
 
+		case 'ob_typ':
+			$typ = get_field( 'typ_registrace', $post_id ) ?: 'paid';
+			$badges = [
+				'paid' => [ 'label' => 'Placená', 'color' => '#3b82f6' ],
+				'free' => [ 'label' => 'Zdarma', 'color' => '#8b5cf6' ],
+			];
+			$badge = $badges[ $typ ] ?? $badges['paid'];
+			printf(
+				'<span style="background:%s;color:#fff;padding:2px 8px;border-radius:3px;font-size:12px;">%s</span>',
+				esc_attr( $badge['color'] ),
+				esc_html( $badge['label'] )
+			);
+			break;
+
 		case 'ob_castka':
 			$castka = get_field( 'castka', $post_id );
-			echo $castka ? esc_html( number_format( (float) $castka, 0, ',', ' ' ) . ' Kč' ) : '—';
+			$typ    = get_field( 'typ_registrace', $post_id );
+			if ( $typ === 'free' ) {
+				echo '<em style="color:#94a3b8;">Zdarma</em>';
+			} else {
+				echo $castka ? esc_html( number_format( (float) $castka, 0, ',', ' ' ) . ' Kč' ) : '—';
+			}
 			break;
 
 		case 'ob_stav':
 			$stav = get_field( 'stav_platby', $post_id ) ?: 'pending';
 			$badges = [
-				'pending'   => [ 'label' => 'Čeká na platbu', 'color' => '#f59e0b' ],
-				'paid'      => [ 'label' => 'Zaplaceno', 'color' => '#10b981' ],
-				'cancelled' => [ 'label' => 'Zrušeno', 'color' => '#ef4444' ],
-				'refunded'  => [ 'label' => 'Refundováno', 'color' => '#6b7280' ],
+				'pending'    => [ 'label' => 'Čeká na platbu', 'color' => '#f59e0b' ],
+				'paid'       => [ 'label' => 'Zaplaceno', 'color' => '#10b981' ],
+				'registered' => [ 'label' => 'Registrováno', 'color' => '#8b5cf6' ],
+				'cancelled'  => [ 'label' => 'Zrušeno', 'color' => '#ef4444' ],
+				'refunded'   => [ 'label' => 'Refundováno', 'color' => '#6b7280' ],
 			];
 			$badge = $badges[ $stav ] ?? $badges['pending'];
 			printf(

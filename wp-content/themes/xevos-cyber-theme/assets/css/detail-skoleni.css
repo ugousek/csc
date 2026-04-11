@@ -199,8 +199,6 @@
     line-height: 1.58;
     letter-spacing: 0.48px;
     color: rgba(236, 236, 236, 0.7);
-    text-align: center;
-
 }
 
 .xevos-skoleni-pro-koho .xevos-article-content__body strong {
@@ -293,12 +291,42 @@
     color: var(--color-text);
 }
 
+/* Clickable termin cards */
+.xevos-termin-card[data-termin] {
+    cursor: pointer;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.xevos-termin-card[data-termin]:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(245, 39, 170, 0.2);
+}
+
+/* Full / sold out */
 .xevos-termin-card--full {
-    opacity: 0.5;
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
 }
 
 .xevos-termin-card--full .xevos-termin-card__date {
     text-decoration: line-through;
+}
+
+.xevos-termin-card__stav {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--color-danger);
+    margin-top: 0.5rem;
+}
+
+.xevos-termin-card__uroven {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-text-70);
+    margin-top: 0.5rem;
 }
 
 /* The xevos-glow-wrap on detail page doesn't need its own overflow:hidden
@@ -337,6 +365,10 @@
    4. Lektoři – carousel with nav arrows
    Figma: 240x240 circular photos, cyan border, name H3/32px, role 24px
    -------------------------------------------------------------------------- */
+.xevos-skoleni-lektori-section {
+    z-index: 2 !important;
+}
+
 .xevos-skoleni-lektori-section h2 {
     font-family: var(--font-heading);
     font-weight: 900;
@@ -389,7 +421,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2rem;
 }
 
 .xevos-lektor-card__foto-wrap {
@@ -453,6 +484,38 @@
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.xevos-lektor-card__bio.is-expanded {
+    display: block;
+    overflow: visible;
+}
+
+.xevos-lektor-card__bio-toggle {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 10px 24px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.xevos-lektor-card__bio-toggle:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    box-shadow: var(--shadow-glow);
 }
 
 @media (max-width: 1700px) {
@@ -539,13 +602,22 @@
     color: rgba(236, 236, 236, 0.70);
     font-family: Sora;
     font-size: 1.5rem;
-    font-style: normal;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.48px;
 }
 
-/* Strong = white in harmonogram, osnova & co si odnesete */
+.xevos-osnova-list li p {
+    color: rgba(236, 236, 236, 0.70);
+}
+
+.xevos-osnova-list li em,
+.xevos-osnova-list li i {
+    color: rgba(236, 236, 236, 0.70);
+    font-style: italic;
+}
+
+/* Strong = white + tučné v harmonogramu, osnově & co si odnesete */
 .xevos-harmonogram-item strong,
 .xevos-osnova-list li strong,
 .xevos-skoleni-benefits strong {
@@ -972,6 +1044,20 @@
     }
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+    .xevos-blog-hero__content {
+        position: relative;
+    }
+
+    .xevos-blog-hero .xevos-btn {
+        position: absolute;
+        top: -120px;
+        bottom: unset;
+        right: var(--gutter);
+        z-index: 2;
+    }
+}
+
 @media (max-width: 767px) {
 
     /* Hero */
@@ -1172,8 +1258,9 @@
     padding: 1rem 1.5rem;
     font-family: var(--font-body);
     font-size: 1rem;
-    border-radius: var(--radius);
+    border-radius: 0;
     margin-top: 1rem;
+    backdrop-filter: blur(25px);
 }
 
 .xevos-order-message--success {
@@ -1186,4 +1273,116 @@
     background: rgba(239, 68, 68, 0.15);
     border: 1px solid var(--color-danger);
     color: var(--color-danger);
+}
+
+/* Capacity full state */
+.xevos-order-full {
+    text-align: center;
+}
+
+.xevos-order-full h3 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.xevos-order-full p {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--color-text-70);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+/* Form section header desc (WYSIWYG) */
+.xevos-skoleni-section-header__desc,
+.xevos-skoleni-section-header__desc p {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--color-text-70);
+    margin-bottom: 0;
+}
+
+.xevos-skoleni-section-header__desc strong,
+.xevos-skoleni-section-header__desc p strong {
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+/* Payment method selector (platba na fakturu / online) */
+.xevos-payment-method {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.xevos-payment-method__option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.xevos-payment-method__option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+}
+
+.xevos-payment-method__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-text-70);
+    background: rgba(255, 255, 255, 0.04);
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.xevos-payment-method__option input[type="radio"]:checked+.xevos-payment-method__label {
+    border-color: var(--color-accent);
+    background: rgba(245, 39, 170, 0.08);
+    color: var(--color-white);
+}
+
+.xevos-payment-method__label svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.xevos-payment-method__option input[type="radio"]:checked+.xevos-payment-method__label svg {
+    opacity: 1;
+    stroke: var(--color-accent);
+}
+
+/* Invoice mode notice */
+.xevos-payment-invoice-notice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-70);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.xevos-payment-invoice-notice svg {
+    flex-shrink: 0;
+    opacity: 0.6;
 }

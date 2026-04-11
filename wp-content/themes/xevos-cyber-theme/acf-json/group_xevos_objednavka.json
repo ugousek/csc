@@ -93,13 +93,26 @@
       "prepend": "Kč"
     },
     {
+      "key": "field_obj_typ_registrace",
+      "label": "Typ registrace",
+      "name": "typ_registrace",
+      "type": "select",
+      "choices": {
+        "paid": "Placená",
+        "free": "Zdarma"
+      },
+      "default_value": "paid"
+    },
+    {
       "key": "field_obj_stav",
-      "label": "Stav platby",
+      "label": "Stav",
       "name": "stav_platby",
       "type": "select",
       "choices": {
         "pending": "Čeká na platbu",
+        "invoice": "Čeká na úhradu faktury",
         "paid": "Zaplaceno",
+        "registered": "Registrováno (zdarma)",
         "cancelled": "Zrušeno",
         "refunded": "Refundováno"
       },

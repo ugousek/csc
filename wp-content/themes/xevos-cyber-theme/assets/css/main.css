@@ -223,6 +223,17 @@
   box-sizing: border-box;
 }
 
+/* Safari/WebKit: remove default rounded corners on form elements */
+input,
+textarea,
+select,
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+}
+
 html {
   font-size: 100%;
   scroll-behavior: smooth;
@@ -811,6 +822,15 @@ b {
   resize: vertical;
 }
 
+/* Reset Safari/WebKit rounded corners on all form elements */
+.xevos-form__input,
+.xevos-form__textarea,
+.xevos-form__select,
+select.xevos-form__input {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+}
+
 /* Select – custom arrow, consistent across all forms */
 select.xevos-form__input,
 .xevos-form__select {
@@ -980,7 +1000,7 @@ select.xevos-form__input option:checked,
 }
 
 .xevos-header__nav-list a:hover,
-.xevos-header__nav-list .current-menu-item > a {
+.xevos-header__nav-list .current-menu-item>a {
   color: #F527AA;
 }
 
@@ -2106,7 +2126,7 @@ select.xevos-form__input option:checked,
   }
 
   .xevos-recenze-card__text {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .xevos-recenze-pagination {
@@ -3085,7 +3105,7 @@ body::after {
   align-items: center;
   gap: 1rem;
   font-family: var(--font-body);
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1.58;
   color: var(--color-text);
 }

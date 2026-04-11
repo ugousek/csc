@@ -1,0 +1,319 @@
+/* ==========================================================================
+   Služby (Services) – page-specific styles
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Hero override
+   -------------------------------------------------------------------------- */
+
+.page-template-page-sluzby .xevos-page-hero--short {
+  min-height: 420px;
+}
+
+.page-template-page-sluzby .xevos-page-hero__bg--gradient {
+  background: linear-gradient(180deg, rgba(1, 1, 41, 0) 0%, #010129 100%),
+              linear-gradient(135deg, #0d1233 0%, #010129 60%, rgba(6, 182, 212, 0.12) 100%);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Section alternation
+   -------------------------------------------------------------------------- */
+
+.xevos-section--alt {
+  background-color: #0d1233;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Service detail – two-column alternating layout
+   -------------------------------------------------------------------------- */
+
+.xevos-service-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.xevos-service-detail--reverse .xevos-service-detail__content {
+  order: 2;
+}
+
+.xevos-service-detail--reverse .xevos-service-detail__image,
+.xevos-service-detail--reverse .xevos-service-detail__placeholder {
+  order: 1;
+}
+
+.xevos-service-detail__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.xevos-service-detail__num {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.72px;
+  color: var(--color-cyan);
+  opacity: 0.25;
+  margin-bottom: 0.5rem;
+}
+
+.xevos-service-detail__content h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.xevos-service-detail__content h2 strong {
+  color: #fff;
+}
+
+.xevos-service-detail__content p,
+.xevos-service-detail__content li {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(236, 236, 236, 0.7);
+  letter-spacing: 0.36px;
+}
+
+.xevos-service-detail__content strong {
+  color: #fff;
+  font-weight: 400;
+}
+
+.xevos-service-detail__content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.xevos-service-detail__content ul li::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--color-cyan);
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.xevos-service-detail__image {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.xevos-service-detail__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.xevos-service-detail__placeholder {
+  width: 100%;
+  min-height: 400px;
+  background: linear-gradient(135deg, #0d1233 0%, rgba(6, 182, 212, 0.08) 50%, #010129 100%);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Emergency box CTA
+   -------------------------------------------------------------------------- */
+
+.xevos-emergency-box {
+  background: var(--color-accent);
+  padding: 4rem 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.xevos-emergency-box__title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.xevos-emergency-box p {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.xevos-emergency-box .xevos-btn {
+  background: #fff;
+  color: var(--color-accent);
+  border: none;
+}
+
+.xevos-emergency-box .xevos-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Responsive – 1440px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1440px) {
+  .xevos-service-detail {
+    gap: 3rem;
+  }
+
+  .xevos-service-detail__num {
+    font-size: 60px;
+  }
+
+  .xevos-service-detail__content h2 {
+    font-size: 32px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Responsive – 991px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .xevos-service-detail {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .xevos-service-detail--reverse .xevos-service-detail__content {
+    order: 1;
+  }
+
+  .xevos-service-detail--reverse .xevos-service-detail__image,
+  .xevos-service-detail--reverse .xevos-service-detail__placeholder {
+    order: 2;
+  }
+
+  .xevos-service-detail__image,
+  .xevos-service-detail__placeholder {
+    min-height: 300px;
+  }
+
+  .xevos-service-detail__num {
+    font-size: 52px;
+  }
+
+  .xevos-service-detail__content h2 {
+    font-size: 28px;
+  }
+
+  .xevos-emergency-box {
+    padding: 3rem 2rem;
+  }
+
+  .xevos-emergency-box__title {
+    font-size: 28px;
+  }
+
+  .xevos-emergency-box p {
+    font-size: 18px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Responsive – 767px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .page-template-page-sluzby .xevos-page-hero--short {
+    min-height: 320px;
+  }
+
+  .xevos-service-detail__num {
+    font-size: 44px;
+  }
+
+  .xevos-service-detail__content h2 {
+    font-size: 24px;
+  }
+
+  .xevos-service-detail__content p,
+  .xevos-service-detail__content li {
+    font-size: 16px;
+  }
+
+  .xevos-service-detail__image,
+  .xevos-service-detail__placeholder {
+    min-height: 240px;
+  }
+
+  .xevos-emergency-box {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .xevos-emergency-box__title {
+    font-size: 24px;
+  }
+
+  .xevos-emergency-box p {
+    font-size: 16px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Responsive – 479px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 479px) {
+  .page-template-page-sluzby .xevos-page-hero--short {
+    min-height: 260px;
+  }
+
+  .xevos-service-detail {
+    gap: 1.5rem;
+  }
+
+  .xevos-service-detail__num {
+    font-size: 36px;
+  }
+
+  .xevos-service-detail__content h2 {
+    font-size: 22px;
+  }
+
+  .xevos-service-detail__image,
+  .xevos-service-detail__placeholder {
+    min-height: 200px;
+  }
+
+  .xevos-emergency-box {
+    padding: 2rem 1rem;
+  }
+
+  .xevos-emergency-box__title {
+    font-size: 20px;
+  }
+}

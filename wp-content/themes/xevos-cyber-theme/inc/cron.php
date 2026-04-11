@@ -133,6 +133,7 @@ function xevos_send_training_reminders(): void {
 						'cas'           => $cas_text,
 						'misto'         => $misto_text,
 						'poznamky'      => $poznamky,
+						'skoleni_url'   => get_permalink( $skoleni->ID ) ?: '',
 						'kontakt_email' => get_option( 'admin_email' ),
 						'firma'         => xevos_get_option( 'nazev_firmy', 'XEVOS' ),
 					]

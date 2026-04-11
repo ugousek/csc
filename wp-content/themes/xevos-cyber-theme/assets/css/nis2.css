@@ -1,0 +1,148 @@
+/* ==========================================================================
+   NIS2 – page-specific styles
+   Shared components (.xevos-two-col, .xevos-emergency-box) are in main.css
+   ========================================================================== */
+
+
+/* Hero override — gradient bg */
+.page-template-page-nis2 .xevos-page-hero__bg--gradient {
+  background: unset;
+}
+
+
+/* --------------------------------------------------------------------------
+   Help section — 4-card grid
+   -------------------------------------------------------------------------- */
+
+.xevos-nis2-help__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.xevos-nis2-help__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 187, 255, 0.20);
+  backdrop-filter: blur(25px);
+  border: 1px solid #7474749e;
+  padding: 2rem 1.5rem;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.xevos-nis2-help__card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--color-border-light);
+}
+
+.xevos-nis2-help__num {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 0.625rem;
+}
+
+.xevos-nis2-help__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: -2%;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  text-transform: none;
+}
+
+.xevos-nis2-help__text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   Responsive — 1440px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1440px) {
+  .xevos-nis2-help__num {
+    font-size: 2.25rem;
+  }
+
+  .xevos-nis2-help__title {
+    font-size: 1.75rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Responsive — 991px (tablet)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .xevos-nis2-help__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .xevos-nis2-help__num {
+    font-size: 2rem;
+  }
+
+  .xevos-nis2-help__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Responsive — 767px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .xevos-nis2-help__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .xevos-nis2-help__card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .xevos-nis2-help__num {
+    font-size: 1.75rem;
+  }
+
+  .xevos-nis2-help__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Responsive — 479px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 479px) {
+  .xevos-nis2-help__card {
+    padding: 1.25rem 1rem;
+  }
+
+  .xevos-nis2-help__num {
+    font-size: 1.5rem;
+  }
+
+  .xevos-nis2-help__title {
+    font-size: 1.125rem;
+  }
+
+  .xevos-nis2-help__text {
+    font-size: 14px;
+  }
+}

@@ -27,16 +27,10 @@ function xevos_ecomail_register(): void {
 		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
 	}
 
+
 	$skoleni_id = (int) ( $_POST['skoleni_id'] ?? 0 );
 	$list_id    = get_field( 'ecomail_list_id', $skoleni_id );
 	$api_key    = xevos_get_option( 'ecomail_api_key' );
-
-	if ( ! $list_id ) {
-		wp_send_json_error( [ 'message' => 'Ecomail List ID není vyplněno u tohoto školení.' ], 500 );
-	}
-	if ( ! $api_key ) {
-		wp_send_json_error( [ 'message' => 'Ecomail API klíč není nastaven (Nastavení webu → Ecomail).' ], 500 );
-	}
 
 	$jmeno    = sanitize_text_field( $_POST['jmeno'] ?? '' );
 	$prijmeni = sanitize_text_field( $_POST['prijmeni'] ?? '' );
@@ -48,19 +42,63 @@ function xevos_ecomail_register(): void {
 		wp_send_json_error( [ 'message' => 'E-mail je povinný.' ], 400 );
 	}
 
-	$result = xevos_ecomail_subscribe( $api_key, $list_id, [
-		'name'    => $jmeno,
-		'surname' => $prijmeni,
-		'email'   => $email,
-		'phone'   => $telefon,
-		'company' => $firma,
+	// Duplicate check — same email + same školení (exclude cancelled).
+	$existing = get_posts( [
+		'post_type'      => 'objednavka',
+		'posts_per_page' => 1,
+		'post_status'    => 'publish',
+		'meta_query'     => [
+			'relation' => 'AND',
+			[
+				'key'   => 'email',
+				'value' => $email,
+			],
+			[
+				'key'   => 'skoleni',
+				'value' => $skoleni_id,
+			],
+			[
+				'key'     => 'stav_platby',
+				'value'   => 'cancelled',
+				'compare' => '!=',
+			],
+		],
 	] );
 
-	if ( $result === false ) {
-		wp_send_json_error( [ 'message' => 'Nepodařilo se odeslat registraci.' ], 500 );
+	if ( ! empty( $existing ) ) {
+		wp_send_json_error( [ 'message' => 'Tento e-mail je na toto školení již registrován.' ], 409 );
 	}
 
-	// Also create an order CPT record for tracking.
+	// Capacity check — count real active orders for this term.
+	$termin_val = sanitize_text_field( wp_unslash( $_POST['termin'] ?? '' ) );
+	if ( $termin_val ) {
+		$terminy = get_field( 'terminy', $skoleni_id );
+		if ( is_array( $terminy ) ) {
+			foreach ( $terminy as $t ) {
+				if ( xevos_termin_key( $t ) === $termin_val ) {
+					$kapacita   = (int) ( $t['kapacita'] ?? 0 );
+					$registrace = xevos_count_active_registrations( $skoleni_id, $termin_val );
+					if ( $kapacita > 0 && $registrace >= $kapacita ) {
+						wp_send_json_error( [ 'message' => 'Kapacita tohoto termínu je bohužel naplněna.' ], 409 );
+					}
+					break;
+				}
+			}
+		}
+	}
+
+	// Ecomail subscribe (optional — only if list ID and API key are configured).
+	if ( $list_id && $api_key ) {
+		xevos_ecomail_subscribe( $api_key, $list_id, [
+			'name'    => $jmeno,
+			'surname' => $prijmeni,
+			'email'   => $email,
+			'phone'   => $telefon,
+			'company' => $firma,
+		] );
+	}
+
+	// Create an order CPT record for tracking.
 	$typ = sanitize_text_field( $_POST['typ_prihlaseni'] ?? 'zdarma' );
 	$order_title = $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma';
 	$order_status = $typ === 'pozvanka' ? 'draft' : 'publish';
@@ -82,15 +120,16 @@ function xevos_ecomail_register(): void {
 		update_field( 'skoleni', $skoleni_id, $order_id );
 		update_field( 'termin', $termin_val, $order_id );
 		update_field( 'castka', 0, $order_id );
-		update_field( 'stav_platby', $typ === 'pozvanka' ? 'pending' : 'paid', $order_id );
+		update_field( 'typ_registrace', 'free', $order_id );
+		update_field( 'stav_platby', $typ === 'pozvanka' ? 'pending' : 'registered', $order_id );
 		update_field( 'datum_objednavky', date( 'd.m.Y' ), $order_id );
 
-		// Increment registration count for the chosen term.
+		// Check capacity thresholds and send admin notifications.
 		if ( ! empty( $termin_val ) ) {
 			$terminy = get_field( 'terminy', $skoleni_id );
 			if ( is_array( $terminy ) ) {
 				foreach ( $terminy as $i => $t ) {
-					if ( ( $t['datum'] ?? '' ) === $termin_val ) {
+					if ( xevos_termin_key( $t ) === $termin_val ) {
 						xevos_increment_registration( $skoleni_id, $i );
 						break;
 					}
@@ -101,15 +140,18 @@ function xevos_ecomail_register(): void {
 
 	// Send confirmation email to the customer.
 	if ( $email && function_exists( 'xevos_send_email' ) ) {
-		$skoleni_title = get_the_title( $skoleni_id );
-		$termin_str    = $termin_val;
-		$firma_nazev   = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
+		$skoleni_title     = get_the_title( $skoleni_id );
+		$termin_str        = $termin_val;
+		$firma_nazev       = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
+		$skoleni_url       = get_permalink( $skoleni_id ) ?: '';
+		$skoleni_admin_url = get_edit_post_link( $skoleni_id, 'raw' ) ?: '';
 
 		if ( $typ === 'pozvanka' ) {
 			xevos_send_email( $email, 'Žádost o pozvánku – ' . $skoleni_title, 'invitation-request', [
 				'jmeno'         => $jmeno,
 				'nazev_skoleni' => $skoleni_title,
 				'termin'        => $termin_str,
+				'skoleni_url'   => $skoleni_url,
 				'kontakt_email' => get_option( 'admin_email' ),
 				'firma'         => $firma_nazev,
 			] );
@@ -119,6 +161,7 @@ function xevos_ecomail_register(): void {
 				'nazev_skoleni' => $skoleni_title,
 				'termin'        => $termin_str,
 				'misto'         => '',
+				'skoleni_url'   => $skoleni_url,
 				'kontakt_email' => get_option( 'admin_email' ),
 				'firma'         => $firma_nazev,
 			] );
@@ -126,15 +169,17 @@ function xevos_ecomail_register(): void {
 
 		// Notify admin about free registration / invitation request.
 		xevos_send_email( get_option( 'admin_email' ), ( $typ === 'pozvanka' ? 'Nová žádost o pozvánku: ' : 'Nová registrace: ' ) . $skoleni_title, 'admin-notification-free', [
-			'typ'            => $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma',
-			'jmeno'          => $jmeno,
-			'prijmeni'       => $prijmeni,
-			'email'          => $email,
-			'telefon'        => $telefon,
-			'firma_nazev'    => $firma,
-			'nazev_skoleni'  => $skoleni_title,
-			'termin'         => $termin_str,
-			'admin_url'      => $order_id ? admin_url( 'post.php?post=' . $order_id . '&action=edit' ) : '',
+			'typ'              => $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma',
+			'jmeno'            => $jmeno,
+			'prijmeni'         => $prijmeni,
+			'email'            => $email,
+			'telefon'          => $telefon,
+			'firma_nazev'      => $firma,
+			'nazev_skoleni'    => $skoleni_title,
+			'termin'           => $termin_str,
+			'admin_url'        => $order_id ? admin_url( 'post.php?post=' . $order_id . '&action=edit' ) : '',
+			'skoleni_url'      => $skoleni_url,
+			'skoleni_admin_url' => $skoleni_admin_url,
 		] );
 	}
 

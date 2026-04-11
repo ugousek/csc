@@ -111,7 +111,7 @@ $typ_colors = [
 									</div>
 
 									<div class="xevos-eventy__content">
-										<h3 class="xevos-eventy__title"><?php echo wp_kses_post(get_field('hero_nadpis') ?: get_the_title()); ?></h3>
+										<h3 class="xevos-eventy__title"><a href="<?php the_permalink(); ?>"><?php echo wp_kses_post(get_field('hero_nadpis') ?: get_the_title()); ?></a></h3>
 
 										<div class="xevos-eventy__meta">
 											<?php if ($dostupnost) : ?>

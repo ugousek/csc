@@ -1,0 +1,341 @@
+{
+  "key": "group_xevos_o_nas",
+  "title": "O nás",
+  "fields": [
+    {
+      "key": "field_on_hero_tab",
+      "label": "1. Hero",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_hero_zobrazit_v",
+      "label": "Zobrazit",
+      "name": "on_hero_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_hero_heading_v",
+      "label": "Nadpis",
+      "name": "on_hero_heading",
+      "type": "text",
+      "instructions": "Text ve &lt;strong&gt; bude růžový (accent). Např: KYBERNETICKÉ &lt;strong&gt;TESTOVÁNÍ&lt;/strong&gt;"
+    },
+    {
+      "key": "field_on_hero_sub_v",
+      "label": "Podnadpis",
+      "name": "on_hero_subheading",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva (fw 400), zbytek šedý."
+    },
+    {
+      "key": "field_on_hero_bg_v",
+      "label": "Background",
+      "name": "on_hero_background",
+      "type": "image",
+      "return_format": "array"
+    },
+
+    {
+      "key": "field_on_slider_section_tab",
+      "label": "2. Kyber test slider",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_slider_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_slider_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_slider_slidy_v2",
+      "label": "Slidy testování",
+      "name": "kyber_test_slidy",
+      "type": "repeater",
+      "instructions": "Snímky slideru. Každý obsahuje nadpis, popis, checklist, volitelný obrázek a CTA.",
+      "layout": "block",
+      "button_label": "Přidat snímek",
+      "sub_fields": [
+        { "key": "field_on_s_nazev", "label": "Nadpis", "name": "nazev", "type": "text", "required": 1 },
+        { "key": "field_on_s_popis", "label": "Popis", "name": "popis", "type": "wysiwyg", "toolbar": "basic", "media_upload": 0 },
+        { "key": "field_on_s_obrazek", "label": "Obrázek (volitelný)", "name": "obrazek", "type": "image", "return_format": "array", "preview_size": "medium" },
+        {
+          "key": "field_on_s_polozky",
+          "label": "Položky checklistu",
+          "name": "polozky",
+          "type": "repeater",
+          "layout": "table",
+          "button_label": "Přidat položku",
+          "sub_fields": [
+            { "key": "field_on_s_bod", "label": "Bod", "name": "bod", "type": "text" }
+          ]
+        },
+        { "key": "field_on_s_cta_text", "label": "CTA text", "name": "cta_text", "type": "text" },
+        { "key": "field_on_s_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url" }
+      ]
+    },
+
+    {
+      "key": "field_on_postup_tab",
+      "label": "3. Postup testování",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_postup_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_postup_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_postup_heading_v",
+      "label": "Nadpis",
+      "name": "on_postup_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_on_postup_text_v",
+      "label": "Popis",
+      "name": "on_postup_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_on_postup_kroky_v",
+      "label": "Kroky",
+      "name": "on_postup_kroky",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Přidat krok",
+      "sub_fields": [
+        { "key": "field_on_krok_nazev", "label": "Název", "name": "nazev", "type": "text" },
+        { "key": "field_on_krok_popis", "label": "Popis", "name": "popis", "type": "textarea", "rows": 2 }
+      ]
+    },
+
+    {
+      "key": "field_on_benefity_tab",
+      "label": "4. Co získáte / Pro koho",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_benefity_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_benefity_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_ziskate_heading_v",
+      "label": "Nadpis – Co získáte",
+      "name": "on_ziskate_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_on_ziskate_text_v",
+      "label": "Popis – Co získáte",
+      "name": "on_ziskate_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_on_ziskate_seznam_v",
+      "label": "Seznam – Co získáte",
+      "name": "on_ziskate_seznam",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat bod",
+      "sub_fields": [
+        { "key": "field_on_ziskate_bod", "label": "Bod", "name": "bod", "type": "text" }
+      ]
+    },
+    {
+      "key": "field_on_prokoho_heading_v",
+      "label": "Nadpis – Pro koho",
+      "name": "on_prokoho_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_on_prokoho_text_v",
+      "label": "Popis – Pro koho",
+      "name": "on_prokoho_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_on_prokoho_seznam_v",
+      "label": "Seznam – Pro koho",
+      "name": "on_prokoho_seznam",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Přidat bod",
+      "sub_fields": [
+        { "key": "field_on_prokoho_bod", "label": "Bod", "name": "bod", "type": "text" }
+      ]
+    },
+    {
+      "key": "field_on_benefity_cta_text_v",
+      "label": "CTA text",
+      "name": "on_benefity_cta_text",
+      "type": "text"
+    },
+    {
+      "key": "field_on_benefity_cta_url_v",
+      "label": "CTA URL",
+      "name": "on_benefity_cta_url",
+      "type": "url"
+    },
+
+    {
+      "key": "field_on_banner_tab",
+      "label": "5. Banner",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_banner_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_banner_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_banner_heading_v",
+      "label": "Nadpis",
+      "name": "on_banner_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_on_banner_text_v",
+      "label": "Text",
+      "name": "on_banner_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_on_banner_btn_text_v",
+      "label": "Tlačítko text",
+      "name": "on_banner_btn_text",
+      "type": "text"
+    },
+    {
+      "key": "field_on_banner_btn_url_v",
+      "label": "Tlačítko URL",
+      "name": "on_banner_btn_url",
+      "type": "url"
+    },
+    {
+      "key": "field_on_banner_image_v",
+      "label": "Obrázek pozadí",
+      "name": "on_banner_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+
+    {
+      "key": "field_on_aktuality_tab",
+      "label": "6. Aktuality",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_aktuality_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_aktuality_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_aktuality_heading_v",
+      "label": "Nadpis",
+      "name": "on_aktuality_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_on_aktuality_text_v",
+      "label": "Popis",
+      "name": "on_aktuality_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+
+    {
+      "key": "field_on_recenze_tab",
+      "label": "7. Recenze",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_recenze_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_recenze_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+
+    {
+      "key": "field_on_formular_tab",
+      "label": "8. Formulář",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_on_formular_zobrazit",
+      "label": "Zobrazit",
+      "name": "on_formular_zobrazit",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_on_formular_heading_v",
+      "label": "Nadpis",
+      "name": "on_formular_heading",
+      "type": "text"
+    },
+    {
+      "key": "field_on_formular_text_v",
+      "label": "Popis",
+      "name": "on_formular_text",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-o-nas.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "active": true
+}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Component: Školení list card (archive view).
  * Figma: Full-width row, title + desc, meta columns (Datum, Úroveň, Délka, Kapacita, Typ, Cena), CTA.
@@ -20,12 +21,14 @@ $datum = '';
 $kapacita_text = '';
 $cas_od = '';
 $cas_do = '';
+$termin_uroven = '';
 if (is_array($terminy) && !empty($terminy)) {
 	foreach ($terminy as $i => $t) {
 		if (!empty($t['datum'])) {
 			$datum = $t['datum'];
 			$cas_od = $t['cas_od'] ?? '';
 			$cas_do = $t['cas_do'] ?? '';
+			$termin_uroven = $t['uroven'] ?? '';
 			$dostupnost = xevos_get_termin_dostupnost(get_the_ID(), $i);
 			$kapacita_text = $dostupnost['label'];
 			break;
@@ -62,17 +65,25 @@ if ($cas_od && $cas_do) {
 				</div>
 			<?php endif; ?>
 
-			<div class="xevos-skoleni-list-card__meta-col">
-				<span class="xevos-skoleni-list-card__meta-label">Úroveň školení</span>
-				<span class="xevos-skoleni-list-card__meta-value">
-					<img src="<?php echo esc_url(get_theme_file_uri('assets/img/prehled-skoleni/uroven-skoleni.svg')); ?>" alt="" width="24" height="24">
-					Základní
-				</span>
-			</div>
+			<?php
+			$uroven_labels = [
+				'zakladni' => 'Základní',
+				'pokrocily' => 'Pokročilý',
+				'expert' => 'Expert',
+			];
+			if ($termin_uroven) : ?>
+				<div class="xevos-skoleni-list-card__meta-col">
+					<span class="xevos-skoleni-list-card__meta-label">Úroveň uživatelů</span>
+					<span class="xevos-skoleni-list-card__meta-value">
+						<img src="<?php echo esc_url(get_theme_file_uri('assets/img/prehled-skoleni/uroven-skoleni.svg')); ?>" alt="" width="24" height="24">
+						<?php echo esc_html($uroven_labels[$termin_uroven] ?? ucfirst($termin_uroven)); ?>
+					</span>
+				</div>
+			<?php endif; ?>
 
 			<?php if ($delka) : ?>
 				<div class="xevos-skoleni-list-card__meta-col">
-					<span class="xevos-skoleni-list-card__meta-label">Délka školení</span>
+					<span class="xevos-skoleni-list-card__meta-label">Délka eventu</span>
 					<span class="xevos-skoleni-list-card__meta-value">
 						<img src="<?php echo esc_url(get_theme_file_uri('assets/img/prehled-skoleni/delka-skoleni.svg')); ?>" alt="" width="24" height="24">
 						<?php echo esc_html($delka); ?>
@@ -95,7 +106,7 @@ if ($cas_od && $cas_do) {
 
 			<?php if ($typ) : ?>
 				<div class="xevos-skoleni-list-card__meta-col">
-					<span class="xevos-skoleni-list-card__meta-label">Typ školení</span>
+					<span class="xevos-skoleni-list-card__meta-label">Typ eventu</span>
 					<span class="xevos-skoleni-list-card__meta-value">
 						<img src="<?php echo esc_url(get_theme_file_uri('assets/img/prehled-skoleni/typ-skoleni.svg')); ?>" alt="" width="24" height="24">
 						<?php echo esc_html($typ_labels[$typ] ?? ucfirst($typ)); ?>

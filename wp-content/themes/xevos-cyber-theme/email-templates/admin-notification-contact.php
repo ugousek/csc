@@ -1,39 +1,99 @@
 <!DOCTYPE html>
-<html lang="cs">
-<head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;background-color:#f4f4f7;font-family:Arial,Helvetica,sans-serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f7;">
-<tr><td align="center" style="padding:40px 0;">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;overflow:hidden;">
+<html lang="cs" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<title>Nová zpráva z kontaktního formuláře</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+<style type="text/css">
+@media only screen and (max-width:620px){
+  .wrapper{width:100%!important;min-width:100%!important;}
+  .body-cell{padding:24px!important;}
+}
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#0d1117;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d1117;">
+<tr><td align="center" style="padding:40px 16px;">
 
-<tr><td style="background-color:#0f172a;padding:24px 40px;text-align:center;">
-	<h1 style="color:#ffffff;margin:0;font-size:20px;">Nová zpráva z kontaktního formuláře</h1>
-</td></tr>
+<!--[if mso]><table role="presentation" align="center" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+<table class="wrapper" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;background-color:#111827;">
 
-<tr><td style="padding:30px 40px;">
-	<table role="presentation" width="100%" cellpadding="6" cellspacing="0" style="font-size:14px;">
-		<tr><td style="color:#64748b;width:100px;">Jméno:</td><td style="color:#333;font-weight:bold;"><?php echo esc_html( ( $email_data['jmeno'] ?? '' ) . ' ' . ( $email_data['prijmeni'] ?? '' ) ); ?></td></tr>
-		<tr><td style="color:#64748b;">E-mail:</td><td style="color:#333;"><?php echo esc_html( $email_data['email'] ?? '' ); ?></td></tr>
-		<tr><td style="color:#64748b;">Telefon:</td><td style="color:#333;"><?php echo esc_html( $email_data['telefon'] ?? '—' ); ?></td></tr>
-	</table>
+<!-- HEADER -->
+<tr>
+  <td style="background-color:#0a0f1a;padding:22px 40px;text-align:center;">
+    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/global/logo-footer.png" width="280" alt="XEVOS" style="display:block;margin:0 auto;border:0;outline:0;text-decoration:none;-ms-interpolation-mode:bicubic;">
+    <p style="margin:10px 0 0;font-size:11px;color:#64748b;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1px;">Administrátorská notifikace</p>
+  </td>
+</tr>
+<!-- ACCENT LINE -->
+<tr>
+  <td style="background-color:#F527AA;font-size:0;line-height:3px;mso-line-height-rule:exactly;padding:0;">&nbsp;</td>
+</tr>
 
-	<?php if ( ! empty( $email_data['zprava'] ) ) : ?>
-	<div style="margin-top:20px;padding:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;">
-		<p style="font-size:13px;color:#64748b;margin:0 0 8px;font-weight:bold;">Zpráva:</p>
-		<p style="font-size:14px;color:#333;margin:0;white-space:pre-wrap;"><?php echo esc_html( $email_data['zprava'] ); ?></p>
-	</div>
-	<?php endif; ?>
+<!-- TITLE BAR -->
+<tr>
+  <td style="background-color:#0f172a;padding:16px 40px;">
+    <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">Nová zpráva z kontaktního formuláře</p>
+  </td>
+</tr>
 
-	<p style="text-align:center;margin:30px 0 10px;">
-		<a href="mailto:<?php echo esc_attr( $email_data['email'] ?? '' ); ?>" style="display:inline-block;background:#3b82f6;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:14px;">Odpovědět</a>
-	</p>
-</td></tr>
+<!-- BODY -->
+<tr>
+  <td class="body-cell" style="padding:32px 40px;background-color:#111827;">
 
-<tr><td style="background-color:#f8fafc;padding:16px 40px;text-align:center;border-top:1px solid #e2e8f0;">
-	<p style="font-size:12px;color:#94a3b8;margin:0;">Automatická notifikace z webu</p>
-</td></tr>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #1e293b;margin-bottom:24px;">
+      <tr style="background-color:#0f172a;">
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;width:100px;border-bottom:1px solid #1e293b;">Jméno:</td>
+        <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;font-weight:600;border-bottom:1px solid #1e293b;"><?php echo esc_html( trim( ( $email_data['jmeno'] ?? '' ) . ' ' . ( $email_data['prijmeni'] ?? '' ) ) ); ?></td>
+      </tr>
+      <tr>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;">E-mail:</td>
+        <td style="padding:10px 16px;font-size:14px;border-bottom:1px solid #1e293b;"><a href="mailto:<?php echo esc_attr( $email_data['email'] ?? '' ); ?>" style="color:#F527AA;text-decoration:none;font-family:Arial,Helvetica,sans-serif;"><?php echo esc_html( $email_data['email'] ?? '' ); ?></a></td>
+      </tr>
+      <tr style="background-color:#0f172a;">
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;">Telefon:</td>
+        <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;"><?php echo esc_html( $email_data['telefon'] ?? '—' ); ?></td>
+      </tr>
+    </table>
+
+    <?php if ( ! empty( $email_data['zprava'] ) ) : ?>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
+      <tr>
+        <td style="background-color:#0f172a;border:1px solid #1e293b;border-left:4px solid #F527AA;padding:16px 20px;">
+          <p style="margin:0 0 8px;font-size:12px;color:#64748b;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Zpráva</p>
+          <p style="margin:0;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;line-height:1.7;white-space:pre-wrap;"><?php echo esc_html( $email_data['zprava'] ); ?></p>
+        </td>
+      </tr>
+    </table>
+    <?php endif; ?>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td align="center">
+          <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="mailto:<?php echo esc_attr( $email_data['email'] ?? '' ); ?>" style="height:44px;v-text-anchor:middle;width:180px;" arcsize="8%" strokecolor="#F527AA" fillcolor="#F527AA"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;">Odpovědět</center></v:roundrect><![endif]-->
+          <!--[if !mso]><!--><a href="mailto:<?php echo esc_attr( $email_data['email'] ?? '' ); ?>" style="display:inline-block;background-color:#F527AA;color:#ffffff;padding:12px 28px;text-decoration:none;font-weight:700;font-size:14px;font-family:Arial,Helvetica,sans-serif;border-radius:4px;">Odpovědět</a><!--<![endif]-->
+        </td>
+      </tr>
+    </table>
+
+  </td>
+</tr>
+
+<!-- FOOTER -->
+<tr>
+  <td style="background-color:#0a0f1a;padding:16px 40px;border-top:1px solid #1e293b;text-align:center;">
+    <p style="margin:0;font-size:12px;color:#374151;font-family:Arial,Helvetica,sans-serif;">Automatická notifikace z webu &bull; <?php echo esc_html( gmdate( 'd.m.Y H:i' ) ); ?></p>
+  </td>
+</tr>
 
 </table>
+<!--[if mso]></td></tr></table><![endif]-->
+
 </td></tr>
 </table>
 </body>

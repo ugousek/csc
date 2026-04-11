@@ -21,8 +21,14 @@ function xevos_enqueue_assets(): void {
 		$version
 	);
 
-	// Kyber testování page-specific CSS + JS.
-	if ( is_page_template( 'page-kyberneticke-testovani.php' ) ) {
+	// Kyber testování CSS + JS (shared across kyber, služby, nis2, o nás).
+	if (
+		is_page_template( 'page-kyberneticke-testovani.php' ) ||
+		is_page_template( 'page-sluzby.php' ) ||
+		is_page_template( 'page-nis2.php' ) ||
+		is_page_template( 'page-o-nas.php' ) ||
+		is_front_page()
+	) {
 		wp_enqueue_style(
 			'xevos-kyber-testovani',
 			$theme_uri . '/assets/css/kyber-testovani.css',
@@ -86,6 +92,36 @@ function xevos_enqueue_assets(): void {
 		wp_enqueue_style(
 			'xevos-search',
 			$theme_uri . '/assets/css/search.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// Služby CSS.
+	if ( is_page_template( 'page-sluzby.php' ) ) {
+		wp_enqueue_style(
+			'xevos-sluzby',
+			$theme_uri . '/assets/css/sluzby.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// NIS 2 CSS.
+	if ( is_page_template( 'page-nis2.php' ) ) {
+		wp_enqueue_style(
+			'xevos-nis2',
+			$theme_uri . '/assets/css/nis2.css',
+			[ 'xevos-main' ],
+			$version
+		);
+	}
+
+	// O nás CSS.
+	if ( is_page_template( 'page-o-nas.php' ) ) {
+		wp_enqueue_style(
+			'xevos-o-nas',
+			$theme_uri . '/assets/css/o-nas.css',
 			[ 'xevos-main' ],
 			$version
 		);

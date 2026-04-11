@@ -339,6 +339,22 @@ body.home .xevos-glow-blob--multiply {
   color: var(--color-white);
 }
 
+@media (max-width: 1921px) {
+  .xevos-hero__emergency {
+    right: 17px;
+  }
+
+  .xevos-emergency-badge {
+    padding: 15px 15px 15px 3px;
+    gap: 8px;
+  }
+
+  .xevos-emergency-badge__icon {
+    width: 120px;
+    height: auto;
+  }
+}
+
 @media (max-width: 1650px) {
   .xevos-hero__emergency {
     right: 2rem;
@@ -766,6 +782,15 @@ body.home .xevos-glow-blob--multiply {
   text-transform: none;
   line-height: 1.22;
   letter-spacing: -0.02em;
+}
+
+.xevos-eventy__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.xevos-eventy__title a:hover {
+  color: var(--color-accent);
 }
 
 .xevos-eventy__title strong {
@@ -1482,6 +1507,10 @@ body.home .xevos-glow-blob--multiply {
   .xevos-hero {
     margin-bottom: 0;
     padding-top: 100px;
+  }
+
+  .xevos-hero__lottie {
+    top: 250px;
   }
 
   .xevos-hero__desc {

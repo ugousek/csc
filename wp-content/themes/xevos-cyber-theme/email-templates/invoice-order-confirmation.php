@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting">
-<title>Potvrzení objednávky</title>
+<title>Objednávka přijata – platba na fakturu</title>
 <!--[if mso]>
 <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
 <![endif]-->
@@ -38,9 +38,9 @@
 <tr>
   <td class="body-cell" style="padding:40px;background-color:#111827;">
 
-    <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#ffffff;font-family:Arial,Helvetica,sans-serif;line-height:1.3;">Potvrzení objednávky</h1>
+    <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#ffffff;font-family:Arial,Helvetica,sans-serif;line-height:1.3;">Objednávka přijata</h1>
     <p style="margin:0 0 28px;font-size:15px;color:#94a3b8;font-family:Arial,Helvetica,sans-serif;line-height:1.6;">Dobrý den, <strong style="color:#e2e8f0;"><?php echo esc_html( $email_data['jmeno'] ?? '' ); ?></strong>,</p>
-    <p style="margin:0 0 28px;font-size:15px;color:#cbd5e1;font-family:Arial,Helvetica,sans-serif;line-height:1.6;">Děkujeme za Vaši objednávku. Níže naleznete souhrn:</p>
+    <p style="margin:0 0 28px;font-size:15px;color:#cbd5e1;font-family:Arial,Helvetica,sans-serif;line-height:1.6;">Vaše objednávka byla přijata. Níže naleznete souhrn a platební instrukce.</p>
 
     <!-- ORDER TABLE -->
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;border:1px solid #1e293b;">
@@ -57,22 +57,36 @@
         <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;border-top:1px solid #1e293b;font-weight:600;"><?php echo esc_html( $email_data['termin'] ?? '' ); ?></td>
       </tr>
       <tr>
-        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-top:1px solid #1e293b;">Cena</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-top:1px solid #1e293b;">Celková cena</td>
         <td style="padding:10px 16px;font-size:16px;color:#F527AA;font-family:Arial,Helvetica,sans-serif;border-top:1px solid #1e293b;font-weight:700;"><?php echo esc_html( $email_data['cena'] ?? '' ); ?> Kč</td>
       </tr>
     </table>
 
-    <?php if ( ! empty( $email_data['payment_url'] ) ) : ?>
-    <!-- CTA BUTTON -->
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;">
+    <!-- PAYMENT INSTRUCTIONS -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;border:1px solid #2d3748;border-radius:4px;background-color:#0f172a;">
       <tr>
-        <td align="center" style="padding:8px 0;">
-          <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<?php echo esc_url( $email_data['payment_url'] ); ?>" style="height:48px;v-text-anchor:middle;width:220px;" arcsize="8%" strokecolor="#F527AA" fillcolor="#F527AA"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Dokončit platbu</center></v:roundrect><![endif]-->
-          <!--[if !mso]><!--><a href="<?php echo esc_url( $email_data['payment_url'] ); ?>" style="display:inline-block;background-color:#F527AA;color:#ffffff;padding:14px 36px;text-decoration:none;font-weight:700;font-size:15px;font-family:Arial,Helvetica,sans-serif;border-radius:4px;">Dokončit platbu</a><!--<![endif]-->
+        <td style="padding:16px 20px;">
+          <p style="margin:0 0 14px;font-size:14px;font-weight:700;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;">Platební instrukce</p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <?php if ( ! empty( $email_data['cislo_uctu'] ) ) : ?>
+            <tr>
+              <td style="padding:4px 0;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;width:130px;">Číslo účtu</td>
+              <td style="padding:4px 0;font-size:13px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;font-weight:600;"><?php echo esc_html( $email_data['cislo_uctu'] ); ?></td>
+            </tr>
+            <?php endif; ?>
+            <tr>
+              <td style="padding:4px 0;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;">Variabilní symbol</td>
+              <td style="padding:4px 0;font-size:13px;color:#F527AA;font-family:Arial,Helvetica,sans-serif;font-weight:700;"><?php echo esc_html( preg_replace( '/\D/', '', $email_data['vs'] ?? '' ) ?: ( $email_data['cislo_objednavky'] ?? '' ) ); ?></td>
+            </tr>
+            <tr>
+              <td style="padding:4px 0;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;">Částka</td>
+              <td style="padding:4px 0;font-size:13px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;font-weight:600;"><?php echo esc_html( $email_data['cena'] ?? '' ); ?> Kč</td>
+            </tr>
+          </table>
+          <p style="margin:14px 0 0;font-size:12px;color:#4b5563;font-family:Arial,Helvetica,sans-serif;line-height:1.6;">Faktura vám bude zaslána e-mailem. Vaše přihlášení bude potvrzeno po připsání platby.</p>
         </td>
       </tr>
     </table>
-    <?php endif; ?>
 
     <p style="margin:0;font-size:13px;color:#4b5563;font-family:Arial,Helvetica,sans-serif;line-height:1.6;">Pokud máte jakékoli dotazy, kontaktujte nás na <a href="mailto:<?php echo esc_attr( $email_data['kontakt_email'] ?? 'hello@xevos.eu' ); ?>" style="color:#F527AA;text-decoration:none;"><?php echo esc_html( $email_data['kontakt_email'] ?? 'hello@xevos.eu' ); ?></a>.</p>
 

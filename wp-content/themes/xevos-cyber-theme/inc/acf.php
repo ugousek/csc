@@ -139,13 +139,16 @@ function xevos_get_termin_dostupnost( int $skoleni_id, int $termin_index ): arra
 		];
 	}
 
-	$termin    = $terminy[ $termin_index ];
-	$kapacita  = (int) ( $termin['kapacita'] ?? 0 );
-	$registrace = (int) ( $termin['pocet_registraci'] ?? 0 );
+	$termin     = $terminy[ $termin_index ];
+	$kapacita   = (int) ( $termin['kapacita'] ?? 0 );
+	$termin_key = function_exists( 'xevos_termin_key' ) ? xevos_termin_key( $termin ) : ( $termin['datum'] ?? '' );
+	$registrace = function_exists( 'xevos_count_active_registrations' )
+		? xevos_count_active_registrations( $skoleni_id, $termin_key )
+		: 0;
 
-	$volna  = max( 0, $kapacita - $registrace );
-	$plne   = $registrace >= $kapacita;
-	$procent = $kapacita > 0 ? ( $registrace / $kapacita ) * 100 : 100;
+	$volna  = $kapacita > 0 ? max( 0, $kapacita - $registrace ) : PHP_INT_MAX;
+	$plne   = $kapacita > 0 && $registrace >= $kapacita;
+	$procent = $kapacita > 0 ? ( $registrace / $kapacita ) * 100 : 0;
 
 	// Label logic:
 	// 0-50% obsazeno → "K dispozici"
