@@ -134,8 +134,10 @@ function xevos_pdf_faktura_readonly( array $field ): array {
 	$invoice_url  = get_post_meta( $post_id, '_xevos_invoice_url', true );
 	$invoice_num  = get_post_meta( $post_id, '_xevos_invoice_number', true );
 
-	// Replace the field with a read-only message.
-	$field['type'] = 'message';
+	// Replace the field with a read-only message (set all required message-field keys).
+	$field['type']      = 'message';
+	$field['esc_html']  = 0;
+	$field['new_lines'] = 'wpautop';
 	if ( $invoice_url ) {
 		$label = $invoice_num ? esc_html( $invoice_num ) : 'Stáhnout fakturu';
 		$field['message'] = sprintf(

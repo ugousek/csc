@@ -2709,6 +2709,15 @@ body::after {
   text-transform: uppercase;
   letter-spacing: 0.01em;
   margin-bottom: 0.625rem;
+
+}
+
+.xevos-kyber-test__header h2 a {
+  color: var(--color-white);
+}
+
+.xevos-kyber-test__header h2 a:hover {
+  color: var(--color-accent);
 }
 
 .xevos-kyber-test__desc,
@@ -3466,6 +3475,11 @@ body::after {
   display: block;
   -webkit-mask-image: radial-gradient(ellipse 45% 56% at center, #000 40%, transparent 100%);
   mask-image: radial-gradient(ellipse 45% 56% at center, #000 40%, transparent 100%);
+}
+
+.xevos-blog-hero__image--no-mask img {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 @media (max-width: 767px) {

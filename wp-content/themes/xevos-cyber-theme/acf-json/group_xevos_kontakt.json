@@ -3,6 +3,12 @@
   "title": "Kontakt",
   "fields": [
     {
+      "key": "field_kontakt_hero_tab",
+      "label": "Hero",
+      "name": "",
+      "type": "tab"
+    },
+    {
       "key": "field_kontakt_heading",
       "label": "Nadpis",
       "name": "kontakt_heading",
@@ -26,6 +32,15 @@
       "type": "image",
       "return_format": "array",
       "preview_size": "medium"
+    },
+    {
+      "key": "field_kontakt_hero_maska",
+      "label": "Hero obrázek – maska",
+      "name": "kontakt_hero_maska",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "instructions": "Zapnutá = obrázek má radial-gradient masku (výchozí). Vypnutá = obrázek bez masky."
     }
   ],
   "location": [

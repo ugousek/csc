@@ -26,10 +26,32 @@ $cta_img_url_bg   = $cta_image ? $cta_image['url'] : get_theme_file_uri('assets/
 $query = new WP_Query([
 	'post_type'      => 'skoleni',
 	'post_status'    => 'publish',
-	'posts_per_page' => $count,
+	'posts_per_page' => -1,
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 ]);
+
+/* Sort posts by their nearest future termin date */
+$today = strtotime( 'today' );
+$posts_with_date = [];
+if ( $query->have_posts() ) {
+	foreach ( $query->posts as $_ev_post ) {
+		$terminy = get_field( 'terminy', $_ev_post->ID );
+		$nearest_ts = PHP_INT_MAX;
+		if ( $terminy ) {
+			foreach ( $terminy as $t ) {
+				if ( empty( $t['datum'] ) ) continue;
+				$ts = strtotime( str_replace( '.', '-', $t['datum'] ) );
+				if ( $ts && $ts >= $today && $ts < $nearest_ts ) {
+					$nearest_ts = $ts;
+				}
+			}
+		}
+		$posts_with_date[] = [ 'post' => $_ev_post, 'nearest_ts' => $nearest_ts ];
+	}
+	usort( $posts_with_date, fn( $a, $b ) => $a['nearest_ts'] <=> $b['nearest_ts'] );
+	$posts_with_date = array_slice( $posts_with_date, 0, $count );
+}
 
 /* Map typ values to display labels */
 $typ_labels = [
@@ -64,9 +86,11 @@ $typ_colors = [
 						<div class="xevos-eventy__scrollbar-thumb"></div>
 					</div>
 					<div class="xevos-eventy__list">
-						<?php if ($query->have_posts()) : ?>
+						<?php if ( ! empty( $posts_with_date ) ) : ?>
 							<?php $i = 0;
-							while ($query->have_posts()) : $query->the_post();
+							foreach ( $posts_with_date as $pwd ) :
+								$post = $pwd['post'];
+								setup_postdata( $GLOBALS['post'] = $post );
 								$terminy = get_field('terminy');
 								$typ     = get_field('typ') ?: 'prezencni';
 
@@ -75,7 +99,9 @@ $typ_colors = [
 								$nejblizsi_index = 0;
 								if ($terminy) {
 									foreach ($terminy as $idx => $t) {
-										if (! empty($t['datum'])) {
+										if ( empty($t['datum']) ) continue;
+										$ts = strtotime( str_replace('.', '-', $t['datum']) );
+										if ( $ts && $ts >= $today ) {
 											$nejblizsi       = $t;
 											$nejblizsi_index = $idx;
 											break;
@@ -106,7 +132,7 @@ $typ_colors = [
 								<div class="xevos-eventy__item<?php echo $i === 0 ? ' xevos-eventy__item--first' : ''; ?>">
 									<div class="xevos-eventy__date">
 										<?php if ($month && $day) : ?>
-											<span class="xevos-eventy__date-month"><?php echo esc_html($month); ?></span><span class="xevos-eventy__date-slash">/</span><span class="xevos-eventy__date-day"><?php echo esc_html($day); ?></span>
+											<span class="xevos-eventy__date-day"><?php echo esc_html($day); ?></span><span class="xevos-eventy__date-slash">/</span><span class="xevos-eventy__date-month"><?php echo esc_html($month); ?></span>
 										<?php endif; ?>
 									</div>
 
@@ -132,7 +158,7 @@ $typ_colors = [
 									</div>
 								</div>
 							<?php $i++;
-							endwhile;
+							endforeach;
 							wp_reset_postdata(); ?>
 							<?php else :
 							/* Testovací data — zobrazí se když nejsou žádná školení v DB */
@@ -147,7 +173,7 @@ $typ_colors = [
 							foreach ($demo_events as $di => $demo) : ?>
 								<div class="xevos-eventy__item<?php echo $di === 0 ? ' xevos-eventy__item--first' : ''; ?>">
 									<div class="xevos-eventy__date">
-										<span class="xevos-eventy__date-month"><?php echo $demo['month']; ?></span><span class="xevos-eventy__date-slash">/</span><span class="xevos-eventy__date-day"><?php echo $demo['day']; ?></span>
+										<span class="xevos-eventy__date-day"><?php echo $demo['day']; ?></span><span class="xevos-eventy__date-slash">/</span><span class="xevos-eventy__date-month"><?php echo $demo['month']; ?></span>
 									</div>
 									<div class="xevos-eventy__content">
 										<h3 class="xevos-eventy__title"><?php echo $demo['title']; ?></h3>

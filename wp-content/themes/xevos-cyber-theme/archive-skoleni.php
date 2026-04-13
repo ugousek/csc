@@ -30,6 +30,7 @@ $terms = get_terms(['taxonomy' => 'kategorie-skoleni', 'hide_empty' => false]);
 		'heading'     => $ska_heading,
 		'description' => $ska_desc,
 		'image_url'   => $ska_img_url,
+		'image_mask'  => !in_array( get_field('ska_hero_maska', 'option'), [ false, 0, '0' ], true ),
 	]); ?>
 
 	<section class="xevos-section xevos-skoleni-archive">

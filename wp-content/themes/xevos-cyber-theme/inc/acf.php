@@ -97,28 +97,8 @@ add_action( 'acf/save_post', function ( $post_id ): void {
 	}
 }, 20 );
 
-/**
- * Register Školení field group via PHP (overrides DB version).
- */
-add_action( 'acf/init', 'xevos_register_skoleni_fields' );
-
-function xevos_register_skoleni_fields(): void {
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
-	}
-
-	$json = file_get_contents( XEVOS_THEME_DIR . '/acf-json/group_xevos_skoleni.json' );
-	if ( ! $json ) {
-		return;
-	}
-
-	$group = json_decode( $json, true );
-	if ( ! $group || empty( $group['key'] ) ) {
-		return;
-	}
-
-	acf_add_local_field_group( $group );
-}
+// Školení field group is loaded automatically via acf/settings/load_json path above.
+// No manual acf_add_local_field_group() call needed — duplicate registration caused ACF conflicts.
 
 /**
  * Get training availability info.

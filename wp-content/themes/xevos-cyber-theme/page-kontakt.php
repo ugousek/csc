@@ -28,6 +28,7 @@ $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/ko
 		'heading'     => get_field('kontakt_heading') ?: 'Kontaktujte naše specialisty',
 		'description' => get_field('kontakt_popis') ?: 'Jsme připraveni konzultovat vaše bezpečnostní potřeby a navrhnout řešení na míru vaší organizaci. Ať už řešíte prevenci, aktuální incident nebo dlouhodobou strategii, pomůžeme vám posílit ochranu dat, infrastruktury a uživatelů.',
 		'image_url'   => $hero_img_url,
+		'image_mask'  => !in_array( get_field('kontakt_hero_maska'), [ false, 0, '0' ], true ),
 	]); ?>
 
 	<!-- Form + Contact info — Figma: 902px form | 574px info, gap 124px -->

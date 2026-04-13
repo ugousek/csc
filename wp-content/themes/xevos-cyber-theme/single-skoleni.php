@@ -16,7 +16,21 @@ while (have_posts()) : the_post();
 	$cena        = get_field('cena');
 	$cena_s_dph  = get_field('cena_s_dph');
 	$typ         = get_field('typ');
-	$lektori     = get_field('lektori');
+	// Lektoři: preferujeme výběr z databáze (lektori_db), fallback = inline repeater.
+	$lektori_db_raw = get_field('lektori_db');
+	if ( ! empty( $lektori_db_raw ) && is_array( $lektori_db_raw ) ) {
+		$lektori = array_map( function( $post ) {
+			$foto = get_field( 'lektor_foto', $post->ID );
+			return [
+				'jmeno'  => get_field( 'lektor_jmeno', $post->ID ) ?: $post->post_title,
+				'pozice' => get_field( 'lektor_pozice', $post->ID ) ?: '',
+				'foto'   => $foto ?: '',
+				'bio'    => get_field( 'lektor_bio', $post->ID ) ?: '',
+			];
+		}, $lektori_db_raw );
+	} else {
+		$lektori = get_field('lektori');
+	}
 	$harmonogram = get_field('harmonogram');
 	$osnova      = get_field('osnova');
 	$terminy     = get_field('terminy');
@@ -68,6 +82,7 @@ while (have_posts()) : the_post();
 			'image_url'   => $hero_img,
 			'css_class'   => 'xevos-skoleni-hero',
 			'loading'     => 'eager',
+			'image_mask'  => !in_array( get_field('hero_maska'), [ false, 0, '0' ], true ),
 		]);
 		?>
 
@@ -95,7 +110,7 @@ while (have_posts()) : the_post();
 							$t_uroven = $t['uroven'] ?? '';
 							$t_uroven_label = ['zakladni' => 'Základní', 'pokrocily' => 'Pokročilý', 'expert' => 'Expert'][$t_uroven] ?? '';
 						?>
-							<div class="xevos-termin-card<?php echo $dost['plne'] ? ' xevos-termin-card--full' : ''; ?>"<?php if (!$dost['plne']) : ?> data-termin="<?php echo esc_attr(xevos_termin_key($t)); ?>" role="button" tabindex="0"<?php endif; ?>>
+							<div class="xevos-termin-card<?php echo $dost['plne'] ? ' xevos-termin-card--full' : ''; ?>" <?php if (!$dost['plne']) : ?> data-termin="<?php echo esc_attr(xevos_termin_key($t)); ?>" role="button" tabindex="0" <?php endif; ?>>
 								<div class="xevos-termin-card__date"><?php echo esc_html($t['datum'] ?? ''); ?></div>
 								<div class="xevos-termin-card__location"><?php echo esc_html($t['misto'] ?? ''); ?></div>
 								<div class="xevos-termin-card__time"><?php echo esc_html(($t['cas_od'] ?? '') . ' – ' . ($t['cas_do'] ?? '')); ?></div>
@@ -350,201 +365,209 @@ while (have_posts()) : the_post();
 			<section class="xevos-section" id="objednavka">
 				<div class="xevos-section__container">
 
-				<?php if ($all_full) : ?>
-					<div class="xevos-order-full">
-						<h3>Kapacita naplněna</h3>
-						<p>Všechny termíny tohoto školení jsou bohužel obsazené. Kontaktujte nás pro informace o dalších termínech.</p>
-						<a href="<?php echo esc_url(home_url('/kontakt/')); ?>" class="xevos-btn xevos-btn--outline">Kontaktujte nás</a>
-					</div>
-				<?php else : ?>
-					<div class="xevos-skoleni-section-header">
-						<h2><?php echo esc_html($form_heading); ?></h2>
-						<?php if ($form_desc) : ?>
-							<div class="xevos-skoleni-section-header__desc"><?php echo wp_kses_post($form_desc); ?></div>
-						<?php endif; ?>
-					</div>
+					<?php if ($all_full) : ?>
+						<div class="xevos-order-full">
+							<h3>Kapacita naplněna</h3>
+							<p>Všechny termíny tohoto školení jsou bohužel obsazené. Kontaktujte nás pro informace o dalších termínech.</p>
+							<a href="<?php echo esc_url(home_url('/kontakt/')); ?>" class="xevos-btn xevos-btn--outline">Kontaktujte nás</a>
+						</div>
+					<?php else : ?>
+						<div class="xevos-skoleni-section-header">
+							<h2><?php echo esc_html($form_heading); ?></h2>
+							<?php if ($form_desc) : ?>
+								<div class="xevos-skoleni-section-header__desc"><?php echo wp_kses_post($form_desc); ?></div>
+							<?php endif; ?>
+						</div>
 
-					<?php $invoice_mode = ! $is_free && function_exists('xevos_is_feature_enabled') && xevos_is_feature_enabled('invoice_payment'); ?>
-					<form class="xevos-order-section" method="post" id="xevos-order-form" data-free="<?php echo $is_free ? '1' : '0'; ?>" data-typ="<?php echo esc_attr($typ_prihlaseni); ?>" data-invoice="<?php echo $invoice_mode ? '1' : '0'; ?>">
-						<input type="hidden" name="action" value="<?php echo esc_attr($form_action); ?>">
-						<input type="hidden" name="skoleni_id" value="<?php echo esc_attr(get_the_ID()); ?>">
-						<input type="hidden" name="skoleni_nazev" value="<?php echo esc_attr(get_the_title()); ?>">
-						<input type="hidden" name="skoleni_cena" value="<?php echo esc_attr($is_free ? 0 : $cena_s_dph); ?>">
-						<input type="hidden" name="typ_prihlaseni" value="<?php echo esc_attr($typ_prihlaseni); ?>">
-						<?php wp_nonce_field('xevos_order', 'xevos_order_nonce'); ?>
-						<input type="hidden" name="_form_time" value="<?php echo esc_attr( function_exists( 'xevos_form_time_token' ) ? xevos_form_time_token() : '' ); ?>">
-					<?php if ( function_exists( 'xevos_turnstile_enabled' ) && xevos_turnstile_enabled() ) : ?>
-					<div class="cf-turnstile" data-sitekey="<?php echo esc_attr( xevos_get_option( 'turnstile_site_key' ) ); ?>" data-theme="dark"></div>
-					<?php endif; ?>
+						<?php $invoice_mode = ! $is_free && function_exists('xevos_is_feature_enabled') && xevos_is_feature_enabled('invoice_payment'); ?>
+						<form class="xevos-order-section" method="post" id="xevos-order-form" data-free="<?php echo $is_free ? '1' : '0'; ?>" data-typ="<?php echo esc_attr($typ_prihlaseni); ?>" data-invoice="<?php echo $invoice_mode ? '1' : '0'; ?>">
+							<input type="hidden" name="action" value="<?php echo esc_attr($form_action); ?>">
+							<input type="hidden" name="skoleni_id" value="<?php echo esc_attr(get_the_ID()); ?>">
+							<input type="hidden" name="skoleni_nazev" value="<?php echo esc_attr(get_the_title()); ?>">
+							<input type="hidden" name="skoleni_cena" value="<?php echo esc_attr($is_free ? 0 : $cena_s_dph); ?>">
+							<input type="hidden" name="typ_prihlaseni" value="<?php echo esc_attr($typ_prihlaseni); ?>">
+							<?php wp_nonce_field('xevos_order', 'xevos_order_nonce'); ?>
+							<input type="hidden" name="_form_time" value="<?php echo esc_attr(function_exists('xevos_form_time_token') ? xevos_form_time_token() : ''); ?>">
+							<?php if (function_exists('xevos_turnstile_enabled') && xevos_turnstile_enabled()) : ?>
+								<div class="cf-turnstile" data-sitekey="<?php echo esc_attr(xevos_get_option('turnstile_site_key')); ?>" data-theme="dark"></div>
+							<?php endif; ?>
 
-						<div class="xevos-order-form">
-							<div class="xevos-form-row">
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Jméno <span class="xevos-form__required">*</span></label>
-									<input type="text" class="xevos-form__input" name="jmeno" required>
-								</div>
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Příjmení <span class="xevos-form__required">*</span></label>
-									<input type="text" class="xevos-form__input" name="prijmeni" required>
-								</div>
-							</div>
-							<div class="xevos-form-row">
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Telefon <span class="xevos-form__required">*</span></label>
-									<input type="tel" class="xevos-form__input" name="telefon" required>
-								</div>
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">E-mail <span class="xevos-form__required">*</span></label>
-									<input type="email" class="xevos-form__input" name="email" required>
-								</div>
-							</div>
-							<div class="xevos-form-row">
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Školení <span class="xevos-form__required">*</span></label>
-									<select class="xevos-form__input" name="skoleni">
-										<option><?php the_title(); ?></option>
-									</select>
-								</div>
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Termín školení <span class="xevos-form__required">*</span></label>
-									<select class="xevos-form__input" name="termin" id="xevos-termin-select">
-										<?php if ($terminy) : foreach ($terminy as $ti => $t) :
-											$td = xevos_get_termin_dostupnost(get_the_ID(), $ti);
-										?>
-												<?php
-												$opt_label = $t['datum'] ?? '';
-												if (!empty($t['cas_od']) && !empty($t['cas_do'])) {
-													$opt_label .= ' | ' . $t['cas_od'] . ' – ' . $t['cas_do'];
-												}
-												if ($td['plne']) {
-													$opt_label .= ' (Obsazeno)';
-												}
-												?>
-												<option value="<?php echo esc_attr(xevos_termin_key($t)); ?>"<?php echo $td['plne'] ? ' disabled' : ''; ?>>
-													<?php echo esc_html($opt_label); ?>
-												</option>
-										<?php endforeach;
-										endif; ?>
-									</select>
-								</div>
-							</div>
-							<div class="xevos-form-row">
-								<?php if ($typ === 'hybrid') : ?>
+							<div class="xevos-order-form">
+								<div class="xevos-form-row">
 									<div class="xevos-form__group">
-										<label class="xevos-form__label">Forma účasti <span class="xevos-form__required">*</span></label>
-										<select class="xevos-form__input" name="forma" required>
-											<option value="">– vyberte formu –</option>
-											<option value="prezencni">Prezenčně (na místě)</option>
-											<option value="online">Online (stream)</option>
+										<label class="xevos-form__label">Jméno <span class="xevos-form__required">*</span></label>
+										<input type="text" class="xevos-form__input" name="jmeno" required>
+									</div>
+									<div class="xevos-form__group">
+										<label class="xevos-form__label">Příjmení <span class="xevos-form__required">*</span></label>
+										<input type="text" class="xevos-form__input" name="prijmeni" required>
+									</div>
+								</div>
+								<div class="xevos-form-row">
+									<div class="xevos-form__group">
+										<label class="xevos-form__label">Telefon <span class="xevos-form__required">*</span></label>
+										<input type="tel" class="xevos-form__input" name="telefon" required>
+									</div>
+									<div class="xevos-form__group">
+										<label class="xevos-form__label">E-mail <span class="xevos-form__required">*</span></label>
+										<input type="email" class="xevos-form__input" name="email" required>
+									</div>
+								</div>
+								<div class="xevos-form-row">
+									<div class="xevos-form__group">
+										<label class="xevos-form__label">Event <span class="xevos-form__required">*</span></label>
+										<select class="xevos-form__input" name="skoleni">
+											<option><?php the_title(); ?></option>
 										</select>
 									</div>
-								<?php endif; ?>
-								<div class="xevos-form__group">
-									<label class="xevos-form__label">Počet účastníků <span class="xevos-form__required">*</span></label>
-									<input type="number" class="xevos-form__input" name="pocet" min="1" value="1">
-								</div>
-								<?php if ($typ !== 'hybrid') : ?>
 									<div class="xevos-form__group">
-										<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="firma">
-									</div>
-								<?php endif; ?>
-							</div>
-							<?php if ($typ === 'hybrid') : ?>
-								<div class="xevos-form-row">
-									<div class="xevos-form__group">
-										<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="firma">
-									</div>
-								</div>
-							<?php endif; ?>
-							<?php if (! $is_free) : ?>
-								<div class="xevos-form-row">
-									<div class="xevos-form__group">
-										<label class="xevos-form__label">IČ <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="ico">
-									</div>
-									<div class="xevos-form__group">
-										<label class="xevos-form__label">DIČ</label>
-										<input type="text" class="xevos-form__input" name="dic">
+										<label class="xevos-form__label">Termín <span class="xevos-form__required">*</span></label>
+										<select class="xevos-form__input" name="termin" id="xevos-termin-select">
+											<?php if ($terminy) : foreach ($terminy as $ti => $t) :
+													$td = xevos_get_termin_dostupnost(get_the_ID(), $ti);
+											?>
+													<?php
+													$opt_label = $t['datum'] ?? '';
+													if (!empty($t['cas_od']) && !empty($t['cas_do'])) {
+														$opt_label .= ' | ' . $t['cas_od'] . ' – ' . $t['cas_do'];
+													}
+													if ($td['plne']) {
+														$opt_label .= ' (Obsazeno)';
+													}
+													?>
+													<option value="<?php echo esc_attr(xevos_termin_key($t)); ?>" <?php echo $td['plne'] ? ' disabled' : ''; ?>>
+														<?php echo esc_html($opt_label); ?>
+													</option>
+											<?php endforeach;
+											endif; ?>
+										</select>
 									</div>
 								</div>
 								<div class="xevos-form-row">
-									<div class="xevos-form__group">
-										<label class="xevos-form__label">Ulice <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="ulice">
-									</div>
-									<div class="xevos-form__group">
-										<label class="xevos-form__label">Město <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="mesto">
-									</div>
-								</div>
-								<div class="xevos-form-row">
-									<div class="xevos-form__group">
-										<label class="xevos-form__label">PSČ <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="psc">
-									</div>
-									<div class="xevos-form__group">
-										<div class="xevos-form__checkbox-wrap">
-											<input type="checkbox" class="xevos-form__checkbox" name="platce_dph" id="platce_dph">
-											<label class="xevos-form__checkbox-label" for="platce_dph">Jsem plátce DPH</label>
-										</div>
-									</div>
-								</div>
-							<?php endif; ?>
-							<div class="xevos-form__hp"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-						</div>
-
-						<div class="xevos-order-summary">
-							<?php xevos_component('contact-info'); ?>
-
-							<div class="xevos-order-summary__price-block">
-								<?php if ($is_free) : ?>
-									<div class="xevos-order-summary__price-main">Zdarma</div>
-								<?php else : ?>
-									<div class="xevos-order-summary__price-label">Celková cena:</div>
-									<div class="xevos-order-summary__price-main">
-										<?php echo esc_html($cena_s_dph ? number_format((float) $cena_s_dph, 0, ',', ' ') . ' Kč' : '—'); ?>
-										<small>s DPH</small>
-									</div>
-									<?php if ($cena) : ?>
-										<div class="xevos-order-summary__price-secondary">
-											<?php echo esc_html(number_format((float) $cena, 0, ',', ' ')); ?> Kč bez DPH
+									<?php if ($typ === 'hybrid') : ?>
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">Forma účasti <span class="xevos-form__required">*</span></label>
+											<select class="xevos-form__input" name="forma" required>
+												<option value="">– vyberte formu –</option>
+												<option value="prezencni">Prezenčně (na místě)</option>
+												<option value="online">Online (stream)</option>
+											</select>
 										</div>
 									<?php endif; ?>
+									<div class="xevos-form__group">
+										<label class="xevos-form__label">Počet účastníků <span class="xevos-form__required">*</span></label>
+										<input type="number" class="xevos-form__input" name="pocet" min="1" value="1">
+									</div>
+									<?php if ($typ !== 'hybrid') : ?>
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
+											<input type="text" class="xevos-form__input" name="firma">
+										</div>
+									<?php endif; ?>
+								</div>
+								<?php if ($typ === 'hybrid') : ?>
+									<div class="xevos-form-row">
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
+											<input type="text" class="xevos-form__input" name="firma">
+										</div>
+									</div>
 								<?php endif; ?>
+								<?php if (! $is_free) : ?>
+									<div class="xevos-form-row">
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">IČ <span class="xevos-form__required">*</span></label>
+											<input type="text" class="xevos-form__input" name="ico">
+										</div>
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">DIČ</label>
+											<input type="text" class="xevos-form__input" name="dic">
+										</div>
+									</div>
+									<div class="xevos-form-row">
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">Ulice <span class="xevos-form__required">*</span></label>
+											<input type="text" class="xevos-form__input" name="ulice">
+										</div>
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">Město <span class="xevos-form__required">*</span></label>
+											<input type="text" class="xevos-form__input" name="mesto">
+										</div>
+									</div>
+									<div class="xevos-form-row">
+										<div class="xevos-form__group">
+											<label class="xevos-form__label">PSČ <span class="xevos-form__required">*</span></label>
+											<input type="text" class="xevos-form__input" name="psc">
+										</div>
+										<div class="xevos-form__group">
+											<div class="xevos-form__checkbox-wrap">
+												<input type="checkbox" class="xevos-form__checkbox" name="platce_dph" id="platce_dph">
+												<label class="xevos-form__checkbox-label" for="platce_dph">Jsem plátce DPH</label>
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>
+								<div class="xevos-form__hp"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
 							</div>
 
-							<?php if ($invoice_mode) : ?>
-							<div class="xevos-payment-method">
-								<label class="xevos-payment-method__option">
-									<input type="radio" name="payment_method" value="online" checked>
-									<span class="xevos-payment-method__label">
-										<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-										Platba kartou online
+							<div class="xevos-order-summary">
+								<?php xevos_component('contact-info'); ?>
+
+								<div class="xevos-order-summary__price-block">
+									<?php if ($is_free) : ?>
+										<div class="xevos-order-summary__price-main">Zdarma</div>
+									<?php else : ?>
+										<div class="xevos-order-summary__price-label">Celková cena:</div>
+										<div class="xevos-order-summary__price-main">
+											<?php echo esc_html($cena_s_dph ? number_format((float) $cena_s_dph, 0, ',', ' ') . ' Kč' : '—'); ?>
+											<small>s DPH</small>
+										</div>
+										<?php if ($cena) : ?>
+											<div class="xevos-order-summary__price-secondary">
+												<?php echo esc_html(number_format((float) $cena, 0, ',', ' ')); ?> Kč bez DPH
+											</div>
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+
+								<?php if ($invoice_mode) : ?>
+									<div class="xevos-payment-method">
+										<label class="xevos-payment-method__option">
+											<input type="radio" name="payment_method" value="online" checked>
+											<span class="xevos-payment-method__label">
+												<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+													<rect x="1" y="4" width="22" height="16" rx="2" />
+													<line x1="1" y1="10" x2="23" y2="10" />
+												</svg>
+												Platba kartou online
+											</span>
+										</label>
+										<label class="xevos-payment-method__option">
+											<input type="radio" name="payment_method" value="invoice">
+											<span class="xevos-payment-method__label">
+												<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+													<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+													<polyline points="14 2 14 8 20 8" />
+													<line x1="16" y1="13" x2="8" y2="13" />
+													<line x1="16" y1="17" x2="8" y2="17" />
+												</svg>
+												Platba na fakturu
+											</span>
+										</label>
+									</div>
+								<?php endif; ?>
+								<button type="submit" class="xevos-btn xevos-btn--primary" id="xevos-order-submit">
+									<span class="xevos-btn__arrow">
+										<svg width="39" height="39" viewBox="0 0 20 20" fill="none">
+											<path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
 									</span>
-								</label>
-								<label class="xevos-payment-method__option">
-									<input type="radio" name="payment_method" value="invoice">
-									<span class="xevos-payment-method__label">
-										<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-										Platba na fakturu
-									</span>
-								</label>
+									<?php echo esc_html(strtoupper($submit_label)); ?>
+								</button>
+								<div class="xevos-order-message" id="xevos-order-message" style="display:none;"></div>
 							</div>
-							<?php endif; ?>
-							<button type="submit" class="xevos-btn xevos-btn--primary" id="xevos-order-submit">
-								<span class="xevos-btn__arrow">
-									<svg width="39" height="39" viewBox="0 0 20 20" fill="none">
-										<path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-									</svg>
-								</span>
-								<?php echo esc_html(strtoupper($submit_label)); ?>
-							</button>
-							<div class="xevos-order-message" id="xevos-order-message" style="display:none;"></div>
-						</div>
-					</form>
-				<?php endif; /* !$all_full */ ?>
+						</form>
+					<?php endif; /* !$all_full */ ?>
 				</div>
 			</section>
 		<?php endif; ?>

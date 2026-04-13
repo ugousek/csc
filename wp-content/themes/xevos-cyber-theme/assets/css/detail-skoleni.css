@@ -446,6 +446,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .xevos-lektor-card__name-wrap {
@@ -1385,4 +1386,8 @@
 .xevos-payment-invoice-notice svg {
     flex-shrink: 0;
     opacity: 0.6;
+}
+
+.postid-398 {
+    display: none;
 }

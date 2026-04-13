@@ -36,7 +36,7 @@ $aka_img_url = $aka_image ? $aka_image['url'] : get_theme_file_uri('assets/img/b
 					<h1><?php echo wp_kses_post($aka_heading); ?></h1>
 					<p class="xevos-blog-hero__desc"><?php echo wp_kses_post(strip_tags($aka_desc, '<strong><b><em><br>')); ?></p>
 				</div>
-				<div class="xevos-blog-hero__image">
+				<div class="xevos-blog-hero__image<?php echo in_array( get_field('aka_hero_maska', 'option'), [ false, 0, '0' ], true ) ? ' xevos-blog-hero__image--no-mask' : ''; ?>">
 					<img src="<?php echo esc_url($aka_img_url); ?>" alt="Blog" loading="lazy">
 				</div>
 			</div>

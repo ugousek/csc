@@ -100,6 +100,15 @@
       "media_upload": 0
     },
     {
+      "key": "field_sk_hero_maska",
+      "label": "Hero obrázek – maska",
+      "name": "hero_maska",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "instructions": "Zapnutá = obrázek má radial-gradient masku (výchozí). Vypnutá = obrázek bez masky."
+    },
+    {
       "key": "field_sk_pro_koho_tab",
       "label": "2. Pro koho",
       "name": "",
@@ -221,8 +230,21 @@
       "instructions": "Prázdné = Obsahem vás provede:"
     },
     {
+      "key": "field_sk_lektori_db",
+      "label": "Lektoři z databáze",
+      "name": "lektori_db",
+      "type": "relationship",
+      "post_type": ["lektor"],
+      "filters": ["search"],
+      "elements": ["featured_image"],
+      "return_format": "object",
+      "min": 0,
+      "max": 0,
+      "instructions": "Vyberte lektory z databáze. Pokud nevyplníte, použijí se lektoři zadaní ručně níže."
+    },
+    {
       "key": "field_sk_lektori",
-      "label": "Lektoři",
+      "label": "Lektoři (ručně – pouze pokud není vybrán nikdo z databáze)",
       "name": "lektori",
       "type": "repeater",
       "layout": "block",

@@ -39,6 +39,15 @@
       "type": "image",
       "return_format": "array"
     },
+    {
+      "key": "field_kt_hero_maska",
+      "label": "Hero obrázek – maska",
+      "name": "kt_hero_maska",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "instructions": "Zapnutá = obrázek má radial-gradient masku (výchozí). Vypnutá = obrázek bez masky."
+    },
 
     {
       "key": "field_kt_slider_section_tab",

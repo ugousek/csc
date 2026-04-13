@@ -1,42 +1,42 @@
 {
-  "key": "group_xevos_aktuality_archive",
-  "title": "Archiv aktualit – nastavení",
+  "key": "group_xevos_eventy",
+  "title": "Eventy – nastavení stránky",
   "fields": [
     {
-      "key": "field_aka_hero_tab",
+      "key": "field_ev_hero_tab",
       "label": "Hero",
       "name": "",
       "type": "tab"
     },
     {
-      "key": "field_aka_heading",
-      "label": "Nadpis",
-      "name": "aka_heading",
+      "key": "field_ev_hero_heading",
+      "label": "Hero nadpis",
+      "name": "eventy_hero_heading",
       "type": "text",
-      "default_value": "Znalosti, které posilují bezpečnost",
+      "default_value": "Aktuální eventy a školení",
       "instructions": "Text ve &lt;strong&gt; bude růžový (accent)."
     },
     {
-      "key": "field_aka_description",
-      "label": "Popis",
-      "name": "aka_description",
+      "key": "field_ev_hero_popis",
+      "label": "Hero popis",
+      "name": "eventy_hero_popis",
       "type": "wysiwyg",
       "toolbar": "basic",
       "media_upload": 0,
-      "instructions": "Tučný text (B) = bílá barva (fw 400), zbytek šedý."
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
     },
     {
-      "key": "field_aka_image",
+      "key": "field_ev_hero_obrazek",
       "label": "Hero obrázek",
-      "name": "aka_image",
+      "name": "eventy_hero_obrazek",
       "type": "image",
       "return_format": "array",
       "preview_size": "medium"
     },
     {
-      "key": "field_aka_hero_maska",
+      "key": "field_ev_hero_maska",
       "label": "Hero obrázek – maska",
-      "name": "aka_hero_maska",
+      "name": "eventy_hero_maska",
       "type": "true_false",
       "default_value": 1,
       "ui": 1,
@@ -46,9 +46,9 @@
   "location": [
     [
       {
-        "param": "options_page",
+        "param": "page_template",
         "operator": "==",
-        "value": "xevos-aktuality-archive"
+        "value": "page-eventy.php"
       }
     ]
   ],

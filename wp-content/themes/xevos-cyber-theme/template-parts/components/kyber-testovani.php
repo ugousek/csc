@@ -8,7 +8,8 @@
 $show = get_field('kyber_test_zobrazit_sekci');
 if ($show === false) return;
 
-$heading  = get_field('kyber_test_heading') ?: 'Kybernetické testování';
+$heading      = get_field('kyber_test_heading') ?: 'Kybernetické testování';
+$heading_url  = get_field('kyber_test_heading_url');
 $desc     = get_field('kyber_test_text') ?: 'Ověření bezpečnosti systémů prostřednictvím řízených útoků a technických analýz, které odhalují reálné zranitelnosti.';
 $default_cta_text = 'Chci test';
 $default_cta_url  = '/kyberneticke-testovani/';
@@ -58,7 +59,7 @@ if (! $slides) {
 		<!-- Centered heading (only on homepage) -->
 		<?php if (is_front_page()) : ?>
 			<div class="xevos-kyber-test__header">
-				<h2><?php echo esc_html($heading); ?></h2>
+				<h2><?php if ($heading_url) : ?><a href="<?php echo esc_url($heading_url); ?>"><?php echo esc_html($heading); ?></a><?php else : echo esc_html($heading); endif; ?></h2>
 				<div class="xevos-kyber-test__desc"><?php echo wp_kses_post($desc); ?></div>
 			</div>
 		<?php endif; ?>

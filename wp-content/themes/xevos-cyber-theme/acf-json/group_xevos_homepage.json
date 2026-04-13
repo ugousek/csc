@@ -94,23 +94,6 @@
       ]
     },
     {
-      "key": "field_hp_hero_bg",
-      "label": "Background",
-      "name": "hero_background",
-      "type": "image",
-      "return_format": "array",
-      "preview_size": "medium",
-      "conditional_logic": [
-        [
-          {
-            "field": "field_hp_hero_zobrazit",
-            "operator": "==",
-            "value": "1"
-          }
-        ]
-      ]
-    },
-    {
       "key": "field_hp_sluzby_tab",
       "label": "2. Služby",
       "name": "",
@@ -289,6 +272,22 @@
       "label": "Nadpis",
       "name": "kyber_test_heading",
       "type": "text",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_test_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_hp_kyber_test_heading_url",
+      "label": "Odkaz nadpisu",
+      "name": "kyber_test_heading_url",
+      "type": "url",
+      "instructions": "Volitelný odkaz na nadpis sekce. Pokud vyplníte, nadpis se zobrazí jako klikatelný odkaz.",
       "conditional_logic": [
         [
           {

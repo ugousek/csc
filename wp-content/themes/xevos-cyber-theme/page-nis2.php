@@ -40,6 +40,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 			'heading'     => get_field('nis_hero_heading') ?: 'Kybernetické testování',
 			'description' => get_field('nis_hero_subheading') ?: 'Kybernetické testování je soubor praktických technik, které simulují reálné útoky s cílem odhalit zranitelnosti dříve, než je objeví skutečný útočník a to s využitím nejmodernějšího softwaru, pokročilé automatizace a umělé inteligence.',
 			'image_url'   => $_bg ? $_bg['url'] : get_theme_file_uri('assets/img/kyber-testovani-hero.png'),
+			'image_mask'  => !in_array( get_field('nis_hero_maska'), [ false, 0, '0' ], true ),
 		]);
 	endif;
 	?>

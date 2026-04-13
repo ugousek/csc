@@ -11,6 +11,7 @@
  *   image_url    – Right-column image src
  *   css_class    – Extra class on <section> (e.g. 'xevos-skoleni-hero')
  *   loading      – img loading attribute ('lazy' default, 'eager' for above-fold)
+ *   image_mask   – bool, show/hide radial mask on image (default true)
  */
 
 $heading    = $args['heading'] ?? '';
@@ -21,6 +22,7 @@ $cta_url    = $args['cta_url'] ?? '';
 $image_url  = $args['image_url'] ?? '';
 $css_class  = $args['css_class'] ?? '';
 $loading    = $args['loading'] ?? 'lazy';
+$image_mask = $args['image_mask'] ?? true;
 
 if ( ! $heading ) return;
 
@@ -54,7 +56,7 @@ if ( $css_class ) {
 				<?php endif; ?>
 			</div>
 			<?php if ( $image_url ) : ?>
-			<div class="xevos-blog-hero__image">
+			<div class="xevos-blog-hero__image<?php echo $image_mask ? '' : ' xevos-blog-hero__image--no-mask'; ?>">
 				<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $heading ); ?>" loading="<?php echo esc_attr( $loading ); ?>">
 			</div>
 			<?php endif; ?>

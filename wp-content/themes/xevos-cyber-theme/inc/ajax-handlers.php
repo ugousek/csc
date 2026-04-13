@@ -380,13 +380,18 @@ function xevos_filter_archive_handler(): void {
 		wp_send_json_error( [ 'message' => 'Invalid post type.' ] );
 	}
 
+	$safe_order = in_array( $order, [ 'ASC', 'DESC' ], true ) ? $order : 'DESC';
+
+	// For skoleni sorted by date, we sort manually by nearest future termin.
+	$sort_by_termin = ( $post_type === 'skoleni' );
+
 	$args = [
 		'post_type'      => $post_type,
 		'post_status'    => 'publish',
-		'posts_per_page' => 12,
-		'paged'          => $paged,
+		'posts_per_page' => $sort_by_termin ? -1 : 12,
+		'paged'          => $sort_by_termin ? 1 : $paged,
 		'orderby'        => 'date',
-		'order'          => in_array( $order, [ 'ASC', 'DESC' ], true ) ? $order : 'DESC',
+		'order'          => $safe_order,
 	];
 
 	if ( $taxonomy && $term ) {
@@ -401,17 +406,64 @@ function xevos_filter_archive_handler(): void {
 
 	$query = new WP_Query( $args );
 
+	// Sort skoleni posts by nearest future termin date, then paginate manually.
+	$posts_to_render = null;
+	$found_posts     = $query->found_posts;
+	$max_num_pages   = $query->max_num_pages;
+
+	if ( $sort_by_termin && $query->have_posts() ) {
+		$today = strtotime( 'today' );
+		$posts_with_ts = [];
+		foreach ( $query->posts as $post ) {
+			$terminy    = get_field( 'terminy', $post->ID );
+			$nearest_ts = PHP_INT_MAX;
+			if ( $terminy ) {
+				foreach ( $terminy as $t ) {
+					if ( empty( $t['datum'] ) ) continue;
+					$ts = strtotime( str_replace( '.', '-', $t['datum'] ) );
+					if ( $ts && $ts >= $today && $ts < $nearest_ts ) {
+						$nearest_ts = $ts;
+					}
+				}
+			}
+			$posts_with_ts[] = [ 'post' => $post, 'ts' => $nearest_ts ];
+		}
+		usort( $posts_with_ts, function( $a, $b ) use ( $safe_order ) {
+			return $safe_order === 'ASC'
+				? $b['ts'] <=> $a['ts']
+				: $a['ts'] <=> $b['ts'];
+		} );
+		$per_page      = 12;
+		$found_posts   = count( $posts_with_ts );
+		$max_num_pages = ceil( $found_posts / $per_page );
+		$offset        = ( $paged - 1 ) * $per_page;
+		$posts_to_render = array_map(
+			fn( $item ) => $item['post'],
+			array_slice( $posts_with_ts, $offset, $per_page )
+		);
+	}
+
+	$variant  = sanitize_text_field( wp_unslash( $_POST['card_variant'] ?? '' ) );
+	$template = "template-parts/components/card-{$post_type}";
+	if ( $variant ) {
+		$template .= '-' . $variant;
+	}
+
 	ob_start();
 
-	if ( $query->have_posts() ) {
+	if ( $posts_to_render !== null ) {
+		if ( $posts_to_render ) {
+			foreach ( $posts_to_render as $post ) {
+				setup_postdata( $GLOBALS['post'] = $post );
+				get_template_part( $template );
+			}
+			wp_reset_postdata();
+		} else {
+			echo '<p class="xevos-no-results">' . esc_html__( 'Žádné výsledky.', 'xevos-cyber' ) . '</p>';
+		}
+	} elseif ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
 			$query->the_post();
-
-			$variant = sanitize_text_field( wp_unslash( $_POST['card_variant'] ?? '' ) );
-			$template = "template-parts/components/card-{$post_type}";
-			if ( $variant ) {
-				$template .= '-' . $variant;
-			}
 			get_template_part( $template );
 		}
 	} else {
@@ -422,8 +474,8 @@ function xevos_filter_archive_handler(): void {
 
 	wp_send_json_success( [
 		'html'       => $html,
-		'found'      => $query->found_posts,
-		'max_pages'  => $query->max_num_pages,
+		'found'      => $found_posts,
+		'max_pages'  => $max_num_pages,
 	] );
 
 	wp_reset_postdata();
