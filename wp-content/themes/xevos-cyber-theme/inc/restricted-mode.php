@@ -33,10 +33,13 @@ function xevos_restricted_allow(): bool {
 	if ( ! $slug ) return true;
 
 	// Admin, AJAX, cron, REST — vždy pustit
-	if ( is_admin() )      return true;
-	if ( wp_doing_ajax() ) return true;
-	if ( wp_doing_cron() ) return true;
+	if ( is_admin() )        return true;
+	if ( wp_doing_ajax() )   return true;
+	if ( wp_doing_cron() )   return true;
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) return true;
+
+	// Přihlášení uživatelé mají plný přístup
+	if ( is_user_logged_in() ) return true;
 
 	// Povolené školení
 	if ( is_singular( 'skoleni' ) && get_post_field( 'post_name', get_the_ID() ) === $slug ) {
@@ -76,7 +79,7 @@ add_filter( 'pre_wp_nav_menu', function ( $output ) {
  * Body class pro CSS.
  */
 add_filter( 'body_class', function ( $classes ) {
-	if ( xevos_restricted_is_active() && ! is_admin() ) {
+	if ( xevos_restricted_is_active() && ! is_admin() && ! is_user_logged_in() ) {
 		$classes[] = 'xevos-restricted-mode';
 	}
 	return $classes;
