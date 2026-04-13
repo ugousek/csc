@@ -186,6 +186,37 @@
       "type": "text",
       "instructions": "API klíč pro Ecomail (najdete v Ecomail → Nastavení → API).",
       "placeholder": "5db1a8700b1e75db1a8700b291"
+    },
+    {
+      "key": "field_xevos_turnstile_tab",
+      "label": "Turnstile (anti-spam)",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_xevos_turnstile_enabled",
+      "label": "Povolit Cloudflare Turnstile",
+      "name": "turnstile_enabled",
+      "type": "true_false",
+      "default_value": 0,
+      "ui": 1,
+      "instructions": "Po zapnutí se na formulářích zobrazí neviditelná Turnstile ochrana. Vyžaduje vyplněné klíče níže."
+    },
+    {
+      "key": "field_xevos_turnstile_site_key",
+      "label": "Turnstile Site Key",
+      "name": "turnstile_site_key",
+      "type": "text",
+      "placeholder": "0x4AAAAAAA...",
+      "instructions": "Site Key z Cloudflare Dashboard → Turnstile."
+    },
+    {
+      "key": "field_xevos_turnstile_secret_key",
+      "label": "Turnstile Secret Key",
+      "name": "turnstile_secret_key",
+      "type": "text",
+      "placeholder": "0x4AAAAAAA...",
+      "instructions": "Secret Key z Cloudflare Dashboard → Turnstile. Nikdy jej nesdílejte."
     }
   ],
   "location": [

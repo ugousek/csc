@@ -372,6 +372,10 @@ while (have_posts()) : the_post();
 						<input type="hidden" name="skoleni_cena" value="<?php echo esc_attr($is_free ? 0 : $cena_s_dph); ?>">
 						<input type="hidden" name="typ_prihlaseni" value="<?php echo esc_attr($typ_prihlaseni); ?>">
 						<?php wp_nonce_field('xevos_order', 'xevos_order_nonce'); ?>
+						<input type="hidden" name="_form_time" value="<?php echo esc_attr( function_exists( 'xevos_form_time_token' ) ? xevos_form_time_token() : '' ); ?>">
+					<?php if ( function_exists( 'xevos_turnstile_enabled' ) && xevos_turnstile_enabled() ) : ?>
+					<div class="cf-turnstile" data-sitekey="<?php echo esc_attr( xevos_get_option( 'turnstile_site_key' ) ); ?>" data-theme="dark"></div>
+					<?php endif; ?>
 
 						<div class="xevos-order-form">
 							<div class="xevos-form-row">

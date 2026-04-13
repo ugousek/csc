@@ -9,16 +9,24 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'wp_enqueue_scripts', 'xevos_enqueue_assets' );
 
+/**
+ * Returns filemtime of a theme asset as cache-busting version string.
+ * Falls back to XEVOS_THEME_VERSION if the file doesn't exist.
+ */
+function xevos_asset_version( string $relative_path ): string {
+	$abs = get_template_directory() . '/' . ltrim( $relative_path, '/' );
+	return file_exists( $abs ) ? (string) filemtime( $abs ) : XEVOS_THEME_VERSION;
+}
+
 function xevos_enqueue_assets(): void {
 	$theme_uri = XEVOS_THEME_URI;
-	$version   = XEVOS_THEME_VERSION;
 
 	// Main CSS (fonts are self-hosted via @font-face in main.css).
 	wp_enqueue_style(
 		'xevos-main',
 		$theme_uri . '/assets/css/main.css',
 		[],
-		$version
+		xevos_asset_version( 'assets/css/main.css' )
 	);
 
 	// Kyber testování CSS + JS (shared across kyber, služby, nis2, o nás).
@@ -33,13 +41,13 @@ function xevos_enqueue_assets(): void {
 			'xevos-kyber-testovani',
 			$theme_uri . '/assets/css/kyber-testovani.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/kyber-testovani.css' )
 		);
 		wp_enqueue_script(
 			'xevos-inquiry-form',
 			$theme_uri . '/assets/js/inquiry-form.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/inquiry-form.js' ),
 			true
 		);
 	}
@@ -50,7 +58,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-skoleni',
 			$theme_uri . '/assets/css/skoleni.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/skoleni.css' )
 		);
 	}
 
@@ -60,7 +68,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-single-aktualita',
 			$theme_uri . '/assets/css/single-aktualita.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/single-aktualita.css' )
 		);
 	}
 
@@ -70,7 +78,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-detail-skoleni',
 			$theme_uri . '/assets/css/detail-skoleni.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/detail-skoleni.css' )
 		);
 	}
 
@@ -83,7 +91,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-blog',
 			$theme_uri . '/assets/css/blog.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/blog.css' )
 		);
 	}
 
@@ -93,7 +101,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-search',
 			$theme_uri . '/assets/css/search.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/search.css' )
 		);
 	}
 
@@ -103,7 +111,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-sluzby',
 			$theme_uri . '/assets/css/sluzby.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/sluzby.css' )
 		);
 	}
 
@@ -113,7 +121,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-nis2',
 			$theme_uri . '/assets/css/nis2.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/nis2.css' )
 		);
 	}
 
@@ -123,7 +131,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-o-nas',
 			$theme_uri . '/assets/css/o-nas.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/o-nas.css' )
 		);
 	}
 
@@ -138,7 +146,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-legal',
 			$theme_uri . '/assets/css/legal.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/legal.css' )
 		);
 	}
 
@@ -148,13 +156,13 @@ function xevos_enqueue_assets(): void {
 			'xevos-kontakt',
 			$theme_uri . '/assets/css/kontakt.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/kontakt.css' )
 		);
 		wp_enqueue_script(
 			'xevos-contact-form',
 			$theme_uri . '/assets/js/contact-form.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/contact-form.js' ),
 			true
 		);
 	}
@@ -165,7 +173,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-frontpage',
 			$theme_uri . '/assets/css/frontpage.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/frontpage.css' )
 		);
 
 		// Lottie player for hero map animation.
@@ -181,7 +189,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-homepage',
 			$theme_uri . '/assets/js/homepage.js',
 			[ 'swiper', 'lottie' ],
-			$version,
+			xevos_asset_version( 'assets/js/homepage.js' ),
 			true
 		);
 
@@ -198,7 +206,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-complianz',
 			$theme_uri . '/assets/css/complianz-override.css',
 			[ 'xevos-main' ],
-			$version
+			xevos_asset_version( 'assets/css/complianz-override.css' )
 		);
 
 		// Inject cookie icon into Complianz message.
@@ -235,7 +243,7 @@ function xevos_enqueue_assets(): void {
 		'xevos-main',
 		$theme_uri . '/assets/js/main.js',
 		[ 'swiper' ],
-		$version,
+		xevos_asset_version( 'assets/js/main.js' ),
 		true
 	);
 
@@ -245,7 +253,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-form-validation',
 			$theme_uri . '/assets/js/form-validation.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/form-validation.js' ),
 			true
 		);
 	}
@@ -263,7 +271,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-archive-filter',
 			$theme_uri . '/assets/js/archive-filter.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/archive-filter.js' ),
 			true
 		);
 	}
@@ -274,7 +282,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-ecomail-register',
 			$theme_uri . '/assets/js/ecomail-register.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/ecomail-register.js' ),
 			true
 		);
 	}
@@ -285,7 +293,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-comgate-payment',
 			$theme_uri . '/assets/js/comgate-payment.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/comgate-payment.js' ),
 			true
 		);
 	}
@@ -296,7 +304,7 @@ function xevos_enqueue_assets(): void {
 			'xevos-skoleni-filter',
 			$theme_uri . '/assets/js/skoleni-filter.js',
 			[ 'xevos-main' ],
-			$version,
+			xevos_asset_version( 'assets/js/skoleni-filter.js' ),
 			true
 		);
 	}

@@ -24,7 +24,22 @@ function xevos_ecomail_register(): void {
 
 	// Honeypot check.
 	if ( ! empty( $_POST['website'] ) ) {
-		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
+		wp_send_json_success( [ 'message' => 'Registrace proběhla úspěšně.' ] ); // Silent.
+	}
+
+	// Time-based check — bot submits instantly.
+	if ( function_exists( 'xevos_check_form_time' ) && ! xevos_check_form_time( 3 ) ) {
+		wp_send_json_error( [ 'message' => 'Příliš rychlé odeslání. Zkuste to znovu.' ], 403 );
+	}
+
+	// Rate limit — max 5 submissions per IP per 10 minutes.
+	if ( function_exists( 'xevos_check_rate_limit' ) && ! xevos_check_rate_limit( 'register' ) ) {
+		wp_send_json_error( [ 'message' => 'Příliš mnoho pokusů. Zkuste to za chvíli.' ], 429 );
+	}
+
+	// Turnstile (only when enabled in settings).
+	if ( function_exists( 'xevos_turnstile_verify' ) && ! xevos_turnstile_verify() ) {
+		wp_send_json_error( [ 'message' => 'Ověření selhalo. Zkuste to znovu.' ], 403 );
 	}
 
 

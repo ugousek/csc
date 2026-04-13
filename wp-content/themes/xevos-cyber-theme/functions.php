@@ -37,6 +37,7 @@ $xevos_includes = [
 	'/inc/admin/lektori-columns.php',
 	'/inc/admin/premium-features.php',
 	'/inc/order-numbering.php',
+	'/inc/spam-protection.php',
 	'/inc/ecomail.php',
 	'/inc/cron.php',
 	'/inc/schema.php',
