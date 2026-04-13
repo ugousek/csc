@@ -60,18 +60,21 @@ add_action( 'template_redirect', function () {
 
 	$slug = xevos_restricted_slug();
 	$post = get_page_by_path( $slug, OBJECT, 'skoleni' );
-	$url  = $post ? get_permalink( $post ) : home_url( '/' );
 
-	wp_safe_redirect( $url, 302 );
+	// Nenašli jsme cílové školení — neredigerujeme (zabráníme nekonečné smyčce)
+	if ( ! $post ) return;
+
+	wp_safe_redirect( get_permalink( $post ), 302 );
 	exit;
 } );
 
 /**
- * Vyprázdni nav menu (header i footer).
+ * Vyprázdni nav menu (header i footer) — pouze nepřihlášeným.
  */
 add_filter( 'pre_wp_nav_menu', function ( $output ) {
 	if ( ! xevos_restricted_is_active() ) return $output;
-	if ( is_admin() ) return $output;
+	if ( is_admin() )        return $output;
+	if ( is_user_logged_in() ) return $output;
 	return '';
 } );
 
