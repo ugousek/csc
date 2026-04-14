@@ -9,6 +9,14 @@
 
 /* Blobs */
 
+.xevos-main--glows>section {
+  z-index: -1;
+}
+
+section.xevos-section.xevos-blog-archive {
+  z-index: 3;
+}
+
 .xevos-glow-blob--left {
   position: absolute;
   left: -903px;
