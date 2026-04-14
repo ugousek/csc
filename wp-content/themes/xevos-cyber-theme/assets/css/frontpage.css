@@ -1726,8 +1726,8 @@ body.home .xevos-glow-blob--multiply {
     padding-top: 40px;
   }
 
-  .xevos-hero__content {
-    padding: 130px var(--gutter) 0;
+  .xevos-hero__lottie {
+    top: 60%;
   }
 
   .xevos-hero__title {

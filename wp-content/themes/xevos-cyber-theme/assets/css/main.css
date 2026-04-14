@@ -1894,6 +1894,12 @@ select.xevos-form__input option:checked,
   border: none;
 }
 
+@media (min-width: 1024px) and (max-width: 1680px) {
+  .xevos-recenze-card__text {
+    font-size: 20px;
+  }
+}
+
 .xevos-recenze-card__author {
   display: block;
   font-family: var(--font-body);
@@ -4357,33 +4363,26 @@ td {
 
   /* --- Globální typografie (bez !important, aby per-page CSS overrides mohly dál fungovat) --- */
   h1 {
-    font-size: 3.75rem;
-    /* 60px (desktop: 80px) */
+    font-size: 3.75rem !important;
   }
 
   h2 {
-    font-size: 2.375rem;
-    /* 38px (desktop: 52px) */
+    font-size: 2.375rem !important;
   }
 
   h3 {
-    font-size: 1.625rem;
-    /* 26px (desktop: 32px) */
+    font-size: 1.625rem !important;
   }
 
   h4 {
-    font-size: 1.25rem;
-    /* 20px */
+    font-size: 1.25rem !important;
   }
 
   h5,
   h6 {
-    font-size: 1rem;
-    /* 16px */
+    font-size: 1rem !important;
   }
 
-  /* --- Konkrétní komponenty s vysoce-specifickými selektory (!important jen kde nutné) --- */
-  /* .xevos-blog-hero__content h1 má specificitu 0,1,1 a fixní 5rem → nutno přebít */
   .xevos-blog-hero__content h1 {
     font-size: 3.75rem !important;
     margin-bottom: 2.5rem;
@@ -4401,45 +4400,34 @@ td {
     font-size: 3.75rem;
   }
 
-  /* Accent number/stat display */
   .xevos-number {
     font-size: 2.375rem;
-    /* 38px (desktop: 52px) */
   }
 
-  /* Price display */
   .xevos-price__amount {
     font-size: 3rem;
-    /* 48px (desktop: 64px) */
   }
 
   .xevos-price__currency {
     font-size: 1.5rem;
-    /* 24px (desktop: 32px) */
   }
 
   .xevos-price__vat {
     font-size: 1.125rem;
-    /* 18px */
   }
 
-  /* --- Sekce: méně vertikálního paddingu --- */
   .xevos-section {
     padding: 4.5rem 0;
-    /* desktop: 6rem */
   }
 
   .xevos-section-heading {
     margin-bottom: 2rem;
-    /* desktop: 2.5rem */
   }
 
   .xevos-section-heading__subtitle {
     font-size: 0.9375rem;
-    /* 15px */
   }
 
-  /* --- Page hero (podstránky) --- */
   .xevos-page-hero {
     min-height: 340px;
     padding-bottom: 2.25rem;
@@ -4450,14 +4438,11 @@ td {
     max-width: 560px;
   }
 
-  /* --- Xevos-platba-result (děkovací/neúspěch stránka) --- */
   .xevos-platba-result p {
     font-size: 1.0625rem;
-    /* 17px */
     margin-bottom: 2rem;
   }
 
-  /* --- Tlačítka --- */
   .xevos-btn {
     padding: 0.75rem 1.5rem;
     font-size: 0.8125rem;

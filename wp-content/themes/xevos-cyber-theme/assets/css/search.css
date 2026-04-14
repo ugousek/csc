@@ -2,7 +2,9 @@
    Search results – standalone stylesheet
    ========================================================================== */
 
-
+.xevos-blog-hero {
+  z-index: -1;
+}
 
 .xevos-glow-blob--left {
   z-index: 2 !important;
