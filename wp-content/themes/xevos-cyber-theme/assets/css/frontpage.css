@@ -634,6 +634,87 @@ body.home .xevos-glow-blob--multiply {
   min-height: 0;
   max-height: 720px;
   gap: 12px;
+  position: relative;
+}
+
+/* Scroll hint — overlay přes celou plochu listu (defaultně viditelné) */
+.xevos-eventy__list-wrap::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 1, 41, 0.72);
+  backdrop-filter: blur(3px);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* Scroll hint — velká růžová ikona uprostřed listu (defaultně viditelná) */
+.xevos-eventy__list-wrap::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 140px;
+  margin-top: -70px;
+  margin-left: -55px;
+  background-image: url('../img/global/scroll-down.svg');
+  background-repeat: no-repeat;
+  background-position: center top 10px;
+  background-size: 90px 112px;
+  filter: drop-shadow(0 4px 20px rgba(245, 39, 170, 0.6)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  opacity: 1;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Když se .xevos-eventy__list-wrap dostane do viewportu, spustí se countdown →
+   bounce animace pár cyklů a následně fade out. Třídu přidává homepage.js přes IntersectionObserver.
+   ::before (overlay) má během countdownu pointer-events: auto + cursor: pointer — click ho dismissne. */
+.xevos-eventy__list-wrap.is-in-view::before {
+  pointer-events: auto;
+  cursor: pointer;
+  animation: xevos-eventy-scroll-hint-out 4s ease-in-out 0s 1 forwards;
+}
+
+.xevos-eventy__list-wrap.is-in-view::after {
+  animation:
+    xevos-eventy-scroll-hint-out 4s ease-in-out 0s 1 forwards,
+    xevos-eventy-icon-bounce 1.2s ease-in-out 0s 3 both;
+}
+
+/* Dismissed — kliknutím nebo po doběhnutí countdownu. Rychlý fade + uvolnění pointer-events. */
+.xevos-eventy__list-wrap.is-dismissed::before,
+.xevos-eventy__list-wrap.is-dismissed::after {
+  animation: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+}
+
+/* Countdown fade-out — 70 % hold na plné viditelnosti, pak fade out */
+@keyframes xevos-eventy-scroll-hint-out {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Ikona scroll-down se pohybuje nahoru/dolů uvnitř boxu — simuluje scroll gesto */
+@keyframes xevos-eventy-icon-bounce {
+  0%   { background-position: center top 4px; }
+  50%  { background-position: center top 24px; }
+  100% { background-position: center top 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .xevos-eventy__list-wrap::before,
+  .xevos-eventy__list-wrap::after {
+    animation: none;
+  }
 }
 
 /* .xevos-eventy__scrollbar {
@@ -724,6 +805,17 @@ body.home .xevos-glow-blob--multiply {
   min-height: 0;
   overflow-y: auto;
   scrollbar-width: none;
+  cursor: grab;
+}
+
+.xevos-eventy__list.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.xevos-eventy__list.is-dragging * {
+  pointer-events: none;
+  user-select: none;
 }
 
 .xevos-eventy__list::-webkit-scrollbar {
