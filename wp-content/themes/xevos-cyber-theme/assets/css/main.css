@@ -4355,7 +4355,7 @@ td {
    ========================================================================== */
 @media (min-width: 1024px) and (max-width: 1680px) {
 
-  /* --- Globální typografie --- */
+  /* --- Globální typografie (bez !important, aby per-page CSS overrides mohly dál fungovat) --- */
   h1 {
     font-size: 3.75rem;
     /* 60px (desktop: 80px) */
@@ -4380,6 +4380,25 @@ td {
   h6 {
     font-size: 1rem;
     /* 16px */
+  }
+
+  /* --- Konkrétní komponenty s vysoce-specifickými selektory (!important jen kde nutné) --- */
+  /* .xevos-blog-hero__content h1 má specificitu 0,1,1 a fixní 5rem → nutno přebít */
+  .xevos-blog-hero__content h1 {
+    font-size: 3.75rem !important;
+    margin-bottom: 2.5rem;
+  }
+
+  .xevos-blog-hero__subheading {
+    font-size: 28px;
+  }
+
+  .xevos-blog-hero__desc {
+    font-size: 1.125rem;
+  }
+
+  .xevos-page-hero__title {
+    font-size: 3.75rem;
   }
 
   /* Accent number/stat display */
