@@ -610,3 +610,32 @@
     position: static;
   }
 }
+
+/* ==========================================================================
+   13"–15" notebooky / MacBook optimalizace
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1680px) {
+  .xevos-article-content__body {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .xevos-article-content__body h2,
+  .xevos-article-content__body h3 {
+    font-size: 2rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .xevos-article-content__body img {
+    margin: 1.5rem 0;
+  }
+
+  .xevos-article-content__body blockquote {
+    margin: 1.5rem 0;
+  }
+
+  .xevos-archive-toolbar__sort label {
+    font-size: 16px;
+  }
+}

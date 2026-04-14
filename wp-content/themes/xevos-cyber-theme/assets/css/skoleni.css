@@ -520,3 +520,49 @@
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   13"–15" notebooky / MacBook optimalizace
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1680px) {
+  .xevos-skoleni-list-card__title {
+    font-size: 1.5rem;
+  }
+
+  .xevos-skoleni-list-card__title strong {
+    font-size: 30px;
+  }
+
+  .xevos-skoleni-list-card__desc {
+    font-size: 16px;
+  }
+
+  .xevos-skoleni-list-card__meta-label {
+    font-size: 0.8125rem;
+  }
+
+  .xevos-skoleni-list-card__meta-value {
+    font-size: 0.9375rem;
+  }
+
+  .xevos-skoleni-list-card__meta-col--price .xevos-skoleni-list-card__price {
+    font-size: 1.5rem;
+  }
+
+  .xevos-skoleni-list-card__header {
+    margin-bottom: 1.25rem;
+  }
+
+  .xevos-btn--outline {
+    padding: 10px 28px;
+  }
+
+  .xevos-skoleni-single__tab {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .xevos-skoleni-single__tabs {
+    margin-bottom: 1.5rem;
+  }
+}

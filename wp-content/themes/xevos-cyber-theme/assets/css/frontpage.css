@@ -1710,3 +1710,112 @@ body.home .xevos-glow-blob--multiply {
   }
 
 }
+
+/* ==========================================================================
+   13"–15" notebooky / MacBook optimalizace
+   Cílí na logickou šířku 1024–1680px (MacBook Air/Pro 13"/15",
+   běžné 13"–15" Windows notebooky). Zmenšuje nadpisy a mezery
+   tak, aby se obsah vešel na jednu obrazovku bez horizontálního
+   scrollu a s rozumnou hustotou informací.
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1680px) {
+
+  /* --- Hero --- */
+  .xevos-hero {
+    margin-block: 0 40px;
+    padding-top: 40px;
+  }
+
+  .xevos-hero__content {
+    padding: 130px var(--gutter) 0;
+  }
+
+  .xevos-hero__title {
+    font-size: 3.75rem;
+    max-width: 680px;
+    margin-bottom: 1rem;
+    line-height: 1.05;
+  }
+
+  .xevos-hero__subtitle {
+    font-size: 1.875rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .xevos-hero__desc,
+  .xevos-hero__desc p {
+    font-size: 18px;
+    max-width: 600px;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  /* --- Services / karty --- */
+  .xevos-services__grid-inner {
+    gap: 16px;
+  }
+
+  /* --- Sekce: plošné zmenšení všech nadpisů uvnitř main --- */
+  .xevos-main h1 {
+    font-size: 48px !important;
+    line-height: 1.1;
+  }
+
+  .xevos-main h2,
+  .xevos-section-heading__title,
+  .xevos-section__heading h2 {
+    font-size: 38px !important;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .xevos-main h3 {
+    font-size: 26px !important;
+    line-height: 1.2;
+  }
+
+  .xevos-main h4 {
+    font-size: 20px !important;
+    line-height: 1.25;
+  }
+
+  /* Popisky / body uvnitř main (vyjma hero descu, který má vlastní pravidlo výše) */
+  .xevos-main p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* --- Statistiky / blok s číslicemi --- */
+  .xevos-statistiky__card-value {
+    font-size: 2.5rem;
+  }
+
+  /* --- Sekce globálně: méně vertikálního paddingu --- */
+  .xevos-section {
+    padding: 4.5rem 0;
+  }
+
+  .xevos-section-heading {
+    margin-bottom: 2rem;
+  }
+
+  /* --- Emergency badge (už má breakpoint 1650, doladíme) --- */
+  .xevos-emergency-badge {
+    padding: 10px 12px 10px 4px;
+    gap: 8px;
+  }
+
+  .xevos-emergency-badge__icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .xevos-emergency-badge__title,
+  .xevos-emergency-badge__sub {
+    font-size: 14px;
+  }
+
+  .xevos-emergency-badge__title strong {
+    font-size: 20px;
+  }
+}

@@ -323,3 +323,65 @@
     font-size: var(--font-size-base);
   }
 }
+
+/* ==========================================================================
+   13"–15" notebooky / MacBook optimalizace
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1680px) {
+  .page-template-page-o-nas .xevos-page-hero--short {
+    min-height: 360px;
+  }
+
+  .xevos-about-mission {
+    padding: 3.5rem var(--gutter);
+    gap: 2.5rem;
+  }
+
+  .xevos-about-mission__text h2,
+  .xevos-about-team__heading {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .xevos-about-mission__text p {
+    font-size: 1rem;
+  }
+
+  .xevos-about-team {
+    padding: 3.5rem var(--gutter);
+  }
+
+  .xevos-about-team__heading {
+    margin-bottom: 2rem;
+  }
+
+  .xevos-about-team__grid {
+    gap: 2rem;
+  }
+
+  .xevos-about-team__photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .xevos-about-team__card {
+    padding: 1.5rem;
+  }
+
+  .xevos-about-content {
+    padding: 3rem var(--gutter);
+  }
+
+  .xevos-about-content h2 {
+    font-size: 1.625rem;
+  }
+
+  .xevos-about-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .xevos-about-content p {
+    font-size: 1rem;
+  }
+}
+

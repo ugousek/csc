@@ -1387,3 +1387,141 @@
     flex-shrink: 0;
     opacity: 0.6;
 }
+
+/* ==========================================================================
+   13"–15" notebooky / MacBook optimalizace
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1680px) {
+
+    /* Pro koho */
+    .xevos-skoleni-pro-koho h2 {
+        font-size: 1.75rem;
+    }
+
+    .xevos-skoleni-pro-koho .xevos-article-content__body,
+    .xevos-skoleni-pro-koho .xevos-article-content__body p {
+        font-size: 1.125rem;
+    }
+
+    /* Termíny */
+    .xevos-skoleni-terminy {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .xevos-skoleni-terminy h2 {
+        font-size: 1.75rem;
+    }
+
+    .xevos-termin-cards {
+        gap: 32px;
+    }
+
+    .xevos-termin-card__date {
+        font-size: 2.25rem;
+    }
+
+    .xevos-termin-card__location,
+    .xevos-termin-card__location a {
+        font-size: 1.125rem;
+    }
+
+    /* Lektoři */
+    .xevos-skoleni-lektori-section h2 {
+        font-size: 2.375rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .xevos-skoleni-lektori__cards,
+    .xevos-skoleni-lektori__static {
+        gap: 3rem;
+    }
+
+    .xevos-lektor-card__foto-wrap {
+        width: 240px;
+        height: 240px;
+    }
+
+    .xevos-lektor-card__name {
+        font-size: 1.5rem;
+    }
+
+    .xevos-lektor-card__role,
+    .xevos-lektor-card__bio {
+        font-size: 1.125rem;
+    }
+
+    .xevos-lektor-card__info {
+        margin-top: 1.5rem;
+        gap: 1rem;
+    }
+
+    /* Harmonogram + Osnova */
+    .xevos-skoleni-content-cols {
+        gap: 5rem;
+    }
+
+    .xevos-skoleni-content-cols h2 {
+        font-size: 2.375rem;
+    }
+
+    .xevos-harmonogram-item,
+    .xevos-osnova-list li {
+        font-size: 1.125rem;
+    }
+
+    /* Co si odnesete */
+    .xevos-skoleni-benefits {
+        margin-top: 3.5rem;
+    }
+
+    .xevos-skoleni-benefits h2 {
+        font-size: 2.375rem;
+        margin-bottom: 1.25rem;
+    }
+
+    /* Kde parkovat */
+    .xevos-skoleni-parking {
+        gap: 48px;
+    }
+
+    .xevos-skoleni-parking__text {
+        padding: 16px 0;
+        font-size: 18px;
+    }
+
+    .xevos-skoleni-parking__text h2 {
+        font-size: 2.375rem;
+    }
+
+    .xevos-skoleni-parking__text p {
+        font-size: 1.125rem;
+    }
+
+    /* Objednávka (section header) */
+    .xevos-skoleni-section-header {
+        margin-bottom: 2rem;
+    }
+
+    .xevos-skoleni-section-header h2 {
+        font-size: 2.375rem;
+    }
+
+    .xevos-skoleni-section-header p {
+        font-size: 1.125rem;
+    }
+
+    .xevos-skoleni-section-header__desc,
+    .xevos-skoleni-section-header__desc p {
+        font-size: 16px;
+    }
+
+    /* Order sidebar */
+    .xevos-order-full h3 {
+        font-size: 24px;
+    }
+
+    .xevos-order-full p {
+        font-size: 16px;
+    }
+}

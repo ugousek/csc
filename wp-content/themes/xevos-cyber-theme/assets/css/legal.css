@@ -469,3 +469,61 @@
     margin-bottom: 1.5rem;
   }
 }
+
+/* ==========================================================================
+   13"–15" notebooky / MacBook optimalizace
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1680px) {
+
+  .page-template-page-legal .xevos-section.xevos-legal,
+  .page-template-page-obchodni-podminky .xevos-section.xevos-legal,
+  .page-template-page-zasady-cookies .xevos-section.xevos-legal,
+  .page-template-page-zasady-ochrany-osobnich-udaju .xevos-section.xevos-legal {
+    padding-block: 8rem 3rem;
+  }
+
+  .xevos-legal__title {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .xevos-legal__date {
+    margin-bottom: 1.5rem;
+  }
+
+  .xevos-toc {
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .xevos-legal-content {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .xevos-legal-content h2 {
+    font-size: 1.875rem;
+    margin-top: 2.25rem;
+  }
+
+  .xevos-legal-content h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .xevos-legal-content .cmplz-document,
+  .xevos-legal-content .cmplz-document p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .xevos-legal-content .cmplz-document h2 {
+    font-size: 1.875rem;
+    margin-top: 2.25rem;
+  }
+
+  .xevos-legal-content .cmplz-document h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+  }
+}
