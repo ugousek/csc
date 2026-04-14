@@ -13,7 +13,8 @@
   z-index: -1;
 }
 
-section.xevos-section.xevos-blog-archive {
+section.xevos-section.xevos-blog-archive,
+section.xevos-section.xevos-skoleni-archive {
   z-index: 3;
 }
 
