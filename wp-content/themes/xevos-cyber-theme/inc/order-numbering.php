@@ -60,6 +60,51 @@ function xevos_termin_key( array $t ): string {
 }
 
 /**
+ * Convert a stored termin key ("17.04.2026|14:00") into a human-readable display string
+ * ("17.04.2026 | 14:00 – 15:30"). If $skoleni_id is provided, looks up cas_do from the
+ * ACF terminy repeater on that post.
+ *
+ * @param string $termin_key  Stored key format "datum|cas_od" or just "datum".
+ * @param int    $skoleni_id  Optional ID of the linked skoleni post to resolve cas_do.
+ * @return string             Human-readable termin for emails / admin.
+ */
+function xevos_format_termin_display( string $termin_key, int $skoleni_id = 0 ): string {
+	if ( $termin_key === '' ) {
+		return '';
+	}
+
+	$parts  = explode( '|', $termin_key, 2 );
+	$datum  = trim( $parts[0] ?? '' );
+	$cas_od = isset( $parts[1] ) ? trim( $parts[1] ) : '';
+	$cas_do = '';
+
+	if ( $skoleni_id > 0 && function_exists( 'get_field' ) ) {
+		$terminy = get_field( 'terminy', $skoleni_id );
+		if ( is_array( $terminy ) ) {
+			foreach ( $terminy as $t ) {
+				$t_datum  = $t['datum']  ?? '';
+				$t_cas_od = $t['cas_od'] ?? '';
+				if ( $t_datum === $datum && ( $cas_od === '' || $t_cas_od === $cas_od ) ) {
+					$cas_do = $t['cas_do'] ?? '';
+					if ( $cas_od === '' ) {
+						$cas_od = $t_cas_od;
+					}
+					break;
+				}
+			}
+		}
+	}
+
+	if ( $datum !== '' && $cas_od !== '' && $cas_do !== '' ) {
+		return $datum . ' | ' . $cas_od . ' – ' . $cas_do;
+	}
+	if ( $datum !== '' && $cas_od !== '' ) {
+		return $datum . ' | ' . $cas_od;
+	}
+	return $datum;
+}
+
+/**
  * Count active (non-cancelled, non-refunded) registrations for a training term.
  *
  * @param int    $skoleni_id  Training post ID.

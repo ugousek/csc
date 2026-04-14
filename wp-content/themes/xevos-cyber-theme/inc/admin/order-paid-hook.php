@@ -113,7 +113,9 @@ function xevos_handle_manual_paid_status( $post_id ): void {
 				'jmeno'         => get_field( 'jmeno', $post_id ) ?: '',
 				'nazev_skoleni' => $skoleni_id ? get_the_title( $skoleni_id ) : '',
 				'cena'          => number_format( (float) ( get_field( 'castka', $post_id ) ?: 0 ), 0, ',', ' ' ),
-				'termin'        => $termin_str,
+				'termin'        => function_exists( 'xevos_format_termin_display' )
+					? xevos_format_termin_display( (string) $termin_str, (int) $skoleni_id )
+					: $termin_str,
 				'misto'         => '',
 				'typ'           => $skoleni_id ? ( get_field( 'typ', $skoleni_id ) ?: '' ) : '',
 				'kontakt_email' => get_option( 'admin_email' ),

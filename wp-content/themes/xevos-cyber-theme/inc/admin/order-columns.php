@@ -69,7 +69,13 @@ function xevos_objednavka_column_content( string $column, int $post_id ): void {
 			break;
 
 		case 'ob_termin':
-			echo esc_html( get_field( 'termin', $post_id ) ?: '—' );
+			$termin_raw  = (string) ( get_field( 'termin', $post_id ) ?: '' );
+			$skoleni_rel = get_field( 'skoleni', $post_id );
+			$skoleni_id  = is_object( $skoleni_rel ) ? (int) $skoleni_rel->ID : (int) $skoleni_rel;
+			$formatted   = function_exists( 'xevos_format_termin_display' )
+				? xevos_format_termin_display( $termin_raw, $skoleni_id )
+				: $termin_raw;
+			echo $formatted !== '' ? esc_html( $formatted ) : '—';
 			break;
 
 		case 'ob_typ':

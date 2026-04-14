@@ -156,7 +156,9 @@ function xevos_ecomail_register(): void {
 	// Send confirmation email to the customer.
 	if ( $email && function_exists( 'xevos_send_email' ) ) {
 		$skoleni_title     = get_the_title( $skoleni_id );
-		$termin_str        = $termin_val;
+		$termin_str        = function_exists( 'xevos_format_termin_display' )
+			? xevos_format_termin_display( (string) $termin_val, (int) $skoleni_id )
+			: $termin_val;
 		$firma_nazev       = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
 		$skoleni_url       = get_permalink( $skoleni_id ) ?: '';
 		$skoleni_admin_url = get_edit_post_link( $skoleni_id, 'raw' ) ?: '';

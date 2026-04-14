@@ -257,7 +257,10 @@ function xevos_order_detail_render( WP_Post $post ): void {
 	$stav_info    = $stav_map[ $stav ] ?? $stav_map['pending'];
 	$skoleni_title = $skoleni ? get_the_title( $skoleni ) : '—';
 	$skoleni_link  = $skoleni ? get_edit_post_link( is_object( $skoleni ) ? $skoleni->ID : $skoleni ) : '';
-	$termin_display = str_replace( '|', ' ', $termin );
+	$skoleni_id_for_termin = $skoleni ? (int) ( is_object( $skoleni ) ? $skoleni->ID : $skoleni ) : 0;
+	$termin_display = function_exists( 'xevos_format_termin_display' )
+		? xevos_format_termin_display( (string) $termin, $skoleni_id_for_termin )
+		: str_replace( '|', ' ', (string) $termin );
 
 	echo '<div class="xevos-od">';
 

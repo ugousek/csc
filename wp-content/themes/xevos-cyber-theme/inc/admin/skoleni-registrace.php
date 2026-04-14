@@ -66,7 +66,9 @@ function xevos_remove_registration_ajax(): void {
 			[
 				'jmeno'         => get_field( 'jmeno', $order_id ) ?: '',
 				'nazev_skoleni' => $skoleni_title,
-				'termin'        => $termin_val ?: '',
+				'termin'        => function_exists( 'xevos_format_termin_display' )
+					? xevos_format_termin_display( (string) ( $termin_val ?: '' ), (int) $skoleni_id )
+					: ( $termin_val ?: '' ),
 				'cena'          => $castka > 0 ? number_format( $castka, 0, ',', ' ' ) : '',
 				'refundace'     => ( $typ_platby === 'paid' && $current_status === 'paid' && $castka > 0 ),
 				'skoleni_url'   => $skoleni_id ? ( get_permalink( $skoleni_id ) ?: '' ) : '',

@@ -326,6 +326,9 @@ function xevos_create_invoice_order_handler(): void {
 	$skoleni_title = get_the_title( $skoleni_id );
 	$firma_nazev   = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
 	$cislo_uctu    = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'cislo_uctu', '' ) : '';
+	$termin_display = function_exists( 'xevos_format_termin_display' )
+		? xevos_format_termin_display( (string) $termin_val, (int) $skoleni_id )
+		: $termin_val;
 
 	// Confirmation email to customer.
 	if ( function_exists( 'xevos_send_email' ) ) {
@@ -333,7 +336,7 @@ function xevos_create_invoice_order_handler(): void {
 			'jmeno'            => $jmeno,
 			'cislo_objednavky' => $order_number,
 			'nazev_skoleni'    => $skoleni_title,
-			'termin'           => $termin_val,
+			'termin'           => $termin_display,
 			'cena'             => number_format( $cena, 0, ',', ' ' ),
 			'vs'               => $order_number,
 			'cislo_uctu'       => $cislo_uctu,
@@ -350,7 +353,7 @@ function xevos_create_invoice_order_handler(): void {
 			'telefon'          => $telefon,
 			'firma_nazev'      => $firma,
 			'nazev_skoleni'    => $skoleni_title,
-			'termin'           => $termin_val,
+			'termin'           => $termin_display,
 			'cena'             => number_format( $cena, 0, ',', ' ' ),
 			'admin_url'        => admin_url( 'post.php?post=' . $order_id . '&action=edit' ),
 		] );
