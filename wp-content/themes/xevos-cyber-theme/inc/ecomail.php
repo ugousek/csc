@@ -116,11 +116,13 @@ function xevos_ecomail_register(): void {
 	// Create an order CPT record for tracking.
 	$typ = sanitize_text_field( $_POST['typ_prihlaseni'] ?? 'zdarma' );
 	$order_title = $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma';
-	$order_status = $typ === 'pozvanka' ? 'draft' : 'publish';
 
+	// Pozvánky i volné registrace se uloží jako publish — odlišuje je stav_platby
+	// (pozvánka = "pending", volná registrace = "registered"). Díky tomu jsou viditelné
+	// v seznamu objednávek i v metaboxu Registrace na detailu školení.
 	$order_id = wp_insert_post( [
 		'post_type'   => 'objednavka',
-		'post_status' => $order_status,
+		'post_status' => 'publish',
 		'post_title'  => $order_title,
 	] );
 
@@ -136,7 +138,7 @@ function xevos_ecomail_register(): void {
 		update_field( 'termin', $termin_val, $order_id );
 		update_field( 'castka', 0, $order_id );
 		update_field( 'typ_registrace', 'free', $order_id );
-		update_field( 'stav_platby', $typ === 'pozvanka' ? 'pending' : 'registered', $order_id );
+		update_field( 'stav_platby', $typ === 'pozvanka' ? 'invitation_pending' : 'registered', $order_id );
 		update_field( 'datum_objednavky', date( 'd.m.Y' ), $order_id );
 
 		// Check capacity thresholds and send admin notifications.

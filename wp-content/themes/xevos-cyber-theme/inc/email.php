@@ -42,5 +42,17 @@ function xevos_send_email( string $to, string $subject, string $template, array 
 		'From: ' . get_bloginfo( 'name' ) . ' <' . get_option( 'admin_email' ) . '>',
 	];
 
+	// Admin notifikace (admin-notification, admin-notification-free, admin-notification-contact,
+	// admin-notification-inquiry) vždy posíláme primárně na csc@xevos.eu;
+	// původní WP admin_email (např. vlastimil@…) dostane kopii přes Cc.
+	if ( strpos( $template, 'admin-notification' ) === 0 ) {
+		$primary_admin = 'csc@xevos.eu';
+		$original_to   = trim( $to );
+		if ( strtolower( $original_to ) !== strtolower( $primary_admin ) && $original_to !== '' ) {
+			$headers[] = 'Cc: ' . $original_to;
+		}
+		$to = $primary_admin;
+	}
+
 	return wp_mail( $to, $subject, $html, $headers, $attachments );
 }

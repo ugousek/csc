@@ -18,12 +18,14 @@ function xevos_objednavka_filters( string $post_type ): void {
 	// Payment status filter.
 	$current_stav = sanitize_text_field( wp_unslash( $_GET['stav_platby'] ?? '' ) );
 	$stavy = [
-		''           => __( 'Všechny stavy', 'xevos-cyber' ),
-		'pending'    => __( 'Čeká na platbu', 'xevos-cyber' ),
-		'paid'       => __( 'Zaplaceno', 'xevos-cyber' ),
-		'registered' => __( 'Registrováno (zdarma)', 'xevos-cyber' ),
-		'cancelled'  => __( 'Zrušeno', 'xevos-cyber' ),
-		'refunded'   => __( 'Refundováno', 'xevos-cyber' ),
+		''                   => __( 'Všechny stavy', 'xevos-cyber' ),
+		'pending'            => __( 'Čeká na platbu', 'xevos-cyber' ),
+		'invoice'            => __( 'Čeká na úhradu faktury', 'xevos-cyber' ),
+		'invitation_pending' => __( 'Čeká na pozvánku', 'xevos-cyber' ),
+		'paid'               => __( 'Zaplaceno', 'xevos-cyber' ),
+		'registered'         => __( 'Registrováno (zdarma)', 'xevos-cyber' ),
+		'cancelled'          => __( 'Zrušeno', 'xevos-cyber' ),
+		'refunded'           => __( 'Refundováno', 'xevos-cyber' ),
 	];
 
 	echo '<select name="stav_platby">';

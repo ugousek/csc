@@ -105,11 +105,13 @@ function xevos_objednavka_column_content( string $column, int $post_id ): void {
 		case 'ob_stav':
 			$stav = get_field( 'stav_platby', $post_id ) ?: 'pending';
 			$badges = [
-				'pending'    => [ 'label' => 'Čeká na platbu', 'color' => '#f59e0b' ],
-				'paid'       => [ 'label' => 'Zaplaceno', 'color' => '#10b981' ],
-				'registered' => [ 'label' => 'Registrováno', 'color' => '#8b5cf6' ],
-				'cancelled'  => [ 'label' => 'Zrušeno', 'color' => '#ef4444' ],
-				'refunded'   => [ 'label' => 'Refundováno', 'color' => '#6b7280' ],
+				'pending'            => [ 'label' => 'Čeká na platbu',   'color' => '#f59e0b' ],
+				'invoice'            => [ 'label' => 'Čeká na fakturu',  'color' => '#8b5cf6' ],
+				'invitation_pending' => [ 'label' => 'Čeká na pozvánku', 'color' => '#0ea5e9' ],
+				'paid'               => [ 'label' => 'Zaplaceno',        'color' => '#10b981' ],
+				'registered'         => [ 'label' => 'Registrováno',     'color' => '#8b5cf6' ],
+				'cancelled'          => [ 'label' => 'Zrušeno',          'color' => '#ef4444' ],
+				'refunded'           => [ 'label' => 'Refundováno',      'color' => '#6b7280' ],
 			];
 			$badge = $badges[ $stav ] ?? $badges['pending'];
 			printf(

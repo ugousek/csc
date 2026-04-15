@@ -247,12 +247,13 @@ function xevos_order_detail_render( WP_Post $post ): void {
 	$log      = get_post_meta( $id, '_xevos_status_log', true ) ?: [];
 
 	$stav_map = [
-		'pending'    => [ 'label' => 'Čeká na platbu',          'bg' => '#f59e0b', 'fg' => '#fff' ],
-		'invoice'    => [ 'label' => 'Čeká na úhradu faktury',  'bg' => '#8b5cf6', 'fg' => '#fff' ],
-		'paid'       => [ 'label' => 'Zaplaceno',               'bg' => '#10b981', 'fg' => '#fff' ],
-		'registered' => [ 'label' => 'Registrováno (zdarma)',   'bg' => '#6366f1', 'fg' => '#fff' ],
-		'cancelled'  => [ 'label' => 'Zrušeno',                 'bg' => '#ef4444', 'fg' => '#fff' ],
-		'refunded'   => [ 'label' => 'Refundováno',             'bg' => '#6b7280', 'fg' => '#fff' ],
+		'pending'            => [ 'label' => 'Čeká na platbu',          'bg' => '#f59e0b', 'fg' => '#fff' ],
+		'invoice'            => [ 'label' => 'Čeká na úhradu faktury',  'bg' => '#8b5cf6', 'fg' => '#fff' ],
+		'invitation_pending' => [ 'label' => 'Čeká na pozvánku',        'bg' => '#0ea5e9', 'fg' => '#fff' ],
+		'paid'               => [ 'label' => 'Zaplaceno',               'bg' => '#10b981', 'fg' => '#fff' ],
+		'registered'         => [ 'label' => 'Registrováno (zdarma)',   'bg' => '#6366f1', 'fg' => '#fff' ],
+		'cancelled'          => [ 'label' => 'Zrušeno',                 'bg' => '#ef4444', 'fg' => '#fff' ],
+		'refunded'           => [ 'label' => 'Refundováno',             'bg' => '#6b7280', 'fg' => '#fff' ],
 	];
 	$stav_info    = $stav_map[ $stav ] ?? $stav_map['pending'];
 	$skoleni_title = $skoleni ? get_the_title( $skoleni ) : '—';

@@ -108,11 +108,13 @@ function xevos_objednavka_handle_export(): void {
 	], ';' );
 
 	$stav_labels = [
-		'pending'    => 'Čeká na platbu',
-		'paid'       => 'Zaplaceno',
-		'registered' => 'Registrováno (zdarma)',
-		'cancelled'  => 'Zrušeno',
-		'refunded'   => 'Refundováno',
+		'pending'            => 'Čeká na platbu',
+		'invoice'            => 'Čeká na úhradu faktury',
+		'invitation_pending' => 'Čeká na pozvánku',
+		'paid'               => 'Zaplaceno',
+		'registered'         => 'Registrováno (zdarma)',
+		'cancelled'          => 'Zrušeno',
+		'refunded'           => 'Refundováno',
 	];
 
 	$typ_labels = [

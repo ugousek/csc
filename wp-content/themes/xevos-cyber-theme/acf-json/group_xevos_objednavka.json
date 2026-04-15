@@ -111,6 +111,7 @@
       "choices": {
         "pending": "Čeká na platbu",
         "invoice": "Čeká na úhradu faktury",
+        "invitation_pending": "Čeká na pozvánku",
         "paid": "Zaplaceno",
         "registered": "Registrováno (zdarma)",
         "cancelled": "Zrušeno",
