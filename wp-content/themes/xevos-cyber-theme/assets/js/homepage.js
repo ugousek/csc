@@ -27,7 +27,7 @@
         lottie.loadAnimation({
           container: shieldMain,
           renderer: 'svg',
-          loop: true,
+          loop: false,
           autoplay: true,
           path: xevosHero.shieldUrl
         });
@@ -38,7 +38,7 @@
         lottie.loadAnimation({
           container: el,
           renderer: 'svg',
-          loop: true,
+          loop: false,
           autoplay: true,
           path: xevosHero.shieldUrl
         });

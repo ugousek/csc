@@ -330,6 +330,28 @@ function xevos_create_invoice_order_handler(): void {
 		? xevos_format_termin_display( (string) $termin_val, (int) $skoleni_id )
 		: $termin_val;
 
+	// Ecomail subscribe — odesílá všechna vyplněná pole + custom_fields.
+	if ( function_exists( 'xevos_ecomail_subscribe_order' ) ) {
+		xevos_ecomail_subscribe_order( $skoleni_id, [
+			'jmeno'            => $jmeno,
+			'prijmeni'         => $prijmeni,
+			'email'            => $email,
+			'telefon'          => $telefon,
+			'firma'            => $firma,
+			'ico'              => $ico,
+			'dic'              => $dic,
+			'ulice'            => $ulice,
+			'mesto'            => $mesto,
+			'psc'              => $psc,
+			'skoleni_title'    => $skoleni_title,
+			'termin'           => $termin_display,
+			'typ_registrace'   => 'paid',
+			'typ_prihlaseni'   => 'faktura',
+			'cislo_objednavky' => $order_number,
+			'castka'           => (string) $cena,
+		] );
+	}
+
 	// Confirmation email to customer.
 	if ( function_exists( 'xevos_send_email' ) ) {
 		xevos_send_email( $email, 'Objednávka přijata – ' . $skoleni_title, 'invoice-order-confirmation', [

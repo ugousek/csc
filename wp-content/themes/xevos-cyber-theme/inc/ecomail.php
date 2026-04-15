@@ -44,8 +44,6 @@ function xevos_ecomail_register(): void {
 
 
 	$skoleni_id = (int) ( $_POST['skoleni_id'] ?? 0 );
-	$list_id    = get_field( 'ecomail_list_id', $skoleni_id );
-	$api_key    = xevos_get_option( 'ecomail_api_key' );
 
 	$jmeno    = sanitize_text_field( $_POST['jmeno'] ?? '' );
 	$prijmeni = sanitize_text_field( $_POST['prijmeni'] ?? '' );
@@ -102,19 +100,24 @@ function xevos_ecomail_register(): void {
 		}
 	}
 
-	// Ecomail subscribe (optional — only if list ID and API key are configured).
-	if ( $list_id && $api_key ) {
-		xevos_ecomail_subscribe( $api_key, $list_id, [
-			'name'    => $jmeno,
-			'surname' => $prijmeni,
-			'email'   => $email,
-			'phone'   => $telefon,
-			'company' => $firma,
-		] );
-	}
+	// Ecomail subscribe — odesílá všechna vyplněná pole + custom_fields.
+	$typ = sanitize_text_field( $_POST['typ_prihlaseni'] ?? 'zdarma' );
+	xevos_ecomail_subscribe_order( $skoleni_id, [
+		'jmeno'          => $jmeno,
+		'prijmeni'       => $prijmeni,
+		'email'          => $email,
+		'telefon'        => $telefon,
+		'firma'          => $firma,
+		'skoleni_title'  => get_the_title( $skoleni_id ),
+		'termin'         => function_exists( 'xevos_format_termin_display' )
+			? xevos_format_termin_display( (string) ( $_POST['termin'] ?? '' ), (int) $skoleni_id )
+			: sanitize_text_field( $_POST['termin'] ?? '' ),
+		'typ_registrace' => 'free',
+		'typ_prihlaseni' => $typ,
+		'castka'         => '0',
+	] );
 
 	// Create an order CPT record for tracking.
-	$typ = sanitize_text_field( $_POST['typ_prihlaseni'] ?? 'zdarma' );
 	$order_title = $typ === 'pozvanka' ? 'Žádost o pozvánku' : 'Registrace zdarma';
 
 	// Pozvánky i volné registrace se uloží jako publish — odlišuje je stav_platby
@@ -214,7 +217,8 @@ function xevos_ecomail_register(): void {
  *
  * @param string $api_key Ecomail API key.
  * @param string $list_id Ecomail list ID.
- * @param array  $contact Contact data (name, surname, email, phone, company).
+ * @param array  $contact Subscriber data (email, name, surname, phone, company,
+ *                        street, city, zip, country, custom_fields [key=>value]).
  * @return string|false API response or false on failure.
  */
 function xevos_ecomail_subscribe( string $api_key, string $list_id, array $contact ) {
@@ -248,4 +252,106 @@ function xevos_ecomail_subscribe( string $api_key, string $list_id, array $conta
 	}
 
 	return wp_remote_retrieve_body( $response );
+}
+
+/**
+ * Build an Ecomail subscriber_data array from flat form data.
+ *
+ * Maps known order/registration fields to Ecomail standard fields and
+ * categorizes the subscriber via tags (auto-created by Ecomail — no manual
+ * setup required). Empty values are skipped so we don't overwrite existing
+ * Ecomail data.
+ *
+ * @param array $data Flat form/order data — expected keys:
+ *                    jmeno, prijmeni, email, telefon, firma, ico, dic,
+ *                    ulice, mesto, psc, skoleni_title, termin, typ_registrace,
+ *                    cislo_objednavky, castka, typ_prihlaseni.
+ * @return array      Ecomail-ready subscriber_data.
+ */
+function xevos_ecomail_build_contact( array $data ): array {
+	$contact = [];
+
+	// Standardní Ecomail pole.
+	$map_standard = [
+		'email'    => 'email',
+		'jmeno'    => 'name',
+		'prijmeni' => 'surname',
+		'telefon'  => 'phone',
+		'firma'    => 'company',
+		'ulice'    => 'street',
+		'mesto'    => 'city',
+		'psc'      => 'zip',
+	];
+
+	foreach ( $map_standard as $src => $dst ) {
+		if ( ! empty( $data[ $src ] ) ) {
+			$contact[ $dst ] = (string) $data[ $src ];
+		}
+	}
+
+	if ( ! empty( $contact['zip'] ) ) {
+		$contact['country'] = 'CZ';
+	}
+
+	// Tagy — auto-vytvoří se v Ecomailu, žádné manuální nastavení.
+	// Používáme je pro kategorizaci a segmentaci (typ registrace, způsob
+	// platby, slug školení). Nepoužíváme je pro unikátní hodnoty (číslo
+	// objednávky, částka) — ty by zbytečně zahltily tag cloud.
+	$tags = [];
+
+	if ( ! empty( $data['typ_registrace'] ) ) {
+		$tags[] = 'typ-registrace:' . sanitize_title( $data['typ_registrace'] );
+	}
+
+	if ( ! empty( $data['typ_prihlaseni'] ) ) {
+		$tags[] = 'typ-platby:' . sanitize_title( $data['typ_prihlaseni'] );
+	}
+
+	if ( ! empty( $data['skoleni_title'] ) ) {
+		$tags[] = 'skoleni:' . sanitize_title( $data['skoleni_title'] );
+	}
+
+	if ( ! empty( $data['ico'] ) ) {
+		$tags[] = 'b2b';
+	}
+
+	if ( ! empty( $tags ) ) {
+		$contact['tags'] = array_values( array_unique( $tags ) );
+	}
+
+	return $contact;
+}
+
+/**
+ * Subscribe a contact to Ecomail from an order/registration flow.
+ *
+ * No-op when the skoleni has no ecomail_list_id, when the API key is not
+ * configured, or when the email is missing. Always fails silently — the
+ * order itself must not fail because Ecomail is down or misconfigured.
+ *
+ * @param int   $skoleni_id  Training post ID (list ID is on the skoleni post).
+ * @param array $form_data   Flat form/order data (see xevos_ecomail_build_contact).
+ * @return bool              True when subscribe was attempted, false when skipped.
+ */
+function xevos_ecomail_subscribe_order( int $skoleni_id, array $form_data ): bool {
+	if ( empty( $form_data['email'] ) ) {
+		return false;
+	}
+
+	$list_id = $skoleni_id ? get_field( 'ecomail_list_id', $skoleni_id ) : '';
+	$api_key = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'ecomail_api_key' ) : '';
+
+	if ( ! $list_id || ! $api_key ) {
+		return false;
+	}
+
+	$contact = xevos_ecomail_build_contact( $form_data );
+
+	if ( empty( $contact['email'] ) ) {
+		return false;
+	}
+
+	xevos_ecomail_subscribe( $api_key, $list_id, $contact );
+
+	return true;
 }
