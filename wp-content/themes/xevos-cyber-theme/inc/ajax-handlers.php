@@ -348,13 +348,16 @@ function xevos_create_invoice_order_handler(): void {
 			'dic'              => $dic,
 			'ulice'            => $ulice,
 			'mesto'            => $mesto,
-			'psc'              => $psc,
+			'psc'               => $psc,
 			'skoleni_title'    => $skoleni_title,
 			'termin'           => $termin_display,
 			'typ_registrace'   => 'paid',
 			'typ_prihlaseni'   => 'faktura',
 			'cislo_objednavky' => $order_number,
 			'castka'           => (string) $cena,
+			'pocet'            => $pocet,
+			'forma'            => $forma,
+			'platce_dph'       => $platce_dph,
 		] );
 	}
 

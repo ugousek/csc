@@ -118,6 +118,9 @@ function xevos_ecomail_register(): void {
 		'typ_registrace' => 'free',
 		'typ_prihlaseni' => $typ,
 		'castka'         => '0',
+		'pocet'          => $pocet,
+		'forma'          => $forma,
+		'platce_dph'     => $platce_dph,
 	] );
 
 	// Create an order CPT record for tracking.
@@ -299,10 +302,7 @@ function xevos_ecomail_build_contact( array $data ): array {
 		$contact['country'] = 'CZ';
 	}
 
-	// Tagy — auto-vytvoří se v Ecomailu, žádné manuální nastavení.
-	// Používáme je pro kategorizaci a segmentaci (typ registrace, způsob
-	// platby, slug školení). Nepoužíváme je pro unikátní hodnoty (číslo
-	// objednávky, částka) — ty by zbytečně zahltily tag cloud.
+	// Tagy — auto-vytvoří se v Ecomailu, používáme pro kategorizaci / segmentaci.
 	$tags = [];
 
 	if ( ! empty( $data['typ_registrace'] ) ) {
@@ -317,12 +317,55 @@ function xevos_ecomail_build_contact( array $data ): array {
 		$tags[] = 'skoleni:' . sanitize_title( $data['skoleni_title'] );
 	}
 
+	if ( ! empty( $data['forma'] ) ) {
+		$tags[] = 'forma:' . sanitize_title( $data['forma'] );
+	}
+
 	if ( ! empty( $data['ico'] ) ) {
 		$tags[] = 'b2b';
 	}
 
+	if ( ! empty( $data['platce_dph'] ) ) {
+		$tags[] = 'platce-dph';
+	}
+
+	if ( isset( $data['pocet'] ) && (int) $data['pocet'] > 1 ) {
+		$tags[] = 'pocet-vice';
+	}
+
 	if ( ! empty( $tags ) ) {
 		$contact['tags'] = array_values( array_unique( $tags ) );
+	}
+
+	// Custom fields — strukturovaná data specifická pro objednávku.
+	// Ecomail neznámá pole ignoruje, takže pokud je v listu vytvoříš,
+	// naplní se; pokud ne, subscribe i tak proběhne bez chyby.
+	$custom_map = [
+		'ico'              => 'ico',
+		'dic'              => 'dic',
+		'skoleni_title'    => 'skoleni',
+		'termin'           => 'termin',
+		'cislo_objednavky' => 'cislo_objednavky',
+		'castka'           => 'castka',
+		'pocet'            => 'pocet',
+		'forma'            => 'forma',
+	];
+
+	$custom = [];
+	foreach ( $custom_map as $src => $dst ) {
+		if ( isset( $data[ $src ] ) && $data[ $src ] !== '' && $data[ $src ] !== null ) {
+			if ( is_scalar( $data[ $src ] ) ) {
+				$custom[ $dst ] = (string) $data[ $src ];
+			}
+		}
+	}
+
+	if ( isset( $data['platce_dph'] ) ) {
+		$custom['platce_dph'] = ! empty( $data['platce_dph'] ) ? '1' : '0';
+	}
+
+	if ( ! empty( $custom ) ) {
+		$contact['custom_fields'] = $custom;
 	}
 
 	return $contact;
