@@ -1133,9 +1133,6 @@
         margin-bottom: 2rem;
     }
 
-    .xevos-skoleni-lektori__carousel {
-        flex-direction: column;
-    }
 
     .xevos-skoleni-lektori__cards {
         grid-template-columns: 1fr;
