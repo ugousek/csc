@@ -970,7 +970,7 @@ select.xevos-form__input option:checked,
 }
 
 .xevos-header--scrolled .xevos-header__logo img {
-  height: 40px;
+  height: 45px;
 }
 
 /* Desktop nav */
@@ -3167,7 +3167,8 @@ body::after {
   }
 
   #kyber-test-main-img {
-    width: 100%;
+    width: 80%;
+    margin-inline: auto;
     left: 0;
   }
 
