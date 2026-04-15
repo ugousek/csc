@@ -4266,7 +4266,10 @@ body.admin-bar .xevos-search-overlay {
     font-size: 28px;
   }
 
-  .xevos-blog-hero__desc {
+  .xevos-blog-hero__desc,
+  .xevos-kyber-test__panel-desc,
+  .xevos-hp-recenze__header p,
+  .xevos-hp-aktuality__header p {
     font-size: 1.125rem;
   }
 
