@@ -241,10 +241,11 @@ function xevos_create_invoice_order_handler(): void {
 		wp_send_json_error( [ 'message' => 'Zadejte prosím platný e-mail.' ] );
 	}
 
-	$cena = (float) get_field( 'cena_s_dph', $skoleni_id );
-	if ( ! $cena ) {
+	$cena_jednotkova = (float) get_field( 'cena_s_dph', $skoleni_id );
+	if ( ! $cena_jednotkova ) {
 		wp_send_json_error( [ 'message' => 'Školení nemá nastavenou cenu.' ] );
 	}
+	$cena = $cena_jednotkova * $pocet;
 
 	// Duplicate check.
 	$existing = get_posts( [
@@ -262,7 +263,7 @@ function xevos_create_invoice_order_handler(): void {
 		wp_send_json_error( [ 'message' => 'Tento e-mail je na toto školení již registrován.' ], 409 );
 	}
 
-	// Capacity check.
+	// Capacity check — sčítá pocet napříč objednávkami.
 	if ( $termin_val ) {
 		$terminy = get_field( 'terminy', $skoleni_id );
 		if ( is_array( $terminy ) ) {
@@ -270,8 +271,11 @@ function xevos_create_invoice_order_handler(): void {
 				if ( function_exists( 'xevos_termin_key' ) && xevos_termin_key( $t ) === $termin_val ) {
 					$kapacita   = (int) ( $t['kapacita'] ?? 0 );
 					$registrace = function_exists( 'xevos_count_active_registrations' ) ? xevos_count_active_registrations( $skoleni_id, $termin_val ) : 0;
-					if ( $kapacita > 0 && $registrace >= $kapacita ) {
-						wp_send_json_error( [ 'message' => 'Kapacita tohoto termínu je bohužel naplněna.' ], 409 );
+					$volna      = max( 0, $kapacita - $registrace );
+					if ( $kapacita > 0 && ( $registrace + $pocet ) > $kapacita ) {
+						wp_send_json_error( [
+							'message' => sprintf( 'Požadovaný počet účastníků (%d) přesahuje volnou kapacitu. Volných míst: %d.', $pocet, $volna ),
+						], 409 );
 					}
 					break;
 				}

@@ -99,13 +99,21 @@ function xevos_objednavka_handle_export(): void {
 		'Firma',
 		'IČO',
 		'DIČ',
+		'Plátce DPH',
 		'Školení',
 		'Termín',
+		'Počet účastníků',
+		'Forma účasti',
 		'Typ registrace',
 		'Částka',
 		'Stav',
 		'Comgate ID',
 	], ';' );
+
+	$forma_labels = [
+		'prezencni' => 'Prezenčně',
+		'online'    => 'Online',
+	];
 
 	$stav_labels = [
 		'pending'            => 'Čeká na platbu',
@@ -128,6 +136,7 @@ function xevos_objednavka_handle_export(): void {
 		$stav_val  = get_field( 'stav_platby', $id ) ?: 'pending';
 		$typ_val   = get_field( 'typ_registrace', $id ) ?: 'paid';
 
+		$forma_val = get_field( 'forma', $id ) ?: '';
 		fputcsv( $output, [
 			$order->post_title,
 			get_the_date( 'd.m.Y H:i', $id ),
@@ -138,8 +147,11 @@ function xevos_objednavka_handle_export(): void {
 			get_field( 'firma', $id ),
 			get_field( 'ico', $id ),
 			get_field( 'dic', $id ),
+			get_field( 'platce_dph', $id ) ? 'Ano' : 'Ne',
 			$skoleni ? $skoleni->post_title : '',
 			get_field( 'termin', $id ),
+			(int) ( get_field( 'pocet', $id ) ?: 1 ),
+			$forma_labels[ $forma_val ] ?? $forma_val,
 			$typ_labels[ $typ_val ] ?? $typ_val,
 			get_field( 'castka', $id ) ?: '0',
 			$stav_labels[ $stav_val ] ?? $stav_val,

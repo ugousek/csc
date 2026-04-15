@@ -518,12 +518,15 @@ while (have_posts()) : the_post();
 										<div class="xevos-order-summary__price-main">Zdarma</div>
 									<?php else : ?>
 										<div class="xevos-order-summary__price-label">Celková cena:</div>
-										<div class="xevos-order-summary__price-main">
+										<div class="xevos-order-summary__price-main"
+											data-price-unit="<?php echo esc_attr((float) $cena_s_dph); ?>"
+											data-price-unit-net="<?php echo esc_attr((float) $cena); ?>"
+											id="xevos-price-total">
 											<?php echo esc_html($cena_s_dph ? number_format((float) $cena_s_dph, 0, ',', ' ') . ' Kč' : '—'); ?>
 											<small>s DPH</small>
 										</div>
 										<?php if ($cena) : ?>
-											<div class="xevos-order-summary__price-secondary">
+											<div class="xevos-order-summary__price-secondary" id="xevos-price-net">
 												<?php echo esc_html(number_format((float) $cena, 0, ',', ' ')); ?> Kč bez DPH
 											</div>
 										<?php endif; ?>
@@ -566,6 +569,31 @@ while (have_posts()) : the_post();
 								</button>
 								<div class="xevos-order-message" id="xevos-order-message" style="display:none;"></div>
 							</div>
+							<?php if (! $is_free) : ?>
+								<script>
+								(function(){
+									var form   = document.getElementById('xevos-order-form');
+									var pocet  = form && form.querySelector('[name="pocet"]');
+									var total  = document.getElementById('xevos-price-total');
+									var net    = document.getElementById('xevos-price-net');
+									if (!form || !pocet || !total) return;
+
+									var unit    = parseFloat(total.dataset.priceUnit) || 0;
+									var unitNet = parseFloat(total.dataset.priceUnitNet) || 0;
+
+									function format(n){ return n.toLocaleString('cs-CZ').replace(/\s/g, ' '); }
+
+									function update(){
+										var q = Math.max(1, parseInt(pocet.value, 10) || 1);
+										total.innerHTML = format(Math.round(unit * q)) + ' Kč <small>s DPH</small>';
+										if (net) net.textContent = format(Math.round(unitNet * q)) + ' Kč bez DPH';
+									}
+
+									pocet.addEventListener('input', update);
+									pocet.addEventListener('change', update);
+								})();
+								</script>
+							<?php endif; ?>
 						</form>
 					<?php endif; /* !$all_full */ ?>
 				</div>

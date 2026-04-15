@@ -85,7 +85,7 @@ function xevos_ecomail_register(): void {
 		wp_send_json_error( [ 'message' => 'Tento e-mail je na toto školení již registrován.' ], 409 );
 	}
 
-	// Capacity check — count real active orders for this term.
+	// Capacity check — count real active orders (sum of pocet) for this term.
 	$termin_val = sanitize_text_field( wp_unslash( $_POST['termin'] ?? '' ) );
 	if ( $termin_val ) {
 		$terminy = get_field( 'terminy', $skoleni_id );
@@ -94,8 +94,11 @@ function xevos_ecomail_register(): void {
 				if ( xevos_termin_key( $t ) === $termin_val ) {
 					$kapacita   = (int) ( $t['kapacita'] ?? 0 );
 					$registrace = xevos_count_active_registrations( $skoleni_id, $termin_val );
-					if ( $kapacita > 0 && $registrace >= $kapacita ) {
-						wp_send_json_error( [ 'message' => 'Kapacita tohoto termínu je bohužel naplněna.' ], 409 );
+					$volna      = max( 0, $kapacita - $registrace );
+					if ( $kapacita > 0 && ( $registrace + $pocet ) > $kapacita ) {
+						wp_send_json_error( [
+							'message' => sprintf( 'Požadovaný počet účastníků (%d) přesahuje volnou kapacitu. Volných míst: %d.', $pocet, $volna ),
+						], 409 );
 					}
 					break;
 				}

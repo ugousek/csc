@@ -153,17 +153,18 @@ function xevos_skoleni_registrace_render( WP_Post $post ): void {
 	$revenue    = 0;
 
 	foreach ( $orders as $o ) {
-		$typ  = get_field( 'typ_registrace', $o->ID ) ?: 'paid';
-		$stav = get_field( 'stav_platby', $o->ID ) ?: 'pending';
+		$typ   = get_field( 'typ_registrace', $o->ID ) ?: 'paid';
+		$stav  = get_field( 'stav_platby', $o->ID ) ?: 'pending';
 		if ( in_array( $stav, [ 'cancelled', 'refunded' ], true ) ) {
 			continue;
 		}
-		$total++;
+		$o_pocet = max( 1, (int) ( get_field( 'pocet', $o->ID ) ?: 1 ) );
+		$total  += $o_pocet;
 		if ( $typ === 'free' || $stav === 'registered' ) {
-			$free_count++;
+			$free_count += $o_pocet;
 		} elseif ( $stav === 'paid' ) {
-			$paid_count++;
-			$revenue += (float) ( get_field( 'castka', $o->ID ) ?: 0 );
+			$paid_count += $o_pocet;
+			$revenue    += (float) ( get_field( 'castka', $o->ID ) ?: 0 );
 		}
 	}
 
@@ -228,13 +229,14 @@ function xevos_skoleni_registrace_render( WP_Post $post ): void {
 				printf( '<span style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;">%s</span>', esc_html( $uroven_labels[ $uroven ] ) );
 			}
 
-			// Capacity badge — count active (non-cancelled/refunded) orders for this term.
+			// Capacity badge — sčítá pocet účastníků aktivních objednávek pro tento termín.
 			$kap = (int) ( $t['kapacita'] ?? 0 );
 			$reg = 0;
 			foreach ( $termin_orders as $to ) {
 				$to_stav = get_field( 'stav_platby', $to->ID ) ?: 'pending';
 				if ( ! in_array( $to_stav, [ 'cancelled', 'refunded' ], true ) ) {
-					$reg++;
+					$to_pocet = (int) ( get_field( 'pocet', $to->ID ) ?: 1 );
+					$reg += max( 1, $to_pocet );
 				}
 			}
 			$cap_color = ( $kap > 0 && $reg >= $kap ) ? '#ef4444' : '#10b981';

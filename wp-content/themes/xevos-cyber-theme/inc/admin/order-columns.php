@@ -20,6 +20,7 @@ function xevos_objednavka_columns( array $columns ): array {
 		'ob_firma'   => __( 'Firma', 'xevos-cyber' ),
 		'ob_skoleni' => __( 'Školení', 'xevos-cyber' ),
 		'ob_termin'  => __( 'Termín', 'xevos-cyber' ),
+		'ob_pocet'   => __( 'Počet', 'xevos-cyber' ),
 		'ob_typ'     => __( 'Typ', 'xevos-cyber' ),
 		'ob_castka'  => __( 'Částka', 'xevos-cyber' ),
 		'ob_stav'    => __( 'Stav', 'xevos-cyber' ),
@@ -76,6 +77,11 @@ function xevos_objednavka_column_content( string $column, int $post_id ): void {
 				? xevos_format_termin_display( $termin_raw, $skoleni_id )
 				: $termin_raw;
 			echo $formatted !== '' ? esc_html( $formatted ) : '—';
+			break;
+
+		case 'ob_pocet':
+			$pocet = (int) ( get_field( 'pocet', $post_id ) ?: 1 );
+			echo '<strong>' . esc_html( (string) $pocet ) . '</strong>';
 			break;
 
 		case 'ob_typ':

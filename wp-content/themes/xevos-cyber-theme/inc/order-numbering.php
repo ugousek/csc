@@ -134,7 +134,8 @@ function xevos_count_active_registrations( int $skoleni_id, string $termin_datum
 	foreach ( $orders as $order_id ) {
 		$stav = get_field( 'stav_platby', $order_id ) ?: 'pending';
 		if ( ! in_array( $stav, [ 'cancelled', 'refunded' ], true ) ) {
-			$count++;
+			$pocet = (int) ( get_field( 'pocet', $order_id ) ?: 1 );
+			$count += max( 1, $pocet );
 		}
 	}
 
