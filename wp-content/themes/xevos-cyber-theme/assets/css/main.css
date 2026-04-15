@@ -3166,12 +3166,6 @@ body::after {
     margin-left: 0;
   }
 
-  #kyber-test-main-img {
-    width: 80%;
-    margin-inline: auto;
-    left: 0;
-  }
-
   .xevos-kyber-test__panel {
     max-width: 550px;
   }
@@ -4354,4 +4348,12 @@ body.admin-bar .xevos-search-overlay {
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
   }
+
+
+  #kyber-test-main-img {
+    width: 80%;
+    margin-inline: auto;
+    left: 0;
+  }
+
 }
