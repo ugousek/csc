@@ -8,16 +8,16 @@
 $show = get_field('eventy_zobrazit_sekci');
 if ($show === false) return;
 
-$heading = get_field('eventy_heading') ?: 'Aktuální eventy';
-$desc    = get_field('eventy_popis') ?: '<strong>Workshopy, školení a odborné akce</strong> zaměřené na praktickou kybernetickou bezpečnost, aktuální hrozby a reálné scénáře z praxe.';
+$heading = get_field('eventy_heading') ?: '';
+$desc    = get_field('eventy_popis') ?: '';
 $count   = (int) (get_field('eventy_pocet') ?: 10);
 
 // CTA box (Cyber pohotovost) – ACF editable.
-$cta_title     = get_field('eventy_cta_title') ?: 'Cyber pohotovost';
-$cta_text      = get_field('eventy_cta_text') ?: 'Okamžitá pomoc a kroky, které pomohou rychle zastavit probíhající útok, omezit škody a zahájit správný postup reakce.';
-$cta_btn1_text = get_field('eventy_cta_btn1_text') ?: 'POTŘEBUJI POMOC!';
+$cta_title     = get_field('eventy_cta_title') ?: '';
+$cta_text      = get_field('eventy_cta_text') ?: '';
+$cta_btn1_text = get_field('eventy_cta_btn1_text') ?: '';
 $cta_btn1_url  = get_field('eventy_cta_btn1_url') ?: home_url('/kontakt/');
-$cta_btn2_text = get_field('eventy_cta_btn2_text') ?: 'JAK POSTUPOVAT?';
+$cta_btn2_text = get_field('eventy_cta_btn2_text') ?: '';
 $cta_btn2_url  = get_field('eventy_cta_btn2_url') ?: home_url('/jak-postupovat/');
 $cta_image     = get_field('eventy_cta_image');
 $cta_img_url   = $cta_image ? $cta_image['url'] : get_theme_file_uri('assets/img/homepage/xevos-house.png');
@@ -66,6 +66,11 @@ $typ_colors = [
 	'prezencni' => 'orange',
 	'hybrid'    => 'blue',
 ];
+
+/* Skrýt celou sekci, když nejsou žádná nadcházející školení. */
+if ( empty( $posts_with_date ) ) {
+	return;
+}
 ?>
 
 <section class="xevos-section xevos-eventy">
@@ -74,10 +79,16 @@ $typ_colors = [
 
 			<!-- LEFT COLUMN: heading + event list + scrollbar -->
 			<div class="xevos-eventy__left">
-				<div class="xevos-eventy__header">
-					<h2><?php echo esc_html($heading); ?></h2>
-					<div class="xevos-eventy__desc"><?php echo wp_kses_post($desc); ?></div>
-				</div>
+				<?php if ( $heading || $desc ) : ?>
+					<div class="xevos-eventy__header">
+						<?php if ( $heading ) : ?>
+							<h2><?php echo esc_html($heading); ?></h2>
+						<?php endif; ?>
+						<?php if ( $desc ) : ?>
+							<div class="xevos-eventy__desc"><?php echo wp_kses_post($desc); ?></div>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
 
 				<div class="xevos-eventy__list-wrap">
 					<!-- Scrollbar vedle listu -->
@@ -86,8 +97,7 @@ $typ_colors = [
 						<div class="xevos-eventy__scrollbar-thumb"></div>
 					</div>
 					<div class="xevos-eventy__list">
-						<?php if ( ! empty( $posts_with_date ) ) : ?>
-							<?php $i = 0;
+						<?php $i = 0;
 							foreach ( $posts_with_date as $pwd ) :
 								$post = $pwd['post'];
 								setup_postdata( $GLOBALS['post'] = $post );
@@ -160,39 +170,6 @@ $typ_colors = [
 							<?php $i++;
 							endforeach;
 							wp_reset_postdata(); ?>
-							<?php else :
-							/* Testovací data — zobrazí se když nejsou žádná školení v DB */
-							$demo_events = [
-								['month' => '2', 'day' => '28', 'title' => 'Kybernetická bezpečnost - <strong>OBECNÁ</strong>', 'seats' => '1/20', 'type' => 'Online workshop', 'color' => 'green'],
-								['month' => '3', 'day' => '05', 'title' => '<strong>MANAŽER</strong> kybernetické bezpečnosti', 'seats' => '11/50', 'type' => 'workshop', 'color' => 'orange'],
-								['month' => '3', 'day' => '08', 'title' => '<strong>POVĚŘENÁ OSOBA</strong> kybernetické bezpečnosti', 'seats' => '', 'type' => 'Online workshop', 'color' => 'green'],
-								['month' => '2', 'day' => '28', 'title' => 'Kybernetická bezpečnost - <strong>OBECNÁ</strong>', 'seats' => '1/20', 'type' => 'Online workshop', 'color' => 'green'],
-								['month' => '3', 'day' => '05', 'title' => '<strong>MANAŽER</strong> kybernetické bezpečnosti', 'seats' => '11/50', 'type' => 'workshop', 'color' => 'orange'],
-								['month' => '3', 'day' => '08', 'title' => '<strong>POVĚŘENÁ OSOBA</strong> kybernetické bezpečnosti', 'seats' => '', 'type' => 'Online workshop', 'color' => 'green'],
-							];
-							foreach ($demo_events as $di => $demo) : ?>
-								<div class="xevos-eventy__item<?php echo $di === 0 ? ' xevos-eventy__item--first' : ''; ?>">
-									<div class="xevos-eventy__date">
-										<span class="xevos-eventy__date-day"><?php echo $demo['day']; ?></span><span class="xevos-eventy__date-slash">/</span><span class="xevos-eventy__date-month"><?php echo $demo['month']; ?></span>
-									</div>
-									<div class="xevos-eventy__content">
-										<h3 class="xevos-eventy__title"><?php echo $demo['title']; ?></h3>
-										<div class="xevos-eventy__meta">
-											<?php if ($demo['seats']) : ?>
-												<span class="xevos-eventy__meta-seats">
-													Volná místa <span class="xevos-eventy__meta-capacity">(<?php echo $demo['seats']; ?>)</span>
-												</span>
-											<?php endif; ?>
-											<span class="xevos-eventy__meta-type xevos-eventy__meta-type--<?php echo $demo['color']; ?>">
-												<span class="xevos-eventy__dot"></span>
-												<?php echo $demo['type']; ?>
-											</span>
-										</div>
-										<a href="#" class="xevos-eventy__register-btn">REGISTROVAT SE</a>
-									</div>
-								</div>
-						<?php endforeach;
-						endif; ?>
 					</div>
 
 
@@ -214,19 +191,29 @@ $typ_colors = [
 				</button>
 
 				<div class="xevos-eventy__cta-content">
-					<div class="xevos-eventy__cta-text">
-						<h3 class="xevos-eventy__cta-title"><?php echo esc_html($cta_title); ?></h3>
-						<p><?php echo wp_kses_post(strip_tags($cta_text, '<strong><b><em><br>')); ?></p>
-					</div>
-					<div class="xevos-eventy__cta-buttons">
-						<a href="<?php echo esc_url($cta_btn1_url); ?>" class="xevos-btn xevos-btn--primary">
-							<span class="xevos-btn__arrow"></span>
-							<?php echo esc_html($cta_btn1_text); ?>
-						</a>
-						<?php if ($cta_btn2_text) : ?>
-							<a href="<?php echo esc_url($cta_btn2_url); ?>" class="xevos-btn xevos-btn--outline"><?php echo esc_html($cta_btn2_text); ?></a>
-						<?php endif; ?>
-					</div>
+					<?php if ( $cta_title || $cta_text ) : ?>
+						<div class="xevos-eventy__cta-text">
+							<?php if ( $cta_title ) : ?>
+								<h3 class="xevos-eventy__cta-title"><?php echo esc_html($cta_title); ?></h3>
+							<?php endif; ?>
+							<?php if ( $cta_text ) : ?>
+								<p><?php echo wp_kses_post(strip_tags($cta_text, '<strong><b><em><br>')); ?></p>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+					<?php if ( $cta_btn1_text || $cta_btn2_text ) : ?>
+						<div class="xevos-eventy__cta-buttons">
+							<?php if ( $cta_btn1_text ) : ?>
+								<a href="<?php echo esc_url($cta_btn1_url); ?>" class="xevos-btn xevos-btn--primary">
+									<span class="xevos-btn__arrow"></span>
+									<?php echo esc_html($cta_btn1_text); ?>
+								</a>
+							<?php endif; ?>
+							<?php if ($cta_btn2_text) : ?>
+								<a href="<?php echo esc_url($cta_btn2_url); ?>" class="xevos-btn xevos-btn--outline"><?php echo esc_html($cta_btn2_text); ?></a>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
 

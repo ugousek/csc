@@ -9,20 +9,11 @@ $show = get_field('sluzby_zobrazit_sekci');
 if ($show === false) return;
 
 $heading = get_field('sluzby_heading');
-$sluzby  = get_field('sluzby');
+$sluzby  = get_field('sluzby') ?: [];
 
-// Fallback data matching Figma + 4 extra cards for testing.
-if (! $sluzby) {
-	$sluzby = [
-		['nazev' => 'Dohledové centrum',   'popis' => 'Security Operations Center – 24/7 monitoring, detekce incidentů a okamžitá reakce na bezpečnostní události.', 'url' => ''],
-		['nazev' => 'Penetrační testy',    'popis' => 'Simulace útoku na vaše systémy s cílem identifikovat zranitelná místa a navrhnout účinná opatření k jejich eliminaci.', 'url' => ''],
-		['nazev' => 'Edukace',             'popis' => 'Praktická školení a workshopy, jejichž cílem je zvýšení bezpečnostního povědomí zaměstnanců a celé organizace.', 'url' => ''],
-		['nazev' => 'Kyber politika',      'popis' => 'Nastavení bezpečnostních politik, NIS2/NIS, směrnic, firemní postupy k dosažení kybernetické odolnosti.', 'url' => ''],
-		['nazev' => 'Incident Response',   'popis' => 'Rychlá reakce na kybernetické incidenty – analýza, izolace hrozby a obnova provozu v minimálním čase.', 'url' => ''],
-		['nazev' => 'SIEM & Monitoring',   'popis' => 'Nasazení a správa SIEM systémů pro centralizovaný sběr logů, korelaci událostí a včasnou detekci hrozeb.', 'url' => ''],
-		['nazev' => 'Cloud Security',      'popis' => 'Zabezpečení cloudové infrastruktury – audit konfigurací, ochrana dat a compliance v prostředí AWS, Azure i GCP.', 'url' => ''],
-		['nazev' => 'Forenzní analýza',    'popis' => 'Digitální forenzní vyšetřování – zajištění důkazů, analýza kompromitovaných systémů a reportování zjištění.', 'url' => ''],
-	];
+/* Skrýt celou sekci, pokud nejsou v ACF žádné služby. */
+if ( empty( $sluzby ) ) {
+	return;
 }
 ?>
 

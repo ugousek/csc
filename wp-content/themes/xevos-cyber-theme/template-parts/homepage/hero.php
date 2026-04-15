@@ -8,10 +8,10 @@
 $show = get_field('hero_zobrazit_sekci');
 if ($show === false) return; // Show by default if ACF not yet configured.
 
-$heading    = get_field('hero_heading') ?: 'GARANCE <span>KYBERNETICKÉ ODOLNOSTI</span>';
-$subtitle   = get_field('hero_subheading') ?: 'Bez strašení. S jistotou';
-$desc       = get_field('hero_popis') ?: 'Pomáháme firmám detekovat hrozby, testujeme systémy a připravujeme týmy na skutečné útoky.';
-$cta_text   = get_field('hero_cta_text') ?: 'Chci otestovat zabezpečení';
+$heading    = get_field('hero_heading') ?: '';
+$subtitle   = get_field('hero_subheading') ?: '';
+$desc       = get_field('hero_popis') ?: '';
+$cta_text   = get_field('hero_cta_text') ?: '';
 $cta_url    = get_field('hero_cta_url') ?: '/kontakt/';
 $bg         = get_field('hero_background');
 ?>
@@ -30,18 +30,26 @@ $bg         = get_field('hero_background');
 	</div>
 
 	<div class="xevos-hero__content">
-		<h1 class="xevos-hero__title"><?php echo wp_kses_post($heading); ?></h1>
-		<p class="xevos-hero__subtitle"><strong><?php echo esc_html($subtitle); ?></strong></p>
-		<p class="xevos-hero__desc"><?php echo esc_html($desc); ?></p>
+		<?php if ( $heading ) : ?>
+			<h1 class="xevos-hero__title"><?php echo wp_kses_post($heading); ?></h1>
+		<?php endif; ?>
+		<?php if ( $subtitle ) : ?>
+			<p class="xevos-hero__subtitle"><strong><?php echo esc_html($subtitle); ?></strong></p>
+		<?php endif; ?>
+		<?php if ( $desc ) : ?>
+			<p class="xevos-hero__desc"><?php echo esc_html($desc); ?></p>
+		<?php endif; ?>
 
-		<a href="<?php echo esc_url($cta_url); ?>" class="xevos-btn xevos-btn--primary xevos-btn--lg">
-			<span class="xevos-btn__arrow">
-				<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-					<path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-				</svg>
-			</span>
-			<?php echo esc_html(strtoupper($cta_text)); ?>
-		</a>
+		<?php if ( $cta_text ) : ?>
+			<a href="<?php echo esc_url($cta_url); ?>" class="xevos-btn xevos-btn--primary xevos-btn--lg">
+				<span class="xevos-btn__arrow">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</span>
+				<?php echo esc_html(strtoupper($cta_text)); ?>
+			</a>
+		<?php endif; ?>
 	</div>
 
 	<!-- Emergency badge (from Figma – floating) -->

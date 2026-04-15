@@ -8,20 +8,11 @@
 ?>
 
 <a href="<?php the_permalink(); ?>" class="xevos-card">
-	<div class="xevos-card__image">
-		<?php if (has_post_thumbnail()) : ?>
+	<?php if (has_post_thumbnail()) : ?>
+		<div class="xevos-card__image">
 			<?php the_post_thumbnail('xevos-card', ['loading' => 'lazy', 'decoding' => 'async']); ?>
-		<?php else :
-			$fallback_imgs = [
-				get_theme_file_uri('assets/img/blog/aktualita-img-1.png'),
-				get_theme_file_uri('assets/img/blog/aktualita-img-2.png'),
-				get_theme_file_uri('assets/img/blog/aktualita-img-3.png'),
-			];
-			$idx = get_the_ID() % count($fallback_imgs);
-		?>
-			<img src="<?php echo esc_url($fallback_imgs[$idx]); ?>" alt="<?php the_title_attribute(); ?>" width="507" height="293" loading="lazy" decoding="async">
-		<?php endif; ?>
-	</div>
+		</div>
+	<?php endif; ?>
 	<div class="xevos-card__body">
 		<?php
 		$categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');

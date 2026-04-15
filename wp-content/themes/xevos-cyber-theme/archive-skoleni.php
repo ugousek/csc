@@ -21,10 +21,10 @@ $terms = get_terms(['taxonomy' => 'kategorie-skoleni', 'hide_empty' => false]);
 
 	<!-- Hero -->
 	<?php
-	$ska_heading = get_field('ska_heading', 'option') ?: 'Školení, která posilují bezpečnost';
-	$ska_desc    = get_field('ska_description', 'option') ?: 'Praktická a odborně vedená školení zaměřená na kybernetickou bezpečnost, legislativní požadavky i každodenní bezpečnostní návyky. Pomáháme managementu i zaměstnancům budovat reálnou odolnost organizace vůči moderním hrozbám.';
+	$ska_heading = get_field('ska_heading', 'option') ?: '';
+	$ska_desc    = get_field('ska_description', 'option') ?: '';
 	$ska_image   = get_field('ska_image', 'option');
-	$ska_img_url = $ska_image ? $ska_image['url'] : get_theme_file_uri('assets/img/prehled-skoleni/hero.png');
+	$ska_img_url = $ska_image ? $ska_image['url'] : '';
 
 	get_template_part('template-parts/components/hero-page', null, [
 		'heading'     => $ska_heading,

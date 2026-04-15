@@ -7,19 +7,15 @@
 $show = get_field( 'kt_pentest_zobrazit' );
 if ( $show === false ) return;
 
-$heading = get_field( 'kt_pentest_heading' ) ?: 'Penetrační testy';
-$text    = get_field( 'kt_pentest_text' ) ?: 'Simulace útoku na vaše systémy s cílem identifikovat zranitelná místa a navrhnout účinná opatření k jejich eliminaci.';
+$heading = get_field( 'kt_pentest_heading' ) ?: '';
+$text    = get_field( 'kt_pentest_text' ) ?: '';
 $image   = get_field( 'kt_pentest_obrazek' );
-$img_url = $image ? $image['url'] : get_theme_file_uri( 'assets/img/figma-assets/kyber-test-penetracni-dashboard.png' );
+$img_url = $image ? $image['url'] : '';
+$vyhody  = get_field( 'kt_pentest_vyhody' ) ?: [];
 
-$vyhody = get_field( 'kt_pentest_vyhody' );
-if ( ! $vyhody ) {
-	$vyhody = [
-		[ 'nazev' => 'Testování webových aplikací', 'popis' => 'OWASP Top 10, SQL Injection, XSS a autentizační testy.' ],
-		[ 'nazev' => 'Testování infrastruktury', 'popis' => 'Síťový audit, cloud security, Active Directory a firewall review.' ],
-		[ 'nazev' => 'Sociální inženýrství', 'popis' => 'Phishing kampaně, vishing testy, USB drop testy a awareness reporting.' ],
-		[ 'nazev' => 'Red Team operace', 'popis' => 'Realistická simulace pokročilého útočníka kombinující technické a sociální vektory.' ],
-	];
+/* Skrýt celou sekci, pokud není vyplněný ani heading, ani vyhody. */
+if ( $heading === '' && $text === '' && empty( $vyhody ) ) {
+	return;
 }
 ?>
 

@@ -2825,6 +2825,11 @@ body::after {
   font-weight: 400;
 }
 
+.xevos-kyber-test__panel .swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .xevos-kyber-test__checklist {
   list-style: none;
   padding: 0;

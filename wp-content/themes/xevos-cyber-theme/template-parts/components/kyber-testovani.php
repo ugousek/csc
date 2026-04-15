@@ -8,48 +8,19 @@
 $show = get_field('kyber_test_zobrazit_sekci');
 if ($show === false) return;
 
-$heading      = get_field('kyber_test_heading') ?: 'Kybernetické testování';
+$heading      = get_field('kyber_test_heading') ?: '';
 $heading_url  = get_field('kyber_test_heading_url');
-$desc     = get_field('kyber_test_text') ?: 'Ověření bezpečnosti systémů prostřednictvím řízených útoků a technických analýz, které odhalují reálné zranitelnosti.';
-$default_cta_text = 'Chci test';
-$default_cta_url  = '/kyberneticke-testovani/';
+$desc         = get_field('kyber_test_text') ?: '';
+$default_cta_text  = '';
+$default_cta_url   = '/kyberneticke-testovani/';
 $default_image_url = get_theme_file_uri('assets/img/homepage/kyber-testovani.png');
 
 /* Slides — from current page's ACF */
-$slides = get_field('kyber_test_slidy');
-if (! $slides) {
-	$slides = [
-		[
-			'title' => 'Penetrační testy',
-			'desc'  => 'Simulace útoku na vaše systémy s cílem identifikovat slabá místa a navrhnout účinná opatření pro posílení vaší kybernetické bezpečnosti.',
-			'items' => ['Penetrační testování', 'Testování aplikací a webů', 'Kyber odolnost zaměstnanců', 'Testování WiFi sítí'],
-		],
-		[
-			'title' => 'Testování webových aplikací',
-			'desc'  => 'Komplexní analýza webových aplikací zaměřená na identifikaci zranitelností v kódu, konfiguraci a autentizaci.',
-			'items' => ['OWASP Top 10', 'SQL Injection', 'Cross-site Scripting', 'Autentizační testy'],
-		],
-		[
-			'title' => 'Sociální inženýrství',
-			'desc'  => 'Testování odolnosti zaměstnanců vůči phishingovým útokům, podvodným e-mailům a manipulativním technikám.',
-			'items' => ['Phishing kampaně', 'Vishing testy', 'USB drop testy', 'Awareness reporting'],
-		],
-		[
-			'title' => 'Testování infrastruktury',
-			'desc'  => 'Audit síťové infrastruktury, serverů a cloudového prostředí pro odhalení konfiguračních chyb a zranitelností.',
-			'items' => ['Síťový audit', 'Cloud security', 'Active Directory', 'Firewall review'],
-		],
-		[
-			'title' => 'Red Team operace',
-			'desc'  => 'Realistická simulace pokročilého útočníka kombinující technické, fyzické a sociální vektory útoku.',
-			'items' => ['Cílený útok', 'Lateral movement', 'Data exfiltrace', 'Fyzický průnik'],
-		],
-		[
-			'title' => 'Mobilní aplikace',
-			'desc'  => 'Bezpečnostní testování mobilních aplikací pro iOS a Android včetně analýzy API komunikace.',
-			'items' => ['iOS testování', 'Android testování', 'API bezpečnost', 'Datové úniky'],
-		],
-	];
+$slides = get_field('kyber_test_slidy') ?: [];
+
+/* Skrýt celou sekci, pokud nejsou nakonfigurované žádné slidy. */
+if ( empty( $slides ) ) {
+	return;
 }
 ?>
 
@@ -57,10 +28,14 @@ if (! $slides) {
 	<div class="xevos-section__container">
 
 		<!-- Centered heading (only on homepage) -->
-		<?php if (is_front_page()) : ?>
+		<?php if ( is_front_page() && ( $heading || $desc ) ) : ?>
 			<div class="xevos-kyber-test__header">
-				<h2><?php if ($heading_url) : ?><a href="<?php echo esc_url($heading_url); ?>"><?php echo esc_html($heading); ?></a><?php else : echo esc_html($heading); endif; ?></h2>
-				<div class="xevos-kyber-test__desc"><?php echo wp_kses_post($desc); ?></div>
+				<?php if ( $heading ) : ?>
+					<h2><?php if ($heading_url) : ?><a href="<?php echo esc_url($heading_url); ?>"><?php echo esc_html($heading); ?></a><?php else : echo esc_html($heading); endif; ?></h2>
+				<?php endif; ?>
+				<?php if ( $desc ) : ?>
+					<div class="xevos-kyber-test__desc"><?php echo wp_kses_post($desc); ?></div>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 

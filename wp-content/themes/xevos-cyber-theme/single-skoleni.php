@@ -88,12 +88,14 @@ while (have_posts()) : the_post();
 
 		<!-- 2. Pro koho -->
 		<?php
-		$pro_koho_nadpis = get_field('pro_koho_nadpis') ?: 'Pro koho je školení určeno';
+		$pro_koho_nadpis = get_field('pro_koho_nadpis') ?: '';
 		$pro_koho_text   = get_field('pro_koho_text');
 		if ($pro_koho_text) : ?>
 			<section class="xevos-section xevos-skoleni-pro-koho">
 				<div class="xevos-section__container">
-					<h2><?php echo esc_html($pro_koho_nadpis); ?></h2>
+					<?php if ( $pro_koho_nadpis ) : ?>
+						<h2><?php echo esc_html($pro_koho_nadpis); ?></h2>
+					<?php endif; ?>
 					<div class="xevos-article-content__body"><?php echo wp_kses_post($pro_koho_text); ?></div>
 				</div>
 			</section>
@@ -103,7 +105,10 @@ while (have_posts()) : the_post();
 		<?php if ($terminy) : ?>
 			<section class="xevos-section xevos-skoleni-terminy">
 				<div class="xevos-section__container">
-					<h2><?php echo esc_html(get_field('terminy_nadpis') ?: 'Termíny školení'); ?></h2>
+					<?php $terminy_nadpis = get_field('terminy_nadpis') ?: ''; ?>
+					<?php if ( $terminy_nadpis ) : ?>
+						<h2><?php echo esc_html( $terminy_nadpis ); ?></h2>
+					<?php endif; ?>
 					<div class="xevos-termin-cards">
 						<?php foreach ($terminy as $i => $t) :
 							$dost = xevos_get_termin_dostupnost(get_the_ID(), $i);
@@ -138,25 +143,17 @@ while (have_posts()) : the_post();
 				}
 			}
 		}
-		if (! $has_lektori) {
-			$lektori = [
-				['jmeno' => 'Petr Letocha', 'pozice' => 'Cyber Security Center Manager', 'bio' => 'Petr je odborník na kybernetickou bezpečnost se specializací na implementaci legislativních požadavků. Zaměřuje se na řízení bezpečnostních rizik, nastavování bezpečnostních procesů a zajištění souladu organizací s regulatorními normami.', 'foto' => ''],
-				['jmeno' => 'Václav Herec', 'pozice' => 'Cyber Security Specialist', 'bio' => 'Václav je odborný specialista na penetrační testování a odhalování bezpečnostních slabých míst v IT systémech. Spolupracuje na projektech zaměřených na zvyšování bezpečnosti a dodržování certifikačních požadavků.', 'foto' => ''],
-				['jmeno' => 'Václav Herec', 'pozice' => 'Cyber Security Specialist', 'bio' => 'Václav je odborný specialista na penetrační testování a odhalování bezpečnostních slabých míst v IT systémech. Spolupracuje na projektech zaměřených na zvyšování bezpečnosti a dodržování certifikačních požadavků.', 'foto' => ''],
-				['jmeno' => 'Václav Herec', 'pozice' => 'Cyber Security Specialist', 'bio' => 'Václav je odborný specialista na penetrační testování a odhalování bezpečnostních slabých míst v IT systémech. Spolupracuje na projektech zaměřených na zvyšování bezpečnosti a dodržování certifikačních požadavků.', 'foto' => ''],
-			];
-		}
 
 		$lektor_count = is_array($lektori) ? count($lektori) : 0;
 		$use_swiper   = $lektor_count >= 3;
-		$lektor_fallbacks = [
-			get_theme_file_uri('assets/img/detail-skoleni/petr.png'),
-			get_theme_file_uri('assets/img/detail-skoleni/vaclav.png'),
-		];
 		?>
+		<?php if ($has_lektori) : ?>
 		<section class="xevos-section xevos-skoleni-lektori-section">
 			<div class="xevos-section__container">
-				<h2><?php echo esc_html(get_field('lektori_nadpis') ?: 'Obsahem vás provede:'); ?></h2>
+				<?php $lektori_nadpis = get_field('lektori_nadpis') ?: ''; ?>
+				<?php if ( $lektori_nadpis ) : ?>
+					<h2><?php echo esc_html( $lektori_nadpis ); ?></h2>
+				<?php endif; ?>
 				<div class="xevos-skoleni-lektori__carousel">
 					<?php if ($use_swiper) : ?>
 						<button class="xevos-nav-arrow xevos-nav-arrow--prev" aria-label="Předchozí" type="button">
@@ -169,18 +166,18 @@ while (have_posts()) : the_post();
 					<div class="<?php echo $use_swiper ? 'swiper xevos-lektori-swiper' : 'xevos-skoleni-lektori__cards'; ?>" <?php echo $use_swiper ? 'id="lektori-swiper"' : ''; ?>>
 						<div class="<?php echo $use_swiper ? 'swiper-wrapper' : 'xevos-skoleni-lektori__static'; ?>">
 							<?php foreach ($lektori as $li => $l) :
+								if ( empty( $l['jmeno'] ) ) continue;
 								$foto_url = '';
 								if (! empty($l['foto']) && is_array($l['foto'])) {
 									$foto_url = $l['foto']['sizes']['xevos-thumbnail'] ?? $l['foto']['url'] ?? '';
 								}
-								if (! $foto_url) {
-									$foto_url = $lektor_fallbacks[$li % count($lektor_fallbacks)];
-								}
 							?>
 								<div class="<?php echo $use_swiper ? 'swiper-slide' : ''; ?> xevos-lektor-card">
-									<div class="xevos-lektor-card__foto-wrap">
-										<img src="<?php echo esc_url($foto_url); ?>" alt="<?php echo esc_attr($l['jmeno'] ?? ''); ?>" class="xevos-lektor-card__foto">
-									</div>
+									<?php if ( $foto_url ) : ?>
+										<div class="xevos-lektor-card__foto-wrap">
+											<img src="<?php echo esc_url($foto_url); ?>" alt="<?php echo esc_attr($l['jmeno'] ?? ''); ?>" class="xevos-lektor-card__foto">
+										</div>
+									<?php endif; ?>
 									<div class="xevos-lektor-card__info">
 										<div class="xevos-lektor-card__name-wrap">
 											<div class="xevos-lektor-card__name"><?php echo esc_html($l['jmeno'] ?? ''); ?></div>
@@ -208,6 +205,7 @@ while (have_posts()) : the_post();
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
 		<!-- 5. Harmonogram + Osnova -->
 		<?php
@@ -220,16 +218,6 @@ while (have_posts()) : the_post();
 				}
 			}
 		}
-		if (! $has_harmonogram) {
-			$harmonogram = [
-				['cas' => '08:00', 'aktivita' => 'Registrace a snídaně'],
-				['cas' => '10:30–10:45', 'aktivita' => 'Coffee break'],
-				['cas' => '10:45–12:00', 'aktivita' => '2. blok (1,25 h)'],
-				['cas' => '12:00–13:00', 'aktivita' => 'Oběd'],
-				['cas' => '13:00–15:00', 'aktivita' => '3. blok (2 h)'],
-				['cas' => '15:45–16:00', 'aktivita' => 'Diskuse / Závěr'],
-			];
-		}
 		$has_osnova = false;
 		if (is_array($osnova)) {
 			foreach ($osnova as $o) {
@@ -239,54 +227,48 @@ while (have_posts()) : the_post();
 				}
 			}
 		}
-		if (! $has_osnova) {
-			$osnova = [
-				['bod' => 'Legislativní minimum: požadavky ZoKB, NIS2 a povinnosti zaměstnanců'],
-				['bod' => 'Hlášení kybernetických incidentů: jak poznat incident a komu ho předat'],
-				['bod' => 'Nejčastější hrozby: phishing, sociální inženýrství, ransomware, malware'],
-				['bod' => 'Bezpečné chování: heslová politika, práce s daty, bezpečný internet, mobilní zařízení'],
-				['bod' => 'Fyzická bezpečnost, home office, vzdálený přístup a zásady práce na služebních zařízeních'],
-				['bod' => 'Bezpečnost dodavatelského řetězce a externích služeb'],
-			];
-		}
 		?>
+		<?php if ($has_harmonogram || $has_osnova) : ?>
 		<section class="xevos-section">
 			<div class="xevos-section__container">
 				<div class="xevos-skoleni-content-cols">
-					<?php if ($harmonogram) : ?>
+					<?php if ($has_harmonogram) : ?>
 						<div class="xevos-skoleni-content-cols__col">
-							<h2><?php echo esc_html(get_field('harmonogram_nadpis') ?: 'Harmonogram školení'); ?></h2>
+							<?php $harmonogram_nadpis = get_field('harmonogram_nadpis') ?: ''; ?>
+							<?php if ( $harmonogram_nadpis ) : ?>
+								<h2><?php echo esc_html( $harmonogram_nadpis ); ?></h2>
+							<?php endif; ?>
 							<div class="xevos-harmonogram-list">
 								<?php foreach ($harmonogram as $h) : ?>
+									<?php if ( empty( $h['cas'] ) ) continue; ?>
 									<div class="xevos-harmonogram-item">
 										<span class="xevos-harmonogram-item__cas"><?php echo esc_html($h['cas'] ?? ''); ?></span><?php if (! empty($h['aktivita'])) : ?><span class="xevos-harmonogram-item__text">&nbsp;–&nbsp;<?php echo esc_html($h['aktivita']); ?></span><?php endif; ?>
 									</div>
 								<?php endforeach; ?>
 							</div>
 
-							<?php
-							$co_odnesete = get_field('co_odnesete');
-							if (! $co_odnesete) {
-								$co_odnesete = [
-									['bod' => 'Schopnost rozpoznat kybernetické hrozby a správně na ně reagovat'],
-									['bod' => 'Praktické dovednosti pro bezpečnou práci s daty, hesly a firemními systémy'],
-									['bod' => 'Znalost povinností vyplývajících ze ZoKB/NIS2 a role zaměstnance v ochraně organizace'],
-									['bod' => 'Zvýšené bezpečnostní povědomí, které posiluje kulturu bezpečnosti celé firmy'],
-								];
-							}
-							?>
-							<div class="xevos-skoleni-benefits">
-								<h2><?php echo esc_html(get_field('co_odnesete_nadpis') ?: 'Co si odnesete'); ?></h2>
-								<?php xevos_component('checklist', ['items' => $co_odnesete]); ?>
-							</div>
+							<?php $co_odnesete = get_field('co_odnesete') ?: []; ?>
+							<?php if ( ! empty( $co_odnesete ) ) : ?>
+								<div class="xevos-skoleni-benefits">
+									<?php $co_odnesete_nadpis = get_field('co_odnesete_nadpis') ?: ''; ?>
+									<?php if ( $co_odnesete_nadpis ) : ?>
+										<h2><?php echo esc_html( $co_odnesete_nadpis ); ?></h2>
+									<?php endif; ?>
+									<?php xevos_component('checklist', ['items' => $co_odnesete]); ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					<?php endif; ?>
 
-					<?php if ($osnova) : ?>
+					<?php if ($has_osnova) : ?>
 						<div class="xevos-skoleni-content-cols__col">
-							<h2><?php echo esc_html(get_field('osnova_nadpis') ?: 'Osnova školení'); ?></h2>
+							<?php $osnova_nadpis = get_field('osnova_nadpis') ?: ''; ?>
+							<?php if ( $osnova_nadpis ) : ?>
+								<h2><?php echo esc_html( $osnova_nadpis ); ?></h2>
+							<?php endif; ?>
 							<ul class="xevos-osnova-list">
 								<?php foreach ($osnova as $o) : ?>
+									<?php if ( empty( $o['bod'] ) ) continue; ?>
 									<li><?php echo wp_kses_post($o['bod'] ?? ''); ?></li>
 								<?php endforeach; ?>
 							</ul>
@@ -295,31 +277,31 @@ while (have_posts()) : the_post();
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
 		<!-- 6. Kde parkovat -->
 		<?php
-		$kde_parkovat  = get_field('kde_parkovat');
-		$kde_park_img  = get_field('kde_parkovat_obrazek');
-		if (! $kde_parkovat) {
-			$kde_parkovat = 'Parkování máte přímo u nás ve dvoře na adrese firmy. Po příjezdu stačí vjet do dvora a zaparkovat na vyhrazených místech.';
-		}
-		$kde_park_img_url = $kde_park_img
-			? $kde_park_img['url']
-			: get_theme_file_uri('assets/img/detail-skoleni/kde-parkovat.png');
+		$kde_parkovat     = get_field('kde_parkovat');
+		$kde_park_img     = get_field('kde_parkovat_obrazek');
+		$kde_park_img_url = $kde_park_img ? $kde_park_img['url'] : '';
 		?>
+		<?php if ( $kde_parkovat ) : ?>
 		<section class="xevos-section xevos-skoleni-kde-parkovat">
 			<div class="xevos-section__container">
 				<div class="xevos-skoleni-parking">
-					<div class="xevos-skoleni-parking__image">
-						<img src="<?php echo esc_url($kde_park_img_url); ?>" alt="Kde parkovat" loading="lazy">
-					</div>
+					<?php if ( $kde_park_img_url ) : ?>
+						<div class="xevos-skoleni-parking__image">
+							<img src="<?php echo esc_url($kde_park_img_url); ?>" alt="Kde parkovat" loading="lazy">
+						</div>
+					<?php endif; ?>
 					<div class="xevos-skoleni-parking__text">
-						<h2>Kde parkovat</h2>
+						<h2><?php echo esc_html( get_field('kde_parkovat_nadpis') ?: '' ); ?></h2>
 						<?php echo wp_kses_post($kde_parkovat); ?>
 					</div>
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
 		<!-- 7. Recenze -->
 		<?php get_template_part('template-parts/components/recenze'); ?>
