@@ -45,6 +45,14 @@
       "type": "text"
     },
     {
+      "key": "field_obj_platce_dph",
+      "label": "Plátce DPH",
+      "name": "platce_dph",
+      "type": "true_false",
+      "ui": 1,
+      "default_value": 0
+    },
+    {
       "key": "field_obj_fakturacni",
       "label": "Fakturační adresa",
       "name": "fakturacni_adresa",
@@ -83,7 +91,30 @@
       "key": "field_obj_termin",
       "label": "Termín",
       "name": "termin",
-      "type": "text"
+      "type": "select",
+      "choices": [],
+      "allow_null": 1,
+      "ui": 1,
+      "instructions": "Načítá se z termínů vybraného školení. Pokud se tu nezobrazují, nejdřív ulož školení."
+    },
+    {
+      "key": "field_obj_pocet",
+      "label": "Počet účastníků",
+      "name": "pocet",
+      "type": "number",
+      "default_value": 1,
+      "min": 1
+    },
+    {
+      "key": "field_obj_forma",
+      "label": "Forma účasti",
+      "name": "forma",
+      "type": "select",
+      "choices": {
+        "prezencni": "Prezenčně (na místě)",
+        "online": "Online (stream)"
+      },
+      "allow_null": 1
     },
     {
       "key": "field_obj_castka",

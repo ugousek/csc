@@ -233,6 +233,9 @@ function xevos_create_invoice_order_handler(): void {
 	$psc        = sanitize_text_field( $_POST['psc'] ?? '' );
 	$skoleni_id = absint( $_POST['skoleni_id'] );
 	$termin_val = sanitize_text_field( wp_unslash( $_POST['termin'] ?? '' ) );
+	$pocet      = max( 1, (int) ( $_POST['pocet'] ?? 1 ) );
+	$forma      = sanitize_text_field( $_POST['forma'] ?? '' );
+	$platce_dph = ! empty( $_POST['platce_dph'] );
 
 	if ( ! is_email( $email ) ) {
 		wp_send_json_error( [ 'message' => 'Zadejte prosím platný e-mail.' ] );
@@ -296,6 +299,9 @@ function xevos_create_invoice_order_handler(): void {
 	update_field( 'dic',             $dic,        $order_id );
 	update_field( 'skoleni',         $skoleni_id, $order_id );
 	update_field( 'termin',          $termin_val, $order_id );
+	update_field( 'pocet',           $pocet,      $order_id );
+	update_field( 'forma',           $forma,      $order_id );
+	update_field( 'platce_dph',      $platce_dph, $order_id );
 	update_field( 'castka',          $cena,       $order_id );
 	update_field( 'typ_registrace',  'paid',      $order_id );
 	update_field( 'stav_platby',     'invoice',   $order_id );

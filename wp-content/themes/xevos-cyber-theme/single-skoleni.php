@@ -103,7 +103,7 @@ while (have_posts()) : the_post();
 		<?php if ($terminy) : ?>
 			<section class="xevos-section xevos-skoleni-terminy">
 				<div class="xevos-section__container">
-					<h2>Termíny školení</h2>
+					<h2><?php echo esc_html(get_field('terminy_nadpis') ?: 'Termíny školení'); ?></h2>
 					<div class="xevos-termin-cards">
 						<?php foreach ($terminy as $i => $t) :
 							$dost = xevos_get_termin_dostupnost(get_the_ID(), $i);

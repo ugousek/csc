@@ -50,6 +50,9 @@ function xevos_ecomail_register(): void {
 	$email    = sanitize_email( $_POST['email'] ?? '' );
 	$telefon  = sanitize_text_field( $_POST['telefon'] ?? '' );
 	$firma    = sanitize_text_field( $_POST['firma'] ?? '' );
+	$pocet      = max( 1, (int) ( $_POST['pocet'] ?? 1 ) );
+	$forma      = sanitize_text_field( $_POST['forma'] ?? '' );
+	$platce_dph = ! empty( $_POST['platce_dph'] );
 
 	if ( ! $email ) {
 		wp_send_json_error( [ 'message' => 'E-mail je povinný.' ], 400 );
@@ -139,6 +142,9 @@ function xevos_ecomail_register(): void {
 		update_field( 'firma', $firma, $order_id );
 		update_field( 'skoleni', $skoleni_id, $order_id );
 		update_field( 'termin', $termin_val, $order_id );
+		update_field( 'pocet', $pocet, $order_id );
+		update_field( 'forma', $forma, $order_id );
+		update_field( 'platce_dph', $platce_dph, $order_id );
 		update_field( 'castka', 0, $order_id );
 		update_field( 'typ_registrace', 'free', $order_id );
 		update_field( 'stav_platby', $typ === 'pozvanka' ? 'invitation_pending' : 'registered', $order_id );

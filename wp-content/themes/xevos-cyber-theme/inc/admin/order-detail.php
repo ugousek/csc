@@ -9,6 +9,53 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'add_meta_boxes', 'xevos_order_detail_metabox' );
 add_action( 'admin_head', 'xevos_order_detail_css' );
+add_filter( 'acf/load_field/key=field_obj_termin', 'xevos_load_termin_choices' );
+
+/**
+ * Dynamicky naplní select volbami z termínů přiřazeného školení.
+ * Probíhá při editaci objednávky — školení se čte ze samotné objednávky.
+ */
+function xevos_load_termin_choices( array $field ): array {
+	$field['choices'] = [];
+
+	$order_id = 0;
+	if ( isset( $_GET['post'] ) ) {
+		$order_id = (int) $_GET['post'];
+	} elseif ( isset( $_POST['post_ID'] ) ) {
+		$order_id = (int) $_POST['post_ID'];
+	}
+	if ( ! $order_id ) return $field;
+
+	$skoleni_id = (int) get_post_meta( $order_id, 'skoleni', true );
+	if ( ! $skoleni_id ) return $field;
+
+	$terminy = get_field( 'terminy', $skoleni_id );
+	if ( ! is_array( $terminy ) ) return $field;
+
+	foreach ( $terminy as $t ) {
+		if ( ! function_exists( 'xevos_termin_key' ) ) break;
+		$key   = xevos_termin_key( $t );
+		if ( ! $key ) continue;
+		$label = $t['datum'] ?? '';
+		if ( ! empty( $t['cas_od'] ) && ! empty( $t['cas_do'] ) ) {
+			$label .= ' | ' . $t['cas_od'] . ' – ' . $t['cas_do'];
+		} elseif ( ! empty( $t['cas_od'] ) ) {
+			$label .= ' | ' . $t['cas_od'];
+		}
+		if ( ! empty( $t['misto'] ) ) {
+			$label .= ' · ' . $t['misto'];
+		}
+		$field['choices'][ $key ] = $label;
+	}
+
+	// Pokud aktuální hodnota není v seznamu (starý neznámý formát), přidej ji.
+	$current = get_post_meta( $order_id, 'termin', true );
+	if ( $current && ! isset( $field['choices'][ $current ] ) ) {
+		$field['choices'][ $current ] = $current . ' (neznámý termín)';
+	}
+
+	return $field;
+}
 
 function xevos_order_detail_metabox(): void {
 	add_meta_box(
@@ -133,12 +180,6 @@ function xevos_order_detail_css(): void {
 		border-left: none;
 	}
 
-	/* Termín — readonly appearance */
-	#acf-group_xevos_objednavka .acf-field[data-name="termin"] input {
-		pointer-events: none;
-		background: #f6f7f7;
-		color: #444;
-	}
 
 	/* Fakturační adresa — nested 3-column grid */
 	#acf-group_xevos_objednavka .acf-field[data-name="fakturacni_adresa"] {

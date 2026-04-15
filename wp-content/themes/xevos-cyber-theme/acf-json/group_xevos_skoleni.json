@@ -138,6 +138,14 @@
       "type": "tab"
     },
     {
+      "key": "field_sk_terminy_nadpis",
+      "label": "Nadpis sekce",
+      "name": "terminy_nadpis",
+      "type": "text",
+      "placeholder": "Termíny školení",
+      "instructions": "Prázdné = Termíny školení"
+    },
+    {
       "key": "field_sk_terminy",
       "label": "Termíny",
       "name": "terminy",
