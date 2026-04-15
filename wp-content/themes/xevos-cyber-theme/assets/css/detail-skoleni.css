@@ -162,14 +162,14 @@
 }
 
 @media (min-width: 1024px) {
-    .xevos-skoleni-hero .xevos-blog-hero__grid {
+    /* .xevos-skoleni-hero .xevos-blog-hero__grid {
         min-height: 770px;
     }
 
     .xevos-skoleni-hero .xevos-blog-hero__image img {
         max-height: 770px;
         object-fit: cover;
-    }
+    } */
 }
 
 

@@ -697,16 +697,32 @@ body.home .xevos-glow-blob--multiply {
 
 /* Countdown fade-out — 70 % hold na plné viditelnosti, pak fade out */
 @keyframes xevos-eventy-scroll-hint-out {
-  0%   { opacity: 1; }
-  70%  { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Ikona scroll-down se pohybuje nahoru/dolů uvnitř boxu — simuluje scroll gesto */
 @keyframes xevos-eventy-icon-bounce {
-  0%   { background-position: center top 4px; }
-  50%  { background-position: center top 24px; }
-  100% { background-position: center top 4px; }
+  0% {
+    background-position: center top 4px;
+  }
+
+  50% {
+    background-position: center top 24px;
+  }
+
+  100% {
+    background-position: center top 4px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1840,6 +1856,10 @@ body.home .xevos-glow-blob--multiply {
     max-width: 600px;
     margin-bottom: 1.75rem;
     line-height: 1.6;
+  }
+
+  .xevos-eventy__list-wrap {
+    max-height: 510px;
   }
 
   /* --- Services / karty --- */
