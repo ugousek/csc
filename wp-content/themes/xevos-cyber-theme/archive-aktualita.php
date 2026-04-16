@@ -16,7 +16,8 @@ $terms = get_terms(['taxonomy' => 'kategorie-aktualit', 'hide_empty' => true]);
 $aka_heading = get_field('aka_heading', 'option') ?: 'Znalosti, které posilují bezpečnost';
 $aka_desc    = get_field('aka_description', 'option') ?: 'Odborné články, analýzy a aktuální pohledy na kybernetickou bezpečnost, legislativu i moderní technologie. Sdílíme zkušenosti z praxe, vysvětlujeme nové hrozby a přinášíme doporučení, která vám pomohou lépe chránit data, infrastrukturu i celou organizaci v dynamicky se měnícím digitálním prostředí.';
 $aka_image   = get_field('aka_image', 'option');
-$aka_img_url = $aka_image ? $aka_image['url'] : get_theme_file_uri('assets/img/blog/blog-hero.png');
+$aka_img_id  = $aka_image ? (int) ($aka_image['ID'] ?? 0) : 0;
+$aka_img_url = ! $aka_img_id ? get_theme_file_uri('assets/img/blog/blog-hero.png') : '';
 ?>
 
 <main id="main" class="xevos-main xevos-main--glows">
@@ -37,7 +38,11 @@ $aka_img_url = $aka_image ? $aka_image['url'] : get_theme_file_uri('assets/img/b
 					<p class="xevos-blog-hero__desc"><?php echo wp_kses_post(strip_tags($aka_desc, '<strong><b><em><br>')); ?></p>
 				</div>
 				<div class="xevos-blog-hero__image<?php echo in_array( get_field('aka_hero_maska', 'option'), [ false, 0, '0' ], true ) ? ' xevos-blog-hero__image--no-mask' : ''; ?>">
+					<?php if ($aka_img_id) :
+					echo xevos_img($aka_img_id, 'full', ['alt' => 'Blog', 'loading' => 'lazy']);
+				elseif ($aka_img_url) : ?>
 					<img src="<?php echo esc_url($aka_img_url); ?>" alt="Blog" loading="lazy">
+				<?php endif; ?>
 				</div>
 			</div>
 		</div>

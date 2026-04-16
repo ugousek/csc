@@ -19,7 +19,7 @@ $default_image_url = get_theme_file_uri('assets/img/homepage/kyber-testovani.png
 $slides = get_field('kyber_test_slidy') ?: [];
 
 /* Skrýt celou sekci, pokud nejsou nakonfigurované žádné slidy. */
-if ( empty( $slides ) ) {
+if (empty($slides)) {
 	return;
 }
 ?>
@@ -28,12 +28,13 @@ if ( empty( $slides ) ) {
 	<div class="xevos-section__container">
 
 		<!-- Centered heading (only on homepage) -->
-		<?php if ( is_front_page() && ( $heading || $desc ) ) : ?>
+		<?php if (is_front_page() && ($heading || $desc)) : ?>
 			<div class="xevos-kyber-test__header">
-				<?php if ( $heading ) : ?>
-					<h2><?php if ($heading_url) : ?><a href="<?php echo esc_url($heading_url); ?>"><?php echo esc_html($heading); ?></a><?php else : echo esc_html($heading); endif; ?></h2>
+				<?php if ($heading) : ?>
+					<h2><?php if ($heading_url) : ?><a href="<?php echo esc_url($heading_url); ?>"><?php echo esc_html($heading); ?></a><?php else : echo esc_html($heading);
+																																	endif; ?></h2>
 				<?php endif; ?>
-				<?php if ( $desc ) : ?>
+				<?php if ($desc) : ?>
 					<div class="xevos-kyber-test__desc"><?php echo wp_kses_post($desc); ?></div>
 				<?php endif; ?>
 			</div>
@@ -44,22 +45,32 @@ if ( empty( $slides ) ) {
 			<!-- Image area (mění se per slide) -->
 			<div class="xevos-kyber-test__visual">
 				<div class="xevos-kyber-test__glow" aria-hidden="true"></div>
-				<img src="<?php echo esc_url(get_theme_file_uri('assets/img/homepage/blesk.png')); ?>"
-					alt="" class="xevos-kyber-test__blesk" aria-hidden="true" loading="lazy" />
+				<!-- <img src="<?php echo esc_url(get_theme_file_uri('assets/img/homepage/blesk.png')); ?>"
+					alt="" class="xevos-kyber-test__blesk" aria-hidden="true" loading="lazy" /> -->
 				<?php
-				/* Per-slide obrázky (JS přepíná src) */
+				/* Per-slide obrázky — JS přepíná src + srcset + sizes */
 				$slide_images = [];
 				foreach ($slides as $s) {
-					$slide_images[] = ! empty($s['obrazek']['url']) ? $s['obrazek']['url'] : $default_image_url;
+					$img_id = ! empty($s['obrazek']['ID']) ? (int) $s['obrazek']['ID'] : 0;
+					if ($img_id) {
+						$src    = wp_get_attachment_image_url($img_id, 'full');
+						$srcset = wp_get_attachment_image_srcset($img_id, 'full') ?: '';
+						$sizes  = wp_get_attachment_image_sizes($img_id, 'full') ?: '';
+					} else {
+						$src    = ! empty($s['obrazek']['url']) ? $s['obrazek']['url'] : $default_image_url;
+						$srcset = '';
+						$sizes  = '';
+					}
+					$slide_images[] = ['src' => $src, 'srcset' => $srcset, 'sizes' => $sizes];
 				}
-				$first_image = $slide_images[0] ?? $default_image_url;
+				$first = $slide_images[0] ?? ['src' => $default_image_url, 'srcset' => '', 'sizes' => ''];
 				?>
-				<img src="<?php echo esc_url($first_image); ?>"
+				<img src="<?php echo esc_url($first['src']); ?>"
+					<?php if ($first['srcset']) : ?>srcset="<?php echo esc_attr($first['srcset']); ?>" <?php endif; ?>
+					<?php if ($first['sizes']) : ?>sizes="<?php echo esc_attr($first['sizes']); ?>" <?php endif; ?>
 					alt="Kybernetické testování"
 					id="kyber-test-main-img"
 					loading="lazy" />
-				<?php
-				?>
 				<script type="application/json" id="kyber-test-images">
 					<?php echo wp_json_encode($slide_images); ?>
 				</script>

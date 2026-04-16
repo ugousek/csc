@@ -50,12 +50,14 @@ while (have_posts()) : the_post();
 		<!-- 1. Hero -->
 		<?php
 		$hero_acf = get_field('hero_obrazek');
-		if ($hero_acf && !empty($hero_acf['url'])) {
-			$hero_img = $hero_acf['url'];
+		$hero_img_id  = 0;
+		$hero_img_url = '';
+		if ($hero_acf && !empty($hero_acf['ID'])) {
+			$hero_img_id = (int) $hero_acf['ID'];
 		} elseif (has_post_thumbnail()) {
-			$hero_img = get_the_post_thumbnail_url(get_the_ID(), 'xevos-hero');
+			$hero_img_id = get_post_thumbnail_id(get_the_ID());
 		} else {
-			$hero_img = get_theme_file_uri('assets/img/detail-skoleni/hero-shield.png');
+			$hero_img_url = get_theme_file_uri('assets/img/detail-skoleni/hero-shield.png');
 		}
 
 		$typ_prihlaseni = get_field('typ_prihlaseni') ?: 'platba';
@@ -79,7 +81,8 @@ while (have_posts()) : the_post();
 			'description' => $hero_popis ?: '',
 			'cta_text'    => $cta_label,
 			'cta_url'     => '#objednavka',
-			'image_url'   => $hero_img,
+			'image_id'    => $hero_img_id,
+			'image_url'   => $hero_img_url,
 			'css_class'   => 'xevos-skoleni-hero',
 			'loading'     => 'eager',
 			'image_mask'  => !in_array( get_field('hero_maska'), [ false, 0, '0' ], true ),
@@ -134,8 +137,7 @@ while (have_posts()) : the_post();
 
 						<?php if ($is_single_term) : ?>
 							<div class="xevos-termin-image">
-								<img src="<?php echo esc_url($terminy_obrazek['url']); ?>"
-									alt="<?php echo esc_attr($terminy_obrazek['alt'] ?? ''); ?>" loading="lazy">
+								<?php echo xevos_img($terminy_obrazek, 'full', ['loading' => 'lazy']); ?>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -178,15 +180,20 @@ while (have_posts()) : the_post();
 						<div class="<?php echo $use_swiper ? 'swiper-wrapper' : 'xevos-skoleni-lektori__static'; ?>">
 							<?php foreach ($lektori as $li => $l) :
 								if ( empty( $l['jmeno'] ) ) continue;
-								$foto_url = '';
+								$foto_id = 0;
 								if (! empty($l['foto']) && is_array($l['foto'])) {
-									$foto_url = $l['foto']['sizes']['xevos-thumbnail'] ?? $l['foto']['url'] ?? '';
+									$foto_id = (int) ($l['foto']['ID'] ?? 0);
+								} elseif (! empty($l['foto']) && is_numeric($l['foto'])) {
+									$foto_id = (int) $l['foto'];
 								}
 							?>
 								<div class="<?php echo $use_swiper ? 'swiper-slide' : ''; ?> xevos-lektor-card">
-									<?php if ( $foto_url ) : ?>
+									<?php if ( $foto_id ) : ?>
 										<div class="xevos-lektor-card__foto-wrap">
-											<img src="<?php echo esc_url($foto_url); ?>" alt="<?php echo esc_attr($l['jmeno'] ?? ''); ?>" class="xevos-lektor-card__foto">
+											<?php echo xevos_img($foto_id, 'xevos-lektor', [
+												'alt'   => $l['jmeno'] ?? '',
+												'class' => 'xevos-lektor-card__foto',
+											]); ?>
 										</div>
 									<?php endif; ?>
 									<div class="xevos-lektor-card__info">
@@ -302,18 +309,17 @@ while (have_posts()) : the_post();
 
 		<!-- 6. Kde parkovat -->
 		<?php
-		$kde_parkovat     = get_field('kde_parkovat');
-		$kde_park_img     = get_field('kde_parkovat_obrazek');
-		$kde_park_img_url = $kde_park_img ? $kde_park_img['url'] : '';
+		$kde_parkovat = get_field('kde_parkovat');
+		$kde_park_img = get_field('kde_parkovat_obrazek');
 		?>
 		<?php if ( $kde_parkovat ) : ?>
 		<section class="xevos-section xevos-skoleni-kde-parkovat">
 			<div class="xevos-section__container">
 				<div class="xevos-skoleni-parking">
-					<?php if ( $kde_park_img_url ) : ?>
+					<?php if ( $kde_park_img ) : ?>
 						<div class="xevos-skoleni-parking__image">
-							<a href="<?php echo esc_url($kde_park_img_url); ?>" class="xevos-lightbox-trigger" aria-label="Zvětšit obrázek">
-								<img src="<?php echo esc_url($kde_park_img_url); ?>" alt="Kde parkovat" loading="lazy">
+							<a href="<?php echo esc_url($kde_park_img['url']); ?>" class="xevos-lightbox-trigger" aria-label="Zvětšit obrázek">
+								<?php echo xevos_img($kde_park_img, 'xevos-article', ['loading' => 'lazy', 'alt' => 'Kde parkovat']); ?>
 								<span class="xevos-lightbox-zoom" aria-hidden="true">
 									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
 								</span>

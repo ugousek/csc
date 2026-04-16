@@ -151,3 +151,28 @@ function xevos_trim_html( string $html, int $words = 30 ): string {
 
 	return wp_kses( $result, $allowed );
 }
+
+/**
+ * Responsive image output from ACF image array or attachment ID.
+ * Uses wp_get_attachment_image() which generates srcset + sizes automatically.
+ * EWWW hooks into this for lazy load / WebP.
+ *
+ * @param array|int $image  ACF image array (['ID'=>…]) or attachment ID.
+ * @param string    $size   WP image size name (default 'full').
+ * @param array     $attrs  Extra <img> attributes (alt, class, loading…).
+ * @return string   HTML <img> tag with srcset.
+ */
+function xevos_img( $image, string $size = 'full', array $attrs = [] ): string {
+	$id = 0;
+	if ( is_array( $image ) && ! empty( $image['ID'] ) ) {
+		$id = (int) $image['ID'];
+		if ( empty( $attrs['alt'] ) && ! empty( $image['alt'] ) ) {
+			$attrs['alt'] = $image['alt'];
+		}
+	} elseif ( is_numeric( $image ) ) {
+		$id = (int) $image;
+	}
+	if ( ! $id ) return '';
+
+	return wp_get_attachment_image( $id, $size, false, $attrs );
+}

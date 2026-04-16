@@ -564,6 +564,13 @@
     }
 }
 
+@media (max-width: 767px) {
+    .xevos-lektor-card__bio-toggle {
+        margin-bottom: 3rem;
+    }
+
+}
+
 /* Nav arrows — uses shared .xevos-nav-arrow from main.css */
 
 

@@ -23,13 +23,13 @@ $terms = get_terms(['taxonomy' => 'kategorie-skoleni', 'hide_empty' => false]);
 	<?php
 	$ska_heading = get_field('ska_heading', 'option') ?: '';
 	$ska_desc    = get_field('ska_description', 'option') ?: '';
-	$ska_image   = get_field('ska_image', 'option');
-	$ska_img_url = $ska_image ? $ska_image['url'] : '';
+	$ska_image = get_field('ska_image', 'option');
 
 	get_template_part('template-parts/components/hero-page', null, [
 		'heading'     => $ska_heading,
 		'description' => $ska_desc,
-		'image_url'   => $ska_img_url,
+		'image_id'    => $ska_image ? (int) ($ska_image['ID'] ?? 0) : 0,
+		'image_url'   => '',
 		'image_mask'  => !in_array( get_field('ska_hero_maska', 'option'), [ false, 0, '0' ], true ),
 	]); ?>
 

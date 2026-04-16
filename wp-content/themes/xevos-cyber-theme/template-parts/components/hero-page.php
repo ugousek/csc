@@ -19,6 +19,7 @@ $subheading = $args['subheading'] ?? '';
 $desc       = $args['description'] ?? '';
 $cta_text   = $args['cta_text'] ?? '';
 $cta_url    = $args['cta_url'] ?? '';
+$image_id   = $args['image_id'] ?? 0;
 $image_url  = $args['image_url'] ?? '';
 $css_class  = $args['css_class'] ?? '';
 $loading    = $args['loading'] ?? 'lazy';
@@ -55,9 +56,16 @@ if ( $css_class ) {
 					</a>
 				<?php endif; ?>
 			</div>
-			<?php if ( $image_url ) : ?>
+			<?php if ( $image_id || $image_url ) : ?>
 			<div class="xevos-blog-hero__image<?php echo $image_mask ? '' : ' xevos-blog-hero__image--no-mask'; ?>">
-				<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $heading ); ?>" loading="<?php echo esc_attr( $loading ); ?>">
+				<?php if ( $image_id && function_exists( 'xevos_img' ) ) :
+					echo xevos_img( $image_id, 'full', [
+						'alt'     => wp_strip_all_tags( $heading ),
+						'loading' => $loading,
+					] );
+				else : ?>
+					<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $heading ); ?>" loading="<?php echo esc_attr( $loading ); ?>">
+				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 		</div>

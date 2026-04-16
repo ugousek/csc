@@ -39,7 +39,8 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 		get_template_part('template-parts/components/hero-page', null, [
 			'heading'     => get_field('on_hero_heading') ?: '',
 			'description' => get_field('on_hero_subheading') ?: '',
-			'image_url'   => $_bg ? $_bg['url'] : '',
+			'image_id'    => $_bg ? (int) ($_bg['ID'] ?? 0) : 0,
+			'image_url'   => '',
 			'image_mask'  => !in_array( get_field('on_hero_maska'), [ false, 0, '0' ], true ),
 		]);
 	endif;
@@ -212,16 +213,16 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 	$banner_btn_text = get_field('on_banner_btn_text') ?: '';
 	$banner_btn_url  = get_field('on_banner_btn_url') ?: '#formular';
 	$banner_image    = get_field('on_banner_image');
-	$banner_img_url  = $banner_image ? $banner_image['url'] : '';
-	$show_banner     = get_field('on_banner_zobrazit') !== false && ( $banner_heading || $banner_text || $banner_btn_text || $banner_img_url );
+	$banner_img_id   = $banner_image ? (int) ($banner_image['ID'] ?? 0) : 0;
+	$show_banner     = get_field('on_banner_zobrazit') !== false && ( $banner_heading || $banner_text || $banner_btn_text || $banner_img_id );
 	?>
 	<?php if ( $show_banner ) : ?>
 		<section class="xevos-section xevos-kt-banner">
 			<div class="xevos-section__container">
 				<div class="xevos-kt-banner__inner">
-					<?php if ( $banner_img_url ) : ?>
-						<img src="<?php echo esc_url($banner_img_url); ?>" alt="" class="xevos-kt-banner__bg" loading="lazy">
-					<?php endif; ?>
+					<?php if ( $banner_img_id ) :
+						echo xevos_img($banner_img_id, 'full', ['class' => 'xevos-kt-banner__bg', 'loading' => 'lazy', 'alt' => '']);
+					endif; ?>
 					<div class="xevos-kt-banner__content">
 						<?php if ( $banner_heading ) : ?>
 							<h2><?php echo esc_html($banner_heading); ?></h2>

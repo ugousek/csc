@@ -23,9 +23,12 @@ $categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');
 	<?php while (have_posts()) : the_post();
 		$hero_layout = get_field('aktualita_hero_layout') ?: 'classic';
 		$hero_acf    = get_field('aktualita_hero_obrazek');
-		$hero_url    = $hero_acf ? $hero_acf['url'] : '';
-		if ( ! $hero_url && has_post_thumbnail() ) {
-			$hero_url = get_the_post_thumbnail_url( get_the_ID(), 'xevos-hero' );
+		$hero_img_id = 0;
+		$hero_url    = '';
+		if ($hero_acf && !empty($hero_acf['ID'])) {
+			$hero_img_id = (int) $hero_acf['ID'];
+		} elseif (has_post_thumbnail()) {
+			$hero_img_id = get_post_thumbnail_id(get_the_ID());
 		}
 	?>
 
@@ -51,7 +54,7 @@ $categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');
 			<!-- Intro: text + obrázek side-by-side -->
 			<article class="xevos-section xevos-article-content xevos-article-content--fullwidth">
 				<div class="xevos-section__container xevos-article-content__inner">
-					<?php if ( $hero_url ) : ?>
+					<?php if ( $hero_img_id ) : ?>
 						<div class="xevos-article-intro">
 							<div class="xevos-article-intro__text">
 								<?php
@@ -59,7 +62,6 @@ $categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');
 								$intro = '';
 								$rest  = '';
 								if ( $obsah ) {
-									// Rozdělíme na první odstavec (intro) a zbytek
 									$first_p_end = strpos( $obsah, '</p>' );
 									if ( $first_p_end !== false ) {
 										$intro = substr( $obsah, 0, $first_p_end + 4 );
@@ -73,7 +75,7 @@ $categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');
 							</div>
 							<?php $intro_mask = get_field('aktualita_hero_maska'); ?>
 							<div class="xevos-article-intro__image<?php echo $intro_mask ? '' : ' xevos-article-intro__image--no-mask'; ?>">
-								<img src="<?php echo esc_url( $hero_url ); ?>" alt="<?php the_title_attribute(); ?>" loading="eager">
+								<?php echo xevos_img($hero_img_id, 'full', ['alt' => get_the_title(), 'loading' => 'eager']); ?>
 							</div>
 						</div>
 						<div class="xevos-article-content__body">
@@ -98,9 +100,9 @@ $categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');
 			     ============================================================ -->
 			<section class="xevos-article-hero">
 				<div class="xevos-section__container">
-					<?php if ( $hero_url ) : ?>
+					<?php if ( $hero_img_id ) : ?>
 						<div class="xevos-article-hero__bg">
-							<img src="<?php echo esc_url($hero_url); ?>" alt="<?php the_title_attribute(); ?>">
+							<?php echo xevos_img($hero_img_id, 'full', ['alt' => get_the_title()]); ?>
 						</div>
 					<?php endif; ?>
 					<div class="xevos-article-hero__content">

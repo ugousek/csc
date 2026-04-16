@@ -208,3 +208,89 @@ function xevos_import_theme_images_page(): void {
 	</div>
 	<?php
 }
+
+/**
+ * Admin tool: Regenerate thumbnails for all media library images.
+ * wp-admin → Nástroje → Přegenerovat thumbnaily
+ */
+add_action( 'admin_menu', function () {
+	add_management_page(
+		'Přegenerovat thumbnaily',
+		'Přegenerovat thumbnaily',
+		'manage_options',
+		'xevos-regenerate-thumbnails',
+		'xevos_regenerate_thumbnails_page'
+	);
+} );
+
+function xevos_regenerate_thumbnails_page(): void {
+	if ( ! current_user_can( 'manage_options' ) ) return;
+
+	$processed = 0;
+	$failed    = 0;
+	$total     = 0;
+
+	if ( isset( $_POST['xevos_regen_thumbs'] ) && check_admin_referer( 'xevos_regen_thumbs' ) ) {
+
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		$attachments = get_posts( [
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'posts_per_page' => -1,
+			'post_status'    => 'inherit',
+			'fields'         => 'ids',
+		] );
+
+		$total = count( $attachments );
+
+		foreach ( $attachments as $id ) {
+			$file = get_attached_file( $id );
+			if ( ! $file || ! file_exists( $file ) ) {
+				$failed++;
+				continue;
+			}
+			$metadata = wp_generate_attachment_metadata( $id, $file );
+			if ( is_wp_error( $metadata ) || empty( $metadata ) ) {
+				$failed++;
+				continue;
+			}
+			wp_update_attachment_metadata( $id, $metadata );
+			$processed++;
+		}
+	}
+	?>
+	<div class="wrap">
+		<h1>Přegenerovat thumbnaily</h1>
+
+		<?php if ( $total > 0 ) : ?>
+			<div class="notice notice-success">
+				<p><strong>Hotovo!</strong> Zpracováno: <?php echo $processed; ?> / <?php echo $total; ?><?php echo $failed ? ', chyby: ' . $failed : ''; ?></p>
+			</div>
+		<?php endif; ?>
+
+		<p>Přegeneruje všechny velikosti obrázků pro <strong>všechny soubory</strong> v Media Library. Užitečné po změně registrovaných velikostí nebo po migraci.</p>
+		<p>Registrované velikosti:</p>
+		<ul>
+			<?php
+			$sizes = wp_get_registered_image_subsizes();
+			foreach ( $sizes as $name => $size ) {
+				printf(
+					'<li><strong>%s</strong> — %d×%d%s</li>',
+					esc_html( $name ),
+					$size['width'],
+					$size['height'],
+					$size['crop'] ? ' (crop)' : ''
+				);
+			}
+			?>
+		</ul>
+
+		<form method="post">
+			<?php wp_nonce_field( 'xevos_regen_thumbs' ); ?>
+			<input type="hidden" name="xevos_regen_thumbs" value="1">
+			<?php submit_button( 'Přegenerovat všechny thumbnaily', 'primary' ); ?>
+		</form>
+	</div>
+	<?php
+}

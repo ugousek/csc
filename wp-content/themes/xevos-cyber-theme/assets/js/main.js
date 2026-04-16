@@ -341,8 +341,19 @@
       },
       on: {
         slideChange: function () {
-          if (ktMainImg && ktImages[this.activeIndex]) {
-            ktMainImg.src = ktImages[this.activeIndex];
+          var d = ktMainImg && ktImages[this.activeIndex];
+          if (!d) return;
+          // New format: {src, srcset, sizes}. Old format: plain URL string.
+          if (typeof d === 'string') {
+            ktMainImg.src = d;
+            ktMainImg.removeAttribute('srcset');
+            ktMainImg.removeAttribute('sizes');
+          } else {
+            ktMainImg.src = d.src || '';
+            if (d.srcset) ktMainImg.setAttribute('srcset', d.srcset);
+            else ktMainImg.removeAttribute('srcset');
+            if (d.sizes) ktMainImg.setAttribute('sizes', d.sizes);
+            else ktMainImg.removeAttribute('sizes');
           }
         },
       },

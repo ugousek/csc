@@ -12,7 +12,8 @@ $telefon = xevos_get_option('telefon', '+420 591 140 315');
 $email   = xevos_get_option('email', 'hello@xevos.eu');
 $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 $hero_img = get_field('kontakt_hero_obrazek');
-$hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/kontakt/kontakt-hero.png');
+$hero_img_id  = $hero_img ? (int) ($hero_img['ID'] ?? 0) : 0;
+$hero_img_url = ! $hero_img_id ? get_theme_file_uri('assets/img/kontakt/kontakt-hero.png') : '';
 ?>
 
 <main id="main" class="xevos-main xevos-main--glows">
@@ -27,6 +28,7 @@ $hero_img_url = $hero_img ? $hero_img['url'] : get_theme_file_uri('assets/img/ko
 	<?php get_template_part('template-parts/components/hero-page', null, [
 		'heading'     => get_field('kontakt_heading') ?: '',
 		'description' => get_field('kontakt_popis') ?: '',
+		'image_id'    => $hero_img_id,
 		'image_url'   => $hero_img_url,
 		'image_mask'  => !in_array( get_field('kontakt_hero_maska'), [ false, 0, '0' ], true ),
 	]); ?>
