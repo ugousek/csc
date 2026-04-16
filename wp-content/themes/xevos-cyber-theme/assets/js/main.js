@@ -229,26 +229,7 @@
 
   /* Školení archive filter — moved to skoleni-filter.js */
 
-  /* ===== Termin card click → scroll to form + set select ===== */
-  document.querySelectorAll('.xevos-termin-card[data-termin]').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var termin = this.dataset.termin;
-      var select = document.getElementById('xevos-termin-select');
-      var form = document.getElementById('objednavka');
-      if (select) {
-        select.value = termin;
-      }
-      if (form) {
-        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        this.click();
-      }
-    });
-  });
+  /* Termin card click, lektoři swiper, bio toggle, lightbox → moved to detail-skoleni.js */
 
   /* ===== Pattern overlay position ===== */
   document.addEventListener('DOMContentLoaded', function () {
@@ -301,23 +282,6 @@
       breakpoints: {
         768: { slidesPerView: 2, spaceBetween: 50 },
         1024: { slidesPerView: 3, spaceBetween: 50 },
-      },
-    });
-  }
-
-  /* ===== Lektoři Swiper (only when 3+ slides exist) ===== */
-  var lektoriEl = document.getElementById('lektori-swiper');
-  if (lektoriEl && typeof Swiper !== 'undefined') {
-    new Swiper('#lektori-swiper', {
-      slidesPerView: 2,
-      spaceBetween: 80,
-      navigation: {
-        prevEl: '.xevos-skoleni-lektori-section .xevos-nav-arrow--prev',
-        nextEl: '.xevos-skoleni-lektori-section .xevos-nav-arrow--next',
-      },
-      breakpoints: {
-        0: { slidesPerView: 1, spaceBetween: 24 },
-        768: { slidesPerView: 2, spaceBetween: 80 },
       },
     });
   }
@@ -384,18 +348,5 @@
       },
     });
   }
-
-  // Lektor bio: zobrazit/skrýt po 3 řádcích
-  document.querySelectorAll('.xevos-lektor-card__bio').forEach(function(bio) {
-    var toggle = bio.nextElementSibling;
-    if (!toggle || !toggle.classList.contains('xevos-lektor-card__bio-toggle')) return;
-    if (bio.scrollHeight > bio.clientHeight) {
-      toggle.hidden = false;
-      toggle.addEventListener('click', function() {
-        var expanded = bio.classList.toggle('is-expanded');
-        toggle.textContent = expanded ? 'Zobrazit méně' : 'Zobrazit více';
-      });
-    }
-  });
 
 })();

@@ -3,6 +3,47 @@
   "title": "Obsah článku",
   "fields": [
     {
+      "key": "field_aktualita_hero_layout",
+      "label": "Hero layout",
+      "name": "aktualita_hero_layout",
+      "type": "select",
+      "choices": {
+        "classic": "Klasický (obrázek na pozadí + nadpis)",
+        "fullwidth": "Fullwidth (velký nadpis + tagy + intro s obrázkem)"
+      },
+      "default_value": "classic",
+      "allow_null": 0,
+      "ui": 1,
+      "instructions": "Klasický = nadpis přes hero obrázek. Fullwidth = velký nadpis, pod ním tagy, pak intro text vedle obrázku."
+    },
+    {
+      "key": "field_aktualita_hero_obrazek",
+      "label": "Hero obrázek",
+      "name": "aktualita_hero_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "instructions": "Klasický layout: pozadí hero sekce. Fullwidth layout: obrázek vedle intro textu."
+    },
+    {
+      "key": "field_aktualita_hero_maska",
+      "label": "Maska na intro obrázku",
+      "name": "aktualita_hero_maska",
+      "type": "true_false",
+      "ui": 1,
+      "default_value": 1,
+      "instructions": "Zapne radiální masku (fade do pozadí) na obrázku vedle intro textu. Platí jen pro Fullwidth layout.",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_aktualita_hero_layout",
+            "operator": "==",
+            "value": "fullwidth"
+          }
+        ]
+      ]
+    },
+    {
       "key": "field_aktualita_obsah",
       "label": "Obsah",
       "name": "aktualita_obsah",

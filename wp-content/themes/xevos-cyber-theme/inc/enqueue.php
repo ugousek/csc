@@ -72,13 +72,20 @@ function xevos_enqueue_assets(): void {
 		);
 	}
 
-	// Školení detail CSS (single only).
+	// Školení detail CSS + JS (single only).
 	if ( is_singular( 'skoleni' ) ) {
 		wp_enqueue_style(
 			'xevos-detail-skoleni',
 			$theme_uri . '/assets/css/detail-skoleni.css',
 			[ 'xevos-main' ],
 			xevos_asset_version( 'assets/css/detail-skoleni.css' )
+		);
+		wp_enqueue_script(
+			'xevos-detail-skoleni',
+			$theme_uri . '/assets/js/detail-skoleni.js',
+			[ 'xevos-main' ],
+			xevos_asset_version( 'assets/js/detail-skoleni.js' ),
+			true
 		);
 	}
 

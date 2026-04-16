@@ -146,6 +146,15 @@
       "instructions": "Prázdné = Termíny školení"
     },
     {
+      "key": "field_sk_terminy_obrazek",
+      "label": "Obrázek (u jednoho termínu)",
+      "name": "terminy_obrazek",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "instructions": "Zobrazí se vedle karty termínu, pokud je jen jeden termín."
+    },
+    {
       "key": "field_sk_terminy",
       "label": "Termíny",
       "name": "terminy",
@@ -312,13 +321,25 @@
       "button_label": "Přidat blok",
       "sub_fields": [
         {
-          "key": "field_sk_harm_cas",
-          "label": "Čas",
-          "name": "cas",
-          "type": "text",
-          "placeholder": "09:00–10:30",
+          "key": "field_sk_harm_cas_od",
+          "label": "Čas od",
+          "name": "cas_od",
+          "type": "time_picker",
+          "display_format": "H:i",
+          "return_format": "H:i",
           "wrapper": {
-            "width": "30"
+            "width": "15"
+          }
+        },
+        {
+          "key": "field_sk_harm_cas_do",
+          "label": "Čas do",
+          "name": "cas_do",
+          "type": "time_picker",
+          "display_format": "H:i",
+          "return_format": "H:i",
+          "wrapper": {
+            "width": "15"
           }
         },
         {
@@ -459,6 +480,15 @@
       "toolbar": "basic",
       "media_upload": 0,
       "instructions": "Text pod nadpisem formuláře. Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
+      "key": "field_sk_formular_cena",
+      "label": "Zobrazit cenový blok",
+      "name": "formular_zobrazit_cenu",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "instructions": "Vypne/zapne blok s cenou vedle formuláře."
     }
   ],
   "location": [

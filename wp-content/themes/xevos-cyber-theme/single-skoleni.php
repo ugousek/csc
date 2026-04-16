@@ -102,8 +102,12 @@ while (have_posts()) : the_post();
 		<?php endif; ?>
 
 		<!-- 3. Termíny -->
-		<?php if ($terminy) : ?>
-			<section class="xevos-section xevos-skoleni-terminy">
+		<?php if ($terminy) :
+			$terminy_count   = count($terminy);
+			$terminy_obrazek = get_field('terminy_obrazek');
+			$is_single_term  = ($terminy_count === 1 && ! empty($terminy_obrazek));
+		?>
+			<section class="xevos-section xevos-skoleni-terminy<?php echo $is_single_term ? ' xevos-skoleni-terminy--single' : ''; ?>">
 				<div class="xevos-section__container">
 					<?php $terminy_nadpis = get_field('terminy_nadpis') ?: ''; ?>
 					<?php if ( $terminy_nadpis ) : ?>
@@ -127,6 +131,13 @@ while (have_posts()) : the_post();
 								<?php endif; ?>
 							</div>
 						<?php endforeach; ?>
+
+						<?php if ($is_single_term) : ?>
+							<div class="xevos-termin-image">
+								<img src="<?php echo esc_url($terminy_obrazek['url']); ?>"
+									alt="<?php echo esc_attr($terminy_obrazek['alt'] ?? ''); ?>" loading="lazy">
+							</div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</section>
@@ -212,7 +223,7 @@ while (have_posts()) : the_post();
 		$has_harmonogram = false;
 		if (is_array($harmonogram)) {
 			foreach ($harmonogram as $h) {
-				if (! empty($h['cas'])) {
+				if (! empty($h['cas_od']) || ! empty($h['cas'])) {
 					$has_harmonogram = true;
 					break;
 				}
@@ -238,14 +249,24 @@ while (have_posts()) : the_post();
 							<?php if ( $harmonogram_nadpis ) : ?>
 								<h2><?php echo esc_html( $harmonogram_nadpis ); ?></h2>
 							<?php endif; ?>
-							<div class="xevos-harmonogram-list">
-								<?php foreach ($harmonogram as $h) : ?>
-									<?php if ( empty( $h['cas'] ) ) continue; ?>
-									<div class="xevos-harmonogram-item">
-										<span class="xevos-harmonogram-item__cas"><?php echo esc_html($h['cas'] ?? ''); ?></span><?php if (! empty($h['aktivita'])) : ?><span class="xevos-harmonogram-item__text">&nbsp;–&nbsp;<?php echo esc_html($h['aktivita']); ?></span><?php endif; ?>
-									</div>
+							<table class="xevos-harmonogram-table">
+								<?php foreach ($harmonogram as $h) :
+									$cas_od = $h['cas_od'] ?? '';
+									$cas_do = $h['cas_do'] ?? '';
+									if (! $cas_od && ! empty($h['cas'])) {
+										$cas_od = $h['cas']; // fallback starý formát
+									}
+									if (! $cas_od) continue;
+								?>
+									<tr class="xevos-harmonogram-item">
+										<td class="xevos-harmonogram-item__cas"><?php echo esc_html($cas_od); ?></td>
+										<td class="xevos-harmonogram-item__sep xevos-harmonogram-item__dash">—</td>
+										<td class="xevos-harmonogram-item__cas"><?php echo esc_html($cas_do); ?></td>
+										<td class="xevos-harmonogram-item__sep">|</td>
+										<td class="xevos-harmonogram-item__text"><?php echo esc_html($h['aktivita'] ?? ''); ?></td>
+									</tr>
 								<?php endforeach; ?>
-							</div>
+							</table>
 
 							<?php $co_odnesete = get_field('co_odnesete') ?: []; ?>
 							<?php if ( ! empty( $co_odnesete ) ) : ?>
@@ -291,7 +312,12 @@ while (have_posts()) : the_post();
 				<div class="xevos-skoleni-parking">
 					<?php if ( $kde_park_img_url ) : ?>
 						<div class="xevos-skoleni-parking__image">
-							<img src="<?php echo esc_url($kde_park_img_url); ?>" alt="Kde parkovat" loading="lazy">
+							<a href="<?php echo esc_url($kde_park_img_url); ?>" class="xevos-lightbox-trigger" aria-label="Zvětšit obrázek">
+								<img src="<?php echo esc_url($kde_park_img_url); ?>" alt="Kde parkovat" loading="lazy">
+								<span class="xevos-lightbox-zoom" aria-hidden="true">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+								</span>
+							</a>
 						</div>
 					<?php endif; ?>
 					<div class="xevos-skoleni-parking__text">
@@ -495,6 +521,7 @@ while (have_posts()) : the_post();
 							<div class="xevos-order-summary">
 								<?php xevos_component('contact-info'); ?>
 
+								<?php if (get_field('formular_zobrazit_cenu') !== false) : ?>
 								<div class="xevos-order-summary__price-block">
 									<?php if ($is_free) : ?>
 										<div class="xevos-order-summary__price-main">Zdarma</div>
@@ -514,6 +541,7 @@ while (have_posts()) : the_post();
 										<?php endif; ?>
 									<?php endif; ?>
 								</div>
+								<?php endif; ?>
 
 								<?php if ($invoice_mode) : ?>
 									<div class="xevos-payment-method">

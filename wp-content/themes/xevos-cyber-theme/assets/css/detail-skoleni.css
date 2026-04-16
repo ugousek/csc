@@ -214,6 +214,7 @@
 .xevos-skoleni-terminy {
     padding-top: 4rem;
     padding-bottom: 4rem;
+    z-index: 2;
 }
 
 .xevos-skoleni-terminy h2 {
@@ -234,6 +235,44 @@
     padding-bottom: 0;
     overflow: visible;
     scroll-snap-type: none;
+}
+
+/* Single termin layout — card + image side by side */
+.xevos-skoleni-terminy--single .xevos-termin-cards {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+.xevos-skoleni-terminy--single .xevos-termin-card {
+    flex: 0 0 480px;
+}
+
+.xevos-termin-image {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.xevos-termin-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 0 93px 0 rgba(0, 183, 255, 1);
+}
+
+@media (max-width: 1023px) {
+    .xevos-skoleni-terminy--single .xevos-termin-cards {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .xevos-skoleni-terminy--single .xevos-termin-card {
+        flex: none;
+        width: 100%;
+    }
+
 }
 
 .xevos-termin-card {
@@ -561,18 +600,10 @@
     margin-bottom: 0.625rem;
 }
 
-/* Harmonogram items – Figma: Sora/400/24px, line-height 38px */
-.xevos-harmonogram-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.xevos-harmonogram-item {
-    display: flex;
-    gap: 0;
-    padding: 0;
-    border-bottom: none;
+/* Harmonogram — tabulkové zarovnání s oddělovačem | */
+.xevos-harmonogram-table {
+    width: 100%;
+    border-collapse: collapse;
     font-family: var(--font-body);
     font-size: 1.5rem;
     line-height: 1.58;
@@ -580,15 +611,32 @@
     color: rgba(236, 236, 236, 0.7);
 }
 
+.xevos-harmonogram-item td {
+    padding: 0.25rem 0;
+    vertical-align: top;
+}
+
 .xevos-harmonogram-item__cas {
-    flex-shrink: 0;
-    width: auto;
+    white-space: nowrap;
     color: var(--color-white);
     font-weight: 400;
 }
 
+.xevos-harmonogram-item td.xevos-harmonogram-item__sep {
+    color: rgba(255, 255, 255, 0.25);
+    padding: 0.25rem 0.8rem;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.xevos-harmonogram-item td.xevos-harmonogram-item__dash {
+    color: var(--color-white);
+    padding: 0.25rem 0.4rem;
+}
+
 .xevos-harmonogram-item__text {
     color: rgba(236, 236, 236, 0.7);
+    padding-left: 1rem;
 }
 
 /* Harmonogram: čas = bílá (700), aktivita = šedá — bez zvýraznění */
@@ -729,6 +777,90 @@
     position: relative;
     z-index: 1;
     border: 1px solid rgba(0, 187, 255, 0.2);
+}
+
+/* Lightbox trigger */
+.xevos-lightbox-trigger {
+    display: none;
+    display: block;
+    position: relative;
+    cursor: zoom-in;
+}
+
+.xevos-lightbox-zoom {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+}
+
+.xevos-lightbox-trigger:hover .xevos-lightbox-zoom {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Lightbox overlay */
+.xevos-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+}
+
+.xevos-lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.xevos-lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
+    transition: transform 0.25s;
+}
+
+.xevos-lightbox-overlay.active img {
+    transform: scale(1);
+}
+
+.xevos-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    z-index: 1;
+}
+
+.xevos-lightbox-close:hover {
+    opacity: 1;
 }
 
 .xevos-skoleni-parking__text {
@@ -881,7 +1013,6 @@
 
 }
 
-.xevos-harmonogram-item:not(:last-child),
 .xevos-osnova-list li:not(:last-child) {
     margin-bottom: 1rem;
 }
@@ -979,7 +1110,7 @@
         font-size: 2.5rem;
     }
 
-    .xevos-harmonogram-item,
+    .xevos-harmonogram-table,
     .xevos-osnova-list li {
         font-size: 1.125rem;
     }
@@ -1462,7 +1593,7 @@
         font-size: 2.375rem;
     }
 
-    .xevos-harmonogram-item,
+    .xevos-harmonogram-table,
     .xevos-osnova-list li {
         font-size: 1.125rem;
     }

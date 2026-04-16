@@ -20,49 +20,115 @@ $categories = get_the_terms(get_the_ID(), 'kategorie-aktualit');
 	<div class="xevos-glow-blob xevos-glow-blob--left-second xevos-glow-blob--lg" style="top:2200px;"></div>
 	<div class="xevos-glow-blob xevos-glow-blob--right-second xevos-glow-blob--lg" style="bottom:400px;"></div>
 
-	<?php while (have_posts()) : the_post(); ?>
+	<?php while (have_posts()) : the_post();
+		$hero_layout = get_field('aktualita_hero_layout') ?: 'classic';
+		$hero_acf    = get_field('aktualita_hero_obrazek');
+		$hero_url    = $hero_acf ? $hero_acf['url'] : '';
+		if ( ! $hero_url && has_post_thumbnail() ) {
+			$hero_url = get_the_post_thumbnail_url( get_the_ID(), 'xevos-hero' );
+		}
+	?>
 
-		<!-- Hero -->
-		<section class="xevos-article-hero">
-			<div class="xevos-section__container">
-				<?php
-				$hero_acf = get_field('aktualita_hero_obrazek');
-				$hero_url = $hero_acf ? $hero_acf['url'] : '';
-				if (! $hero_url && has_post_thumbnail()) {
-					$hero_url = get_the_post_thumbnail_url(get_the_ID(), 'xevos-hero');
-				}
-				if (! $hero_url) {
-					$hero_url = get_theme_file_uri('assets/img/blog/aktualita-img-' . (get_the_ID() % 3 + 1) . '.png');
-				}
-				?>
-				<div class="xevos-article-hero__bg">
-					<img src="<?php echo esc_url($hero_url); ?>" alt="<?php the_title_attribute(); ?>">
+		<?php if ( $hero_layout === 'fullwidth' ) : ?>
+			<!-- ============================================================
+			     Hero layout: Fullwidth — velký nadpis + tagy + intro s obrázkem
+			     ============================================================ -->
+			<section class="xevos-article-hero xevos-article-hero--fullwidth">
+				<div class="xevos-section__container">
+					<div class="xevos-article-hero__content">
+						<h1 class="xevos-article-hero__title"><?php the_title(); ?></h1>
+						<?php if ($categories && ! is_wp_error($categories)) : ?>
+							<div class="xevos-article-hero__tags">
+								<?php foreach ($categories as $cat) : ?>
+									<a href="<?php echo esc_url(get_post_type_archive_link('aktualita') . '?kategorie=' . $cat->slug); ?>" class="xevos-article-hero__tag-pill"><?php echo esc_html($cat->name); ?></a>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+					</div>
 				</div>
-				<div class="xevos-article-hero__content">
-					<?php if ($categories && ! is_wp_error($categories)) : ?>
-						<div class="xevos-article-hero__tags xevos-aktuality-archive__filters">
-							<?php foreach ($categories as $cat) : ?>
-								<a href="<?php echo esc_url(get_post_type_archive_link('aktualita') . '?kategorie=' . $cat->slug); ?>" class="xevos-filter-pill"><?php echo esc_html($cat->name); ?></a>
-							<?php endforeach; ?>
+			</section>
+
+			<!-- Intro: text + obrázek side-by-side -->
+			<article class="xevos-section xevos-article-content xevos-article-content--fullwidth">
+				<div class="xevos-section__container xevos-article-content__inner">
+					<?php if ( $hero_url ) : ?>
+						<div class="xevos-article-intro">
+							<div class="xevos-article-intro__text">
+								<?php
+								$obsah = get_field('aktualita_obsah');
+								$intro = '';
+								$rest  = '';
+								if ( $obsah ) {
+									// Rozdělíme na první odstavec (intro) a zbytek
+									$first_p_end = strpos( $obsah, '</p>' );
+									if ( $first_p_end !== false ) {
+										$intro = substr( $obsah, 0, $first_p_end + 4 );
+										$rest  = substr( $obsah, $first_p_end + 4 );
+									} else {
+										$rest = $obsah;
+									}
+								}
+								echo wp_kses_post( $intro );
+								?>
+							</div>
+							<?php $intro_mask = get_field('aktualita_hero_maska'); ?>
+							<div class="xevos-article-intro__image<?php echo $intro_mask ? '' : ' xevos-article-intro__image--no-mask'; ?>">
+								<img src="<?php echo esc_url( $hero_url ); ?>" alt="<?php the_title_attribute(); ?>" loading="eager">
+							</div>
+						</div>
+						<div class="xevos-article-content__body">
+							<?php echo wp_kses_post( $rest ); ?>
+						</div>
+					<?php else : ?>
+						<div class="xevos-article-content__body">
+							<?php
+							$obsah = get_field('aktualita_obsah');
+							if ($obsah) :
+								echo wp_kses_post($obsah);
+							else :
+								the_content();
+							endif;
+							?>
 						</div>
 					<?php endif; ?>
-					<h1 class="xevos-article-hero__title"><?php the_title(); ?></h1>
-				</div>
-			</div>
-		</section>
 
-		<!-- Content -->
-		<article class="xevos-section xevos-article-content">
-			<div class="xevos-section__container xevos-article-content__inner">
-				<div class="xevos-article-content__body">
-					<?php
-					$obsah = get_field('aktualita_obsah');
-					if ($obsah) :
-						echo wp_kses_post($obsah);
-					else :
-						the_content();
-					endif;
-					?>
+		<?php else : ?>
+			<!-- ============================================================
+			     Hero layout: Classic — obrázek na pozadí + nadpis přes
+			     ============================================================ -->
+			<section class="xevos-article-hero">
+				<div class="xevos-section__container">
+					<?php if ( $hero_url ) : ?>
+						<div class="xevos-article-hero__bg">
+							<img src="<?php echo esc_url($hero_url); ?>" alt="<?php the_title_attribute(); ?>">
+						</div>
+					<?php endif; ?>
+					<div class="xevos-article-hero__content">
+						<?php if ($categories && ! is_wp_error($categories)) : ?>
+							<div class="xevos-article-hero__tags xevos-aktuality-archive__filters">
+								<?php foreach ($categories as $cat) : ?>
+									<a href="<?php echo esc_url(get_post_type_archive_link('aktualita') . '?kategorie=' . $cat->slug); ?>" class="xevos-filter-pill"><?php echo esc_html($cat->name); ?></a>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+						<h1 class="xevos-article-hero__title"><?php the_title(); ?></h1>
+					</div>
+				</div>
+			</section>
+
+			<!-- Content -->
+			<article class="xevos-section xevos-article-content">
+				<div class="xevos-section__container xevos-article-content__inner">
+					<div class="xevos-article-content__body">
+						<?php
+						$obsah = get_field('aktualita_obsah');
+						if ($obsah) :
+							echo wp_kses_post($obsah);
+						else :
+							the_content();
+						endif;
+						?>
+		<?php endif; ?>
 				</div>
 
 				<!-- Share -->
