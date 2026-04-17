@@ -2990,9 +2990,6 @@ body::after {
   .xevos-kyber-test__visual {
     margin-left: 0;
   }
-}
-
-@media screen and (max-width: 991px) {
 
   .xevos-kyber-test__desc,
   .xevos-kyber-test__desc p {
@@ -3257,8 +3254,12 @@ body::after {
 }
 
 @media (max-width: 991px) {
+  .xevos-kyber-test-section {
+    padding-bottom: 5rem;
+  }
+
   .xevos-kyber-test__pagination {
-    top: -5px !important;
+    top: 25px !important;
     gap: 10px;
     background: transparent;
     -webkit-backdrop-filter: none;
@@ -3331,6 +3332,7 @@ body::after {
   }
 
   #kyber-test-main-img {
+    margin-top: 25px;
     width: 100%;
     left: 0;
   }
@@ -3834,7 +3836,9 @@ body::after {
 }
 
 @keyframes xevos-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Search submit button – spinner while the page is navigating */
