@@ -1,15 +1,11 @@
 <?php
 
-/**
- * Footer — Figma: Section 07
- * Partners bar + Footer (logo | menu | social) + Copyright bar
- */
 $logo    = xevos_get_option('logo');
 $socials = xevos_get_option('socialni_site');
 $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 ?>
 
-	<?php get_template_part('template-parts/components/partners'); ?>
+<?php get_template_part('template-parts/components/partners'); ?>
 </main>
 
 <!-- Footer -->
@@ -73,7 +69,8 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 
 						if ($icon) : ?>
 							<a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr($label); ?>">
-								<?php echo $icon; // phpcs:ignore -- trusted hardcoded SVG ?>
+								<?php echo $icon; // phpcs:ignore -- trusted hardcoded SVG 
+								?>
 							</a>
 						<?php endif;
 					endforeach;
@@ -81,7 +78,8 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 					/* No ACF data at all — show all 4 with # links */
 					foreach ($social_icons as $key => $svg) :
 						if ($key === 'twitter') continue; /* skip duplicate of X */ ?>
-						<a href="#" aria-label="<?php echo esc_attr(ucfirst($key)); ?>"><?php echo $svg; // phpcs:ignore -- trusted hardcoded SVG ?></a>
+						<a href="#" aria-label="<?php echo esc_attr(ucfirst($key)); ?>"><?php echo $svg; // phpcs:ignore -- trusted hardcoded SVG 
+																						?></a>
 				<?php endforeach;
 				endif; ?>
 			</div>
@@ -90,7 +88,7 @@ $firma   = xevos_get_option('nazev_firmy', 'XEVOS');
 
 	<!-- Copyright  -->
 	<div class="xevos-footer__copy">
-		<span>Copyright &copy;<?php echo esc_html(strtolower($firma)); ?></span>
+		<span><?php echo esc_html(date('Y')); ?> &copy; XEVOS Solutions s.r.o.</span>
 		<a href="<?php echo esc_url(home_url('/zasady-ochrany-osobnich-udaju/')); ?>">Zásady ochrany osobních údajů</a>
 		<a href="<?php echo esc_url(home_url('/obchodni-podminky/')); ?>">Obchodní podmínky</a>
 	</div>

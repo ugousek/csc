@@ -38,6 +38,10 @@
         prevEl: '.xevos-skoleni-lektori-section .xevos-nav-arrow--prev',
         nextEl: '.xevos-skoleni-lektori-section .xevos-nav-arrow--next',
       },
+      pagination: {
+        el: '.xevos-lektori-pagination',
+        clickable: true,
+      },
       breakpoints: {
         0: { slidesPerView: 1, spaceBetween: 24 },
         768: { slidesPerView: 2, spaceBetween: 80 },

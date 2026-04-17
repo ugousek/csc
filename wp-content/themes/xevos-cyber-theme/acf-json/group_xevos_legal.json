@@ -10,6 +10,23 @@
       "toolbar": "full",
       "media_upload": 0,
       "instructions": "H2 = cyan nadpis sekce, H3 = bílý podnadpis, <strong>tučný text (B) = bílá barva</strong>. Pro cookies stránku použijte shortcode: [cmplz-document type=\"cookie-statement\"]"
+    },
+    {
+      "key": "field_legal_ds_tab",
+      "label": "Nastavení zobrazení partnerů",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_legal_ds_zobrazit_partnery",
+      "label": "Zobrazit sekci Partneři",
+      "name": "zobrazit_partnery",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Zapnuto",
+      "ui_off_text": "Vypnuto",
+      "instructions": "Vypnutím skryjete sekci s logy partnerů v patičce této stránky."
     }
   ],
   "location": [
@@ -49,5 +66,6 @@
   "active": true,
   "hide_on_screen": [
     "the_content"
-  ]
+  ],
+  "modified": 1776439448
 }

@@ -1820,6 +1820,12 @@ select.xevos-form__input option:checked,
   }
 }
 
+@media (max-width: 767px) {
+  .xevos-hp-recenze__header h2 {
+    font-size: 26px;
+  }
+}
+
 .xevos-aktuality-pagination .swiper-pagination-bullet,
 .xevos-recenze-pagination .swiper-pagination-bullet {
   width: 10px;
@@ -2772,6 +2778,13 @@ body::after {
   position: relative;
   left: -8%;
   z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 55% 55% at center, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 55% 55% at center, #000 60%, transparent 100%);
+}
+
+#kyber-test-main-img.kyber-test-main-img--no-mask {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .xevos-kyber-test__blesk {
@@ -3064,6 +3077,13 @@ body::after {
   width: 100%;
   display: block;
   z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 55% 55% at center, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 55% 55% at center, #000 60%, transparent 100%);
+}
+
+.xevos-kyber-politika__visual--no-mask img {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .xevos-kyber-politika__glow {
@@ -3239,6 +3259,34 @@ body::after {
 @media (max-width: 991px) {
   .xevos-kyber-test__pagination {
     top: -5px !important;
+    gap: 10px;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .xevos-kyber-test__pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    font-size: 0;
+    color: transparent;
+    background: rgba(255, 255, 255, 0.25);
+    opacity: 1;
+    border-radius: 50%;
+    border: 0;
+    min-width: 0;
+    transition: all var(--transition-fast);
+  }
+
+  .xevos-kyber-test__pagination .swiper-pagination-bullet-active {
+    background: var(--color-accent);
+    color: transparent;
+    padding: 0;
+    padding-inline: 0;
+    transform: scale(1.3);
   }
 
   .xevos-kyber-test__panel h3,
@@ -3321,15 +3369,6 @@ body::after {
   .xevos-kyber-test__cta-icon {
     width: 40px;
     height: 40px;
-  }
-
-  .xevos-kyber-test__pagination .swiper-pagination-bullet {
-    font-size: 16px;
-    padding: 8px 14px;
-  }
-
-  .xevos-kyber-test__pagination .swiper-pagination-bullet-active {
-    padding-inline: 32px;
   }
 
   .xevos-kyber-politika__header {
@@ -3770,6 +3809,57 @@ body::after {
   padding: 1.5rem;
   text-align: center;
   color: var(--color-text-dim);
+}
+
+/* Live search loader */
+.xevos-live-search__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  color: var(--color-text-dim);
+  font-size: var(--font-size-sm);
+}
+
+.xevos-loader__spinner--small {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0, 187, 255, 0.15);
+  border-top-color: var(--color-cyan);
+  border-radius: 50%;
+  animation: xevos-spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes xevos-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Search submit button – spinner while the page is navigating */
+.xevos-search-form__submit.is-loading {
+  pointer-events: none;
+  opacity: 0.8;
+  position: relative;
+}
+
+.xevos-search-form__submit.is-loading svg {
+  visibility: hidden;
+}
+
+.xevos-search-form__submit.is-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: xevos-spin 0.8s linear infinite;
 }
 
 

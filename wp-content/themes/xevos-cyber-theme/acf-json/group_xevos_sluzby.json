@@ -48,7 +48,6 @@
       "ui": 1,
       "instructions": "Zapnutá = obrázek má radial-gradient masku (výchozí). Vypnutá = obrázek bez masky."
     },
-
     {
       "key": "field_sl_slider_section_tab",
       "label": "2. Kyber test slider",
@@ -72,9 +71,38 @@
       "layout": "block",
       "button_label": "Přidat snímek",
       "sub_fields": [
-        { "key": "field_sl_s_nazev", "label": "Nadpis", "name": "nazev", "type": "text", "required": 1 },
-        { "key": "field_sl_s_popis", "label": "Popis", "name": "popis", "type": "wysiwyg", "toolbar": "basic", "media_upload": 0 },
-        { "key": "field_sl_s_obrazek", "label": "Obrázek (volitelný)", "name": "obrazek", "type": "image", "return_format": "array", "preview_size": "medium" },
+        {
+          "key": "field_sl_s_nazev",
+          "label": "Nadpis",
+          "name": "nazev",
+          "type": "text",
+          "required": 1
+        },
+        {
+          "key": "field_sl_s_popis",
+          "label": "Popis",
+          "name": "popis",
+          "type": "wysiwyg",
+          "toolbar": "basic",
+          "media_upload": 0
+        },
+        {
+          "key": "field_sl_s_obrazek",
+          "label": "Obrázek (volitelný)",
+          "name": "obrazek",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        },
+        {
+          "key": "field_sl_s_maska",
+          "label": "Maska na obrázku",
+          "name": "maska",
+          "type": "true_false",
+          "ui": 1,
+          "default_value": 1,
+          "instructions": "Zapne radiální masku (fade do pozadí) na obrázku."
+        },
         {
           "key": "field_sl_s_polozky",
           "label": "Položky checklistu",
@@ -83,14 +111,28 @@
           "layout": "table",
           "button_label": "Přidat položku",
           "sub_fields": [
-            { "key": "field_sl_s_bod", "label": "Bod", "name": "bod", "type": "text" }
+            {
+              "key": "field_sl_s_bod",
+              "label": "Bod",
+              "name": "bod",
+              "type": "text"
+            }
           ]
         },
-        { "key": "field_sl_s_cta_text", "label": "CTA text", "name": "cta_text", "type": "text" },
-        { "key": "field_sl_s_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url" }
+        {
+          "key": "field_sl_s_cta_text",
+          "label": "CTA text",
+          "name": "cta_text",
+          "type": "text"
+        },
+        {
+          "key": "field_sl_s_cta_url",
+          "label": "CTA URL",
+          "name": "cta_url",
+          "type": "url"
+        }
       ]
     },
-
     {
       "key": "field_sl_postup_tab",
       "label": "3. Postup testování",
@@ -127,11 +169,21 @@
       "layout": "block",
       "button_label": "Přidat krok",
       "sub_fields": [
-        { "key": "field_sl_krok_nazev", "label": "Název", "name": "nazev", "type": "text" },
-        { "key": "field_sl_krok_popis", "label": "Popis", "name": "popis", "type": "textarea", "rows": 2 }
+        {
+          "key": "field_sl_krok_nazev",
+          "label": "Název",
+          "name": "nazev",
+          "type": "text"
+        },
+        {
+          "key": "field_sl_krok_popis",
+          "label": "Popis",
+          "name": "popis",
+          "type": "textarea",
+          "rows": 2
+        }
       ]
     },
-
     {
       "key": "field_sl_benefity_tab",
       "label": "4. Co získáte / Pro koho",
@@ -168,7 +220,12 @@
       "layout": "table",
       "button_label": "Přidat bod",
       "sub_fields": [
-        { "key": "field_sl_ziskate_bod", "label": "Bod", "name": "bod", "type": "text" }
+        {
+          "key": "field_sl_ziskate_bod",
+          "label": "Bod",
+          "name": "bod",
+          "type": "text"
+        }
       ]
     },
     {
@@ -193,7 +250,12 @@
       "layout": "table",
       "button_label": "Přidat bod",
       "sub_fields": [
-        { "key": "field_sl_prokoho_bod", "label": "Bod", "name": "bod", "type": "text" }
+        {
+          "key": "field_sl_prokoho_bod",
+          "label": "Bod",
+          "name": "bod",
+          "type": "text"
+        }
       ]
     },
     {
@@ -208,7 +270,6 @@
       "name": "sl_benefity_cta_url",
       "type": "url"
     },
-
     {
       "key": "field_sl_banner_tab",
       "label": "5. Banner",
@@ -257,7 +318,6 @@
       "return_format": "array",
       "preview_size": "medium"
     },
-
     {
       "key": "field_sl_aktuality_tab",
       "label": "6. Aktuality",
@@ -287,7 +347,6 @@
       "media_upload": 0,
       "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
     },
-
     {
       "key": "field_sl_recenze_tab",
       "label": "7. Recenze",
@@ -302,7 +361,6 @@
       "default_value": 1,
       "ui": 1
     },
-
     {
       "key": "field_sl_formular_tab",
       "label": "8. Formulář",
@@ -331,6 +389,23 @@
       "toolbar": "basic",
       "media_upload": 0,
       "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
+      "key": "field_sl_ds_tab",
+      "label": "Nastavení zobrazení partnerů",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sl_ds_zobrazit_partnery",
+      "label": "Zobrazit sekci Partneři",
+      "name": "zobrazit_partnery",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Zapnuto",
+      "ui_off_text": "Vypnuto",
+      "instructions": "Vypnutím skryjete sekci s logy partnerů v patičce této stránky."
     }
   ],
   "location": [
@@ -346,5 +421,6 @@
   "position": "normal",
   "style": "default",
   "label_placement": "top",
-  "active": true
+  "active": true,
+  "modified": 1776439448
 }

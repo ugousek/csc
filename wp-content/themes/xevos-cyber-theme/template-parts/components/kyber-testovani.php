@@ -45,10 +45,8 @@ if (empty($slides)) {
 			<!-- Image area (mění se per slide) -->
 			<div class="xevos-kyber-test__visual">
 				<div class="xevos-kyber-test__glow" aria-hidden="true"></div>
-				<!-- <img src="<?php echo esc_url(get_theme_file_uri('assets/img/homepage/blesk.png')); ?>"
-					alt="" class="xevos-kyber-test__blesk" aria-hidden="true" loading="lazy" /> -->
 				<?php
-				/* Per-slide obrázky — JS přepíná src + srcset + sizes */
+				/* Per-slide obrázky — JS přepíná src + srcset + sizes + masku */
 				$slide_images = [];
 				foreach ($slides as $s) {
 					$img_id = ! empty($s['obrazek']['ID']) ? (int) $s['obrazek']['ID'] : 0;
@@ -61,15 +59,18 @@ if (empty($slides)) {
 						$srcset = '';
 						$sizes  = '';
 					}
-					$slide_images[] = ['src' => $src, 'srcset' => $srcset, 'sizes' => $sizes];
+					// Maska — default zapnuta pokud pole chybí, jinak podle ACF hodnoty.
+					$mask = array_key_exists('maska', $s) ? ! empty($s['maska']) : true;
+					$slide_images[] = ['src' => $src, 'srcset' => $srcset, 'sizes' => $sizes, 'mask' => (bool) $mask];
 				}
-				$first = $slide_images[0] ?? ['src' => $default_image_url, 'srcset' => '', 'sizes' => ''];
+				$first = $slide_images[0] ?? ['src' => $default_image_url, 'srcset' => '', 'sizes' => '', 'mask' => true];
 				?>
 				<img src="<?php echo esc_url($first['src']); ?>"
 					<?php if ($first['srcset']) : ?>srcset="<?php echo esc_attr($first['srcset']); ?>" <?php endif; ?>
 					<?php if ($first['sizes']) : ?>sizes="<?php echo esc_attr($first['sizes']); ?>" <?php endif; ?>
 					alt="Kybernetické testování"
 					id="kyber-test-main-img"
+					class="<?php echo $first['mask'] ? '' : 'kyber-test-main-img--no-mask'; ?>"
 					loading="lazy" />
 				<script type="application/json" id="kyber-test-images">
 					<?php echo wp_json_encode($slide_images); ?>

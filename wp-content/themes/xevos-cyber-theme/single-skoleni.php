@@ -157,8 +157,13 @@ while (have_posts()) : the_post();
 			}
 		}
 
-		$lektor_count = is_array($lektori) ? count($lektori) : 0;
-		$use_swiper   = $lektor_count >= 3;
+		$lektor_count   = is_array($lektori) ? count($lektori) : 0;
+		$lektori_slider = get_field('lektori_slider');
+		if ($lektori_slider === null || $lektori_slider === '') {
+			$lektori_slider = true;
+		}
+		$use_swiper = $lektori_slider && $lektor_count >= 3;
+		$grid_mode  = ! $use_swiper && $lektor_count >= 3;
 		?>
 		<?php if ($has_lektori) : ?>
 		<section class="xevos-section xevos-skoleni-lektori-section">
@@ -176,8 +181,16 @@ while (have_posts()) : the_post();
 						</button>
 					<?php endif; ?>
 
-					<div class="<?php echo $use_swiper ? 'swiper xevos-lektori-swiper' : 'xevos-skoleni-lektori__cards'; ?>" <?php echo $use_swiper ? 'id="lektori-swiper"' : ''; ?>>
-						<div class="<?php echo $use_swiper ? 'swiper-wrapper' : 'xevos-skoleni-lektori__static'; ?>">
+					<?php
+					$outer_class = $use_swiper
+						? 'swiper xevos-lektori-swiper'
+						: ( $grid_mode ? 'xevos-skoleni-lektori__grid' : 'xevos-skoleni-lektori__cards' );
+					$inner_class = $use_swiper
+						? 'swiper-wrapper'
+						: ( $grid_mode ? 'xevos-skoleni-lektori__grid-inner' : 'xevos-skoleni-lektori__static' );
+					?>
+					<div class="<?php echo esc_attr( $outer_class ); ?>" <?php echo $use_swiper ? 'id="lektori-swiper"' : ''; ?>>
+						<div class="<?php echo esc_attr( $inner_class ); ?>">
 							<?php foreach ($lektori as $li => $l) :
 								if ( empty( $l['jmeno'] ) ) continue;
 								$foto_id = 0;
@@ -211,6 +224,9 @@ while (have_posts()) : the_post();
 								</div>
 							<?php endforeach; ?>
 						</div>
+						<?php if ($use_swiper) : ?>
+							<div class="swiper-pagination xevos-lektori-pagination"></div>
+						<?php endif; ?>
 					</div>
 
 					<?php if ($use_swiper) : ?>

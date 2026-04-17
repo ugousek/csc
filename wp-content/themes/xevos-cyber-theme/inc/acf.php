@@ -21,6 +21,39 @@ function xevos_acf_json_load_path( array $paths ): array {
 	return $paths;
 }
 
+/**
+ * Auto-sync ACF field groups from JSON when modified timestamp is newer than DB.
+ * Runs in admin only — prevents stale DB copies from overriding JSON changes.
+ */
+add_action( 'admin_init', 'xevos_acf_auto_sync_json' );
+
+function xevos_acf_auto_sync_json(): void {
+	if ( ! function_exists( 'acf_get_field_group' ) || ! function_exists( 'acf_import_field_group' ) ) {
+		return;
+	}
+
+	$dir = XEVOS_THEME_DIR . '/acf-json';
+	if ( ! is_dir( $dir ) ) {
+		return;
+	}
+
+	foreach ( glob( $dir . '/*.json' ) as $file ) {
+		$json = json_decode( file_get_contents( $file ), true );
+		if ( empty( $json['key'] ) ) {
+			continue;
+		}
+
+		$db_group = acf_get_field_group( $json['key'] );
+		$json_mod = (int) ( $json['modified'] ?? 0 );
+		$db_mod   = (int) ( $db_group['modified'] ?? 0 );
+
+		// Import only when JSON is strictly newer than DB (or DB entry is missing).
+		if ( ! $db_group || $json_mod > $db_mod ) {
+			acf_import_field_group( $json );
+		}
+	}
+}
+
 // Register ACF Options Pages.
 add_action( 'acf/init', 'xevos_acf_options_pages' );
 

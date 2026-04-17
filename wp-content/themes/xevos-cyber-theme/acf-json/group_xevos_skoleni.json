@@ -53,7 +53,15 @@
       "type": "number",
       "prepend": "Kč",
       "min": 0,
-      "conditional_logic": [[{"field": "field_sk_typ_prihlaseni", "operator": "==", "value": "platba"}]]
+      "conditional_logic": [
+        [
+          {
+            "field": "field_sk_typ_prihlaseni",
+            "operator": "==",
+            "value": "platba"
+          }
+        ]
+      ]
     },
     {
       "key": "field_sk_ecomail_list_id",
@@ -247,13 +255,30 @@
       "instructions": "Prázdné = Obsahem vás provede:"
     },
     {
+      "key": "field_sk_lektori_slider",
+      "label": "Zobrazit jako slider",
+      "name": "lektori_slider",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Slider",
+      "ui_off_text": "Mřížka",
+      "instructions": "Slider: karusel s šipkami. Mřížka: 3 lektoři na řádek, přetékající se centrují."
+    },
+    {
       "key": "field_sk_lektori_db",
       "label": "Lektoři z databáze",
       "name": "lektori_db",
       "type": "relationship",
-      "post_type": ["lektor"],
-      "filters": ["search"],
-      "elements": ["featured_image"],
+      "post_type": [
+        "lektor"
+      ],
+      "filters": [
+        "search"
+      ],
+      "elements": [
+        "featured_image"
+      ],
       "return_format": "object",
       "min": 0,
       "max": 0,
@@ -489,6 +514,23 @@
       "default_value": 1,
       "ui": 1,
       "instructions": "Vypne/zapne blok s cenou vedle formuláře."
+    },
+    {
+      "key": "field_sk_ds_tab",
+      "label": "Nastavení zobrazení partnerů",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_sk_ds_zobrazit_partnery",
+      "label": "Zobrazit sekci Partneři",
+      "name": "zobrazit_partnery",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Zapnuto",
+      "ui_off_text": "Vypnuto",
+      "instructions": "Vypnutím skryjete sekci s logy partnerů v patičce této stránky."
     }
   ],
   "location": [
@@ -506,5 +548,5 @@
   "label_placement": "top",
   "instruction_placement": "label",
   "active": true,
-  "modified": 1775087196
+  "modified": 1776439448
 }

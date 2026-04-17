@@ -254,6 +254,14 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+
+  .xevos-benefity-section__desc,
+  .xevos-benefity-section__desc p {
+    font-size: 16px;
+  }
+}
+
 .xevos-two-col>* {
   flex: 1;
   min-width: 0;

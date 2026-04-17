@@ -351,6 +351,15 @@
           "instructions": "Pokud není vyplněn, použije se společný obrázek z pole výše."
         },
         {
+          "key": "field_hp_kt_slide_maska",
+          "label": "Maska na obrázku",
+          "name": "maska",
+          "type": "true_false",
+          "ui": 1,
+          "default_value": 1,
+          "instructions": "Zapne radiální masku (fade do pozadí) na obrázku tohoto snímku."
+        },
+        {
           "key": "field_hp_kt_slide_polozky",
           "label": "Položky checklistu",
           "name": "polozky",
@@ -576,6 +585,24 @@
       ]
     },
     {
+      "key": "field_hp_kyber_pol_maska",
+      "label": "Maska na obrázku",
+      "name": "kyber_politika_maska",
+      "type": "true_false",
+      "ui": 1,
+      "default_value": 1,
+      "instructions": "Zapne radiální masku (fade do pozadí) na obrázku vedle textu.",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_hp_kyber_pol_zobrazit",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
       "key": "field_hp_kyber_pol_seznam",
       "label": "Seznam bodů",
       "name": "kyber_politika_seznam",
@@ -707,6 +734,23 @@
       "toolbar": "basic",
       "media_upload": 0,
       "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
+      "key": "field_hp_ds_tab",
+      "label": "Nastavení zobrazení partnerů",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_hp_ds_zobrazit_partnery",
+      "label": "Zobrazit sekci Partneři",
+      "name": "zobrazit_partnery",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Zapnuto",
+      "ui_off_text": "Vypnuto",
+      "instructions": "Vypnutím skryjete sekci s logy partnerů v patičce této stránky."
     }
   ],
   "location": [
@@ -724,5 +768,5 @@
   "label_placement": "top",
   "instruction_placement": "label",
   "active": true,
-  "modified": 1774877669
+  "modified": 1776439448
 }

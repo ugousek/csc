@@ -137,6 +137,14 @@
   /* ===== Live search ===== */
   var liveSearchInput = document.getElementById('xevos-search');
   var resultsContainer = document.getElementById('live-search-results');
+  var searchForm = liveSearchInput ? liveSearchInput.closest('.xevos-search-form') : null;
+  var searchSubmit = searchForm ? searchForm.querySelector('.xevos-search-form__submit') : null;
+
+  function showSearchLoading() {
+    if (!resultsContainer) return;
+    resultsContainer.innerHTML = '<div class="xevos-live-search__loading"><span class="xevos-loader__spinner xevos-loader__spinner--small"></span><span>Hledám…</span></div>';
+    resultsContainer.hidden = false;
+  }
 
   if (liveSearchInput && resultsContainer) {
     var debounceTimer;
@@ -151,11 +159,21 @@
         return;
       }
 
+      /* Show loader immediately so the user sees feedback even during debounce. */
+      showSearchLoading();
       debounceTimer = setTimeout(function () { fetchSearchResults(query); }, 300);
     });
 
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') resultsContainer.hidden = true; });
     document.addEventListener('click', function (e) { if (!e.target.closest('.xevos-search-form')) resultsContainer.hidden = true; });
+  }
+
+  /* Full-form submit — show spinner on submit button while the page navigates to /?s=... */
+  if (searchForm && searchSubmit) {
+    searchForm.addEventListener('submit', function () {
+      searchSubmit.classList.add('is-loading');
+      searchSubmit.disabled = true;
+    });
   }
 
   /* Escape HTML to prevent XSS */
@@ -173,6 +191,8 @@
       nonce: xevosAjax.nonce,
       query: query,
     });
+
+    showSearchLoading();
 
     fetch(xevosAjax.ajaxUrl + '?' + params)
       .then(function (res) { return res.json(); })
@@ -343,17 +363,20 @@
         slideChange: function () {
           var d = ktMainImg && ktImages[this.activeIndex];
           if (!d) return;
-          // New format: {src, srcset, sizes}. Old format: plain URL string.
+          // New format: {src, srcset, sizes, mask}. Old format: plain URL string.
           if (typeof d === 'string') {
             ktMainImg.src = d;
             ktMainImg.removeAttribute('srcset');
             ktMainImg.removeAttribute('sizes');
+            ktMainImg.classList.remove('kyber-test-main-img--no-mask');
           } else {
             ktMainImg.src = d.src || '';
             if (d.srcset) ktMainImg.setAttribute('srcset', d.srcset);
             else ktMainImg.removeAttribute('srcset');
             if (d.sizes) ktMainImg.setAttribute('sizes', d.sizes);
             else ktMainImg.removeAttribute('sizes');
+            // Per-slide maska — toggle třídy podle hodnoty z ACF.
+            ktMainImg.classList.toggle('kyber-test-main-img--no-mask', d.mask === false);
           }
         },
       },

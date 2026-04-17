@@ -14,36 +14,13 @@ add_action( 'wp_enqueue_scripts', 'xevos_enqueue_assets' );
  * Falls back to XEVOS_THEME_VERSION if the file doesn't exist.
  */
 function xevos_asset_version( string $relative_path ): string {
-	$abs = get_template_directory() . '/' . ltrim( $relative_path, '/' );
-	return file_exists( $abs ) ? (string) filemtime( $abs ) : XEVOS_THEME_VERSION;
+	$abs = wp_normalize_path( get_template_directory() . '/' . ltrim( $relative_path, '/' ) );
+	if ( file_exists( $abs ) ) {
+		$mtime = filemtime( $abs );
+		if ( $mtime ) return (string) $mtime;
+	}
+	return XEVOS_THEME_VERSION;
 }
-
-/**
- * Swap enqueued theme asset URLs to .min variant if it exists on disk.
- * Disabled when WP_DEBUG is on so developers see readable source.
- */
-function xevos_use_minified_assets( string $src ): string {
-	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) return $src;
-
-	$theme_uri = get_template_directory_uri();
-	if ( strpos( $src, $theme_uri . '/assets/' ) !== 0 ) return $src;
-
-	$parsed = wp_parse_url( $src );
-	$path   = $parsed['path'] ?? '';
-	if ( ! preg_match( '#/(assets/.+\.(css|js))$#', $path, $m ) ) return $src;
-	if ( preg_match( '#\.min\.(css|js)$#', $m[1] ) ) return $src;
-
-	$rel     = $m[1];
-	$min_rel = substr( $rel, 0, -strlen( '.' . $m[2] ) ) . '.min.' . $m[2];
-	$min_abs = get_template_directory() . '/' . $min_rel;
-	if ( ! file_exists( $min_abs ) ) return $src;
-
-	$new_src = $theme_uri . '/' . $min_rel;
-	if ( ! empty( $parsed['query'] ) ) $new_src .= '?' . $parsed['query'];
-	return $new_src;
-}
-add_filter( 'style_loader_src',  'xevos_use_minified_assets' );
-add_filter( 'script_loader_src', 'xevos_use_minified_assets' );
 
 function xevos_enqueue_assets(): void {
 	$theme_uri = XEVOS_THEME_URI;
@@ -61,8 +38,7 @@ function xevos_enqueue_assets(): void {
 		is_page_template( 'page-kyberneticke-testovani.php' ) ||
 		is_page_template( 'page-sluzby.php' ) ||
 		is_page_template( 'page-nis2.php' ) ||
-		is_page_template( 'page-o-nas.php' ) ||
-		is_front_page()
+		is_page_template( 'page-o-nas.php' )
 	) {
 		wp_enqueue_style(
 			'xevos-kyber-testovani',
@@ -236,12 +212,14 @@ function xevos_enqueue_assets(): void {
 
 	// Complianz cookie banner overrides (only when plugin active).
 	if ( defined( 'CMPLZ_VERSION' ) ) {
-		wp_enqueue_style(
-			'xevos-complianz',
-			$theme_uri . '/assets/css/complianz-override.css',
-			[ 'xevos-main' ],
-			xevos_asset_version( 'assets/css/complianz-override.css' )
-		);
+		// Complianz vypisuje inline CSS v wp_head priority 10. Pro spolehlivý override
+		// načítáme naše CSS inline na priority 100 — obchází browser cache i CDN cache,
+		// a v DOMu je až POD Complianz blokem → specificita výhra.
+		add_action( 'wp_head', function () {
+			$path = get_template_directory() . '/assets/css/complianz-override.css';
+			if ( ! file_exists( $path ) ) return;
+			echo '<style id="xevos-complianz-css">' . file_get_contents( $path ) . '</style>' . "\n";
+		}, 100 );
 
 		// Inject cookie icon into Complianz message.
 		add_action( 'wp_footer', function () use ( $theme_uri ) {

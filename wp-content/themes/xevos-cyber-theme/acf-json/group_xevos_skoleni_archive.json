@@ -41,6 +41,23 @@
       "default_value": 1,
       "ui": 1,
       "instructions": "Zapnutá = obrázek má radial-gradient masku (výchozí). Vypnutá = obrázek bez masky."
+    },
+    {
+      "key": "field_ska_ds_tab",
+      "label": "Nastavení zobrazení partnerů",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_ska_ds_zobrazit_partnery",
+      "label": "Zobrazit sekci Partneři",
+      "name": "zobrazit_partnery",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Zapnuto",
+      "ui_off_text": "Vypnuto",
+      "instructions": "Vypnutím skryjete sekci s logy partnerů v patičce této stránky."
     }
   ],
   "location": [
@@ -55,5 +72,6 @@
   "menu_order": 0,
   "position": "normal",
   "style": "default",
-  "active": true
+  "active": true,
+  "modified": 1776439448
 }

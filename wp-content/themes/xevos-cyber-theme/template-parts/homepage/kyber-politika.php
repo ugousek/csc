@@ -15,6 +15,8 @@ $cta_text     = get_field('kyber_politika_cta_text') ?: '';
 $cta_url      = get_field('kyber_politika_cta_url') ?: home_url('/nis2/');
 $image        = get_field('kyber_politika_obrazek');
 $seznam       = get_field('kyber_politika_seznam') ?: [];
+$maska_raw    = get_field('kyber_politika_maska');
+$image_mask   = ( $maska_raw === null || $maska_raw === '' ) ? true : ! empty( $maska_raw );
 
 $image_id  = $image ? (int) ($image['ID'] ?? 0) : 0;
 
@@ -90,7 +92,7 @@ if ( ! $heading && ! $desc && ! $panel_nadpis && ! $text && empty( $seznam ) && 
 
 			<?php if ( $image_id ) : ?>
 				<!-- Obrázek vpravo -->
-				<div class="xevos-kyber-politika__visual">
+				<div class="xevos-kyber-politika__visual<?php echo $image_mask ? '' : ' xevos-kyber-politika__visual--no-mask'; ?>">
 					<div class="xevos-kyber-politika__glow" aria-hidden="true"></div>
 					<?php echo xevos_img($image_id, 'full', ['alt' => $heading ?: 'Kybernetická politika', 'loading' => 'lazy']); ?>
 				</div>
