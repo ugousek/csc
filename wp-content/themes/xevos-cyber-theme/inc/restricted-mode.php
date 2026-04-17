@@ -76,6 +76,16 @@ function xevos_restricted_allow(): bool {
 	if ( wp_doing_cron() )   return true;
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) return true;
 
+	// Robots, sitemap, feeds — nech indexaci projít, ať Google najde povolené školení
+	if ( function_exists( 'is_robots' ) && is_robots() )   return true;
+	if ( function_exists( 'is_favicon' ) && is_favicon() ) return true;
+	if ( function_exists( 'is_sitemap' ) && is_sitemap() ) return true;
+	if ( is_feed() ) return true;
+
+	// Preview & customizer — přihlášený admin potřebuje vidět draft/preview
+	if ( is_preview() )                                      return true;
+	if ( function_exists( 'is_customize_preview' ) && is_customize_preview() ) return true;
+
 	// Přihlášení uživatelé nebo bypass cookie — plný přístup
 	if ( is_user_logged_in() )        return true;
 	if ( xevos_restricted_has_bypass() ) return true;
@@ -92,19 +102,73 @@ function xevos_restricted_allow(): bool {
 }
 
 /**
+ * Zabraň CDN (Azure Front Door, Cloudflare) v cachování stránek, dokud je
+ * restricted mode zapnutý — jinak by cache zafixovala 302 nebo naopak vrátila
+ * plnou stránku i po zapnutí režimu / uživatelům bez bypass cookie.
+ */
+add_action( 'send_headers', function () {
+	if ( ! xevos_restricted_is_active() ) return;
+	if ( is_admin() )                      return;
+
+	nocache_headers();
+	header( 'Cache-Control: private, no-store, no-cache, must-revalidate, max-age=0', true );
+	header( 'Vary: Cookie', false );
+	// Explicitní hint pro Azure Front Door / reverse proxies.
+	header( 'CDN-Cache-Control: no-store' );
+} );
+
+/**
  * Přesměruj vše ostatní na povolené školení.
  */
 add_action( 'template_redirect', function () {
 	if ( xevos_restricted_allow() ) return;
 
-	$slug = xevos_restricted_slug();
-	$post = get_page_by_path( $slug, OBJECT, 'skoleni' );
+	$slug   = xevos_restricted_slug();
+	$target = xevos_restricted_resolve_target( $slug );
 
-	// Nenašli jsme cílové školení — neredigerujeme (zabráníme nekonečné smyčce)
-	if ( ! $post ) return;
+	// Cíl neexistuje (smazané/unpublished školení) — fallback na homepage, aby se visitoři nezasekli na restringovaných URL
+	if ( ! $target ) {
+		wp_safe_redirect( home_url( '/' ), 302 );
+		exit;
+	}
 
-	wp_safe_redirect( get_permalink( $post ), 302 );
+	// Neredirectuj sám na sebe (při race conditions nebo race ?rs=0)
+	if ( untrailingslashit( $target ) === untrailingslashit( home_url( add_query_arg( null, null ) ) ) ) {
+		return;
+	}
+
+	wp_safe_redirect( $target, 302 );
 	exit;
+} );
+
+/**
+ * Vrátí permalink povoleného školení pouze pokud je published.
+ */
+function xevos_restricted_resolve_target( string $slug ): string {
+	if ( ! $slug ) return '';
+
+	$post = get_page_by_path( $slug, OBJECT, 'skoleni' );
+	if ( ! $post || $post->post_status !== 'publish' ) return '';
+
+	return (string) get_permalink( $post );
+}
+
+/**
+ * Admin notice, když je režim zapnutý ale slug je neplatný / školení není publikované.
+ */
+add_action( 'admin_notices', function () {
+	if ( ! current_user_can( 'manage_options' ) ) return;
+	if ( ! xevos_restricted_is_active() ) return;
+
+	$slug = xevos_restricted_slug();
+	if ( ! $slug ) {
+		echo '<div class="notice notice-error"><p><strong>Restricted mode:</strong> není vybráno žádné školení — visitoři jsou přesměrováni na homepage. <a href="' . esc_url( admin_url( 'admin.php?page=xevos-restricted-mode' ) ) . '">Upravit nastavení</a>.</p></div>';
+		return;
+	}
+
+	if ( ! xevos_restricted_resolve_target( $slug ) ) {
+		echo '<div class="notice notice-error"><p><strong>Restricted mode:</strong> vybrané školení (slug <code>' . esc_html( $slug ) . '</code>) neexistuje nebo není publikované. <a href="' . esc_url( admin_url( 'admin.php?page=xevos-restricted-mode' ) ) . '">Upravit nastavení</a>.</p></div>';
+	}
 } );
 
 /**
@@ -130,9 +194,12 @@ add_filter( 'body_class', function ( $classes ) {
 
 /**
  * Inline CSS — schová navigaci, search, hamburger, partners, footer nav/social.
+ * Vypisuje se jen nepřihlášeným bez bypass cookie (kdo to fakt vidí).
  */
 add_action( 'wp_head', function () {
-	if ( ! xevos_restricted_is_active() ) return;
+	if ( ! xevos_restricted_is_active() )  return;
+	if ( is_user_logged_in() )             return;
+	if ( xevos_restricted_has_bypass() )   return;
 	?>
 	<style id="xevos-restricted-mode">
 		.xevos-restricted-mode .xevos-header__nav,

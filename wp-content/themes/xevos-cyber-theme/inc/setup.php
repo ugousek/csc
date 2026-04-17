@@ -211,43 +211,4 @@ function xevos_favicon_meta(): void {
 	remove_action( 'wp_head', 'wp_site_icon', 99 );
 }
 
-/**
- * OG meta tags fallback (when no SEO plugin).
- */
-add_action( 'wp_head', 'xevos_og_meta', 5 );
-
-function xevos_og_meta(): void {
-	// Skip if Yoast or other SEO plugin is active.
-	if ( defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) ) {
-		return;
-	}
-
-	$title       = wp_get_document_title();
-	$description = get_bloginfo( 'description' );
-	$url         = is_singular() ? get_the_permalink() : home_url( '/' );
-	$image       = '';
-
-	if ( is_singular() && has_post_thumbnail() ) {
-		$image = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-	}
-
-	if ( ! $image ) {
-		$og_img = xevos_get_option( 'og_image' );
-		if ( $og_img ) {
-			$image = $og_img['url'];
-		}
-	}
-
-	if ( is_singular() ) {
-		$description = get_the_excerpt() ?: $description;
-	}
-
-	echo '<meta property="og:type" content="website">' . "\n";
-	echo '<meta property="og:title" content="' . esc_attr( $title ) . '">' . "\n";
-	echo '<meta property="og:description" content="' . esc_attr( wp_trim_words( $description, 30 ) ) . '">' . "\n";
-	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
-	if ( $image ) {
-		echo '<meta property="og:image" content="' . esc_url( $image ) . '">' . "\n";
-	}
-	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
-}
+// SEO meta tags (description, canonical, OG, Twitter) live in inc/seo.php.

@@ -18,6 +18,33 @@ function xevos_asset_version( string $relative_path ): string {
 	return file_exists( $abs ) ? (string) filemtime( $abs ) : XEVOS_THEME_VERSION;
 }
 
+/**
+ * Swap enqueued theme asset URLs to .min variant if it exists on disk.
+ * Disabled when WP_DEBUG is on so developers see readable source.
+ */
+function xevos_use_minified_assets( string $src ): string {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) return $src;
+
+	$theme_uri = get_template_directory_uri();
+	if ( strpos( $src, $theme_uri . '/assets/' ) !== 0 ) return $src;
+
+	$parsed = wp_parse_url( $src );
+	$path   = $parsed['path'] ?? '';
+	if ( ! preg_match( '#/(assets/.+\.(css|js))$#', $path, $m ) ) return $src;
+	if ( preg_match( '#\.min\.(css|js)$#', $m[1] ) ) return $src;
+
+	$rel     = $m[1];
+	$min_rel = substr( $rel, 0, -strlen( '.' . $m[2] ) ) . '.min.' . $m[2];
+	$min_abs = get_template_directory() . '/' . $min_rel;
+	if ( ! file_exists( $min_abs ) ) return $src;
+
+	$new_src = $theme_uri . '/' . $min_rel;
+	if ( ! empty( $parsed['query'] ) ) $new_src .= '?' . $parsed['query'];
+	return $new_src;
+}
+add_filter( 'style_loader_src',  'xevos_use_minified_assets' );
+add_filter( 'script_loader_src', 'xevos_use_minified_assets' );
+
 function xevos_enqueue_assets(): void {
 	$theme_uri = XEVOS_THEME_URI;
 
