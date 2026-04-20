@@ -43,6 +43,45 @@
       "instructions": "Zapnutá = obrázek má radial-gradient masku (výchozí). Vypnutá = obrázek bez masky."
     },
     {
+      "key": "field_kontakt_recenze_tab",
+      "label": "Recenze",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_kontakt_recenze_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "recenze_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_kontakt_recenze_pocet",
+      "label": "Počet zobrazených",
+      "name": "recenze_pocet",
+      "type": "number",
+      "default_value": 9,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "key": "field_kontakt_recenze_heading",
+      "label": "Nadpis",
+      "name": "recenze_heading",
+      "type": "text",
+      "placeholder": "Řekli o nás"
+    },
+    {
+      "key": "field_kontakt_recenze_popis",
+      "label": "Popis",
+      "name": "recenze_popis",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
       "key": "field_kontakt_ds_tab",
       "label": "Nastavení zobrazení partnerů",
       "name": "",

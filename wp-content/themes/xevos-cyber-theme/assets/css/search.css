@@ -2,6 +2,10 @@
    Search results – standalone stylesheet
    ========================================================================== */
 
+.xevos-page-hero__bg--gradient {
+  display: none;
+}
+
 .xevos-blog-hero {
   z-index: -1;
 }

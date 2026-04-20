@@ -3536,6 +3536,7 @@ body::after {
 
   .xevos-blog-hero__content h1 {
     font-size: 36px;
+    word-break: break-word;
   }
 
   .xevos-blog-hero__desc {

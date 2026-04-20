@@ -459,16 +459,32 @@
       "type": "tab"
     },
     {
+      "key": "field_sk_recenze_zobrazit",
+      "label": "Zobrazit sekci",
+      "name": "recenze_zobrazit_sekci",
+      "type": "true_false",
+      "default_value": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_sk_recenze_pocet",
+      "label": "Počet zobrazených",
+      "name": "recenze_pocet",
+      "type": "number",
+      "default_value": 9,
+      "min": 1,
+      "max": 20
+    },
+    {
       "key": "field_sk_recenze_heading",
-      "label": "Nadpis sekce recenzí",
+      "label": "Nadpis",
       "name": "recenze_heading",
       "type": "text",
-      "placeholder": "Řekli o nás",
-      "instructions": "Prázdné = Řekli o nás."
+      "placeholder": "Řekli o nás"
     },
     {
       "key": "field_sk_recenze_popis",
-      "label": "Popis sekce recenzí",
+      "label": "Popis",
       "name": "recenze_popis",
       "type": "wysiwyg",
       "toolbar": "basic",

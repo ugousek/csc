@@ -362,6 +362,31 @@
       "ui": 1
     },
     {
+      "key": "field_sl_recenze_pocet",
+      "label": "Počet zobrazených",
+      "name": "recenze_pocet",
+      "type": "number",
+      "default_value": 9,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "key": "field_sl_recenze_heading",
+      "label": "Nadpis",
+      "name": "recenze_heading",
+      "type": "text",
+      "placeholder": "Řekli o nás"
+    },
+    {
+      "key": "field_sl_recenze_popis",
+      "label": "Popis",
+      "name": "recenze_popis",
+      "type": "wysiwyg",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
+    },
+    {
       "key": "field_sl_formular_tab",
       "label": "8. Formulář",
       "name": "",
