@@ -49,8 +49,84 @@ function xevos_acf_auto_sync_json(): void {
 
 		// Import only when JSON is strictly newer than DB (or DB entry is missing).
 		if ( ! $db_group || $json_mod > $db_mod ) {
+			// Pass existing ID to force update instead of creating a duplicate post.
+			if ( $db_group && ! empty( $db_group['ID'] ) ) {
+				$json['ID'] = $db_group['ID'];
+			}
 			acf_import_field_group( $json );
 		}
+	}
+}
+
+/**
+ * Automatic cleanup: remove duplicate ACF field groups (same key → keep lowest ID).
+ * IMPORTANT: Disables ACF's save_json during delete so JSON files on disk are NOT removed.
+ */
+add_action( 'admin_init', 'xevos_acf_dedup_field_groups', 9 ); // Priority 9 — před auto-sync (10).
+
+function xevos_acf_dedup_field_groups(): void {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	global $wpdb;
+	$groups = $wpdb->get_results(
+		"SELECT ID, post_name, post_title
+		 FROM {$wpdb->posts}
+		 WHERE post_type = 'acf-field-group'
+		 ORDER BY ID ASC"
+	);
+
+	if ( empty( $groups ) ) {
+		return;
+	}
+
+	// Seskupit podle base key (bez -N sufixu z duplikátu slugů).
+	$groups_by_key = [];
+	foreach ( $groups as $g ) {
+		$base_key = preg_replace( '/-\d+$/', '', $g->post_name );
+		$groups_by_key[ $base_key ][] = $g;
+	}
+
+	// Zjistit, jestli existují duplikáty. Pokud ne, vrátit se — nerušíme žádné JSON ani nic.
+	$has_duplicates = false;
+	foreach ( $groups_by_key as $list ) {
+		if ( count( $list ) > 1 ) {
+			$has_duplicates = true;
+			break;
+		}
+	}
+	if ( ! $has_duplicates ) {
+		return;
+	}
+
+	// Dočasně vypneme ACF save_json cestu — tím při delete_post NEBUDE smazán JSON soubor.
+	$disable_save = function () {
+		return false;
+	};
+	add_filter( 'acf/settings/save_json', $disable_save, 999 );
+
+	$deleted = [];
+	foreach ( $groups_by_key as $base_key => $list ) {
+		if ( count( $list ) <= 1 ) {
+			continue;
+		}
+		// První (nejnižší ID) necháme, zbytek smažeme.
+		$keep = array_shift( $list );
+		foreach ( $list as $dup ) {
+			// Přímo přes DB — vyhneme se ACF delete hookům, které by mohly mazat JSON.
+			$wpdb->delete( $wpdb->posts, [ 'ID' => (int) $dup->ID ] );
+			$wpdb->delete( $wpdb->postmeta, [ 'post_id' => (int) $dup->ID ] );
+			$deleted[] = $dup->post_title . ' (ID ' . $dup->ID . ')';
+		}
+	}
+
+	remove_filter( 'acf/settings/save_json', $disable_save, 999 );
+
+	if ( $deleted && isset( $_GET['post_type'] ) && $_GET['post_type'] === 'acf-field-group' ) {
+		add_action( 'admin_notices', function () use ( $deleted ) {
+			echo '<div class="notice notice-success is-dismissible"><p><strong>Xevos ACF dedup:</strong> Smazáno ' . count( $deleted ) . ' duplikátů: ' . esc_html( implode( ', ', $deleted ) ) . '</p></div>';
+		} );
 	}
 }
 
