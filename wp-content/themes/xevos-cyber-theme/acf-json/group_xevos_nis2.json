@@ -335,13 +335,13 @@
     {
       "key": "field_nis_aktuality_heading_v",
       "label": "Nadpis",
-      "name": "nis_aktuality_heading",
+      "name": "aktuality_heading",
       "type": "text"
     },
     {
       "key": "field_nis_aktuality_text_v",
       "label": "Popis",
-      "name": "nis_aktuality_text",
+      "name": "aktuality_text",
       "type": "wysiwyg",
       "toolbar": "basic",
       "media_upload": 0,
