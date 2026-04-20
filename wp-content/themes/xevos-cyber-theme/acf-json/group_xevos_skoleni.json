@@ -436,6 +436,13 @@
       "type": "tab"
     },
     {
+      "key": "field_sk_kde_parkovat_nadpis",
+      "label": "Nadpis",
+      "name": "kde_parkovat_nadpis",
+      "type": "text",
+      "placeholder": "Kde parkovat"
+    },
+    {
       "key": "field_sk_kde_parkovat",
       "label": "Kde parkovat",
       "name": "kde_parkovat",
