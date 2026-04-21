@@ -432,7 +432,8 @@
     flex: 1;
 }
 
-.xevos-skoleni-lektori__cards:has(> .xevos-lektor-card:only-child) {
+.xevos-skoleni-lektori__cards:has(> .xevos-lektor-card:only-child),
+.xevos-skoleni-lektori__cards.xevos-skoleni-lektori--single {
     grid-template-columns: minmax(0, 480px);
     justify-content: center;
 }
@@ -443,7 +444,8 @@
     gap: 5rem;
 }
 
-.xevos-skoleni-lektori__static:has(> .xevos-lektor-card:only-child) {
+.xevos-skoleni-lektori__static:has(> .xevos-lektor-card:only-child),
+.xevos-skoleni-lektori__static.xevos-skoleni-lektori--single {
     grid-template-columns: minmax(0, 480px);
     justify-content: center;
 }
