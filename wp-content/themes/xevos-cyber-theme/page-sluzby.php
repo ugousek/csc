@@ -225,7 +225,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 					endif; ?>
 					<div class="xevos-kt-banner__content">
 						<?php if ( $banner_heading ) : ?>
-							<h2><?php echo esc_html($banner_heading); ?></h2>
+							<h2><?php echo wp_kses( $banner_heading, [ 'strong' => [], 'b' => [], 'em' => [], 'br' => [] ] ); ?></h2>
 						<?php endif; ?>
 						<?php if ( $banner_text ) : ?>
 							<p><?php echo wp_kses( strip_tags( $banner_text, '<strong><b><em><a><br>' ), [ 'strong' => [], 'b' => [], 'em' => [], 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ], 'br' => [] ] ); ?></p>
