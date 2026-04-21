@@ -16,6 +16,13 @@
 }
 </style>
 </head>
+<?php
+$labels = is_array( $email_data['labels'] ?? null ) ? $email_data['labels'] : [];
+$l = static function ( string $key, string $fallback ) use ( $labels ) {
+	$v = $labels[ $key ] ?? '';
+	return $v !== '' ? (string) $v : $fallback;
+};
+?>
 <body style="margin:0;padding:0;background-color:#0d1117;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d1117;">
 <tr><td align="center" style="padding:40px 16px;">
@@ -47,7 +54,7 @@
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;">
       <tr>
         <td style="background-color:#0f172a;border:1px solid #1e293b;border-left:4px solid #F527AA;padding:16px 24px;">
-          <p style="margin:0;font-size:14px;color:#64748b;font-family:Arial,Helvetica,sans-serif;">Druh testu:</p>
+          <p style="margin:0;font-size:14px;color:#64748b;font-family:Arial,Helvetica,sans-serif;"><?php echo esc_html( $l( 'druh', 'Druh testu' ) ); ?>:</p>
           <p style="margin:4px 0 0;font-size:16px;font-weight:700;color:#ffffff;font-family:Arial,Helvetica,sans-serif;"><?php echo esc_html( $email_data['druh_testu'] ); ?></p>
         </td>
       </tr>

@@ -159,6 +159,47 @@ function xevos_inquiry_form_handler(): void {
 
 	$firma_nazev = function_exists( 'xevos_get_option' ) ? xevos_get_option( 'nazev_firmy', 'XEVOS' ) : 'XEVOS';
 
+	// Resolve admin-defined labels for the email (per-page).
+	$prefix_raw     = sanitize_key( $_POST['form_prefix'] ?? '' );
+	$allowed_prefix = in_array( $prefix_raw, [ 'kt', 'nis', 'sl', 'on' ], true ) ? $prefix_raw : '';
+	$template_by_prefix = [
+		'kt'  => 'page-kyberneticke-testovani.php',
+		'nis' => 'page-nis2.php',
+		'sl'  => 'page-sluzby.php',
+		'on'  => 'page-o-nas.php',
+	];
+	$page_id_for_labels = 0;
+	if ( $allowed_prefix && isset( $template_by_prefix[ $allowed_prefix ] ) ) {
+		$found = get_posts( [
+			'post_type'      => 'page',
+			'posts_per_page' => 1,
+			'post_status'    => 'publish',
+			'fields'         => 'ids',
+			'meta_key'       => '_wp_page_template',
+			'meta_value'     => $template_by_prefix[ $allowed_prefix ],
+		] );
+		$page_id_for_labels = ! empty( $found ) ? (int) $found[0] : 0;
+	}
+	$label = static function ( string $key, string $fallback ) use ( $allowed_prefix, $page_id_for_labels ) {
+		if ( ! $allowed_prefix || ! $page_id_for_labels ) {
+			return $fallback;
+		}
+		$val = get_field( $allowed_prefix . '_form_' . $key, $page_id_for_labels );
+		if ( $val === null || $val === '' || $val === false ) {
+			$val = '';
+		}
+		return $val !== '' ? (string) $val : $fallback;
+	};
+	$labels = [
+		'jmeno'    => $label( 'label_jmeno',    'Jméno' ),
+		'prijmeni' => $label( 'label_prijmeni', 'Příjmení' ),
+		'telefon'  => $label( 'label_telefon',  'Telefon' ),
+		'email'    => $label( 'label_email',    'E-mail' ),
+		'firma'    => $label( 'label_firma',    'Firma' ),
+		'druh'     => $label( 'label_druh',     'Druh testu' ),
+		'zprava'   => $label( 'label_zprava',   'Zpráva' ),
+	];
+
 	if ( function_exists( 'xevos_send_email' ) ) {
 		// Notify admin.
 		xevos_send_email( get_option( 'admin_email' ), 'Nová poptávka testování – ' . $jmeno . ' ' . $prijmeni, 'admin-notification-inquiry', [
@@ -169,6 +210,7 @@ function xevos_inquiry_form_handler(): void {
 			'firma'      => $firma,
 			'druh_testu' => $druh_testu,
 			'zprava'     => $zprava,
+			'labels'     => $labels,
 		] );
 
 		// Confirm to customer.
@@ -177,6 +219,7 @@ function xevos_inquiry_form_handler(): void {
 			'druh_testu'    => $druh_testu,
 			'kontakt_email' => get_option( 'admin_email' ),
 			'firma'         => $firma_nazev,
+			'labels'        => $labels,
 		] );
 	}
 

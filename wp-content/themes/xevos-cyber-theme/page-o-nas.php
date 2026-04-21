@@ -273,64 +273,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 					</div>
 				<?php endif; ?>
 
-				<form class="xevos-order-section" method="post" id="xevos-inquiry-form">
-					<input type="hidden" name="action" value="xevos_inquiry_form">
-					<?php wp_nonce_field( 'xevos_inquiry', 'xevos_inquiry_nonce' ); ?>
-					<div class="xevos-kontaon__form">
-						<div class="xevos-form-row">
-							<div class="xevos-form__group">
-								<label class="xevos-form__label">Jméno <span class="xevos-form__required">*</span></label>
-								<input type="text" class="xevos-form__input" name="jmeno" required>
-							</div>
-							<div class="xevos-form__group">
-								<label class="xevos-form__label">Příjmení <span class="xevos-form__required">*</span></label>
-								<input type="text" class="xevos-form__input" name="prijmeni" required>
-							</div>
-						</div>
-						<div class="xevos-form-row">
-							<div class="xevos-form__group">
-								<label class="xevos-form__label">Telefon <span class="xevos-form__required">*</span></label>
-								<input type="tel" class="xevos-form__input" name="telefon" required>
-							</div>
-							<div class="xevos-form__group">
-								<label class="xevos-form__label">E-mail <span class="xevos-form__required">*</span></label>
-								<input type="email" class="xevos-form__input" name="email" required>
-							</div>
-						</div>
-						<div class="xevos-form-row">
-							<div class="xevos-form__group">
-								<label class="xevos-form__label">Firma</label>
-								<input type="text" class="xevos-form__input" name="firma">
-							</div>
-							<div class="xevos-form__group">
-								<label class="xevos-form__label">Druh testu <span class="xevos-form__required">*</span></label>
-								<select class="xevos-form__input" name="druh_testu" required>
-									<option value="">– vyberte –</option>
-									<option value="Kybernetická bezpečnost – obecná">Kybernetická bezpečnost – obecná</option>
-									<option value="Penetrační testy">Penetrační testy</option>
-									<option value="Audit infrastruktury">Audit infrastruktury</option>
-								</select>
-							</div>
-						</div>
-						<div class="xevos-form__group">
-							<label class="xevos-form__label">Zpráva</label>
-							<textarea class="xevos-form__textarea" name="zprava" rows="4"></textarea>
-						</div>
-						<div class="xevos-form__hp"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-						<div id="xevos-inquiry-message" class="xevos-order-message" style="display:none;"></div>
-					</div>
-
-					<div class="xevos-order-summary">
-						<?php xevos_component('contact-info'); ?>
-
-						<button type="submit" id="xevos-inquiry-submit" class="xevos-btn xevos-btn--primary">
-							<span class="xevos-btn__arrow"><svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-									<path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-								</svg></span>
-							ODESLAT POPTÁVKU
-						</button>
-					</div>
-				</form>
+				<?php get_template_part('template-parts/components/inquiry-form', null, ['prefix' => 'on']); ?>
 			</div>
 		</section>
 	<?php endif; ?>

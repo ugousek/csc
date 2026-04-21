@@ -432,10 +432,20 @@
     flex: 1;
 }
 
+.xevos-skoleni-lektori__cards:has(> .xevos-lektor-card:only-child) {
+    grid-template-columns: minmax(0, 480px);
+    justify-content: center;
+}
+
 .xevos-skoleni-lektori__static {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5rem;
+}
+
+.xevos-skoleni-lektori__static:has(> .xevos-lektor-card:only-child) {
+    grid-template-columns: minmax(0, 480px);
+    justify-content: center;
 }
 
 @media (max-width: 767px) {

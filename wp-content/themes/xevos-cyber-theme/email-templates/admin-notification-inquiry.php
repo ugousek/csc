@@ -16,6 +16,13 @@
 }
 </style>
 </head>
+<?php
+$labels = is_array( $email_data['labels'] ?? null ) ? $email_data['labels'] : [];
+$l = static function ( string $key, string $fallback ) use ( $labels ) {
+	$v = $labels[ $key ] ?? '';
+	return $v !== '' ? (string) $v : $fallback;
+};
+?>
 <body style="margin:0;padding:0;background-color:#0d1117;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d1117;">
 <tr><td align="center" style="padding:40px 16px;">
@@ -51,23 +58,23 @@
 
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #1e293b;margin-bottom:24px;">
       <tr style="background-color:#0f172a;">
-        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;width:120px;border-bottom:1px solid #1e293b;">Jméno:</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;width:120px;border-bottom:1px solid #1e293b;"><?php echo esc_html( $l( 'jmeno', 'Jméno' ) ); ?>:</td>
         <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;font-weight:600;border-bottom:1px solid #1e293b;"><?php echo esc_html( trim( ( $email_data['jmeno'] ?? '' ) . ' ' . ( $email_data['prijmeni'] ?? '' ) ) ); ?></td>
       </tr>
       <tr>
-        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;">E-mail:</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;"><?php echo esc_html( $l( 'email', 'E-mail' ) ); ?>:</td>
         <td style="padding:10px 16px;font-size:14px;border-bottom:1px solid #1e293b;"><a href="mailto:<?php echo esc_attr( $email_data['email'] ?? '' ); ?>" style="color:#F527AA;text-decoration:none;font-family:Arial,Helvetica,sans-serif;"><?php echo esc_html( $email_data['email'] ?? '' ); ?></a></td>
       </tr>
       <tr style="background-color:#0f172a;">
-        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;">Telefon:</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;"><?php echo esc_html( $l( 'telefon', 'Telefon' ) ); ?>:</td>
         <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;"><?php echo esc_html( $email_data['telefon'] ?? '—' ); ?></td>
       </tr>
       <tr>
-        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;">Firma:</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;"><?php echo esc_html( $l( 'firma', 'Firma' ) ); ?>:</td>
         <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid #1e293b;"><?php echo esc_html( $email_data['firma'] ?? '—' ); ?></td>
       </tr>
       <tr style="background-color:#0f172a;">
-        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;">Druh testu:</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b;font-family:Arial,Helvetica,sans-serif;"><?php echo esc_html( $l( 'druh', 'Druh testu' ) ); ?>:</td>
         <td style="padding:10px 16px;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;font-weight:600;"><?php echo esc_html( $email_data['druh_testu'] ?? '—' ); ?></td>
       </tr>
     </table>
@@ -76,7 +83,7 @@
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
       <tr>
         <td style="background-color:#0f172a;border:1px solid #1e293b;border-left:4px solid #F527AA;padding:16px 20px;">
-          <p style="margin:0 0 8px;font-size:12px;color:#64748b;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Zpráva</p>
+          <p style="margin:0 0 8px;font-size:12px;color:#64748b;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1px;font-weight:700;"><?php echo esc_html( $l( 'zprava', 'Zpráva' ) ); ?></p>
           <p style="margin:0;font-size:14px;color:#e2e8f0;font-family:Arial,Helvetica,sans-serif;line-height:1.7;white-space:pre-wrap;"><?php echo esc_html( $email_data['zprava'] ); ?></p>
         </td>
       </tr>

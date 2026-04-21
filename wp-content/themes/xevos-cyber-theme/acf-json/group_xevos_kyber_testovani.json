@@ -296,7 +296,8 @@
             "name": "kt_banner_text",
             "type": "wysiwyg",
             "toolbar": "basic",
-            "media_upload": 0
+            "media_upload": 0,
+            "instructions": "Tučný text (B) = růžový (accent)."
         },
         {
             "key": "field_kt_banner_btn_text_v",
@@ -416,6 +417,145 @@
             "instructions": "Tučný text (B) = bílá barva, zbytek šedý."
         },
         {
+            "key": "field_kt_form_label_jmeno",
+            "label": "Popisek – Jméno",
+            "name": "kt_form_label_jmeno",
+            "type": "text",
+            "placeholder": "Jméno",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „Jméno\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_prijmeni",
+            "label": "Popisek – Příjmení",
+            "name": "kt_form_label_prijmeni",
+            "type": "text",
+            "placeholder": "Příjmení",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „Příjmení\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_telefon",
+            "label": "Popisek – Telefon",
+            "name": "kt_form_label_telefon",
+            "type": "text",
+            "placeholder": "Telefon",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „Telefon\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_email",
+            "label": "Popisek – E-mail",
+            "name": "kt_form_label_email",
+            "type": "text",
+            "placeholder": "E-mail",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „E-mail\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_firma",
+            "label": "Popisek – Firma",
+            "name": "kt_form_label_firma",
+            "type": "text",
+            "placeholder": "Firma",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „Firma\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_druh",
+            "label": "Popisek – Druh testu (select)",
+            "name": "kt_form_label_druh",
+            "type": "text",
+            "placeholder": "Druh testu",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „Druh testu\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_select_ph",
+            "label": "Placeholder selectu",
+            "name": "kt_form_select_placeholder",
+            "type": "text",
+            "placeholder": "– vyberte –",
+            "instructions": "Výchozí (prázdná) možnost v rozbalovací nabídce. Pokud nevyplníte, použije se výchozí: „– vyberte –\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_select_options",
+            "label": "Možnosti – Druh testu",
+            "name": "kt_form_select_options",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Přidat možnost",
+            "instructions": "Seznam možností v selectu. Pokud je prázdný, použijí se výchozí hodnoty: Kybernetická bezpečnost – obecná; Penetrační testy; Audit infrastruktury.",
+            "sub_fields": [
+                {
+                    "key": "field_kt_form_option_label",
+                    "label": "Popisek",
+                    "name": "label",
+                    "type": "text"
+                }
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_zprava",
+            "label": "Popisek – Zpráva",
+            "name": "kt_form_label_zprava",
+            "type": "text",
+            "placeholder": "Zpráva",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „Zpráva\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_kt_form_label_submit",
+            "label": "Text tlačítka",
+            "name": "kt_form_label_submit",
+            "type": "text",
+            "placeholder": "ODESLAT POPTÁVKU",
+            "instructions": "Pokud nevyplníte, použije se výchozí: „ODESLAT POPTÁVKU\".",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "key": "field_kt_ds_tab",
             "label": "Nastavení zobrazení partnerů",
             "name": "",
@@ -447,5 +587,5 @@
     "style": "default",
     "label_placement": "top",
     "active": true,
-    "modified": 1776685830
+    "modified": 1776790484
 }

@@ -324,6 +324,12 @@
   max-width: 850px;
 }
 
+.xevos-kt-banner__content strong,
+.xevos-kt-banner__content b {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
 
 @media screen and (min-width: 992px) {
   .xevos-kt-banner__content {
