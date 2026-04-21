@@ -188,15 +188,13 @@ while (have_posts()) : the_post();
 					$inner_class = $use_swiper
 						? 'swiper-wrapper'
 						: ( $grid_mode ? 'xevos-skoleni-lektori__grid-inner' : 'xevos-skoleni-lektori__static' );
-					$is_single = ! $use_swiper && $lektor_count === 1;
-					if ( $is_single ) {
+					if ( ! $use_swiper && $lektor_count === 1 ) {
 						$outer_class .= ' xevos-skoleni-lektori--single';
 						$inner_class .= ' xevos-skoleni-lektori--single';
 					}
-					$single_style = $is_single ? ' style="display:grid;grid-template-columns:minmax(0,480px);justify-content:center;width:100%;"' : '';
 					?>
-					<div class="<?php echo esc_attr( $outer_class ); ?>"<?php echo $single_style; ?> <?php echo $use_swiper ? 'id="lektori-swiper"' : ''; ?>>
-						<div class="<?php echo esc_attr( $inner_class ); ?>"<?php echo $single_style; ?>>
+					<div class="<?php echo esc_attr( $outer_class ); ?>" <?php echo $use_swiper ? 'id="lektori-swiper"' : ''; ?>>
+						<div class="<?php echo esc_attr( $inner_class ); ?>">
 							<?php foreach ($lektori as $li => $l) :
 								if ( empty( $l['jmeno'] ) ) continue;
 								$foto_id = 0;
