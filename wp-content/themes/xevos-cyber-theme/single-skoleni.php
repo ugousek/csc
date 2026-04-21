@@ -188,6 +188,10 @@ while (have_posts()) : the_post();
 					$inner_class = $use_swiper
 						? 'swiper-wrapper'
 						: ( $grid_mode ? 'xevos-skoleni-lektori__grid-inner' : 'xevos-skoleni-lektori__static' );
+					if ( ! $use_swiper && $lektor_count === 1 ) {
+						$outer_class .= ' xevos-skoleni-lektori--single';
+						$inner_class .= ' xevos-skoleni-lektori--single';
+					}
 					?>
 					<div class="<?php echo esc_attr( $outer_class ); ?>" <?php echo $use_swiper ? 'id="lektori-swiper"' : ''; ?>>
 						<div class="<?php echo esc_attr( $inner_class ); ?>">
