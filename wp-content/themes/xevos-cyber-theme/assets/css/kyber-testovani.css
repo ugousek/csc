@@ -329,7 +329,7 @@
 .xevos-kt-banner__content h2 strong,
 .xevos-kt-banner__content h2 b {
   color: var(--color-accent);
-  font-weight: inherit;
+  font-weight: 400;
 }
 
 
