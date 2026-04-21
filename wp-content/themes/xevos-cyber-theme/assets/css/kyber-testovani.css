@@ -324,12 +324,14 @@
   max-width: 850px;
 }
 
-.xevos-kt-banner__content strong,
-.xevos-kt-banner__content b,
-.xevos-kt-banner__content h2 strong,
-.xevos-kt-banner__content h2 b {
-  color: var(--color-accent);
-  font-weight: 900;
+.xevos-kt-banner .xevos-kt-banner__content strong,
+.xevos-kt-banner .xevos-kt-banner__content b,
+.xevos-kt-banner .xevos-kt-banner__content h2 strong,
+.xevos-kt-banner .xevos-kt-banner__content h2 b,
+.xevos-kt-banner .xevos-kt-banner__content p strong,
+.xevos-kt-banner .xevos-kt-banner__content p b {
+  color: var(--color-accent) !important;
+  font-weight: 900 !important;
 }
 
 

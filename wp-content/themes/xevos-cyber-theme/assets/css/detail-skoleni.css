@@ -433,9 +433,9 @@
 }
 
 .xevos-skoleni-lektori__cards:has(> .xevos-lektor-card:only-child),
-.xevos-skoleni-lektori__cards.xevos-skoleni-lektori--single {
-    grid-template-columns: minmax(0, 480px);
-    justify-content: center;
+.xevos-skoleni-lektori__cards.xevos-skoleni-lektori--single.xevos-skoleni-lektori--single {
+    grid-template-columns: minmax(0, 480px) !important;
+    justify-content: center !important;
 }
 
 .xevos-skoleni-lektori__static {
@@ -445,9 +445,14 @@
 }
 
 .xevos-skoleni-lektori__static:has(> .xevos-lektor-card:only-child),
-.xevos-skoleni-lektori__static.xevos-skoleni-lektori--single {
-    grid-template-columns: minmax(0, 480px);
-    justify-content: center;
+.xevos-skoleni-lektori__static.xevos-skoleni-lektori--single.xevos-skoleni-lektori--single {
+    grid-template-columns: minmax(0, 480px) !important;
+    justify-content: center !important;
+}
+
+.xevos-skoleni-lektori__static.xevos-skoleni-lektori--single > .xevos-lektor-card,
+.xevos-skoleni-lektori__cards.xevos-skoleni-lektori--single > .xevos-skoleni-lektori__static > .xevos-lektor-card {
+    margin-inline: auto;
 }
 
 @media (max-width: 767px) {
