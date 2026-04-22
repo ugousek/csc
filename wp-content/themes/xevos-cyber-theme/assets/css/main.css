@@ -964,13 +964,16 @@ select.xevos-form__input option:checked,
 }
 
 .xevos-header__logo img {
-  height: 56px;
-  width: auto;
-  transition: height var(--transition-base);
+  width: 100%;
+  max-width: 370px;
+  height: auto;
+  transition: max-width var(--transition-base);
 }
 
 .xevos-header--scrolled .xevos-header__logo img {
-  height: 45px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
 }
 
 /* Desktop nav */
@@ -1155,9 +1158,6 @@ select.xevos-form__input option:checked,
 
 /* Header squeeze: reduce gaps and sizing under 1450px */
 @media (max-width: 1450px) and (min-width: 1250px) {
-  .xevos-header__inner {
-    padding-left: 1px;
-  }
 
   .xevos-header__nav-list {
     gap: 14px;
@@ -1976,8 +1976,9 @@ select.xevos-form__input option:checked,
 
 /* Footer logo */
 .xevos-footer__logo img {
-  height: 60px;
-  width: auto;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
 }
 
 /* Footer nav */
@@ -2133,6 +2134,17 @@ select.xevos-form__input option:checked,
 }
 
 @media screen and (max-width: 767px) {
+
+  .xevos-header__logo img {
+    height: auto;
+    max-width: 270px;
+  }
+
+  .xevos-header--scrolled .xevos-header__logo img {
+    height: auto;
+    max-width: 250px;
+  }
+
   .xevos-hp-recenze__header p {
     font-size: 16px;
   }
@@ -2158,7 +2170,9 @@ select.xevos-form__input option:checked,
   }
 
   .xevos-footer__logo img {
-    height: 60px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
   }
 
   .xevos-footer__nav ul {
@@ -2209,11 +2223,13 @@ select.xevos-form__input option:checked,
   }
 
   .xevos-header__logo img {
-    height: 32px;
+    height: auto;
+    max-width: 215px;
   }
 
   .xevos-header--scrolled .xevos-header__logo img {
-    height: 24px;
+    height: auto;
+    max-width: 200px;
   }
 }
 
