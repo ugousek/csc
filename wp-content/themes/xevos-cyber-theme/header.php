@@ -13,15 +13,21 @@
 	<a class="xevos-skip-link" href="#main"><?php esc_html_e('Skip to content', 'xevos-cyber'); ?></a>
 
 	<?php
-	$cta_text = xevos_get_option('header_cta_text', 'Nezávazná konzultace');
-	$cta_url  = xevos_get_option('header_cta_url', '/kontakt/');
+	$cta_text    = xevos_get_option('header_cta_text', 'Nezávazná konzultace');
+	$cta_url     = xevos_get_option('header_cta_url', '/kontakt/');
+	$header_logo = xevos_get_option('logo');
+	$firma_nazev = xevos_get_option('nazev_firmy', 'XEVOS Cyber Security');
 	?>
 
 	<header class="xevos-header" id="header">
 		<div class="xevos-header__inner">
 			<!-- Logo -->
 			<a href="<?php echo esc_url(home_url('/')); ?>" class="xevos-header__logo">
-				<img src="<?php echo esc_url(get_theme_file_uri('assets/img/global/csc-logo.png')); ?>" alt="XEVOS Cyber Security">
+				<?php if ( is_array($header_logo) && ! empty($header_logo['url']) ) : ?>
+					<img src="<?php echo esc_url($header_logo['url']); ?>" alt="<?php echo esc_attr($firma_nazev); ?>">
+				<?php else : ?>
+					<img src="<?php echo esc_url(get_theme_file_uri('assets/img/global/csc-logo.png')); ?>" alt="<?php echo esc_attr($firma_nazev); ?>">
+				<?php endif; ?>
 			</a>
 
 			<!-- Desktop navigation -->
