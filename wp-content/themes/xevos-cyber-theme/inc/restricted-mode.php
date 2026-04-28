@@ -118,6 +118,65 @@ add_action( 'send_headers', function () {
 } );
 
 /**
+ * Tell page-cache plugins (WP Rocket, W3 Total Cache, WP Super Cache, LiteSpeed,
+ * Hummingbird, Cache Enabler …) that the entire site must be served live while
+ * restricted mode is on — otherwise they bypass our redirect and serve cached
+ * HTML to anonymous visitors.
+ *
+ * Runs as early as possible so plugins see the flags before they decide to cache.
+ */
+add_action( 'plugins_loaded', 'xevos_restricted_disable_page_cache', 0 );
+add_action( 'init', 'xevos_restricted_disable_page_cache', 0 );
+
+function xevos_restricted_disable_page_cache(): void {
+	if ( ! xevos_restricted_is_active() ) return;
+	if ( is_admin() )                      return;
+
+	// Universal flag honored by W3 Total Cache, WP Super Cache, WP Rocket fallback, Comet Cache, Cache Enabler, …
+	if ( ! defined( 'DONOTCACHEPAGE' ) )   define( 'DONOTCACHEPAGE', true );
+	if ( ! defined( 'DONOTCACHEDB' ) )     define( 'DONOTCACHEDB', true );
+	if ( ! defined( 'DONOTCACHEOBJECT' ) ) define( 'DONOTCACHEOBJECT', true );
+	if ( ! defined( 'DONOTMINIFY' ) )      define( 'DONOTMINIFY', true );
+
+	// WP Rocket
+	add_filter( 'do_rocket_generate_caching_files', '__return_false' );
+	add_filter( 'rocket_override_donotcachepage',   '__return_true' );
+	// LiteSpeed Cache
+	if ( ! defined( 'LSCWP_NO_CACHE' ) ) define( 'LSCWP_NO_CACHE', true );
+	do_action( 'litespeed_control_set_nocache', 'xevos restricted mode' );
+	// Hummingbird page cache
+	add_filter( 'wphb_can_serve_cache', '__return_false' );
+	// Cachify
+	add_filter( 'cachify_skip_cache', '__return_true' );
+	// Autoptimize – avoid HTML processing
+	add_filter( 'autoptimize_filter_noptimize', '__return_true' );
+	// Generic "is this cacheable" hook some plugins read
+	add_filter( 'wp_headers', function ( $headers ) {
+		$headers['Cache-Control'] = 'private, no-store, no-cache, must-revalidate, max-age=0';
+		return $headers;
+	} );
+
+	// WP Fastest Cache: globally exclude every URL while restricted mode is on.
+	// Plugin hooks: 'wpfc_exclude_current_page' (modern) and per-page 'no-cache' marker.
+	add_filter( 'wpfc_exclude_current_page', '__return_true' );
+	if ( ! defined( 'WPFC_NO_CACHE' ) ) define( 'WPFC_NO_CACHE', true );
+	// Inject the comment marker WP Fastest Cache scans for in the HTML.
+	add_action( 'send_headers', 'xevos_wpfc_marker', 1 );
+	add_action( 'wp_head', 'xevos_wpfc_marker', 1 );
+}
+
+/**
+ * WP Fastest Cache reads this exact comment in the HTML head and skips caching
+ * the page when present. Cheap insurance on top of the filter + constant.
+ */
+function xevos_wpfc_marker(): void {
+	static $printed = false;
+	if ( $printed ) return;
+	$printed = true;
+	echo "<!-- wpfc-no-cache -->\n";
+}
+
+/**
  * Přesměruj vše ostatní na povolené školení.
  */
 add_action( 'template_redirect', function () {

@@ -52,11 +52,11 @@ if ( empty( $select_options ) ) {
 		<div class="xevos-form-row">
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_jmeno ); ?> <span class="xevos-form__required">*</span></label>
-				<input type="text" class="xevos-form__input" name="jmeno" required minlength="2" data-error-required="Vyplňte jméno" data-error-minlength="Jméno musí mít alespoň 2 znaky">
+				<input type="text" class="xevos-form__input" name="jmeno" required minlength="2" data-validate="name" data-error-required="Vyplňte jméno" data-error-minlength="Jméno musí mít alespoň 2 znaky" data-error-name="Jméno smí obsahovat pouze písmena">
 			</div>
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_prijmeni ); ?> <span class="xevos-form__required">*</span></label>
-				<input type="text" class="xevos-form__input" name="prijmeni" required minlength="2" data-error-required="Vyplňte příjmení" data-error-minlength="Příjmení musí mít alespoň 2 znaky">
+				<input type="text" class="xevos-form__input" name="prijmeni" required minlength="2" data-validate="name" data-error-required="Vyplňte příjmení" data-error-minlength="Příjmení musí mít alespoň 2 znaky" data-error-name="Příjmení smí obsahovat pouze písmena">
 			</div>
 		</div>
 		<div class="xevos-form-row">

@@ -50,7 +50,8 @@ var XevosValidation = (function () {
     select:    'Vyberte jednu z možností.',
     checkbox:  'Musíte souhlasit.',
     ico:       'IČO musí mít 8 číslic.',
-    psc:       'PSČ musí mít 5 číslic.'
+    psc:       'PSČ musí mít 5 číslic.',
+    name:      'Jméno smí obsahovat pouze písmena, mezery a pomlčky.'
   };
 
   var patterns = {
@@ -58,7 +59,9 @@ var XevosValidation = (function () {
     tel:   /^[+]?[\d\s()-]{6,}$/,
     url:   /^https?:\/\/.+/,
     ico:   /^\d{8}$/,
-    psc:   /^\d{3}\s?\d{2}$/
+    psc:   /^\d{3}\s?\d{2}$/,
+    /* Letters (ASCII + accented Czech/Slovak/EU), spaces, hyphens, apostrophes. No digits. */
+    name:  /^[A-Za-zÀ-ÖØ-öø-ÿĀ-žŞ-ſĀ-ſƀ-ɏ\s'\-]{2,}$/
   };
 
   // ---- Helpers ----
