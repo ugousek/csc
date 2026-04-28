@@ -61,22 +61,24 @@ function xevos_send_security_headers(): void {
 	 * Povolené externí origin pro skripty/styly: jsdelivr (Swiper), cdnjs (Lottie),
 	 * Google (Tag Manager + Analytics), Cloudflare Turnstile, fonts.gstatic.com.
 	 */
-	$google_script  = 'https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com';
-	$google_connect = 'https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com';
-	$cdn_script     = 'https://cdn.jsdelivr.net https://cdnjs.cloudflare.com';
+	$google_script  = 'https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://*.googletagmanager.com';
+	$google_connect = 'https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.g.doubleclick.net https://*.googletagmanager.com';
+	$cdn_script     = 'https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com';
+	$marketing      = 'https://connect.facebook.net https://www.facebook.com https://c.seznam.cz https://h.imedia.cz https://www.googleadservices.com https://googleads.g.doubleclick.net';
 	$turnstile      = 'https://challenges.cloudflare.com';
 
 	$csp = [
 		"default-src 'none'",
-		"script-src 'self' 'unsafe-inline' 'unsafe-eval' " . $cdn_script . ' ' . $google_script . ' ' . $turnstile,
+		"script-src 'self' 'unsafe-inline' 'unsafe-eval' " . $cdn_script . ' ' . $google_script . ' ' . $turnstile . ' ' . $marketing,
 		"style-src 'self' 'unsafe-inline' " . $cdn_script . ' https://fonts.googleapis.com',
 		"img-src 'self' data: blob: https:",
-		"font-src 'self' data: https://fonts.gstatic.com",
-		"connect-src 'self' " . $google_connect,
-		"frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com " . $turnstile,
-		"media-src 'self' https:",
+		"font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net",
+		"connect-src 'self' " . $cdn_script . ' ' . $google_connect . ' ' . $marketing,
+		"frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://www.facebook.com " . $turnstile,
+		"media-src 'self' https: data:",
 		"manifest-src 'self'",
 		"worker-src 'self' blob:",
+		"child-src 'self' blob:",
 		"frame-ancestors 'self'",
 		"object-src 'none'",
 		"base-uri 'self'",
