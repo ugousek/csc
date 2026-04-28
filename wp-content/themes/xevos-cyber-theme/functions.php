@@ -47,6 +47,7 @@ $xevos_includes = [
 	// '/inc/cookie-consent.php', // Replaced by Complianz plugin
 	'/inc/optimization.php',
 	'/inc/security-headers.php',
+	'/inc/wp-hardening.php',
 	//'/inc/admin/restricted-mode-settings.php',
 	//'/inc/restricted-mode.php',
 ];
