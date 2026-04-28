@@ -52,27 +52,36 @@ function xevos_send_security_headers(): void {
 	);
 
 	/*
-	 * Content-Security-Policy — enforcing režim.
+	 * Content-Security-Policy — enforcing režim, deny-by-default.
 	 *
-	 * Povoleno (záměrně permisivní, aby se nepokazil GTM/GA/Complianz/embedded video):
-	 *  - 'self' a HTTPS všech zdrojů pro skripty, styly, písma
-	 *  - inline <script>/<style> (kvůli WP coreu, GTM/GA, GDPR banneru)
-	 *  - 'unsafe-eval' (jQuery / některé staré WP skripty)
-	 *  - data: pro obrázky a fonty (lazy SVG / inlined ikony / @font-face)
-	 *  - blob: pro images (Swiper / lazy loading)
+	 * 'unsafe-inline' a 'unsafe-eval' zůstávají v script-src/style-src kvůli kompatibilitě
+	 * s WP core, jQuery, Complianz cookie bannerem a GTM/GA. Pro přepnutí na nonce-based
+	 * strict CSP by bylo nutné přepatchovat každý inline <script>/<style> v projektu.
+	 *
+	 * Povolené externí origin pro skripty/styly: jsdelivr (Swiper), cdnjs (Lottie),
+	 * Google (Tag Manager + Analytics), Cloudflare Turnstile, fonts.gstatic.com.
 	 */
+	$google_script  = 'https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com';
+	$google_connect = 'https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com';
+	$cdn_script     = 'https://cdn.jsdelivr.net https://cdnjs.cloudflare.com';
+	$turnstile      = 'https://challenges.cloudflare.com';
+
 	$csp = [
-		"default-src 'self' https:",
-		"script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
-		"style-src 'self' 'unsafe-inline' https:",
+		"default-src 'none'",
+		"script-src 'self' 'unsafe-inline' 'unsafe-eval' " . $cdn_script . ' ' . $google_script . ' ' . $turnstile,
+		"style-src 'self' 'unsafe-inline' " . $cdn_script . ' https://fonts.googleapis.com',
 		"img-src 'self' data: blob: https:",
-		"font-src 'self' data: https:",
-		"connect-src 'self' https:",
-		"frame-src 'self' https:",
+		"font-src 'self' data: https://fonts.gstatic.com",
+		"connect-src 'self' " . $google_connect,
+		"frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com " . $turnstile,
+		"media-src 'self' https:",
+		"manifest-src 'self'",
+		"worker-src 'self' blob:",
 		"frame-ancestors 'self'",
 		"object-src 'none'",
 		"base-uri 'self'",
 		"form-action 'self'",
+		'upgrade-insecure-requests',
 	];
 	header( 'Content-Security-Policy: ' . implode( '; ', $csp ) );
 }
