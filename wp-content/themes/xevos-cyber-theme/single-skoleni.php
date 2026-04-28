@@ -430,21 +430,21 @@ while (have_posts()) : the_post();
 								<div class="xevos-form-row">
 									<div class="xevos-form__group">
 										<label class="xevos-form__label">Jméno <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="jmeno" required>
+										<input type="text" class="xevos-form__input" name="jmeno" required minlength="2" data-error-required="Vyplňte jméno" data-error-minlength="Jméno musí mít alespoň 2 znaky">
 									</div>
 									<div class="xevos-form__group">
 										<label class="xevos-form__label">Příjmení <span class="xevos-form__required">*</span></label>
-										<input type="text" class="xevos-form__input" name="prijmeni" required>
+										<input type="text" class="xevos-form__input" name="prijmeni" required minlength="2" data-error-required="Vyplňte příjmení" data-error-minlength="Příjmení musí mít alespoň 2 znaky">
 									</div>
 								</div>
 								<div class="xevos-form-row">
 									<div class="xevos-form__group">
 										<label class="xevos-form__label">Telefon <span class="xevos-form__required">*</span></label>
-										<input type="tel" class="xevos-form__input" name="telefon" required>
+										<input type="tel" class="xevos-form__input" name="telefon" required data-error-required="Vyplňte telefon" data-error-tel="Zadejte platné telefonní číslo">
 									</div>
 									<div class="xevos-form__group">
 										<label class="xevos-form__label">E-mail <span class="xevos-form__required">*</span></label>
-										<input type="email" class="xevos-form__input" name="email" required>
+										<input type="email" class="xevos-form__input" name="email" required data-error-required="Vyplňte e-mail" data-error-email="Zadejte platnou e-mailovou adresu">
 									</div>
 								</div>
 								<div class="xevos-form-row">
@@ -490,12 +490,12 @@ while (have_posts()) : the_post();
 									<?php endif; ?>
 									<div class="xevos-form__group">
 										<label class="xevos-form__label">Počet účastníků <span class="xevos-form__required">*</span></label>
-										<input type="number" class="xevos-form__input" name="pocet" min="1" value="1">
+										<input type="number" class="xevos-form__input" name="pocet" min="1" value="1" required data-error-required="Zadejte počet účastníků">
 									</div>
 									<?php if ($typ !== 'hybrid') : ?>
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
-											<input type="text" class="xevos-form__input" name="firma">
+											<input type="text" class="xevos-form__input" name="firma" required data-error-required="Vyplňte název firmy">
 										</div>
 									<?php endif; ?>
 								</div>
@@ -503,7 +503,7 @@ while (have_posts()) : the_post();
 									<div class="xevos-form-row">
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">Název firmy <span class="xevos-form__required">*</span></label>
-											<input type="text" class="xevos-form__input" name="firma">
+											<input type="text" class="xevos-form__input" name="firma" required data-error-required="Vyplňte název firmy">
 										</div>
 									</div>
 								<?php endif; ?>
@@ -511,27 +511,27 @@ while (have_posts()) : the_post();
 									<div class="xevos-form-row">
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">IČ <span class="xevos-form__required">*</span></label>
-											<input type="text" class="xevos-form__input" name="ico">
+											<input type="text" class="xevos-form__input" name="ico" required data-validate="ico" inputmode="numeric" maxlength="8" data-error-required="Vyplňte IČO" data-error-ico="IČO musí mít 8 číslic">
 										</div>
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">DIČ</label>
-											<input type="text" class="xevos-form__input" name="dic">
+											<input type="text" class="xevos-form__input" name="dic" pattern="(CZ)?\d{8,10}" data-error-pattern="DIČ ve formátu CZ12345678">
 										</div>
 									</div>
 									<div class="xevos-form-row">
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">Ulice <span class="xevos-form__required">*</span></label>
-											<input type="text" class="xevos-form__input" name="ulice">
+											<input type="text" class="xevos-form__input" name="ulice" required data-error-required="Vyplňte ulici a č.p.">
 										</div>
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">Město <span class="xevos-form__required">*</span></label>
-											<input type="text" class="xevos-form__input" name="mesto">
+											<input type="text" class="xevos-form__input" name="mesto" required data-error-required="Vyplňte město">
 										</div>
 									</div>
 									<div class="xevos-form-row">
 										<div class="xevos-form__group">
 											<label class="xevos-form__label">PSČ <span class="xevos-form__required">*</span></label>
-											<input type="text" class="xevos-form__input" name="psc">
+											<input type="text" class="xevos-form__input" name="psc" required data-validate="psc" inputmode="numeric" maxlength="6" data-error-required="Vyplňte PSČ" data-error-psc="PSČ musí mít 5 číslic (např. 703 00)">
 										</div>
 										<div class="xevos-form__group">
 											<div class="xevos-form__checkbox-wrap">

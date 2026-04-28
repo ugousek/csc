@@ -52,21 +52,21 @@ if ( empty( $select_options ) ) {
 		<div class="xevos-form-row">
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_jmeno ); ?> <span class="xevos-form__required">*</span></label>
-				<input type="text" class="xevos-form__input" name="jmeno" required>
+				<input type="text" class="xevos-form__input" name="jmeno" required minlength="2" data-error-required="Vyplňte jméno" data-error-minlength="Jméno musí mít alespoň 2 znaky">
 			</div>
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_prijmeni ); ?> <span class="xevos-form__required">*</span></label>
-				<input type="text" class="xevos-form__input" name="prijmeni" required>
+				<input type="text" class="xevos-form__input" name="prijmeni" required minlength="2" data-error-required="Vyplňte příjmení" data-error-minlength="Příjmení musí mít alespoň 2 znaky">
 			</div>
 		</div>
 		<div class="xevos-form-row">
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_telefon ); ?> <span class="xevos-form__required">*</span></label>
-				<input type="tel" class="xevos-form__input" name="telefon" required>
+				<input type="tel" class="xevos-form__input" name="telefon" required data-error-required="Vyplňte telefon" data-error-tel="Zadejte platné telefonní číslo">
 			</div>
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_email ); ?> <span class="xevos-form__required">*</span></label>
-				<input type="email" class="xevos-form__input" name="email" required>
+				<input type="email" class="xevos-form__input" name="email" required data-error-required="Vyplňte e-mail" data-error-email="Zadejte platnou e-mailovou adresu">
 			</div>
 		</div>
 		<div class="xevos-form-row">
@@ -76,7 +76,7 @@ if ( empty( $select_options ) ) {
 			</div>
 			<div class="xevos-form__group">
 				<label class="xevos-form__label"><?php echo esc_html( $label_druh ); ?> <span class="xevos-form__required">*</span></label>
-				<select class="xevos-form__input" name="druh_testu" required>
+				<select class="xevos-form__input" name="druh_testu" required data-error-select="Vyberte druh testu">
 					<option value=""><?php echo esc_html( $select_placeholder ); ?></option>
 					<?php foreach ( $select_options as $opt_label ) : ?>
 						<option value="<?php echo esc_attr( $opt_label ); ?>"><?php echo esc_html( $opt_label ); ?></option>
@@ -86,7 +86,7 @@ if ( empty( $select_options ) ) {
 		</div>
 		<div class="xevos-form__group">
 			<label class="xevos-form__label"><?php echo esc_html( $label_zprava ); ?></label>
-			<textarea class="xevos-form__textarea" name="zprava" rows="4"></textarea>
+			<textarea class="xevos-form__textarea" name="zprava" rows="4" minlength="10" data-error-minlength="Zpráva musí mít alespoň 10 znaků"></textarea>
 		</div>
 		<div class="xevos-form__hp"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
 		<div id="xevos-inquiry-message" class="xevos-order-message" style="display:none;"></div>
