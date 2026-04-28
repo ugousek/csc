@@ -64,7 +64,7 @@ function xevos_send_security_headers(): void {
 	$google_script  = 'https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://*.googletagmanager.com';
 	$google_connect = 'https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.g.doubleclick.net https://*.googletagmanager.com';
 	$cdn_script     = 'https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com';
-	$marketing      = 'https://connect.facebook.net https://www.facebook.com https://c.seznam.cz https://h.imedia.cz https://www.googleadservices.com https://googleads.g.doubleclick.net';
+	$marketing      = 'https://connect.facebook.net https://www.facebook.com https://c.seznam.cz https://h.seznam.cz https://ssp.seznam.cz https://h.imedia.cz https://ssp.imedia.cz https://www.googleadservices.com https://googleads.g.doubleclick.net';
 	$turnstile      = 'https://challenges.cloudflare.com';
 
 	$csp = [
