@@ -31,13 +31,31 @@
   z-index: 9999999 !important;
 }
 
-/* Show as flex only when Complianz sets it visible */
+/* Show as flex only when Complianz sets it visible — everything centered */
 .cmplz-cookiebanner.cmplz-show {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   gap: 40px !important;
+}
+
+/* When Settings is open: banner becomes stacked column, scrollable */
+.cmplz-cookiebanner.cmplz-categories-visible {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+.cmplz-cookiebanner.cmplz-categories-visible .cmplz-body {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+
+.cmplz-cookiebanner.cmplz-categories-visible .cmplz-buttons {
+  justify-content: center !important;
 }
 
 /* Respect Complianz hide states */
@@ -48,7 +66,7 @@
 
 
 /* --------------------------------------------------------------------------
-   2. Hide everything except message + buttons
+   2. Hide everything except message + buttons + (optional) categories
    -------------------------------------------------------------------------- */
 /* Visually hide but keep in DOM for Complianz JS to function */
 .cmplz-cookiebanner .cmplz-header,
@@ -59,8 +77,7 @@
 .cmplz-cookiebanner .cmplz-links,
 .cmplz-cookiebanner .cmplz-documents,
 .cmplz-cookiebanner .cmplz-close,
-.cmplz-cookiebanner .cmplz-logo,
-.cmplz-cookiebanner .cmplz-categories {
+.cmplz-cookiebanner .cmplz-logo {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
@@ -72,15 +89,113 @@
   margin: -1px !important;
 }
 
-/* Extra buttons — hide visually but keep functional */
-.cmplz-cookiebanner .cmplz-buttons a.cmplz-btn.tcf,
-.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-view-preferences,
-.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-save-preferences {
+/* TCF "manage vendors" link button — not used in our standard banner */
+.cmplz-cookiebanner .cmplz-buttons a.cmplz-btn.tcf {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
+}
+
+/* Categories panel — hidden by default, visible when user opens Settings.
+   Complianz JS toggles .cmplz-categories-visible on the banner + .cmplz-fade-in
+   on the panel when the "View preferences" button is clicked. */
+.cmplz-cookiebanner .cmplz-categories {
+  display: none !important;
+  width: 100% !important;
+  max-height: 50vh !important;
+  overflow-y: auto !important;
+  padding: 16px 0 !important;
+  margin: 0 !important;
+}
+
+.cmplz-cookiebanner.cmplz-categories-visible .cmplz-categories {
+  display: block !important;
+}
+
+/* Save button — hidden until user opens Settings view */
+.cmplz-cookiebanner .cmplz-btn.cmplz-save-preferences {
+  display: none !important;
+}
+
+.cmplz-cookiebanner.cmplz-categories-visible .cmplz-btn.cmplz-save-preferences {
+  display: inline-flex !important;
+}
+
+/* Hide "View preferences" once the panel is open (Save replaces it) */
+.cmplz-cookiebanner.cmplz-categories-visible .cmplz-btn.cmplz-view-preferences {
+  display: none !important;
+}
+
+/* Override Complianz slider CSS variables — brand them to match theme */
+.cmplz-cookiebanner {
+  --cmplz_slider_active_color: #F527AA !important;
+  --cmplz_slider_inactive_color: rgba(236, 236, 236, 0.25) !important;
+  --cmplz_slider_bullet_color: #FFFFFF !important;
+  --cmplz_category_header_always_active_color: #F527AA !important;
+  --cmplz_text_color: #ECECEC !important;
+}
+
+/* Force-show Preferences and Statistics categories — the generated
+   banner CSS hides them when the site claims anonymous stats / no
+   per-service consent, but we always want all 4 categories visible. */
+.cmplz-cookiebanner .cmplz-category.cmplz-preferences,
+.cmplz-cookiebanner .cmplz-category.cmplz-statistics,
+.cmplz-manage-consent-container .cmplz-category.cmplz-preferences,
+.cmplz-manage-consent-container .cmplz-category.cmplz-statistics {
+  display: block !important;
+}
+
+/* Category row — dark transparent card, no ugly grey fill */
+.cmplz-cookiebanner .cmplz-categories .cmplz-category {
+  background-color: transparent !important;
+  border: 1px solid rgba(236, 236, 236, 0.12) !important;
+  border-radius: 4px !important;
+  margin-bottom: 8px !important;
+}
+
+.cmplz-cookiebanner .cmplz-categories .cmplz-category:last-child {
+  margin-bottom: 0 !important;
+}
+
+.cmplz-cookiebanner .cmplz-categories .cmplz-category[open] {
+  background-color: rgba(236, 236, 236, 0.04) !important;
+}
+
+/* Category header — label + toggle + chevron in a row */
+.cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header {
+  padding: 12px 16px !important;
+  gap: 16px !important;
+}
+
+.cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header .cmplz-category-title {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #ECECEC !important;
+}
+
+/* "Vždy aktivní" label for Functional category */
+.cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header .cmplz-always-active {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #F527AA !important;
+}
+
+/* Description body */
+.cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-description {
+  padding: 0 16px 14px !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  color: rgba(236, 236, 236, 0.7) !important;
+}
+
+/* Chevron icon — white, rotate on open (Complianz handles rotation) */
+.cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header .cmplz-icon.cmplz-open svg {
+  fill: #ECECEC !important;
 }
 
 
@@ -91,12 +206,13 @@
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   gap: 40px !important;
   width: 100% !important;
   max-width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
+  text-align: center !important;
 }
 
 
@@ -115,8 +231,13 @@
 }
 
 .cmplz-cookiebanner .cmplz-message {
-  flex: 1 !important;
+  display: flex !important;
+  flex: 0 1 auto !important;
   min-width: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  text-align: center !important;
 }
 
 
@@ -165,7 +286,21 @@
   pointer-events: auto !important;
 }
 
-/* ZAMÍTNOUT VŠE — border #ECECEC */
+/* 1. POVOLIT VŠE — border #F527AA, bold */
+.cmplz-cookiebanner .cmplz-btn.cmplz-accept {
+  border: 1px solid #F527AA !important;
+  color: #F527AA !important;
+  font-weight: 700 !important;
+  order: 1 !important;
+}
+
+.cmplz-cookiebanner .cmplz-btn.cmplz-accept:hover {
+  background: #F527AA !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(245, 39, 170, 0.3) !important;
+}
+
+/* 2. ZAMÍTNOUT VŠE — border #ECECEC */
 .cmplz-cookiebanner .cmplz-btn.cmplz-deny {
   border: 1px solid #ECECEC !important;
   color: #ECECEC !important;
@@ -177,31 +312,34 @@
   color: #FFFFFF !important;
 }
 
-/* POVOLIT VŠE — border #F527AA, font-weight 400 */
-.cmplz-cookiebanner .cmplz-btn.cmplz-accept {
-  border: 1px solid #F527AA !important;
-  color: #F527AA !important;
-  font-weight: 400 !important;
-  order: 1 !important;
-}
-
-.cmplz-cookiebanner .cmplz-btn.cmplz-accept:hover {
-  background: #F527AA !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 0 20px rgba(245, 39, 170, 0.3) !important;
-}
-
-/* Settings/Preferences — same as deny */
-.cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences,
-.cmplz-cookiebanner .cmplz-btn.cmplz-save-preferences {
-  border: 1px solid #ECECEC !important;
-  color: #ECECEC !important;
+/* 3. NASTAVENÍ (View preferences) — grey, shown by default.
+   Overrides Complianz accept-deny.css which sets display:none. */
+.cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences {
+  display: inline-flex !important;
+  border: 1px solid rgba(236, 236, 236, 0.35) !important;
+  color: rgba(236, 236, 236, 0.6) !important;
   order: 3 !important;
 }
 
-.cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences:hover,
+.cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences:hover {
+  background: rgba(236, 236, 236, 0.08) !important;
+  border-color: rgba(236, 236, 236, 0.6) !important;
+  color: #ECECEC !important;
+}
+
+/* ULOŽIT (Save preferences) — pink, only visible in Settings mode.
+   The default display:none is set in section 2 above; this just styles it. */
+.cmplz-cookiebanner .cmplz-btn.cmplz-save-preferences {
+  border: 1px solid #F527AA !important;
+  color: #F527AA !important;
+  font-weight: 700 !important;
+  order: 4 !important;
+}
+
 .cmplz-cookiebanner .cmplz-btn.cmplz-save-preferences:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: #F527AA !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(245, 39, 170, 0.3) !important;
 }
 
 

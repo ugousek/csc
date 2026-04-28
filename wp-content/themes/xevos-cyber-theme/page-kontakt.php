@@ -45,26 +45,26 @@ $hero_img_url = ! $hero_img_id ? get_theme_file_uri('assets/img/kontakt/kontakt-
 							<div class="xevos-form-row">
 								<div class="xevos-form__group">
 									<label class="xevos-form__label">Jméno *</label>
-									<input type="text" class="xevos-form__input" name="jmeno" required>
+									<input type="text" class="xevos-form__input" name="jmeno" required minlength="2" data-error-required="Vyplňte jméno" data-error-minlength="Jméno musí mít alespoň 2 znaky">
 								</div>
 								<div class="xevos-form__group">
 									<label class="xevos-form__label">Příjmení *</label>
-									<input type="text" class="xevos-form__input" name="prijmeni" required>
+									<input type="text" class="xevos-form__input" name="prijmeni" required minlength="2" data-error-required="Vyplňte příjmení" data-error-minlength="Příjmení musí mít alespoň 2 znaky">
 								</div>
 							</div>
 							<div class="xevos-form-row">
 								<div class="xevos-form__group">
 									<label class="xevos-form__label">Telefon</label>
-									<input type="tel" class="xevos-form__input" name="telefon">
+									<input type="tel" class="xevos-form__input" name="telefon" data-error-tel="Zadejte platné telefonní číslo">
 								</div>
 								<div class="xevos-form__group">
 									<label class="xevos-form__label">E-mail *</label>
-									<input type="email" class="xevos-form__input" name="email" required>
+									<input type="email" class="xevos-form__input" name="email" required data-error-required="Vyplňte e-mail" data-error-email="Zadejte platnou e-mailovou adresu">
 								</div>
 							</div>
 							<div class="xevos-form__group">
 								<label class="xevos-form__label">Zpráva</label>
-								<textarea class="xevos-form__textarea" name="zprava" rows="6"></textarea>
+								<textarea class="xevos-form__textarea" name="zprava" rows="6" minlength="10" data-error-minlength="Zpráva musí mít alespoň 10 znaků"></textarea>
 							</div>
 							<div class="xevos-form__hp"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
 							<div id="xevos-contact-message" class="xevos-order-message" style="display:none;"></div>
