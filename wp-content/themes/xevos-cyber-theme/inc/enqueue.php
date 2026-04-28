@@ -247,8 +247,8 @@ function xevos_enqueue_assets(): void {
 	}
 
 	// Swiper.js (CDN).
-	wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11' );
-	wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11', true );
+	wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css', [], '11.2.10' );
+	wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js', [], '11.2.10', true );
 
 	// Main JS.
 	wp_enqueue_script(
@@ -320,4 +320,56 @@ function xevos_enqueue_assets(): void {
 			true
 		);
 	}
+}
+
+/**
+ * Subresource Integrity hashes pro externí (CDN) skripty a styly.
+ * Verze jsou pinnuté v wp_enqueue_script/style — pokud verzi změníš,
+ * spočítej nový hash: `curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A`.
+ */
+function xevos_external_sri_map(): array {
+	return [
+		// handle => sha384 hash
+		'swiper' => [
+			'script' => 'sha384-2UI1PfnXFjVMQ7/ZDEF70CR943oH3v6uZrFQGGqJYlvhh4g6z6uVktxYbOlAczav',
+			'style'  => 'sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51',
+		],
+		'lottie' => [
+			'script' => 'sha384-J8C0MvgX4WP58J4N2W99vCKd2J6z99ynOJ5bEfE6jeP7kVTW1drYtv/jzrxM5jbm',
+		],
+	];
+}
+
+add_filter( 'script_loader_tag', 'xevos_add_script_sri', 10, 3 );
+function xevos_add_script_sri( string $tag, string $handle, string $src ): string {
+	$map = xevos_external_sri_map();
+	if ( ! isset( $map[ $handle ]['script'] ) ) {
+		return $tag;
+	}
+	$hash = $map[ $handle ]['script'];
+	if ( strpos( $tag, 'integrity=' ) !== false ) {
+		return $tag;
+	}
+	return str_replace(
+		' src=',
+		' integrity="' . esc_attr( $hash ) . '" crossorigin="anonymous" referrerpolicy="no-referrer" src=',
+		$tag
+	);
+}
+
+add_filter( 'style_loader_tag', 'xevos_add_style_sri', 10, 3 );
+function xevos_add_style_sri( string $tag, string $handle, string $href ): string {
+	$map = xevos_external_sri_map();
+	if ( ! isset( $map[ $handle ]['style'] ) ) {
+		return $tag;
+	}
+	$hash = $map[ $handle ]['style'];
+	if ( strpos( $tag, 'integrity=' ) !== false ) {
+		return $tag;
+	}
+	return str_replace(
+		' href=',
+		' integrity="' . esc_attr( $hash ) . '" crossorigin="anonymous" referrerpolicy="no-referrer" href=',
+		$tag
+	);
 }
