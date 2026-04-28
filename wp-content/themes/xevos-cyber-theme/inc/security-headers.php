@@ -52,13 +52,13 @@ function xevos_send_security_headers(): void {
 	);
 
 	/*
-	 * Content-Security-Policy v Report-Only režimu — aplikace neblokuje, jen by
-	 * případně logovala porušení. WP admin se v tomto handleru přeskakuje.
+	 * Content-Security-Policy — enforcing režim.
 	 *
-	 * Povoleno:
+	 * Povoleno (záměrně permisivní, aby se nepokazil GTM/GA/Complianz/embedded video):
 	 *  - 'self' a HTTPS všech zdrojů pro skripty, styly, písma
-	 *  - inline <script>/<style> (kvůli WP, GTM/GA, GDPR cookie banneru)
-	 *  - data: pro obrázky (lazy SVG / inlined ikony)
+	 *  - inline <script>/<style> (kvůli WP coreu, GTM/GA, GDPR banneru)
+	 *  - 'unsafe-eval' (jQuery / některé staré WP skripty)
+	 *  - data: pro obrázky a fonty (lazy SVG / inlined ikony / @font-face)
 	 *  - blob: pro images (Swiper / lazy loading)
 	 */
 	$csp = [
@@ -74,5 +74,5 @@ function xevos_send_security_headers(): void {
 		"base-uri 'self'",
 		"form-action 'self'",
 	];
-	header( 'Content-Security-Policy-Report-Only: ' . implode( '; ', $csp ) );
+	header( 'Content-Security-Policy: ' . implode( '; ', $csp ) );
 }
