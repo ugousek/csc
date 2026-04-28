@@ -263,10 +263,11 @@
   /* ===== Aktuality Swiper (shared component) ===== */
   var aktualityEl = document.getElementById('aktuality-swiper');
   if (aktualityEl && typeof Swiper !== 'undefined') {
+    var aktualitySlideCount = aktualityEl.querySelectorAll('.swiper-slide').length;
     new Swiper(aktualityEl, {
       slidesPerView: 1,
       spaceBetween: 24,
-      loop: true,
+      loop: aktualitySlideCount > 3,
       pagination: {
         el: '.xevos-aktuality-pagination',
         clickable: true,
@@ -286,11 +287,12 @@
   var recenzeEl = document.getElementById('recenze-swiper');
   if (recenzeEl && typeof Swiper !== 'undefined') {
     var recenzeCarousel = recenzeEl.closest('.xevos-hp-recenze__carousel');
+    var recenzeSlideCount = recenzeEl.querySelectorAll('.swiper-slide').length;
     new Swiper(recenzeEl, {
       slidesPerView: 1,
       spaceBetween: 50,
-      loop: true,
-      autoplay: { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true },
+      loop: recenzeSlideCount > 3,
+      autoplay: recenzeSlideCount > 1 ? { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
       pagination: {
         el: '.xevos-recenze-pagination',
         clickable: true,
@@ -312,14 +314,15 @@
     var partnersSwiper = null;
     var PARTNERS_BP = 1240;
 
+    var partnersSlideCount = partnersEl.querySelectorAll('.swiper-slide').length;
     function initPartnersSwiper() {
       if (window.innerWidth < PARTNERS_BP && !partnersSwiper) {
         partnersSwiper = new Swiper('#partners-swiper', {
           slidesPerView: 2,
           spaceBetween: 24,
-          loop: true,
+          loop: partnersSlideCount > 4,
           speed: 600,
-          autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true },
+          autoplay: partnersSlideCount > 1 ? { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
           breakpoints: {
             0: { slidesPerView: 2, spaceBetween: 16 },
             480: { slidesPerView: 3, spaceBetween: 24 },
