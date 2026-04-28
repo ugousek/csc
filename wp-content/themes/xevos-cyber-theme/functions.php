@@ -48,8 +48,8 @@ $xevos_includes = [
 	'/inc/optimization.php',
 	'/inc/security-headers.php',
 	'/inc/wp-hardening.php',
-	//'/inc/admin/restricted-mode-settings.php',
-	//'/inc/restricted-mode.php',
+	'/inc/admin/restricted-mode-settings.php',
+	'/inc/restricted-mode.php',
 ];
 
 /**
