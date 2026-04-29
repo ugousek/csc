@@ -405,29 +405,68 @@
   #cmplz-cookiebanner-container .cmplz-cookiebanner {
     padding: 16px !important;
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 14px !important;
   }
 
   .cmplz-cookiebanner .cmplz-body {
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 12px !important;
   }
 
   .cmplz-cookiebanner .cmplz-message,
   .cmplz-cookiebanner .cmplz-message p {
-    font-size: 14px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
     text-align: center !important;
   }
 
+  .cmplz-cookiebanner .cmplz-message {
+    gap: 10px !important;
+  }
+
+  /* Buttons stack vertically on mobile, full width — no overflow off screen */
   .cmplz-cookiebanner .cmplz-buttons {
+    flex-direction: column !important;
+    align-items: stretch !important;
     justify-content: center !important;
-    gap: 12px !important;
+    gap: 8px !important;
     width: 100% !important;
   }
 
   .cmplz-cookiebanner .cmplz-btn {
-    padding: 10px 20px !important;
+    width: 100% !important;
+    padding: 12px 16px !important;
     font-size: 13px !important;
-    flex: 1 !important;
+    flex: 0 0 auto !important;
+    white-space: normal !important;
+  }
+
+  /* Policy links — wrap, smaller gap so they fit on narrow screens */
+  .ccv2-policy-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 16px !important;
+    padding-top: 12px !important;
+    margin-top: 12px !important;
+  }
+
+  .ccv2-policy-links a {
+    font-size: 11px !important;
+  }
+
+  /* Categories panel — tighter padding so it doesn't overflow viewport */
+  .cmplz-cookiebanner .cmplz-categories {
+    max-height: 45vh !important;
+    padding: 8px 0 !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+  }
+
+  .cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-description {
+    padding: 0 12px 10px !important;
+    font-size: 12px !important;
   }
 }
