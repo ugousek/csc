@@ -132,6 +132,12 @@ function xevos_restricted_disable_page_cache(): void {
 	if ( ! xevos_restricted_is_active() ) return;
 	if ( is_admin() )                      return;
 
+	// CRITICAL: also disable cache for visitors with bypass cookie or logged-in users.
+	// Otherwise their HTML (which sees full site) gets stored as the public cache file
+	// and then served to anonymous visitors — defeating restricted mode entirely.
+	// (WP Fastest Cache and similar plugins ignore custom cookies unless added to
+	// their Exclude rules, so this constant is the only reliable signal.)
+
 	// Universal flag honored by W3 Total Cache, WP Super Cache, WP Rocket fallback, Comet Cache, Cache Enabler, …
 	if ( ! defined( 'DONOTCACHEPAGE' ) )   define( 'DONOTCACHEPAGE', true );
 	if ( ! defined( 'DONOTCACHEDB' ) )     define( 'DONOTCACHEDB', true );
@@ -156,24 +162,9 @@ function xevos_restricted_disable_page_cache(): void {
 		return $headers;
 	} );
 
-	// WP Fastest Cache: globally exclude every URL while restricted mode is on.
-	// Plugin hooks: 'wpfc_exclude_current_page' (modern) and per-page 'no-cache' marker.
+	// WP Fastest Cache: filter + constant (the marker comment broke output, removed).
 	add_filter( 'wpfc_exclude_current_page', '__return_true' );
 	if ( ! defined( 'WPFC_NO_CACHE' ) ) define( 'WPFC_NO_CACHE', true );
-	// Inject the comment marker WP Fastest Cache scans for in the HTML.
-	add_action( 'send_headers', 'xevos_wpfc_marker', 1 );
-	add_action( 'wp_head', 'xevos_wpfc_marker', 1 );
-}
-
-/**
- * WP Fastest Cache reads this exact comment in the HTML head and skips caching
- * the page when present. Cheap insurance on top of the filter + constant.
- */
-function xevos_wpfc_marker(): void {
-	static $printed = false;
-	if ( $printed ) return;
-	$printed = true;
-	echo "<!-- wpfc-no-cache -->\n";
 }
 
 /**
