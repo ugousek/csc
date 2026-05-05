@@ -74,6 +74,21 @@ function xevos_contact_form_handler(): void {
 		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
 	}
 
+	// Rate limit: max 3 odeslání / 10 minut z jedné IP.
+	if ( function_exists( 'xevos_check_rate_limit' ) && ! xevos_check_rate_limit( 'contact', 3, 600 ) ) {
+		wp_send_json_error( [ 'message' => 'Příliš mnoho odeslání z této IP. Zkuste to prosím za chvíli.' ], 429 );
+	}
+
+	// Form-time check: formulář musí být otevřený alespoň 3 s.
+	if ( function_exists( 'xevos_check_form_time' ) && ! xevos_check_form_time( 3 ) ) {
+		wp_send_json_error( [ 'message' => 'Formulář byl odeslán příliš rychle.' ], 403 );
+	}
+
+	// Cloudflare Turnstile (jen pokud je v Nastavení webu zapnutý).
+	if ( function_exists( 'xevos_turnstile_verify' ) && ! xevos_turnstile_verify() ) {
+		wp_send_json_error( [ 'message' => 'Ověření proti botům selhalo.' ], 403 );
+	}
+
 	$jmeno    = sanitize_text_field( $_POST['jmeno'] ?? '' );
 	$prijmeni = sanitize_text_field( $_POST['prijmeni'] ?? '' );
 	$email    = sanitize_email( $_POST['email'] ?? '' );
@@ -139,6 +154,19 @@ function xevos_inquiry_form_handler(): void {
 
 	if ( ! empty( $_POST['website'] ) ) {
 		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
+	}
+
+	// Rate limit: max 3 poptávky / 10 minut z jedné IP.
+	if ( function_exists( 'xevos_check_rate_limit' ) && ! xevos_check_rate_limit( 'inquiry', 3, 600 ) ) {
+		wp_send_json_error( [ 'message' => 'Příliš mnoho odeslání z této IP. Zkuste to prosím za chvíli.' ], 429 );
+	}
+
+	if ( function_exists( 'xevos_check_form_time' ) && ! xevos_check_form_time( 3 ) ) {
+		wp_send_json_error( [ 'message' => 'Formulář byl odeslán příliš rychle.' ], 403 );
+	}
+
+	if ( function_exists( 'xevos_turnstile_verify' ) && ! xevos_turnstile_verify() ) {
+		wp_send_json_error( [ 'message' => 'Ověření proti botům selhalo.' ], 403 );
 	}
 
 	$jmeno      = sanitize_text_field( $_POST['jmeno'] ?? '' );
@@ -255,6 +283,19 @@ function xevos_create_invoice_order_handler(): void {
 	// Honeypot.
 	if ( ! empty( $_POST['website'] ) ) {
 		wp_send_json_error( [ 'message' => 'Spam detekován.' ], 403 );
+	}
+
+	// Rate limit: max 5 objednávek / 10 minut z jedné IP.
+	if ( function_exists( 'xevos_check_rate_limit' ) && ! xevos_check_rate_limit( 'invoice', 5, 600 ) ) {
+		wp_send_json_error( [ 'message' => 'Příliš mnoho odeslání z této IP. Zkuste to prosím za chvíli.' ], 429 );
+	}
+
+	if ( function_exists( 'xevos_check_form_time' ) && ! xevos_check_form_time( 3 ) ) {
+		wp_send_json_error( [ 'message' => 'Formulář byl odeslán příliš rychle.' ], 403 );
+	}
+
+	if ( function_exists( 'xevos_turnstile_verify' ) && ! xevos_turnstile_verify() ) {
+		wp_send_json_error( [ 'message' => 'Ověření proti botům selhalo.' ], 403 );
 	}
 
 	$required = [ 'jmeno', 'prijmeni', 'email', 'telefon', 'skoleni_id', 'termin' ];

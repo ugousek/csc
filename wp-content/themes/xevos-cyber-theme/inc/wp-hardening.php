@@ -128,10 +128,15 @@ add_filter( 'the_author', static function ( $author ) {
 } );
 
 /* -------------------------------------------------------------------------
- * 9) Strikter cookies pro WP login — Secure flag na HTTPS instalaci.
+ * 9) Strikter cookies pro WP login — Secure flag jen na HTTPS instalaci.
  *    WP 6.6+ už nativně přidává SameSite=Lax + HttpOnly, není třeba override.
  *    Předchozí re-emit cookie hook způsoboval duplicitní Set-Cookie (jiný path)
  *    → admin bar mizel u přihlášených uživatelů + WP Fastest Cache nepoznal
  *    logged-in status a servíroval anonymní cached HTML.
+ *
+ *    Pozor: na HTTP localhostu nesmíme Secure cookie nutit, jinak prohlížeč
+ *    cookie nepošle zpět a login se zacyklí na reauth=1.
  * --------------------------------------------------------------------- */
-add_filter( 'secure_signon_cookie', '__return_true' );
+add_filter( 'secure_signon_cookie', static function ( $secure ) {
+	return is_ssl() ? true : (bool) $secure;
+} );

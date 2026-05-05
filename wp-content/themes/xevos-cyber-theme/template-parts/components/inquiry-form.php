@@ -48,6 +48,7 @@ if ( empty( $select_options ) ) {
 	<input type="hidden" name="action" value="xevos_inquiry_form">
 	<input type="hidden" name="form_prefix" value="<?php echo esc_attr( $prefix ); ?>">
 	<?php wp_nonce_field( 'xevos_inquiry', 'xevos_inquiry_nonce' ); ?>
+	<input type="hidden" name="_form_time" value="<?php echo esc_attr( function_exists( 'xevos_form_time_token' ) ? xevos_form_time_token() : '' ); ?>">
 	<div class="xevos-kontanis__form">
 		<div class="xevos-form-row">
 			<div class="xevos-form__group">

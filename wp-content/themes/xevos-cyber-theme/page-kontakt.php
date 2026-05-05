@@ -42,6 +42,7 @@ $hero_img_url = ! $hero_img_id ? get_theme_file_uri('assets/img/kontakt/kontakt-
 						<form class="xevos-kontakt-form" method="post" id="xevos-contact-form">
 							<input type="hidden" name="action" value="xevos_contact_form">
 							<?php wp_nonce_field( 'xevos_contact', 'xevos_contact_nonce' ); ?>
+							<input type="hidden" name="_form_time" value="<?php echo esc_attr( function_exists( 'xevos_form_time_token' ) ? xevos_form_time_token() : '' ); ?>">
 							<div class="xevos-form-row">
 								<div class="xevos-form__group">
 									<label class="xevos-form__label">Jméno *</label>
