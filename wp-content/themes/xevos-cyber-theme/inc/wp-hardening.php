@@ -30,6 +30,24 @@ add_filter( 'wp_headers', static function ( $headers ) {
 }, 10, 1 );
 
 /* -------------------------------------------------------------------------
+ * 1b) Hide PHP version (X-Powered-By header) — komplement k expose_php=Off
+ *     v php.ini. Když server config nejde měnit, runtime header_remove
+ *     zafunguje stejně. Provádí se na 'init' aby běželo dřív než většina
+ *     výstupu, a opakovaně na 'send_headers' kdyby PHP header re-přidalo.
+ * --------------------------------------------------------------------- */
+add_action( 'init', static function () {
+	if ( function_exists( 'header_remove' ) && ! headers_sent() ) {
+		header_remove( 'X-Powered-By' );
+	}
+}, 0 );
+
+add_action( 'send_headers', static function () {
+	if ( function_exists( 'header_remove' ) && ! headers_sent() ) {
+		header_remove( 'X-Powered-By' );
+	}
+}, 0 );
+
+/* -------------------------------------------------------------------------
  * 2) Odstranit recon meta z <head> — RSD, WLW, shortlink, REST link, oEmbed.
  * --------------------------------------------------------------------- */
 remove_action( 'wp_head', 'rsd_link' );
