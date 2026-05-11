@@ -137,8 +137,12 @@ add_filter( 'image_size_names_choose', function ( array $sizes ): array {
  *
  * Single source of truth — replaces any static /robots.txt in repo root.
  * Sitemap URLs use home_url() so production domain is always correct.
+ *
+ * Priority 100000 runs AFTER Yoast SEO (priority 99999) so our output wins.
+ * Yoast adds WooCommerce-aware rules (/cart/, /checkout/, ...) which are
+ * irrelevant here, and it does not include AI training crawler blocks.
  */
-add_filter( 'robots_txt', 'xevos_robots_txt', 10, 2 );
+add_filter( 'robots_txt', 'xevos_robots_txt', 100000, 2 );
 
 function xevos_robots_txt( string $output, bool $public ): string {
 	// "Discourage search engines" toggle in WP Settings — keep WP default behavior.
