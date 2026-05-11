@@ -134,22 +134,48 @@ add_filter( 'image_size_names_choose', function ( array $sizes ): array {
 
 /**
  * Custom robots.txt.
+ *
+ * Single source of truth — replaces any static /robots.txt in repo root.
+ * Sitemap URLs use home_url() so production domain is always correct.
  */
 add_filter( 'robots_txt', 'xevos_robots_txt', 10, 2 );
 
 function xevos_robots_txt( string $output, bool $public ): string {
+	// "Discourage search engines" toggle in WP Settings — keep WP default behavior.
 	if ( ! $public ) {
 		return $output;
 	}
 
-	$output  = "User-agent: *\n";
-	$output .= "Allow: /\n";
-	$output .= "Disallow: /wp-admin/\n";
-	$output .= "Allow: /wp-admin/admin-ajax.php\n\n";
-	$output .= "Sitemap: " . home_url( '/sitemap_index.xml' ) . "\n";
-	$output .= "Sitemap: " . home_url( '/sitemap.xml' ) . "\n";
+	$lines = [];
 
-	return $output;
+	// Default group — applies to all crawlers including Google, Bing, Seznam.
+	$lines[] = 'User-agent: *';
+	$lines[] = 'Allow: /wp-admin/admin-ajax.php';
+	$lines[] = 'Allow: /wp-content/uploads/';
+	$lines[] = 'Disallow: /wp-admin/';
+	$lines[] = 'Disallow: /wp-includes/';
+	$lines[] = 'Disallow: /wp-content/plugins/';
+	$lines[] = 'Disallow: /wp-content/cache/';
+	$lines[] = 'Disallow: /xmlrpc.php';
+	$lines[] = 'Disallow: /readme.html';
+	$lines[] = 'Disallow: /license.txt';
+	$lines[] = 'Disallow: /*?s=';
+	$lines[] = 'Disallow: /search/';
+	$lines[] = '';
+
+	// Block aggressive AI training crawlers.
+	$ai_bots = [ 'GPTBot', 'CCBot', 'anthropic-ai', 'ClaudeBot', 'Google-Extended', 'PerplexityBot' ];
+	foreach ( $ai_bots as $bot ) {
+		$lines[] = 'User-agent: ' . $bot;
+		$lines[] = 'Disallow: /';
+		$lines[] = '';
+	}
+
+	// Global sitemap directives (not part of any user-agent group).
+	$lines[] = 'Sitemap: ' . home_url( '/sitemap_index.xml' );
+	$lines[] = 'Sitemap: ' . home_url( '/sitemap.xml' );
+
+	return implode( "\n", $lines ) . "\n";
 }
 
 /**
