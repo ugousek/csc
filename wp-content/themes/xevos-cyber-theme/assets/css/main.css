@@ -4388,6 +4388,11 @@ body.admin-bar .xevos-search-overlay {
     font-size: 1.125rem;
   }
 
+  .xevos-kyber-test__panel-desc,
+  .xevos-kyber-test__checklist {
+    margin-bottom: 3rem;
+  }
+
   .xevos-page-hero__title {
     font-size: 3.75rem;
   }
