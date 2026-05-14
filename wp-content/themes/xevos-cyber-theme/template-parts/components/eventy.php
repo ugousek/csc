@@ -199,7 +199,7 @@ if ( empty( $posts_with_date ) ) {
 					<?php if ( $cta_title || $cta_text ) : ?>
 						<div class="xevos-eventy__cta-text">
 							<?php if ( $cta_title ) : ?>
-								<h3 class="xevos-eventy__cta-title"><?php echo esc_html($cta_title); ?></h3>
+								<h2 class="xevos-eventy__cta-title"><?php echo esc_html($cta_title); ?></h2>
 							<?php endif; ?>
 							<?php if ( $cta_text ) : ?>
 								<p><?php echo wp_kses_post(strip_tags($cta_text, '<strong><b><em><br>')); ?></p>
