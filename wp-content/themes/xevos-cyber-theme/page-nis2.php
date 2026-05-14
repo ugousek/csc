@@ -116,7 +116,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 						<?php if ( $has_ziskate ) : ?>
 						<div>
 							<?php if ( $ziskate_heading ) : ?>
-								<h3><?php echo esc_html($ziskate_heading); ?></h3>
+								<h2><?php echo esc_html($ziskate_heading); ?></h2>
 							<?php endif; ?>
 							<?php if ( $ziskate_text ) : ?>
 								<div class="xevos-benefity-section__desc"><?php echo wp_kses_post($ziskate_text); ?></div>
@@ -155,7 +155,7 @@ $adresa  = xevos_get_option('adresa', 'Mostárenská 1156/38, 703 00 Ostrava');
 						<?php if ( $has_prokoho ) : ?>
 						<div>
 							<?php if ( $prokoho_heading ) : ?>
-								<h3><?php echo esc_html($prokoho_heading); ?></h3>
+								<h2><?php echo esc_html($prokoho_heading); ?></h2>
 							<?php endif; ?>
 							<?php if ( $prokoho_text ) : ?>
 								<div class="xevos-benefity-section__desc"><?php echo wp_kses_post($prokoho_text); ?></div>
