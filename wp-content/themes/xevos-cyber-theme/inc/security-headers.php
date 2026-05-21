@@ -140,7 +140,7 @@ function xevos_send_security_headers(): void {
 		"frame-ancestors 'self'",
 		"object-src 'none'",
 		"base-uri 'self'",
-		"form-action 'self'",
+		"form-action 'self' https://www.facebook.com https://www.googletagmanager.com https://td.doubleclick.net",
 		'upgrade-insecure-requests',
 	];
 	header( 'Content-Security-Policy: ' . implode( '; ', $csp ) );
