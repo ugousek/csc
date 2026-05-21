@@ -53,9 +53,7 @@
     btn.innerHTML = btnHtml;
   }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
+  function submitOrder() {
     var method   = form.dataset.paymentMethod || 'online';
     var formData = new FormData(form);
     var ajaxUrl  = typeof xevosAjax !== 'undefined' ? xevosAjax.ajaxUrl : '/wp-admin/admin-ajax.php';
@@ -63,13 +61,6 @@
 
     formData.set('action', method === 'invoice' ? 'xevos_create_invoice_order' : 'xevos_create_payment');
     formData.set('nonce', nonce);
-
-    btn.disabled    = true;
-    btn.textContent = 'Zpracovávám objednávku…';
-    if (msg) {
-      msg.style.display = 'none';
-      msg.className     = 'xevos-order-message';
-    }
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', ajaxUrl);
@@ -116,5 +107,23 @@
     };
 
     xhr.send(formData);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    btn.disabled    = true;
+    btn.textContent = 'Zpracovávám objednávku…';
+    if (msg) {
+      msg.style.display = 'none';
+      msg.className     = 'xevos-order-message';
+    }
+
+    /* Vždy čerstvý nonce — stránka může přijít z CDN/cache. */
+    if (typeof window.xevosGetFreshNonces === 'function') {
+      window.xevosGetFreshNonces().then(submitOrder, submitOrder);
+    } else {
+      submitOrder();
+    }
   });
 })();

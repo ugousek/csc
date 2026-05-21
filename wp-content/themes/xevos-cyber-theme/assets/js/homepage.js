@@ -147,39 +147,6 @@
       }, true);
     }
 
-    /* ===== Scroll hint — countdown při vstupu do viewportu + dismiss klikem ===== */
-    var eventyListWrap = document.querySelector('.xevos-eventy__list-wrap');
-    if (eventyListWrap) {
-      function dismissScrollHint() {
-        if (!eventyListWrap.classList.contains('is-dismissed')) {
-          eventyListWrap.classList.add('is-dismissed');
-        }
-      }
-
-      /* Click na overlay (::before pseudo má pointer-events: auto během is-in-view) → dismiss */
-      eventyListWrap.addEventListener('click', function (e) {
-        if (!eventyListWrap.classList.contains('is-in-view')) return;
-        if (eventyListWrap.classList.contains('is-dismissed')) return;
-        /* Klikání na odkaz/tlačítko uvnitř listu nevyvolá dismiss zvlášť — overlay je stejně odchytí */
-        dismissScrollHint();
-        e.stopPropagation();
-      });
-
-      if ('IntersectionObserver' in window) {
-        var scrollHintObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-in-view');
-              scrollHintObserver.unobserve(entry.target);
-              /* Po doběhnutí countdown animace (4s) automaticky uvolnit pointer-events */
-              setTimeout(dismissScrollHint, 4000);
-            }
-          });
-        }, {
-          threshold: 0.4
-        });
-        scrollHintObserver.observe(eventyListWrap);
-      }
-    }
+    /* ===== Scroll hint — vypnuto (na přání). ===== */
   });
 })();
