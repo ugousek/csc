@@ -31,6 +31,7 @@ function xevos_refresh_nonces_handler(): void {
 		'xevos_nonce'   => wp_create_nonce( 'xevos_nonce' ),
 		'xevos_contact' => wp_create_nonce( 'xevos_contact' ),
 		'xevos_inquiry' => wp_create_nonce( 'xevos_inquiry' ),
+		'xevos_order'   => wp_create_nonce( 'xevos_order' ),
 	] );
 }
 

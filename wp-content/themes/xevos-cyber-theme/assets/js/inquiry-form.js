@@ -13,17 +13,18 @@
   var msg = document.getElementById('xevos-inquiry-message');
   var btnHtml = btn ? btn.innerHTML : '';
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var formData = new FormData(form);
-
-    btn.disabled = true;
-    btn.textContent = 'Odesílám…';
+  function showError(text) {
     if (msg) {
-      msg.style.display = 'none';
-      msg.className = 'xevos-order-message';
+      msg.textContent = text;
+      msg.className = 'xevos-order-message xevos-order-message--error';
+      msg.style.display = 'block';
     }
+    btn.disabled = false;
+    btn.innerHTML = btnHtml;
+  }
+
+  function sendForm() {
+    var formData = new FormData(form);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', typeof xevosAjax !== 'undefined' ? xevosAjax.ajaxUrl : '/wp-admin/admin-ajax.php');
@@ -39,28 +40,36 @@
           msg.style.display = 'block';
         }
         form.reset();
+        btn.disabled = false;
+        btn.innerHTML = btnHtml;
       } else {
-        if (msg) {
-          msg.textContent = (resp && resp.data && resp.data.message) || 'Nastala chyba. Zkuste to prosím znovu.';
-          msg.className = 'xevos-order-message xevos-order-message--error';
-          msg.style.display = 'block';
-        }
+        showError((resp && resp.data && resp.data.message) || 'Nastala chyba. Zkuste to prosím znovu.');
       }
-
-      btn.disabled = false;
-      btn.innerHTML = btnHtml;
     };
 
     xhr.onerror = function () {
-      if (msg) {
-        msg.textContent = 'Chyba připojení. Zkuste to prosím znovu.';
-        msg.className = 'xevos-order-message xevos-order-message--error';
-        msg.style.display = 'block';
-      }
-      btn.disabled = false;
-      btn.innerHTML = btnHtml;
+      showError('Chyba připojení. Zkuste to prosím znovu.');
     };
 
     xhr.send(formData);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    btn.disabled = true;
+    btn.textContent = 'Odesílám…';
+    if (msg) {
+      msg.style.display = 'none';
+      msg.className = 'xevos-order-message';
+    }
+
+    /* Před odesláním si vždy vyžádáme čerstvý nonce — stránka může být
+     * z CDN/cache se zastaralým tokenem. */
+    if (typeof window.xevosGetFreshNonces === 'function') {
+      window.xevosGetFreshNonces().then(sendForm, sendForm);
+    } else {
+      sendForm();
+    }
   });
 })();
