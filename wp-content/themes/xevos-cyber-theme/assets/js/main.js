@@ -10,6 +10,41 @@
 (function () {
   'use strict';
 
+  /* ===== Refresh nonces (cached HTML may carry expired tokens) =====
+   * Stránka jde přes CDN/cache; nonce zapečený v HTML může být po expiraci
+   * neplatný. Na page-loadu si vyžádáme čerstvé nonce a přepíšeme je. */
+  (function refreshNonces() {
+    if (typeof xevosAjax === 'undefined' || !xevosAjax.ajaxUrl) return;
+    var needsRefresh =
+      document.getElementById('xevos-inquiry-form') ||
+      document.getElementById('xevos-contact-form') ||
+      document.querySelector('input[name="xevos_contact_nonce"]') ||
+      document.querySelector('input[name="xevos_inquiry_nonce"]') ||
+      document.querySelector('[data-payment-method]') ||
+      document.getElementById('xevos-order-form');
+    if (!needsRefresh) return;
+
+    fetch(xevosAjax.ajaxUrl + '?action=xevos_refresh_nonces', {
+      credentials: 'same-origin',
+      cache: 'no-store',
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (resp) {
+        if (!resp || !resp.success || !resp.data) return;
+        var n = resp.data;
+        if (n.xevos_nonce) {
+          xevosAjax.nonce = n.xevos_nonce;
+        }
+        document.querySelectorAll('input[name="xevos_contact_nonce"]').forEach(function (el) {
+          if (n.xevos_contact) el.value = n.xevos_contact;
+        });
+        document.querySelectorAll('input[name="xevos_inquiry_nonce"]').forEach(function (el) {
+          if (n.xevos_inquiry) el.value = n.xevos_inquiry;
+        });
+      })
+      .catch(function () { /* ponecháme původní nonce z HTML */ });
+  })();
+
   /* ===== Search overlay toggle ===== */
   var searchToggle = document.getElementById('header-search-toggle');
   var searchOverlay = document.getElementById('search-overlay');

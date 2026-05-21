@@ -7,6 +7,33 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Vrátí čerstvé nonce pro formuláře.
+ *
+ * Stránky jsou cachované (Azure Front Door / W3TC) déle, než je životnost
+ * WP nonce (12–24 h), takže nonce zapečený v HTML může být po expiraci tick
+ * okna neplatný → "Neplatný bezpečnostní token". JS si proto na page-loadu
+ * vyžádá čerstvé nonce z tohoto necachovaného endpointu a přepíše je ve formě.
+ *
+ * Endpoint sám nepotřebuje nonce check — pouze vydává nonce (stejné, jaké
+ * by jinak vygenerovala samotná stránka), nemění žádný stav.
+ */
+add_action( 'wp_ajax_xevos_refresh_nonces', 'xevos_refresh_nonces_handler' );
+add_action( 'wp_ajax_nopriv_xevos_refresh_nonces', 'xevos_refresh_nonces_handler' );
+
+function xevos_refresh_nonces_handler(): void {
+	nocache_headers();
+	header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0' );
+	header( 'CDN-Cache-Control: no-store' );
+	header( 'Vary: Cookie' );
+
+	wp_send_json_success( [
+		'xevos_nonce'   => wp_create_nonce( 'xevos_nonce' ),
+		'xevos_contact' => wp_create_nonce( 'xevos_contact' ),
+		'xevos_inquiry' => wp_create_nonce( 'xevos_inquiry' ),
+	] );
+}
+
 // Live search.
 add_action( 'wp_ajax_xevos_live_search', 'xevos_live_search_handler' );
 add_action( 'wp_ajax_nopriv_xevos_live_search', 'xevos_live_search_handler' );
