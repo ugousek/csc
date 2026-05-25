@@ -2088,10 +2088,10 @@ select.xevos-form__input option:checked,
 @media (min-width: 1240px) {
   .xevos-partners__track {
     display: flex !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
+    justify-content: center;
+    gap: 2.5rem 3rem;
     transform: none !important;
   }
 
