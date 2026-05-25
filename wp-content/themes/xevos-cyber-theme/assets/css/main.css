@@ -2088,16 +2088,23 @@ select.xevos-form__input option:checked,
 @media (min-width: 1240px) {
   .xevos-partners__track {
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center;
-    justify-content: center;
-    gap: 2.5rem 3rem;
+    justify-content: space-between;
+    gap: 1.5rem;
     transform: none !important;
   }
 
   .xevos-partners__slide {
-    flex-shrink: 0;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
     width: auto !important;
+  }
+
+  .xevos-partners__slide img {
+    width: 100%;
+    max-width: 160px;
+    height: 60px;
   }
 }
 
